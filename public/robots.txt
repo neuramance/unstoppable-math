@@ -1,6 +1,0 @@
-# The /cc shelf is internal working prototypes. It is password-gated at the edge
-# (middleware.ts) and carries X-Robots-Tag: noindex (vercel.json), so this file is the
-# belt to those braces: crawlers are told not to try, and never to index it if the gate
-# is ever lifted. Everything else on the site is open.
-User-agent: *
-Disallow: /cc

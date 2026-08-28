@@ -39,7 +39,7 @@ const FracSlots = z.strictObject({
   den: z.string().nullable(),
 })
 
-export const AuthoredItem = z.strictObject({
+const AuthoredItem = z.strictObject({
   src: z.string().regex(/^(II|IT|EX|TBL):\d+[a-z]?$/),
   role: z.enum(['model', 'test']),
   mode: z.enum(['typed', 'frac', 'shade']),
@@ -60,7 +60,7 @@ export const AtomFile = z.strictObject({
 
 export type AtomFileT = z.infer<typeof AtomFile>
 
-export const LessonItemSchema = AuthoredItem.omit({ src: true }).extend({
+const LessonItemSchema = AuthoredItem.omit({ src: true }).extend({
   row: z.number().int().min(1),
   set: z.number().int().min(1),
 })

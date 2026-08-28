@@ -1,13 +1,12 @@
 import * as stylex from '@stylexjs/stylex'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, STIX_Two_Text } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import { THEME_CLASS } from './theme-class'
 import { t } from './tokens.stylex'
 import './globals.css'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
-const stix = STIX_Two_Text({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-stix' })
 
 export const metadata: Metadata = { title: 'Unstoppable Math', icons: { icon: '/favicon.svg' } }
 
@@ -37,9 +36,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="en"
       data-theme="paper"
       suppressHydrationWarning
-      className={[geist.variable, geistMono.variable, stix.variable, html.className, THEME_CLASS.paper]
-        .filter(Boolean)
-        .join(' ')}
+      className={[geist.variable, geistMono.variable, html.className, THEME_CLASS.paper].filter(Boolean).join(' ')}
       style={html.style}
     >
       <body {...stylex.props(s.body)}>

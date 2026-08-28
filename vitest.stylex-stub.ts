@@ -16,10 +16,6 @@ export function keyframes(frames: AnyStyles): string {
   return `keyframes-${Object.keys(frames).length}`
 }
 
-export function firstThatWorks(...values: string[]): string[] {
-  return values
-}
-
 export function props(...styles: unknown[]): { className?: string; style?: Record<string, string> } {
   void styles
   return {}

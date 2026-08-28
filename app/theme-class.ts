@@ -1,9 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { dark, light, paper, pure } from './themes'
 
-export const THEMES = ['light', 'paper', 'dark', 'pure', 'classic'] as const
-
-export type ThemeName = (typeof THEMES)[number]
+export type ThemeName = 'light' | 'paper' | 'dark' | 'pure' | 'classic'
 
 export const THEME_CLASS: Record<ThemeName, string> = {
   classic: '',

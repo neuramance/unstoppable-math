@@ -8,7 +8,6 @@ export const t = stylex.defineVars({
   rail: '16px',
   sans: 'var(--font-geist), system-ui, sans-serif',
   mono: 'var(--font-geist-mono), ui-monospace, monospace',
-  serif: 'var(--font-stix), "Times New Roman", serif',
 })
 
 export const d = stylex.defineVars({

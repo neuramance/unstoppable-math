@@ -138,10 +138,6 @@ function mathText(node: Node): string {
   return joinPieces(mathPieces(node))
 }
 
-function renderMathInline(node: Node): string {
-  return mathText(node)
-}
-
 function paraText(p: Node, images: Map<string, string>): string {
   const pieces: Piece[] = []
   const walk = (node: Node): void => {
@@ -159,10 +155,10 @@ function paraText(p: Node, images: Map<string, string>): string {
             if (file !== undefined) pieces.push({ kind: 'unit', text: `[image:${file}]` })
           }
         }
-      } else if (tag === 'm:oMath') pieces.push({ kind: 'unit', text: renderMathInline(c) })
+      } else if (tag === 'm:oMath') pieces.push({ kind: 'unit', text: mathText(c) })
       else if (tag === 'm:oMathPara') {
         for (const om of kids(c).filter((k) => k.tag === 'm:oMath'))
-          pieces.push({ kind: 'unit', text: renderMathInline(om.node) })
+          pieces.push({ kind: 'unit', text: mathText(om.node) })
       } else if (tag === 'w:hyperlink' || tag === 'w:smartTag') walk(c)
     }
   }
@@ -220,7 +216,7 @@ function tableRows(tbl: Node, images: Map<string, string>): TableRow[] {
   return rows
 }
 
-export type Section = {
+type Section = {
   label: string
   heading: string
   table?: TableRow

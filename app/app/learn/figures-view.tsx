@@ -51,7 +51,7 @@ import {
 } from '@/lib/figures'
 import type { CountKind, Figure } from '@/lib/figures'
 
-export type FigProps = {
+type FigProps = {
   fig: Figure
   counted: number
   badge?: CountKind
@@ -542,9 +542,9 @@ function GridFig({ fig, counted, badge, shown, onPick, pop }: FigProps) {
   )
 }
 
-export type RoundLayout = 'grid' | 'grouped'
+type RoundLayout = 'grid' | 'grouped'
 
-export function RoundFig({
+function RoundFig({
   fig,
   counted,
   badge,
