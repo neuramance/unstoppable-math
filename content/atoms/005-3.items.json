@@ -1,0 +1,146 @@
+{
+  "label": "3",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "For parts to have names, like halves, thirds, fourths, fifths, and so on, each part must be the same size. So these are not fifths, because the parts are not the same size.",
+      "expected": "not fifths",
+      "demo": "These are *not fifths*, because the parts are not the same size.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 5,
+          "bounds": [
+            0.1,
+            0.2,
+            0.35,
+            0.6
+          ]
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But these are fifths, because the parts are the same size.",
+      "expected": "fifths",
+      "demo": "These are *fifths*, because the parts are the same size.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These are sevenths, because the parts are the same size.",
+      "expected": "sevenths",
+      "demo": "These are *sevenths*, because the parts are the same size.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 7,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And these are halves, because the parts are the same size.",
+      "expected": "halves",
+      "demo": "These are *halves*, because the parts are the same size.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But these are not halves, because the parts are not the same size.",
+      "expected": "not halves",
+      "demo": "These are *not halves*, because the parts in the second rectangle are not the same size.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 2
+        },
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 2,
+          "bounds": [
+            0.7
+          ]
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, are these halves? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, because the parts are the same size.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, are these thirds? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, because the parts are the same size.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, are these fifths? How do you know?",
+      "expected": "no",
+      "demo": "*No*, because the parts are not the same size.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "bounds": [
+            0.1,
+            0.25,
+            0.45,
+            0.6
+          ]
+        }
+      ]
+    }
+  ]
+}

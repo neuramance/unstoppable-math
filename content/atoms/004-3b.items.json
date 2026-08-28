@@ -1,0 +1,233 @@
+{
+  "label": "3b",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "There are three times when the number of parts has an unusual name. If the number of parts is two, we call them halves. Say halves:",
+      "expected": "halves",
+      "demo": "*Halves*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If the number of parts is three, we call them thirds. Say thirds:",
+      "expected": "thirds",
+      "demo": "*Thirds*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And if the number of parts is five, we call them fifths.",
+      "expected": "fifths",
+      "demo": "*Fifths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "IT:1a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "five",
+      "demo": "*Five* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "IT:1b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call them?",
+      "expected": "fifths",
+      "demo": "*Fifths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "IT:2a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "two",
+      "demo": "*Two* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "IT:2b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call them?",
+      "expected": "halves",
+      "demo": "*Halves*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "IT:3a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "three",
+      "demo": "*Three* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "IT:3b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call them?",
+      "expected": "thirds",
+      "demo": "*Thirds*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the parts?",
+      "expected": "thirds",
+      "demo": "*Thirds*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the parts?",
+      "expected": "fifths",
+      "demo": "*Fifths*.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the parts?",
+      "expected": "thirds",
+      "demo": "*Thirds*.",
+      "figures": [
+        {
+          "kind": "polygon",
+          "units": 3,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the parts?",
+      "expected": "halves",
+      "demo": "*Halves*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the parts?",
+      "expected": "halves",
+      "demo": "*Halves*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the parts?",
+      "expected": "fifths",
+      "demo": "*Fifths*.",
+      "figures": [
+        {
+          "kind": "polygon",
+          "units": 2,
+          "parts": 5
+        }
+      ]
+    }
+  ]
+}

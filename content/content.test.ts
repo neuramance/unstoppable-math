@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from 'vitest'
-import { extract } from '../scripts/extract-docx'
+import { badgeCount, shadeable } from '../lib/figures'
+import { gradeItem, normalizeAnswer, type Lesson, type LessonItem } from '../lib/lesson'
+import { buildLesson, LessonFile, readAtomFiles } from '../scripts/build-lesson'
+import { extract, type Transcription } from '../scripts/extract-docx'
 
 const committed = JSON.parse(readFileSync('content/transcription/fractions.transcription.json', 'utf8'))
 
@@ -29,6 +32,119 @@ test('inventory: every measured landmark of the document is present', () => {
   expect(withBlock('II')).toBe(94)
   expect(withBlock('IT')).toBe(90)
   expect(withBlock('EX')).toBe(62)
+})
+
+const transcription = committed as Transcription
+const allAtoms = readAtomFiles()
+const filter = process.env.ATOMS?.split(',').map((s) => s.trim())
+const atoms = filter === undefined ? allAtoms : new Map([...allAtoms].filter(([label]) => filter.includes(label)))
+const lesson = JSON.parse(readFileSync('public/lessons/NF_Fractions.lesson.json', 'utf8')) as Lesson
+const items = () => [...atoms.values()].flatMap((f) => f.items)
+
+test.skipIf(filter !== undefined)('the committed lesson is exactly what the build produces from the committed atom files', () => {
+  const built = buildLesson(
+    transcription.sections.map((s) => s.label),
+    atoms,
+  )
+  expect(built).toEqual(lesson)
+  LessonFile.parse(lesson)
+})
+
+test('every count item expects exactly what its figure shows', () => {
+  for (const item of items()) {
+    if (item.count === undefined) continue
+    const fig = item.figures?.[0]
+    expect(fig, `count item without a figure: ${item.prompt}`).toBeDefined()
+    if (fig === undefined) continue
+    const want = badgeCount(item.count, fig, fig.counted ?? 0)
+    const got = Number(normalizeAnswer(item.expected).split(' ')[0])
+    expect({ prompt: item.prompt, expected: item.expected, derived: got }).toEqual({
+      prompt: item.prompt,
+      expected: item.expected,
+      derived: want,
+    })
+  }
+})
+
+test('frac and shade items stay inside their figures', () => {
+  for (const item of items()) {
+    if (item.mode === 'shade') {
+      const fig = item.figures?.[0]
+      expect(fig, `shade item without a figure: ${item.prompt}`).toBeDefined()
+      if (fig === undefined) continue
+      expect(shadeable(fig.kind)).toBe(true)
+      const cells = fig.units * fig.parts
+      for (const n of item.expected.split(/[\s,]+/).map(Number)) {
+        expect(n).toBeGreaterThan(0)
+        expect(n).toBeLessThanOrEqual(cells)
+      }
+    }
+    if (item.mode === 'frac' && item.figures?.[0] !== undefined) {
+      const fig = item.figures[0]
+      const nums = item.expected.split(/[\s/]+/).map(Number)
+      for (const n of nums) {
+        expect(Number.isInteger(n), `non-numeric frac expected: ${item.expected}`).toBe(true)
+      }
+      const legal = new Set([fig.parts, fig.counted ?? -1, fig.units, fig.units * fig.parts])
+      expect(
+        nums.some((n) => legal.has(n)),
+        `frac expected ${item.expected} names none of parts/counted/units for ${JSON.stringify(fig)}`,
+      ).toBe(true)
+    }
+  }
+})
+
+test('every test item grades its own expected answer as correct', () => {
+  for (const item of items()) {
+    if (item.role !== 'test') continue
+    const graded: LessonItem = { row: 1, ...item }
+    expect(gradeItem(graded, item.expected), `self-grade failed: ${item.prompt} → ${item.expected}`).toBe(true)
+  }
+})
+
+test('every item traces to a real line of its section, in document order, covering every question line', () => {
+  const sections = new Map(transcription.sections.map((s) => [s.label, s]))
+  const BLOCK_ORDER = { TBL: 0, II: 1, IT: 2, EX: 3 }
+  for (const [label, file] of atoms) {
+    const section = sections.get(label)
+    expect(section, `atom file without a section: ${label}`).toBeDefined()
+    if (section === undefined) continue
+    let last = -1
+    const covered = new Set<string>()
+    for (const item of file.items) {
+      const m = /^(TBL|II|IT|EX):(\d+)[a-z]?$/.exec(item.src)
+      expect(m, `bad src ${item.src} in ${label}`).not.toBeNull()
+      if (m === null) continue
+      const block = m[1] as 'TBL' | 'II' | 'IT' | 'EX'
+      const line = Number(m[2])
+      if (block !== 'TBL') {
+        expect(
+          section.blocks[block].length,
+          `${label} ${item.src} points past ${block} (${section.blocks[block].length} lines)`,
+        ).toBeGreaterThanOrEqual(line)
+      }
+      const pos = BLOCK_ORDER[block] * 1000 + line
+      expect(pos, `${label}: items out of document order at ${item.src}`).toBeGreaterThanOrEqual(last)
+      last = pos
+      covered.add(`${block}:${line}`)
+      if (block === 'II' || block === 'TBL') expect(item.role).toBe('model')
+      else expect(item.role).toBe('test')
+    }
+    for (const block of ['IT', 'EX'] as const) {
+      section.blocks[block].forEach((line, i) => {
+        if (!line.includes('[')) return
+        expect(covered.has(`${block}:${i + 1}`), `${label} ${block}:${i + 1} has no item: ${line.slice(0, 60)}`).toBe(
+          true,
+        )
+      })
+    }
+    if (section.blocks.II.length > 0) {
+      expect(
+        file.items.some((i) => i.role === 'model'),
+        `${label} has II lines but no model items`,
+      ).toBe(true)
+    }
+  }
 })
 
 test('inline math survived: fractions, boxes, and images are rendered, comments are not', () => {

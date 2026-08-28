@@ -1,0 +1,231 @@
+{
+  "label": "1",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here's a number line, split into what we call whole units.",
+      "expected": "whole units",
+      "demo": "It is split into *whole units*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here there are five whole units.",
+      "expected": "five",
+      "demo": "*Five* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here there are three whole units.",
+      "expected": "three",
+      "demo": "*Three* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units are there here?",
+      "expected": "four",
+      "demo": "*Four* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units are there here?",
+      "expected": "two",
+      "demo": "*Two* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units are there here?",
+      "expected": "one",
+      "demo": "*One* whole unit.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "one",
+      "demo": "*One* whole unit.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 1,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "three",
+      "demo": "*Three* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 1,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "three",
+      "demo": "*Three* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 1,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "five",
+      "demo": "*Five* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 5,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "four",
+      "demo": "*Four* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "triangle",
+          "units": 4,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "one",
+      "demo": "*One* whole unit.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "three",
+      "demo": "*Three* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 3,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many whole units?",
+      "expected": "two",
+      "demo": "*Two* whole units.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "pentagon",
+          "units": 2,
+          "parts": 1
+        }
+      ]
+    }
+  ]
+}

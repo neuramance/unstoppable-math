@@ -1,0 +1,242 @@
+{
+  "label": "3a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To read the number of parts in a whole unit, we can usually just say the number of parts, followed by a 'th' sound. My turn first: These whole units have four parts each. What's the name of each part?",
+      "expected": "fourths",
+      "demo": "*Fourths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These whole units have six parts each. What's the name of each part?",
+      "expected": "sixths",
+      "demo": "*Sixths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 6
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These whole units have seven parts each. What's the name of each part?",
+      "expected": "sevenths",
+      "demo": "*Sevenths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7
+        }
+      ]
+    },
+    {
+      "src": "IT:1a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. How many parts in each whole unit?",
+      "expected": "seven",
+      "demo": "*Seven* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7
+        }
+      ]
+    },
+    {
+      "src": "IT:1b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What's the name of each part?",
+      "expected": "sevenths",
+      "demo": "*Sevenths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7
+        }
+      ]
+    },
+    {
+      "src": "IT:2a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "six",
+      "demo": "*Six* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 6
+        }
+      ]
+    },
+    {
+      "src": "IT:2b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What's the name of each part?",
+      "expected": "sixths",
+      "demo": "*Sixths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 6
+        }
+      ],
+      "accept": [
+        "six"
+      ]
+    },
+    {
+      "src": "IT:3a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "four",
+      "demo": "*Four* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "src": "IT:3b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What's the name of each part?",
+      "expected": "fourths",
+      "demo": "*Fourths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ],
+      "accept": [
+        "four"
+      ]
+    },
+    {
+      "src": "EX:1a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "eight",
+      "demo": "*Eight* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 8
+        }
+      ]
+    },
+    {
+      "src": "EX:1b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What's the name of each part?",
+      "expected": "eighths",
+      "demo": "*Eighths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 8
+        }
+      ]
+    },
+    {
+      "src": "EX:2a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "nine",
+      "demo": "*Nine* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 9
+        }
+      ]
+    },
+    {
+      "src": "EX:2b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What's the name of each part?",
+      "expected": "ninths",
+      "demo": "*Ninths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 9
+        }
+      ]
+    },
+    {
+      "src": "EX:3a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "ten",
+      "demo": "*Ten* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10
+        }
+      ]
+    },
+    {
+      "src": "EX:3b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What's the name of each part?",
+      "expected": "tenths",
+      "demo": "*Tenths*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "topic": "nf-fractions",
-  "source": "NF_Fractions.json",
+  "source": "Fractions_Atoms_Lessons.docx",
   "atoms": {
     "1": "1",
     "2": "2",
@@ -12,9 +12,9 @@
   "items": [
     {
       "row": 1,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "Here's a number line, split into what we call whole units.",
       "expected": "whole units",
       "demo": "It is split into *whole units*.",
@@ -28,9 +28,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "Here there are five whole units.",
       "expected": "five",
       "demo": "*Five* whole units.",
@@ -45,9 +45,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "Here there are three whole units.",
       "expected": "three",
       "demo": "*Three* whole units.",
@@ -62,9 +62,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units are there here?",
       "expected": "four",
       "demo": "*Four* whole units.",
@@ -79,9 +79,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units are there here?",
       "expected": "two",
       "demo": "*Two* whole units.",
@@ -96,9 +96,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units are there here?",
       "expected": "one",
       "demo": "*One* whole unit.",
@@ -113,9 +113,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "one",
       "demo": "*One* whole unit.",
@@ -131,9 +131,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "three",
       "demo": "*Three* whole units.",
@@ -149,9 +149,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "three",
       "demo": "*Three* whole units.",
@@ -167,9 +167,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "five",
       "demo": "*Five* whole units.",
@@ -184,9 +184,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "four",
       "demo": "*Four* whole units.",
@@ -201,9 +201,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "one",
       "demo": "*One* whole unit.",
@@ -218,9 +218,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "three",
       "demo": "*Three* whole units.",
@@ -235,9 +235,9 @@
     },
     {
       "row": 1,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many whole units?",
       "expected": "two",
       "demo": "*Two* whole units.",
@@ -252,9 +252,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "Here are three whole units. The whole units have been split into parts. The parts all have the same size.",
       "expected": "four",
       "demo": "I count the parts like this: one, two, three, four. Each whole unit has *four* parts.",
@@ -269,9 +269,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "Watch what changes…",
       "expected": "seven",
       "demo": "Now there are one, two, three, four, five, six, seven parts in each whole unit. *Seven* parts.",
@@ -286,9 +286,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "Your turn. How many parts in each whole unit?",
       "expected": "three",
       "demo": "*Three* parts in each whole unit.",
@@ -303,9 +303,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many parts in each whole unit?",
       "expected": "five",
       "demo": "*Five* parts in each whole unit.",
@@ -320,9 +320,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many parts in each whole unit?",
       "expected": "five",
       "demo": "*Five* parts in each whole unit.",
@@ -338,9 +338,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many parts in each whole unit?",
       "expected": "three",
       "demo": "*Three* parts in each whole unit.",
@@ -356,9 +356,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many parts in each whole unit?",
       "expected": "three",
       "demo": "*Three* parts in each whole unit.",
@@ -374,9 +374,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many parts in each whole unit?",
       "expected": "four",
       "demo": "*Four* parts in each whole unit.",
@@ -391,9 +391,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many parts in each whole unit?",
       "expected": "six",
       "demo": "*Six* parts in each whole unit.",
@@ -408,9 +408,9 @@
     },
     {
       "row": 2,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "How many parts in each whole unit?",
       "expected": "five",
       "demo": "*Five* parts in each whole unit.",
@@ -425,9 +425,9 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "To read the number of parts in a whole unit, we can usually just say the number of parts, followed by a 'th' sound. My turn first: These whole units have four parts each. What's the name of each part?",
       "expected": "fourths",
       "demo": "*Fourths*.",
@@ -441,10 +441,10 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
-      "prompt": "My turn first: These whole units have six parts each. What's the name of each part?",
+      "prompt": "These whole units have six parts each. What's the name of each part?",
       "expected": "sixths",
       "demo": "*Sixths*.",
       "figures": [
@@ -457,10 +457,10 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
-      "prompt": "My turn first: These whole units have seven parts each. What's the name of each part?",
+      "prompt": "These whole units have seven parts each. What's the name of each part?",
       "expected": "sevenths",
       "demo": "*Sevenths*.",
       "figures": [
@@ -473,10 +473,10 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "Your turn. How many parts?",
+      "prompt": "Your turn. How many parts in each whole unit?",
       "expected": "seven",
       "demo": "*Seven* parts.",
       "count": "parts",
@@ -490,9 +490,9 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What's the name of each part?",
       "expected": "sevenths",
       "demo": "*Sevenths*.",
@@ -506,10 +506,10 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "six",
       "demo": "*Six* parts.",
       "count": "parts",
@@ -523,14 +523,11 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What's the name of each part?",
       "expected": "sixths",
-      "accept": [
-        "six"
-      ],
       "demo": "*Sixths*.",
       "figures": [
         {
@@ -538,14 +535,17 @@
           "units": 3,
           "parts": 6
         }
+      ],
+      "accept": [
+        "six"
       ]
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "four",
       "demo": "*Four* parts.",
       "count": "parts",
@@ -559,14 +559,11 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What's the name of each part?",
       "expected": "fourths",
-      "accept": [
-        "four"
-      ],
       "demo": "*Fourths*.",
       "figures": [
         {
@@ -574,14 +571,17 @@
           "units": 3,
           "parts": 4
         }
+      ],
+      "accept": [
+        "four"
       ]
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "eight",
       "demo": "*Eight* parts.",
       "count": "parts",
@@ -595,9 +595,9 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What's the name of each part?",
       "expected": "eighths",
       "demo": "*Eighths*.",
@@ -611,10 +611,10 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "nine",
       "demo": "*Nine* parts.",
       "count": "parts",
@@ -628,9 +628,9 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What's the name of each part?",
       "expected": "ninths",
       "demo": "*Ninths*.",
@@ -644,10 +644,10 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "ten",
       "demo": "*Ten* parts.",
       "count": "parts",
@@ -661,9 +661,9 @@
     },
     {
       "row": 3,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What's the name of each part?",
       "expected": "tenths",
       "demo": "*Tenths*.",
@@ -677,10 +677,10 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
-      "prompt": "There are three times when the number of parts has unusual name. If the number of parts is two, we call them halves. Say halves:",
+      "prompt": "There are three times when the number of parts has an unusual name. If the number of parts is two, we call them halves. Say halves:",
       "expected": "halves",
       "demo": "*Halves*.",
       "figures": [
@@ -693,9 +693,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "If the number of parts is three, we call them thirds. Say thirds:",
       "expected": "thirds",
       "demo": "*Thirds*.",
@@ -709,9 +709,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "And if the number of parts is five, we call them fifths.",
       "expected": "fifths",
       "demo": "*Fifths*.",
@@ -725,10 +725,10 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "five",
       "demo": "*Five* parts.",
       "count": "parts",
@@ -742,9 +742,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call them?",
       "expected": "fifths",
       "demo": "*Fifths*.",
@@ -758,10 +758,10 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "two",
       "demo": "*Two* parts.",
       "count": "parts",
@@ -775,9 +775,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call them?",
       "expected": "halves",
       "demo": "*Halves*.",
@@ -791,10 +791,10 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
-      "prompt": "How many parts?",
+      "prompt": "How many parts in each whole unit?",
       "expected": "three",
       "demo": "*Three* parts.",
       "count": "parts",
@@ -808,9 +808,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call them?",
       "expected": "thirds",
       "demo": "*Thirds*.",
@@ -824,9 +824,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call the parts?",
       "expected": "thirds",
       "demo": "*Thirds*.",
@@ -840,9 +840,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call the parts?",
       "expected": "fifths",
       "demo": "*Fifths*.",
@@ -856,9 +856,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call the parts?",
       "expected": "thirds",
       "demo": "*Thirds*.",
@@ -872,9 +872,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call the parts?",
       "expected": "halves",
       "demo": "*Halves*.",
@@ -888,9 +888,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call the parts?",
       "expected": "halves",
       "demo": "*Halves*.",
@@ -904,9 +904,9 @@
     },
     {
       "row": 4,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "What do we call the parts?",
       "expected": "fifths",
       "demo": "*Fifths*.",
@@ -920,9 +920,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "For parts to have names, like halves, thirds, fourths, fifths, and so on, each part must be the same size. So these are not fifths, because the parts are not the same size.",
       "expected": "not fifths",
       "demo": "These are *not fifths*, because the parts are not the same size.",
@@ -942,9 +942,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "But these are fifths, because the parts are the same size.",
       "expected": "fifths",
       "demo": "These are *fifths*, because the parts are the same size.",
@@ -958,9 +958,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "These are sevenths, because the parts are the same size.",
       "expected": "sevenths",
       "demo": "These are *sevenths*, because the parts are the same size.",
@@ -975,9 +975,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "And these are halves, because the parts are the same size.",
       "expected": "halves",
       "demo": "These are *halves*, because the parts are the same size.",
@@ -991,9 +991,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "model",
       "mode": "typed",
-      "set": 1,
       "prompt": "But these are not halves, because the parts are not the same size.",
       "expected": "not halves",
       "demo": "These are *not halves*, because the parts in the second rectangle are not the same size.",
@@ -1015,9 +1015,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "Your turn, are these halves? How do you know?",
       "expected": "yes",
       "demo": "*Yes*, because the parts are the same size.",
@@ -1031,9 +1031,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "Your turn, are these thirds? How do you know?",
       "expected": "yes",
       "demo": "*Yes*, because the parts are the same size.",
@@ -1047,9 +1047,9 @@
     },
     {
       "row": 5,
+      "set": 1,
       "role": "test",
       "mode": "typed",
-      "set": 1,
       "prompt": "Your turn, are these fifths? How do you know?",
       "expected": "no",
       "demo": "*No*, because the parts are not the same size.",
@@ -1064,1054 +1064,6 @@
             0.45,
             0.6
           ]
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Here's a number line, split into what we call whole units.",
-      "expected": "whole units",
-      "demo": "It is split into *whole units*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 4,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Here there are four whole units.",
-      "expected": "four",
-      "demo": "*Four* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 4,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Here there are two whole units.",
-      "expected": "two",
-      "demo": "*Two* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units are there here?",
-      "expected": "three",
-      "demo": "*Three* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 3,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units are there here?",
-      "expected": "five",
-      "demo": "*Five* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 5,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units are there here?",
-      "expected": "two",
-      "demo": "*Two* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "two",
-      "demo": "*Two* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 1,
-          "orientation": "vertical"
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "four",
-      "demo": "*Four* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 4,
-          "parts": 1,
-          "orientation": "vertical"
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "four",
-      "demo": "*Four* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 4,
-          "parts": 1,
-          "orientation": "vertical"
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "three",
-      "demo": "*Three* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 3,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "five",
-      "demo": "*Five* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "triangle",
-          "units": 5,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "two",
-      "demo": "*Two* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 2,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "four",
-      "demo": "*Four* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 4,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 1,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many whole units?",
-      "expected": "three",
-      "demo": "*Three* whole units.",
-      "count": "units",
-      "figures": [
-        {
-          "kind": "pentagon",
-          "units": 3,
-          "parts": 1
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Here are two whole units. The whole units have been split into parts. The parts all have the same size.",
-      "expected": "five",
-      "demo": "I count the parts like this: one, two, three, four, five. Each whole unit has *five* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Watch what changes…",
-      "expected": "three",
-      "demo": "Now there are one, two, three parts in each whole unit. *Three* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 3
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Your turn. How many parts in each whole unit?",
-      "expected": "four",
-      "demo": "*Four* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 4
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts in each whole unit?",
-      "expected": "six",
-      "demo": "*Six* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 6
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts in each whole unit?",
-      "expected": "six",
-      "demo": "*Six* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 6,
-          "orientation": "vertical"
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts in each whole unit?",
-      "expected": "two",
-      "demo": "*Two* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 5,
-          "parts": 2,
-          "orientation": "vertical"
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts in each whole unit?",
-      "expected": "two",
-      "demo": "*Two* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 5,
-          "parts": 2,
-          "orientation": "vertical"
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts in each whole unit?",
-      "expected": "five",
-      "demo": "*Five* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 4,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts in each whole unit?",
-      "expected": "four",
-      "demo": "*Four* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "hexagon",
-          "units": 3,
-          "parts": 4
-        }
-      ]
-    },
-    {
-      "row": 2,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts in each whole unit?",
-      "expected": "seven",
-      "demo": "*Seven* parts in each whole unit.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 2,
-          "parts": 7
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "To read the number of parts in a whole unit, we can usually just say the number of parts, followed by a 'th' sound. My turn first: These whole units have nine parts each. What's the name of each part?",
-      "expected": "ninths",
-      "demo": "*Ninths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 9
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "My turn first: These whole units have eight parts each. What's the name of each part?",
-      "expected": "eighths",
-      "demo": "*Eighths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 8
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "My turn first: These whole units have ten parts each. What's the name of each part?",
-      "expected": "tenths",
-      "demo": "*Tenths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 10
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Your turn. How many parts?",
-      "expected": "four",
-      "demo": "*Four* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 4
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What's the name of each part?",
-      "expected": "fourths",
-      "demo": "*Fourths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 4
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "six",
-      "demo": "*Six* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 6
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What's the name of each part?",
-      "expected": "sixths",
-      "demo": "*Sixths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 6
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "seven",
-      "demo": "*Seven* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 7
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What's the name of each part?",
-      "expected": "sevenths",
-      "demo": "*Sevenths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 7
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "twelve",
-      "demo": "*Twelve* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 12
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What's the name of each part?",
-      "expected": "twelfths",
-      "demo": "*Twelfths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 12
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "eleven",
-      "demo": "*Eleven* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 11
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What's the name of each part?",
-      "expected": "elevenths",
-      "demo": "*Elevenths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 11
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "twenty",
-      "demo": "*Twenty* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 1,
-          "parts": 20
-        }
-      ]
-    },
-    {
-      "row": 3,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What's the name of each part?",
-      "expected": "twentieths",
-      "demo": "*Twentieths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 1,
-          "parts": 20
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "There are three times when the number of parts has unusual name. If the number of parts is two, we call them halves. Say halves:",
-      "expected": "halves",
-      "demo": "*Halves*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 2
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "If the number of parts is three, we call them thirds. Say thirds:",
-      "expected": "thirds",
-      "demo": "*Thirds*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 3
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "And if the number of parts is five, we call them fifths.",
-      "expected": "fifths",
-      "demo": "*Fifths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "three",
-      "demo": "*Three* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 3
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call them?",
-      "expected": "thirds",
-      "demo": "*Thirds*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 3
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "five",
-      "demo": "*Five* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call them?",
-      "expected": "fifths",
-      "demo": "*Fifths*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "How many parts?",
-      "expected": "two",
-      "demo": "*Two* parts.",
-      "count": "parts",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 2
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call them?",
-      "expected": "halves",
-      "demo": "*Halves*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 2,
-          "parts": 2
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call the parts?",
-      "expected": "halves",
-      "demo": "*Halves*.",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 2,
-          "parts": 2
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call the parts?",
-      "expected": "thirds",
-      "demo": "*Thirds*.",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 2,
-          "parts": 3
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call the parts?",
-      "expected": "fifths",
-      "demo": "*Fifths*.",
-      "figures": [
-        {
-          "kind": "polygon",
-          "units": 2,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call the parts?",
-      "expected": "thirds",
-      "demo": "*Thirds*.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 3,
-          "parts": 3
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call the parts?",
-      "expected": "fifths",
-      "demo": "*Fifths*.",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 3,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 4,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "What do we call the parts?",
-      "expected": "halves",
-      "demo": "*Halves*.",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 4,
-          "parts": 2
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "For parts to have names, like halves, thirds, fourths, fifths, and so on, each part must be the same size. So these are not fifths, because the parts are not the same size.",
-      "expected": "not fifths",
-      "demo": "These are *not fifths*, because the parts are not the same size.",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 3,
-          "parts": 5,
-          "bounds": [
-            0.15,
-            0.3,
-            0.45,
-            0.8
-          ]
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "But these are fifths, because the parts are the same size.",
-      "expected": "fifths",
-      "demo": "These are *fifths*, because the parts are the same size.",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 3,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "These are sevenths, because the parts are the same size.",
-      "expected": "sevenths",
-      "demo": "These are *sevenths*, because the parts are the same size.",
-      "figures": [
-        {
-          "kind": "number-line",
-          "units": 3,
-          "parts": 7,
-          "orientation": "vertical"
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "And these are halves, because the parts are the same size.",
-      "expected": "halves",
-      "demo": "These are *halves*, because the parts are the same size.",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 3,
-          "parts": 2
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "model",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "But these are not halves, because the parts are not the same size.",
-      "expected": "not halves",
-      "demo": "These are *not halves*, because the parts in the second rectangle are not the same size.",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 1,
-          "parts": 2
-        },
-        {
-          "kind": "bar",
-          "units": 1,
-          "parts": 2,
-          "bounds": [
-            0.35
-          ]
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Your turn, are these fifths? How do you know?",
-      "expected": "yes",
-      "demo": "*Yes*, because the parts are the same size.",
-      "figures": [
-        {
-          "kind": "circle",
-          "units": 2,
-          "parts": 5
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Your turn, are these halves? How do you know?",
-      "expected": "no",
-      "demo": "*No*, because the parts are not the same size.",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 2,
-          "parts": 2,
-          "bounds": [
-            0.65
-          ]
-        }
-      ]
-    },
-    {
-      "row": 5,
-      "role": "test",
-      "mode": "typed",
-      "set": 2,
-      "prompt": "Your turn, are these thirds? How do you know?",
-      "expected": "yes",
-      "demo": "*Yes*, because the parts are the same size.",
-      "figures": [
-        {
-          "kind": "bar",
-          "units": 2,
-          "parts": 3
         }
       ]
     }

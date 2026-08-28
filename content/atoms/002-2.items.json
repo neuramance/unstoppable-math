@@ -1,0 +1,168 @@
+{
+  "label": "2",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here are three whole units. The whole units have been split into parts. The parts all have the same size.",
+      "expected": "four",
+      "demo": "I count the parts like this: one, two, three, four. Each whole unit has *four* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what changes…",
+      "expected": "seven",
+      "demo": "Now there are one, two, three, four, five, six, seven parts in each whole unit. *Seven* parts.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. How many parts in each whole unit?",
+      "expected": "three",
+      "demo": "*Three* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "five",
+      "demo": "*Five* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "five",
+      "demo": "*Five* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "three",
+      "demo": "*Three* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 3,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "three",
+      "demo": "*Three* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 4,
+          "parts": 3,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "four",
+      "demo": "*Four* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 5,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "six",
+      "demo": "*Six* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "hexagon",
+          "units": 2,
+          "parts": 6
+        }
+      ]
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts in each whole unit?",
+      "expected": "five",
+      "demo": "*Five* parts in each whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 3,
+          "parts": 5
+        }
+      ]
+    }
+  ]
+}

@@ -40,3 +40,48 @@ html {
 ::view-transition {
   pointer-events: none;
 }
+
+::view-transition-old(learn-diagram) {
+  animation: learn-diagram-out 0.16s ease-out both;
+}
+::view-transition-new(learn-diagram) {
+  animation: learn-diagram-in 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes learn-diagram-out {
+  to {
+    opacity: 0;
+    transform: translateY(-3px) scale(0.995);
+  }
+}
+@keyframes learn-diagram-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px) scale(0.99);
+  }
+}
+html.learn-turn ::view-transition-old(learn-diagram) {
+  animation: learn-turn-out 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+html.learn-turn ::view-transition-new(learn-diagram) {
+  animation: learn-turn-in 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes learn-turn-out {
+  to {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.9);
+  }
+}
+@keyframes learn-turn-in {
+  from {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.9);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(learn-diagram),
+  ::view-transition-new(learn-diagram),
+  html.learn-turn ::view-transition-old(learn-diagram),
+  html.learn-turn ::view-transition-new(learn-diagram) {
+    animation: none;
+  }
+}
