@@ -1,0 +1,8 @@
+.next/
+public/
+supabase/
+content/source/
+content/transcription/
+bun.lock
+test-results/
+playwright-report/
