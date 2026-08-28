@@ -1,0 +1,103 @@
+{
+  "label": "47",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "The top of a fraction tells us how many parts are counted, and the bottom number tells us what kind of parts they are. So, here’s a fraction.  5/6",
+      "expected": "sixths",
+      "demo": "The bottom number is six, so these are *sixths*."
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "The top number is five, so five sixths are counted.  5/6",
+      "expected": "five sixths",
+      "demo": "So *five sixths* make up this fraction."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, watch what I change.  4/6",
+      "expected": "four sixths",
+      "demo": "These are still sixths, but now four are counted. So *four sixths* make up this fraction."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch again what I change.  4/7",
+      "expected": "four sevenths",
+      "demo": "Now these are sevenths, and four are counted. So *four sevenths* make up 4/7. Each time, the bottom number names the parts, and then the top number tells us how many of those parts are counted."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. How many sixths make up this fraction: 3/6",
+      "expected": "three",
+      "demo": "*Three* sixths make up this fraction."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many eighths make up this fraction: 7/8",
+      "expected": "seven",
+      "demo": "*Seven* eighths make up this fraction."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many thirds make up this fraction: 2/3",
+      "expected": "two",
+      "demo": "*Two* thirds make up this fraction."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many fifths make up this fraction: 12/5",
+      "expected": "twelve",
+      "demo": "*Twelve* fifths make up this fraction."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many hundredths make up this fraction: 43/100",
+      "expected": "forty-three",
+      "accept": ["43"],
+      "demo": "*Forty-three* hundredths make up this fraction."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many fourths make up this fraction: 1/4",
+      "expected": "one",
+      "demo": "*One* fourth makes up this fraction."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many ninths make up this fraction: a/9",
+      "expected": "a",
+      "demo": "*a* ninths make up this fraction."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many sixths make up one whole unit?",
+      "expected": "six",
+      "accept": ["6/6", "six sixths"],
+      "demo": "*Six* sixths make up one whole unit."
+    }
+  ]
+}

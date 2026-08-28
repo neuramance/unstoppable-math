@@ -1,0 +1,103 @@
+{
+  "label": "54",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We've seen that a fraction is improper when the top number is bigger than the bottom number.  19/5  And we've seen that a mixed number has a whole number part and a fraction written to its right.  3 4/5  Only improper fractions can be rewritten as mixed numbers, because only improper fractions represent one whole unit or more. So this fraction cannot be rewritten as a mixed number, because it is not improper.  4/5",
+      "expected": "cannot be rewritten",
+      "demo": "This fraction *cannot* be rewritten as a mixed number, because it is not improper. There are no whole units in it."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But this fraction can be rewritten as a mixed number, because it is improper.  6/5",
+      "expected": "can be rewritten",
+      "demo": "This fraction *can* be rewritten as a mixed number, because it is improper."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This fraction can be rewritten as a mixed number, because it is improper.  67/5",
+      "expected": "can be rewritten",
+      "demo": "This fraction *can* be rewritten as a mixed number, because it is improper."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And this fraction can be rewritten as a mixed number, because it is improper.  100/99",
+      "expected": "can be rewritten",
+      "demo": "This fraction *can* be rewritten as a mixed number, because it is improper."
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But this fraction cannot be rewritten as a mixed number, because it is proper.  99/100",
+      "expected": "cannot be rewritten",
+      "demo": "This fraction *cannot* be rewritten as a mixed number, because it is proper."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to decide if the fractions can be rewritten as mixed numbers. Can this fraction be rewritten as a mixed number? How do you know?  8/3",
+      "expected": "yes",
+      "demo": "*Yes*, because it's improper."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  3/8",
+      "expected": "no",
+      "demo": "*No*, because it's not improper."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  12/5",
+      "expected": "yes",
+      "demo": "*Yes*, because it's improper."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  9/10",
+      "expected": "no",
+      "demo": "*No*, because it's not improper."
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  10/9",
+      "expected": "yes",
+      "demo": "*Yes*, because it's improper."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which of these can be rewritten as mixed numbers?  3/7  7/3  30/7  7/30",
+      "expected": "7/3 and 30/7",
+      "accept": ["7/3 30/7", "30/7 and 7/3", "30/7 7/3"],
+      "demo": "*7/3 and 30/7*, because they're improper."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which of these can be rewritten as a mixed number?  100/99  99/100  101/100",
+      "expected": "100/99 and 101/100",
+      "accept": ["100/99 101/100", "101/100 and 100/99", "101/100 100/99"],
+      "demo": "*100/99 and 101/100*, because they're improper."
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "label": "81",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "For a long time now we’ve been talking about the top and bottom parts of fractions. These also have technical names. The bottom number of a fraction is called the denominator.",
+      "expected": "denominator",
+      "demo": "The bottom number of a fraction is called the *denominator*."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "In Latin, ‘nom’ means ‘name’, and so ‘denom’ means ‘give name. Any word that ends in ‘-ator’ is describing a ‘thing that acts’ or ‘thing that does’. So the ‘denom-in-ator’ is ‘the thing that gives name’.",
+      "expected": "the thing that gives name",
+      "demo": "The ‘denom-in-ator’ is ‘*the thing that gives name*’."
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And that is what the bottom number does. When the bottom number is five, we call the parts fifths. When the bottom number is eight, we call them eighths. So the denominator is the bottom number, because the bottom number gives the parts their name.",
+      "expected": "gives the parts their name",
+      "demo": "The denominator is the bottom number, because the bottom number *gives the parts their name*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the word after me: ‘denominator’",
+      "expected": "Denominator",
+      "demo": "*Denominator*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which part of a fraction is the denominator?",
+      "expected": "the bottom number",
+      "accept": ["bottom number", "the bottom", "bottom"],
+      "demo": "The denominator is *the bottom number*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the bottom number of a fraction?",
+      "expected": "Denominator",
+      "accept": ["the denominator"],
+      "demo": "We call the bottom number of a fraction the *denominator*."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Why is the bottom number called the denominator?",
+      "expected": "because denominator means the thing that gives the name, and the bottom number gives the parts their name",
+      "accept": [
+        "because it gives the parts their name",
+        "it gives the parts their name",
+        "the bottom number gives the parts their name",
+        "because the bottom number gives the parts their name",
+        "denominator means the thing that gives the name",
+        "because denominator means the thing that gives name and the bottom number gives the parts their name"
+      ],
+      "demo": "Because denominator means ‘the thing that gives the name’, and the bottom number *gives the parts their name*."
+    }
+  ]
+}

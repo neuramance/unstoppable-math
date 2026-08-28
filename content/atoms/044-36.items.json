@@ -1,0 +1,203 @@
+{
+  "label": "36",
+  "items": [
+    {
+      "src": "TBL:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Using a bar diagram, show that these two fractions are equivalent 3/4 and 15/20",
+      "expected": "equivalent",
+      "demo": "Three of the four parts are shaded, and fifteen of the twenty parts are shaded. The shaded amounts are the same size, so the fractions are *equivalent*.",
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 4, "counted": 3, "label": "3/4" },
+        { "kind": "bar", "units": 1, "parts": 20, "counted": 15, "label": "15/20" }
+      ]
+    },
+    {
+      "src": "IT:1a",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 3/4 and 15/20",
+      "expected": "3",
+      "demo": "I shade *three* of the four parts to show three fourths.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 4, "label": "3/4" }]
+    },
+    {
+      "src": "IT:1b",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 3/4 and 15/20",
+      "expected": "15",
+      "demo": "I shade *fifteen* of the twenty parts to show fifteen over twenty.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 20, "label": "15/20" }]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are the fractions equivalent, yes or no? 3/4 and 15/20",
+      "expected": "yes",
+      "demo": "*Yes*, the fractions are equivalent: the shaded amounts are the same size.",
+      "accept": ["equivalent", "yes, they are equivalent"],
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 4, "counted": 3, "label": "3/4" },
+        { "kind": "bar", "units": 1, "parts": 20, "counted": 15, "label": "15/20" }
+      ]
+    },
+    {
+      "src": "IT:3a",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 2/3 and 8/12",
+      "expected": "2",
+      "demo": "I shade *two* of the three parts to show two thirds.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 3, "label": "2/3" }]
+    },
+    {
+      "src": "IT:3b",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 2/3 and 8/12",
+      "expected": "8",
+      "demo": "I shade *eight* of the twelve parts to show eight over twelve.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 12, "label": "8/12" }]
+    },
+    {
+      "src": "IT:3c",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are the fractions equivalent, yes or no? 2/3 and 8/12",
+      "expected": "yes",
+      "demo": "*Yes*, the fractions are equivalent: the shaded amounts are the same size.",
+      "accept": ["equivalent", "yes, they are equivalent"],
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 3, "counted": 2, "label": "2/3" },
+        { "kind": "bar", "units": 1, "parts": 12, "counted": 8, "label": "8/12" }
+      ]
+    },
+    {
+      "src": "IT:3d",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 1/2 and 9/18",
+      "expected": "1",
+      "demo": "I shade *one* of the two parts to show one half.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 2, "label": "1/2" }]
+    },
+    {
+      "src": "IT:3e",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 1/2 and 9/18",
+      "expected": "9",
+      "demo": "I shade *nine* of the eighteen parts to show nine over eighteen.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 18, "label": "9/18" }]
+    },
+    {
+      "src": "IT:3f",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are the fractions equivalent, yes or no? 1/2 and 9/18",
+      "expected": "yes",
+      "demo": "*Yes*, the fractions are equivalent: the shaded amounts are the same size.",
+      "accept": ["equivalent", "yes, they are equivalent"],
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 2, "counted": 1, "label": "1/2" },
+        { "kind": "bar", "units": 1, "parts": 18, "counted": 9, "label": "9/18" }
+      ]
+    },
+    {
+      "src": "IT:3g",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 3/5 and 12/20",
+      "expected": "3",
+      "demo": "I shade *three* of the five parts to show three fifths.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 5, "label": "3/5" }]
+    },
+    {
+      "src": "IT:3h",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 3/5 and 12/20",
+      "expected": "12",
+      "demo": "I shade *twelve* of the twenty parts to show twelve over twenty.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 20, "label": "12/20" }]
+    },
+    {
+      "src": "IT:3i",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are the fractions equivalent, yes or no? 3/5 and 12/20",
+      "expected": "yes",
+      "demo": "*Yes*, the fractions are equivalent: the shaded amounts are the same size.",
+      "accept": ["equivalent", "yes, they are equivalent"],
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 5, "counted": 3, "label": "3/5" },
+        { "kind": "bar", "units": 1, "parts": 20, "counted": 12, "label": "12/20" }
+      ]
+    },
+    {
+      "src": "IT:3j",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 3/4 and 10/16",
+      "expected": "3",
+      "demo": "I shade *three* of the four parts to show three fourths.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 4, "label": "3/4" }]
+    },
+    {
+      "src": "IT:3k",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 3/4 and 10/16",
+      "expected": "10",
+      "demo": "I shade *ten* of the sixteen parts to show ten over sixteen.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 16, "label": "10/16" }]
+    },
+    {
+      "src": "IT:3l",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are the fractions equivalent, yes or no? 3/4 and 10/16",
+      "expected": "no",
+      "demo": "*No*, the fractions are not equivalent: the shaded amounts are not the same size.",
+      "accept": ["not equivalent", "no, they are not equivalent"],
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 4, "counted": 3, "label": "3/4" },
+        { "kind": "bar", "units": 1, "parts": 16, "counted": 10, "label": "10/16" }
+      ]
+    },
+    {
+      "src": "IT:3m",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 2/5 and 5/10",
+      "expected": "2",
+      "demo": "I shade *two* of the five parts to show two fifths.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 5, "label": "2/5" }]
+    },
+    {
+      "src": "IT:3n",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Draw the bar diagrams to show whether the fractions are equivalent. 2/5 and 5/10",
+      "expected": "5",
+      "demo": "I shade *five* of the ten parts to show five over ten.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 10, "label": "5/10" }]
+    },
+    {
+      "src": "IT:3o",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are the fractions equivalent, yes or no? 2/5 and 5/10",
+      "expected": "no",
+      "demo": "*No*, the fractions are not equivalent: the shaded amounts are not the same size.",
+      "accept": ["not equivalent", "no, they are not equivalent"],
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 5, "counted": 2, "label": "2/5" },
+        { "kind": "bar", "units": 1, "parts": 10, "counted": 5, "label": "5/10" }
+      ]
+    }
+  ]
+}

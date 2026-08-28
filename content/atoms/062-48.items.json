@@ -1,0 +1,105 @@
+{
+  "label": "48",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that this fraction 5/6 is made up of five sixths. We can write that as a sum. My turn first: this is five sixths, so I write one sixth five times, added together.",
+      "expected": "5/6 = 1/6 + 1/6 + 1/6 + 1/6 + 1/6",
+      "demo": "*5/6 = 1/6 + 1/6 + 1/6 + 1/6 + 1/6*."
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change.  3/6",
+      "expected": "3/6 = 1/6 + 1/6 + 1/6",
+      "demo": "Three sixths, so I write one sixth three times. *3/6 = 1/6 + 1/6 + 1/6*."
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change again.  3/4",
+      "expected": "3/4 = 1/4 + 1/4 + 1/4",
+      "demo": "Three fourths, so I write one fourth three times. *3/4 = 1/4 + 1/4 + 1/4*. Each time, the bottom number tells us which unit fraction to write, and the top number tells us how many of them to add."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Express four fifths as a sum of unit fractions.  4/5",
+      "expected": "4/5 = 1/5 + 1/5 + 1/5 + 1/5",
+      "accept": ["1/5 + 1/5 + 1/5 + 1/5", "4/5=1/5+1/5+1/5+1/5", "1/5+1/5+1/5+1/5"],
+      "demo": "Four fifths, so I write one fifth four times: *4/5 = 1/5 + 1/5 + 1/5 + 1/5*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express two fifths as a sum of unit fractions.  2/5",
+      "expected": "2/5 = 1/5 + 1/5",
+      "accept": ["1/5 + 1/5", "2/5=1/5+1/5", "1/5+1/5"],
+      "demo": "Two fifths, so I write one fifth two times: *2/5 = 1/5 + 1/5*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express two sevenths as a sum of unit fractions.  2/7",
+      "expected": "2/7 = 1/7 + 1/7",
+      "accept": ["1/7 + 1/7", "2/7=1/7+1/7", "1/7+1/7"],
+      "demo": "Two sevenths, so I write one seventh two times: *2/7 = 1/7 + 1/7*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express seven thirds as a sum of unit fractions.  7/3",
+      "expected": "7/3 = 1/3 + 1/3 + 1/3 + 1/3 + 1/3 + 1/3 + 1/3",
+      "accept": [
+        "1/3 + 1/3 + 1/3 + 1/3 + 1/3 + 1/3 + 1/3",
+        "7/3=1/3+1/3+1/3+1/3+1/3+1/3+1/3",
+        "1/3+1/3+1/3+1/3+1/3+1/3+1/3"
+      ],
+      "demo": "Seven thirds, so I write one third seven times: *7/3 = 1/3 + 1/3 + 1/3 + 1/3 + 1/3 + 1/3 + 1/3*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express one eighth as a sum of unit fractions.  1/8",
+      "expected": "1/8",
+      "accept": ["1/8 = 1/8", "1/8=1/8"],
+      "demo": "One eighth is already a unit fraction: *1/8*."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express three over one as a sum of unit fractions.  3/1",
+      "expected": "3/1 = 1/1 + 1/1 + 1/1",
+      "accept": ["1/1 + 1/1 + 1/1", "3/1=1/1+1/1+1/1", "1/1+1/1+1/1"],
+      "demo": "Three over one, so I write one over one three times: *3/1 = 1/1 + 1/1 + 1/1*."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here is a sum. Write it as a single fraction.",
+      "expr": "1/9 + 1/9 + 1/9 + 1/9 =",
+      "frac": { "num": null, "den": null },
+      "expected": "4/9",
+      "demo": "One ninth, added four times: *4/9*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Priya says three fifths is one fifth can be written like this:  3/5 = 1/5 + 1/5 + 1/5  add one fifth, add one fifth. Ben says three fifths is written like this:  3/5 = 3/5 + 3/5 + 3/5  three fifths, add three fifths, add three fifths. Who is right? How do you know?",
+      "expected": "Priya",
+      "demo": "*Priya*. Each part counted is one fifth, so we add one fifth three times."
+    }
+  ]
+}

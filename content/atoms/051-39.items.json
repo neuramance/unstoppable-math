@@ -1,0 +1,132 @@
+{
+  "label": "39",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Every whole number can also be written as a fraction. My turn first: here are three whole units, and each whole unit has one part.",
+      "expected": "3/1",
+      "demo": "There is one part per whole unit, so we write *one* on the bottom. There are three parts counted in total, so we write *three* on top.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "number-line", "units": 3, "parts": 1, "counted": 3 }]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Watch what I change. Here are seven whole units, and each whole unit still has one part.",
+      "expected": "7/1",
+      "demo": "There is one part per whole unit, so we write *one* on the bottom. There are seven parts counted in total, so we write *seven* on top.",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Watch what I change again. Here are ten whole units, and each whole unit still has one part.",
+      "expected": "10/1",
+      "demo": "There is one part per whole unit, so we write *one* on the bottom. There are ten parts counted in total, so we write *ten* on top. Each time, the bottom number is one, because there is one part per whole unit. And each time, the top number is the whole number we started with, because that is how many parts are counted. So to write a whole number as a fraction, we write the whole number on top, and one underneath.",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Write this whole number as a fraction.",
+      "expected": "5/1",
+      "demo": "We write the whole number on top, and one underneath: *5/1*.",
+      "expr": "5 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write this whole number as a fraction.",
+      "expected": "8/1",
+      "demo": "We write the whole number on top, and one underneath: *8/1*.",
+      "expr": "8 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write this whole number as a fraction.",
+      "expected": "20/1",
+      "demo": "We write the whole number on top, and one underneath: *20/1*.",
+      "expr": "20 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write this whole number as a fraction.",
+      "expected": "1/1",
+      "demo": "We write the whole number on top, and one underneath: *1/1*.",
+      "expr": "1 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write this whole number as a fraction.",
+      "expected": "100/1",
+      "demo": "We write the whole number on top, and one underneath: *100/1*.",
+      "expr": "100 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write this whole number as a fraction. Seventeen.",
+      "expected": "17/1",
+      "demo": "We write the whole number on top, and one underneath: *17/1*.",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Six whole units are shaded, and each whole unit has one part. Write that as a fraction.",
+      "expected": "6/1",
+      "demo": "There is one part per whole unit, so *one* goes on the bottom. There are six parts counted, so *six* goes on top: 6/1.",
+      "frac": { "num": null, "den": null },
+      "figures": [
+        { "kind": "bar", "units": 3, "parts": 1, "counted": 3, "orientation": "vertical" },
+        { "kind": "bar", "units": 3, "parts": 1, "counted": 3, "orientation": "vertical" }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Ravi has nine whole apples. He writes the number of apples as a fraction. What fraction does he write?",
+      "expected": "9/1",
+      "demo": "He writes the whole number on top, and one underneath: *9/1*.",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this whole number as a fraction. n",
+      "expected": "n/1",
+      "demo": "We write the whole number on top, and one underneath: *n/1*.",
+      "accept": ["n over 1", "n over one"]
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Sam says that to write a whole number as a fraction, you write one on top and the whole number underneath. Is Sam right? How do you know?",
+      "expected": "no",
+      "demo": "*No*. The bottom number tells us the parts per whole unit, and there is one part per whole unit, so one goes on the bottom. The whole number tells us how many parts are counted, so it goes on top.",
+      "accept": ["no, sam is not right", "sam is not right", "sam is wrong"]
+    }
+  ]
+}

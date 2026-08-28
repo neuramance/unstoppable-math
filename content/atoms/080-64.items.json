@@ -1,0 +1,159 @@
+{
+  "label": "64",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When a situation in real life adds or takes some amount away from another, we can describe using mathematical symbols. For example: a jug holds five eighths 5/8 litre. Maya pours in two eighths 2/8 litre.",
+      "expected": "5/8 + 2/8",
+      "demo": "Five eighths in the jug 5/8, and two eighths poured in 2/8, so I write five eighths plus two eighths. *5/8 + 2/8*"
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, a jug holds five eighths 5/8 litre. Maya pours out two eighths 2/8 litre.",
+      "expected": "5/8-2/8",
+      "demo": "Five eighths in the jug 5/8, and two eighths poured out 2/8, so I write five eighths minus two eighths. *5/8-2/8*"
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Next. A jug holds five eighths 5/10 litre. Maya pours out three eighths 3/10 litre.",
+      "expected": "5/10-3/10",
+      "demo": "I can model the situation like this: *5/10-3/10*"
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, a jug holds five eighths 5/10 litre. Maya pours in three eighths 3/10 litre.",
+      "expected": "5/10 + 3/10",
+      "accept": ["5/10+3/10"],
+      "demo": "I can model the situation like this: *5/10 + 3/10*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to write a model to describe the situation. Write a model for this situation. A jug holds five eighths 5/8 litre. Maya pours out two eighths 2/8 litre.",
+      "expected": "5/8-2/8",
+      "demo": "*5/8-2/8*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds five eighths 5/8 litre. Maya pours out three eighths 3/8 litre.",
+      "expected": "5/8-3/8",
+      "demo": "*5/8-3/8*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds five eighths 5/8 litre. Maya pours in three eighths 3/8 litre.",
+      "expected": "5/8 + 3/8",
+      "accept": ["5/8+3/8"],
+      "demo": "*5/8 + 3/8*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds seven tenths 7/10 litre. Maya pours in three tenths 3/10 litre.",
+      "expected": "7/10 + 3/10",
+      "accept": ["7/10+3/10"],
+      "demo": "*7/10 + 3/10*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds seven tenths 7/10 litre. Maya pours out three tenths 3/10 litre.",
+      "expected": "7/10-3/10",
+      "demo": "*7/10-3/10*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds nine tenths 9/10 litre. Maya pours out four tenths 4/10 litre.",
+      "expected": "9/10-4/10",
+      "demo": "*9/10-4/10*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A tank holds three fifths 3/5 litre. Sam drains two fifths 2/5 litre.",
+      "expected": "3/5-2/5",
+      "demo": "*3/5-2/5*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A ribbon is seven tenths 7/10 metre long. Sam cuts off three tenths 3/10 metre.",
+      "expected": "7/10-3/10",
+      "demo": "*7/10-3/10*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A ribbon is seven tenths 7/10 metre long. Sam joins on three tenths 3/10 metre.",
+      "expected": "7/10 + 3/10",
+      "accept": ["7/10+3/10"],
+      "demo": "*7/10 + 3/10*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. Sam walks three eighths 3/8 kilometre, then walks a further two eighths 2/8 kilometre.",
+      "expected": "3/8 + 2/8",
+      "accept": ["3/8+2/8"],
+      "demo": "*3/8 + 2/8*"
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. Maya pours out two eighths 2/8 litre from a jug that holds five eighths 5/8 litre.",
+      "expected": "5/8-2/8",
+      "demo": "*5/8-2/8*"
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds nine fourths 9/4 litre. Maya pours out three fourths 3/4 litre.",
+      "expected": "9/4-3/4",
+      "demo": "*9/4-3/4*"
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds five eighths 5/8 litre. Maya pours out b eighths b/8 litre.",
+      "expected": "5/8-b/8",
+      "demo": "*5/8-b/8*"
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here is a model. Write a situation it could describe. 7/10 + 2/10",
+      "expected": "A jug holds seven tenths litre. Maya pours in two tenths litre.",
+      "accept": [
+        "A jug holds 7/10 litre. Maya pours in 2/10 litre.",
+        "a jug holding seven tenths litre with two tenths litre poured in",
+        "a jug holding 7/10 litre with 2/10 litre poured in"
+      ],
+      "demo": "Any situation adding two tenths of a unit to seven tenths of a unit. For example: *A jug holds seven tenths litre. Maya pours in two tenths litre.*"
+    }
+  ]
+}

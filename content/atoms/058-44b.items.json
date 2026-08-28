@@ -1,0 +1,39 @@
+{
+  "label": "44b",
+  "items": [
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn… Third, is it true that three times four is twelve?  20/12 = 5/3 × 4/4",
+      "expected": "yes",
+      "demo": "*Yes*. So, the fractions are equivalent."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what I change.  20/12  5/6  First, the top numbers. Is the bigger number in the times table of the smaller number?",
+      "expected": "yes",
+      "demo": "*Yes*, five times four is twenty."
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Second, to be equivalent, this fraction must be one. So top and bottom must be the same.",
+      "expected": "4",
+      "demo": "*4*. Top and bottom must be the same.",
+      "expr": "20/12 = 5/6 ×",
+      "frac": { "num": "4", "den": null }
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Third, is it true that six times four is twelve?  20/12 = 5/6 × 4/4",
+      "expected": "no",
+      "demo": "*No*. So the fractions aren’t equivalent."
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "label": "78",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "A decimal with whole units can be written as a mixed number. My turn first: here is 7.52. I write that as a mixed number, like this.",
+      "expr": "7.52 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "7 52/100",
+      "demo": "As a mixed number: *7 52/100*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Watch what I change. I write that as a mixed number, like this.",
+      "expr": "7.46 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "7 46/100",
+      "demo": "As a mixed number: *7 46/100*."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Watch what I change again. I write that as a mixed number, like this.",
+      "expr": "73.46 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "73 46/100",
+      "demo": "As a mixed number: *73 46/100*. Each time, the digits before the decimal point become the whole number, and the digits to the right of the decimal become the top of the fraction. The number of digits to the right of the decimal point tells us how many zeros to write on the bottom."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Rewrite in the form of a mixed number.",
+      "expr": "4.31 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "4 31/100",
+      "demo": "*4 31/100*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite in the form of a mixed number.",
+      "expr": "4.83 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "4 83/100",
+      "demo": "*4 83/100*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite in the form of a mixed number.",
+      "expr": "49.83 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "49 83/100",
+      "demo": "*49 83/100*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite in the form of a mixed number.",
+      "expr": "12.99 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "12 99/100",
+      "demo": "*12 99/100*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite in the form of a mixed number.",
+      "expr": "6.05 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "6 5/100",
+      "demo": "*6 5/100*."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite in the form of a mixed number.",
+      "expr": "8.3 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "8 3/10",
+      "demo": "*8 3/10*."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite in the form of a mixed number.",
+      "expr": "1.50 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "1 50/100",
+      "demo": "*1 50/100*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite in the form of a mixed number.",
+      "expr": "20.07 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "20 7/100",
+      "demo": "*20 7/100*."
+    }
+  ]
+}

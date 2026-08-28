@@ -1,0 +1,101 @@
+{
+  "label": "50",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When we want to add or subtract two or more fractions that have the same bottom number, we can express that as a single fraction. My turn first: I’m going to express these as a single fraction.  5/6 + 3/6",
+      "expected": "(5 + 3)/6",
+      "demo": "I do that like this. *5/6 + 3/6 = (5 + 3)/6*."
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, watch what I change.  5/8 + 3/8",
+      "expected": "(5 + 3)/8",
+      "demo": "I can express these as a single fraction, like this. *5/8 + 3/8 = (5 + 3)/8*."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change again.  5/8-3/8",
+      "expected": "(5-3)/8",
+      "demo": "I can express these as a single fraction, like this. *5/8-3/8 = (5-3)/8*. Each time, the bottom number goes on bottom, and the top numbers go on top with the operation between them."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Express as a single fraction.  1/5 + 3/5",
+      "expected": "(1 + 3)/5",
+      "accept": ["(1+3)/5"],
+      "demo": "*(1 + 3)/5*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction.  4/5-3/5",
+      "expected": "(4-3)/5",
+      "accept": ["(4 - 3)/5"],
+      "demo": "*(4-3)/5*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction.  4/7-3/7",
+      "expected": "(4-3)/7",
+      "accept": ["(4 - 3)/7"],
+      "demo": "*(4-3)/7*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction.  7/10 + 9/10",
+      "expected": "(7 + 9)/10",
+      "accept": ["(7+9)/10"],
+      "demo": "*(7 + 9)/10*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction.  1/3 + 1/3 + 1/3",
+      "expected": "(1 + 1 + 1)/3",
+      "accept": ["(1+1+1)/3"],
+      "demo": "*(1 + 1 + 1)/3*."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction.  a/9 + b/9",
+      "expected": "(a + b)/9",
+      "accept": ["(a+b)/9"],
+      "demo": "*(a + b)/9*."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction.  9/4-2/4 + √5/4",
+      "expected": "(9-2 + √5)/4",
+      "accept": ["(9-2+√5)/4", "(9 - 2 + √5)/4", "(9-2 + root 5)/4", "(9-2+root5)/4"],
+      "demo": "*(9-2 + √5)/4*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Tom says 2/5 + 1/3 can be written as (2 + 1)/(5 + 3). Is Tom right? How do you know?",
+      "expected": "no",
+      "accept": ["no the bottom numbers are not the same"],
+      "demo": "*No*. The bottom numbers are not the same, so these are different kinds of parts. We only write it as a single fraction when the bottom numbers match."
+    }
+  ]
+}

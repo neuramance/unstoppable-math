@@ -1,0 +1,158 @@
+{
+  "label": "38a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Starting with three fourths, we’ve seen how to write an equivalent fraction with twenty on the bottom. 3/4 × 5/5 = 15/20 But what if we went the other way? What if we started with fifteen over twenty, and wanted an equivalent fraction with four on the bottom? Well, we write the equation exactly the same way, with the smaller numbers on the left, and the bigger numbers on the right.",
+      "expected": "▢/4 × ▢/▢ = 15/20",
+      "demo": "*▢/4 × ▢/▢ = 15/20* — the smaller numbers on the left, and the bigger numbers on the right."
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So if I want a fraction with five on the bottom, that’s equivalent to fifteen over twenty… ▢/5 15/20 I write this equation to help me.",
+      "expected": "▢/5 × ▢/▢ = 15/20",
+      "demo": "*▢/5 × ▢/▢ = 15/20*"
+    },
+    {
+      "src": "II:13",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And if I want an equation with three on top that’s equivalent to fifteen over twenty… 3/▢ 15/20 I write this equation to help me.",
+      "expected": "3/▢ × ▢/▢ = 15/20",
+      "demo": "*3/▢ × ▢/▢ = 15/20*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to write the equation that will help find the equivalent fraction. We’re starting with fifteen over twenty, and we want an equivalent fraction with five on the bottom. Write the equation that will help us. ▢/5 15/20",
+      "expected": "15/20",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: ▢/5 × ▢/▢ = *15/20*.",
+      "expr": "▢/5 × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with fifteen over twenty, and we want an equivalent fraction with three on top. Write the equation that will help us.",
+      "expected": "15/20",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: 3/▢ × ▢/▢ = *15/20*.",
+      "expr": "3/▢ × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with twelve over eighteen, and we want an equivalent fraction with six on the bottom. Write the equation that will help us.",
+      "expected": "12/18",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: ▢/6 × ▢/▢ = *12/18*.",
+      "expr": "▢/6 × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with twelve over eighteen, and we want an equivalent fraction with two on top. Write the equation that will help us.",
+      "expected": "12/18",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: 2/▢ × ▢/▢ = *12/18*.",
+      "expr": "2/▢ × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with eighteen over eight, and we want an equivalent fraction with nine on top. Write the equation that will help us.",
+      "expected": "18/8",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: 9/▢ × ▢/▢ = *18/8*.",
+      "expr": "9/▢ × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with eighteen over eight, and we want an equivalent fraction with four on the bottom. Write the equation that will help us.",
+      "expected": "18/8",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: ▢/4 × ▢/▢ = *18/8*.",
+      "expr": "▢/4 × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which of these equations is set up correctly to help us find a fraction with five on the bottom that’s equivalent to twenty over twenty-five?  a) 20/25 × ▢/▢ = ▢/5  b) ▢/5 × ▢/▢ = 20/25",
+      "expected": "b",
+      "demo": "*b)* The smaller numbers go on the left, and the bigger numbers on the right.",
+      "accept": ["b)"]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with fourteen over twenty-one, and we want an equivalent fraction with two on top. Write the equation that will help us.",
+      "expected": "14/21",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: 2/▢ × ▢/▢ = *14/21*.",
+      "expr": "2/▢ × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with twenty-four over thirty-six, and we want an equivalent fraction with three on the bottom. Write the equation that will help us.",
+      "expected": "24/36",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: ▢/3 × ▢/▢ = *24/36*.",
+      "expr": "▢/3 × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with seven halves, and we want an equivalent fraction with forty on the bottom. Write the equation that will help us.",
+      "expected": "40",
+      "demo": "Seven halves, times by a fraction, is equal to something over *forty*: 7/2 × ▢/▢ = ▢/40.",
+      "expr": "7/2 × ▢/▢ =",
+      "frac": { "num": "", "den": null }
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with twenty-four over thirty-six, and we want an equivalent fraction with three on the bottom. Write the equation that will help us.",
+      "expected": "24/36",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: ▢/3 × ▢/▢ = *24/36*.",
+      "expr": "▢/3 × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with one ninety over thirty, and we want an equivalent fraction with nineteen on top. Write the equation that will help us.",
+      "expected": "190/30",
+      "demo": "The smaller numbers go on the left, and the bigger numbers on the right: 19/▢ × ▢/▢ = *190/30*.",
+      "expr": "19/▢ × ▢/▢ =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:9",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with nine fourths, and we want an equivalent fraction with ninety on top. Write the equation that will help us.",
+      "expected": "90",
+      "demo": "Nine fourths, times by a fraction, is equal to *ninety* over something: 9/4 × ▢/▢ = 90/▢.",
+      "expr": "9/4 × ▢/▢ =",
+      "frac": { "num": null, "den": "" }
+    }
+  ]
+}

@@ -9,7 +9,7 @@ const lesson1 = lessons[0]
 
 function run(l: Lesson, answer: (item: number, correction: boolean) => string): TrialEntry[] {
   const log: TrialEntry[] = []
-  for (let guard = 0; guard < 1200; guard++) {
+  for (let guard = 0; guard < l.items.length * 4 + 100; guard++) {
     const state = replayLesson(l, log)
     if (state.current === null) return log
     const it = l.items[state.current.item]

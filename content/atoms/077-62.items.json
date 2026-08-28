@@ -1,0 +1,198 @@
+{
+  "label": "62",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To subtract two mixed numbers, like these: 3 5/8 - 1 2/8 First I subtract the whole numbers:",
+      "expected": "2 + 5/8 - 2/8",
+      "demo": "*2 + 5/8 - 2/8*"
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Then I subtract the fractions: 2 + (5 - 2)/8 2 + 3/8",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "2 3/8",
+      "demo": "*2 3/8*"
+    },
+    {
+      "src": "II:12",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To subtract these two mixed numbers: 9 5/8 - 1 2/8 First I subtract the whole numbers:",
+      "expected": "8 + 5/8 - 2/8",
+      "demo": "*8 + 5/8 - 2/8*"
+    },
+    {
+      "src": "II:15",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Then I subtract the fractions: 8 + (5 - 2)/8",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "8 3/8",
+      "demo": "*8 3/8*"
+    },
+    {
+      "src": "II:19",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, to subtract these two mixed numbers: 9 5/7 - 1 2/7 First I subtract the whole numbers:",
+      "expected": "8 + 5/7 - 2/7",
+      "demo": "*8 + 5/7 - 2/7*"
+    },
+    {
+      "src": "II:22",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Then I subtract the fractions: 8 + (5 - 2)/7",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "8 3/7",
+      "demo": "*8 3/7*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to subtract mixed numbers. Subtract the whole numbers. 5 7/10 - 2 4/10",
+      "expected": "3 + 7/10 - 4/10",
+      "accept": ["3+7/10-4/10"],
+      "demo": "*3 + 7/10 - 4/10*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Subtract the fractions. 3 + 7/10 - 4/10",
+      "expected": "3 + 3/10",
+      "accept": ["3+3/10"],
+      "demo": "*3 + 3/10*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "3 + 3/10 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "3 3/10",
+      "demo": "*3 3/10*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Subtract the whole numbers. 8 7/10 - 2 4/10",
+      "expected": "6 + 7/10 - 4/10",
+      "accept": ["6+7/10-4/10"],
+      "demo": "*6 + 7/10 - 4/10*"
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Subtract the fractions. 6 + 7/10 - 4/10",
+      "expected": "6 + 3/10",
+      "accept": ["6+3/10"],
+      "demo": "*6 + 3/10*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "6 + 3/10 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "6 3/10",
+      "demo": "*6 3/10*"
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Subtract the whole numbers. 8 7/9 - 2 4/9",
+      "expected": "6 + 7/9 - 4/9",
+      "accept": ["6+7/9-4/9"],
+      "demo": "*6 + 7/9 - 4/9*"
+    },
+    {
+      "src": "IT:12",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Subtract the fractions. 6 + 7/9 - 4/9",
+      "expected": "6 + 3/9",
+      "accept": ["6+3/9"],
+      "demo": "*6 + 3/9*"
+    },
+    {
+      "src": "IT:13",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "6 + 3/9 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "6 3/9",
+      "demo": "*6 3/9*"
+    },
+    {
+      "src": "IT:15",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Subtract the whole numbers. 15 4/5 - 3 1/5",
+      "expected": "12 + 4/5 - 1/5",
+      "accept": ["12+4/5-1/5"],
+      "demo": "*12 + 4/5 - 1/5*"
+    },
+    {
+      "src": "IT:16",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Subtract the fractions. 12 + 4/5 - 1/5",
+      "expected": "12 + 3/5",
+      "accept": ["12+3/5"],
+      "demo": "*12 + 3/5*"
+    },
+    {
+      "src": "IT:17",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "12 + 3/5 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "12 3/5",
+      "demo": "*12 3/5*"
+    },
+    {
+      "src": "IT:19",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "7 4/5 - 4 2/5 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "3 2/5",
+      "demo": "*3 2/5*"
+    },
+    {
+      "src": "IT:20",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "9 8/12 - 2 5/12 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "7 3/12",
+      "demo": "*7 3/12*"
+    },
+    {
+      "src": "IT:21",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "12 6/7 - 5 3/7 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "7 3/7",
+      "demo": "*7 3/7*"
+    }
+  ]
+}

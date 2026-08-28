@@ -1,0 +1,287 @@
+{
+  "label": "46",
+  "items": [
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We want to compare these two fractions, and say which has the greater value.  3/4  7/10  First, we multiply by one each time:  3/4 × ▢/▢  7/10 × ▢/▢  Here, we multiply by ten over ten.",
+      "expected": "10/10",
+      "demo": "3/4 × *10/10*  7/10 × ▢/▢"
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here, we multiply by four over four.  3/4 × 10/10  7/10 × ▢/▢",
+      "expected": "4/4",
+      "demo": "3/4 × 10/10  7/10 × *4/4*"
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This gives us a pair of equivalent fractions.  3/4 × 10/10  7/10 × 4/4",
+      "expected": "30/40 28/40",
+      "demo": "*30/40  28/40*. And each fraction has the same number on bottom."
+    },
+    {
+      "src": "II:13",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So now, we can see that this fraction is greater than this fraction.  30/40  28/40",
+      "expected": "30/40",
+      "demo": "*30/40 > 28/40*"
+    },
+    {
+      "src": "II:15",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And so, this fraction is greater than this fraction.  3/4  7/10",
+      "expected": "3/4",
+      "demo": "*3/4 > 7/10*  30/40 > 28/40"
+    },
+    {
+      "src": "II:20",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If we want to compare these two fractions:  3/5  7/10  We multiply each fraction by one:",
+      "expected": "10/10 5/5",
+      "demo": "3/5 × *10/10*  7/10 × *5/5*"
+    },
+    {
+      "src": "II:22",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Which gives us a pair of equivalent fractions.  3/5 × 10/10  7/10 × 5/5",
+      "expected": "30/50 35/50",
+      "demo": "*30/50  35/50*. With the same number on the bottom."
+    },
+    {
+      "src": "II:26",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, we can see that this fraction is greater than this fraction.  30/50  35/50",
+      "expected": "35/50",
+      "demo": "*30/50 < 35/50*"
+    },
+    {
+      "src": "II:28",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And so, this fraction is greater than this fraction.  3/5  7/10",
+      "expected": "7/10",
+      "demo": "*3/5 < 7/10*  30/50 < 35/50"
+    },
+    {
+      "src": "II:33",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, we want to compare these two fractions:  3/5  4/6  We multiply each fraction by one:",
+      "expected": "6/6 5/5",
+      "demo": "3/5 × *6/6*  4/6 × *5/5*"
+    },
+    {
+      "src": "II:35",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Which gives us a pair of equivalent fractions.  3/5 × 6/6  4/6 × 5/5",
+      "expected": "18/30 20/30",
+      "demo": "*18/30  20/30*. With the same number on the bottom."
+    },
+    {
+      "src": "II:39",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, we can see that this fraction is greater than this fraction.  18/30  20/30",
+      "expected": "20/30",
+      "demo": "*18/30 < 20/30*. And so, this fraction is greater than this fraction.  *3/5 < 4/6*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to say which fraction is greater. What should you multiply each fraction by?  4/5  2/3",
+      "expected": "3/3 5/5",
+      "accept": ["3/3 and 5/5"],
+      "demo": "4/5 × *3/3*  2/3 × *5/5*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What are the equivalent fractions?  4/5 × 3/3  2/3 × 5/5",
+      "expected": "12/15 10/15",
+      "accept": ["12/15 and 10/15"],
+      "demo": "*12/15  10/15*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which is greater?  12/15  10/15",
+      "expected": "12/15",
+      "demo": "*12/15*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So which fraction is greater?  4/5  2/3",
+      "expected": "4/5",
+      "demo": "*4/5*"
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What should you multiply each fraction by?  2/5  1/2",
+      "expected": "2/2 5/5",
+      "accept": ["2/2 and 5/5"],
+      "demo": "2/5 × *2/2*  1/2 × *5/5*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What are the equivalent fractions?  2/5 × 2/2  1/2 × 5/5",
+      "expected": "4/10 5/10",
+      "accept": ["4/10 and 5/10"],
+      "demo": "*4/10  5/10*"
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which is greater?  4/10  5/10",
+      "expected": "5/10",
+      "demo": "*5/10*"
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So which fraction is greater?  2/5  1/2",
+      "expected": "1/2",
+      "demo": "*1/2*"
+    },
+    {
+      "src": "IT:13",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What should you multiply each fraction by?  3/4  2/3",
+      "expected": "3/3 4/4",
+      "accept": ["3/3 and 4/4"],
+      "demo": "3/4 × *3/3*  2/3 × *4/4*"
+    },
+    {
+      "src": "IT:14",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What are the equivalent fractions?  3/4 × 3/3  2/3 × 4/4",
+      "expected": "9/12 8/12",
+      "accept": ["9/12 and 8/12"],
+      "demo": "*9/12  8/12*"
+    },
+    {
+      "src": "IT:15",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which is greater?  9/12  8/12",
+      "expected": "9/12",
+      "demo": "*9/12*"
+    },
+    {
+      "src": "IT:16",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So which fraction is greater?  3/4  2/3",
+      "expected": "3/4",
+      "demo": "*3/4*"
+    },
+    {
+      "src": "IT:18",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What should you multiply each fraction by?  7/10  3/4",
+      "expected": "4/4 10/10",
+      "accept": ["4/4 and 10/10"],
+      "demo": "7/10 × *4/4*  3/4 × *10/10*"
+    },
+    {
+      "src": "IT:19",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What are the equivalent fractions?  7/10 × 4/4  3/4 × 10/10",
+      "expected": "28/40 30/40",
+      "accept": ["28/40 and 30/40"],
+      "demo": "*28/40  30/40*"
+    },
+    {
+      "src": "IT:20",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which is greater?  28/40  30/40",
+      "expected": "30/40",
+      "demo": "*30/40*"
+    },
+    {
+      "src": "IT:21",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So which fraction is greater?  7/10  3/4",
+      "expected": "3/4",
+      "demo": "*3/4*"
+    },
+    {
+      "src": "IT:23",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write equivalent fractions with the same number on the bottom.  2/3  3/5",
+      "expected": "10/15 9/15",
+      "accept": ["10/15 and 9/15"],
+      "demo": "*10/15  9/15*"
+    },
+    {
+      "src": "IT:24",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fraction is greater?  2/3  3/5",
+      "expected": "2/3",
+      "demo": "*2/3*"
+    },
+    {
+      "src": "IT:26",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write equivalent fractions with the same number on the bottom.  1/4  2/5",
+      "expected": "5/20 8/20",
+      "accept": ["5/20 and 8/20"],
+      "demo": "*5/20  8/20*"
+    },
+    {
+      "src": "IT:27",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fraction is greater?  1/4  2/5",
+      "expected": "2/5",
+      "demo": "*2/5*"
+    },
+    {
+      "src": "IT:29",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fraction is greater?  3/4  4/5",
+      "expected": "4/5",
+      "demo": "*4/5*"
+    },
+    {
+      "src": "IT:31",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fraction is greater?  5/6  2/3",
+      "expected": "5/6",
+      "demo": "*5/6*"
+    }
+  ]
+}

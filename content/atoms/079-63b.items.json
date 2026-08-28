@@ -1,0 +1,174 @@
+{
+  "label": "63b",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Sometimes, we try to subtract a mixed number… 6 5/10-2 7/10 And we have to rewrite the first number.",
+      "expected": "5 15/10-2 7/10",
+      "demo": "*5 15/10-2 7/10*"
+    },
+    {
+      "src": "II:12",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Once it is rewritten, we can subtract the whole number… 3 + 15/10-7/10 And then subtract the fraction… 3 + (15-7)/10 Evaluate… 3 + 8/10 And then make the plus symbol secret…",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "3 8/10",
+      "demo": "*3 8/10*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to evaluate these expressions. Evaluate:",
+      "expr": "5 13/10-2 7/10 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "3 6/10",
+      "demo": "3 + (13-7)/10. *3 6/10*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate:",
+      "expr": "5 11/8-2 7/8 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "3 4/8",
+      "demo": "3 + (11-7)/8. *3 4/8*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate",
+      "expr": "5 11/8-4 7/8 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "1 4/8",
+      "demo": "1 + (11-7)/8. *1 4/8*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate:",
+      "expr": "6 17/13-4 9/13 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "2 8/13",
+      "demo": "2 + (17-9)/13. *2 8/13*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We want to evaluate this expression. Rewrite the first mixed number. 5 4/10-2 9/10",
+      "expected": "4 14/10-2 9/10",
+      "demo": "*4 14/10-2 9/10*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now evaluate. Give your result as a mixed number.",
+      "expr": "4 14/10-2 9/10 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "2 5/10",
+      "demo": "2 + (14-9)/10. *2 5/10*"
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We want to evaluate this expression. Rewrite the first mixed number. 5 4/8-2 7/8",
+      "expected": "4 12/8-2 7/8",
+      "demo": "*4 12/8-2 7/8*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now evaluate. Give your result as a mixed number.",
+      "expr": "4 12/8-2 7/8 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "2 5/8",
+      "demo": "2 + (12-7)/8. *2 5/8*"
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We want to evaluate this expression. Rewrite the first mixed number. 6 5/8-3 7/8",
+      "expected": "5 13/8-3 7/8",
+      "demo": "*5 13/8-3 7/8*"
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now evaluate. Give your result as a mixed number.",
+      "expr": "5 13/8-3 7/8 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "2 6/8",
+      "demo": "2 + (13-7)/8. *2 6/8*"
+    },
+    {
+      "src": "IT:12",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We want to evaluate this expression. Rewrite the first mixed number. 7 6/13-3 10/13",
+      "expected": "6 19/13-3 10/13",
+      "demo": "*6 19/13-3 10/13*"
+    },
+    {
+      "src": "IT:13",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now evaluate. Give your result as a mixed number.",
+      "expr": "6 19/13-3 10/13 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "3 9/13",
+      "demo": "3 + (19-10)/13. *3 9/13*"
+    },
+    {
+      "src": "IT:14",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "5 3/10-2 7/10 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "2 6/10",
+      "demo": "Rewrite the first mixed number: 4 13/10-2 7/10. 2 + (13-7)/10. *2 6/10*"
+    },
+    {
+      "src": "IT:15",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "5 3/9-2 7/9 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "2 5/9",
+      "demo": "Rewrite the first mixed number: 4 12/9-2 7/9. 2 + (12-7)/9. *2 5/9*"
+    },
+    {
+      "src": "IT:16",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "6 2/5-4 4/5 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "1 3/5",
+      "demo": "Rewrite the first mixed number: 5 7/5-4 4/5. 1 + (7-4)/5. *1 3/5*"
+    },
+    {
+      "src": "IT:17",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "8 5/20-3 13/20 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "4 12/20",
+      "demo": "Rewrite the first mixed number: 7 25/20-3 13/20. 4 + (25-13)/20. *4 12/20*"
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "label": "45",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen before how to say which fraction is greater. Here…  5/8  6/8",
+      "expected": "6/8",
+      "demo": "…we can say that *six eighths* is greater, because it counts more eighths.  5/8 < 6/8",
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 8, "counted": 5, "label": "5/8" },
+        { "kind": "bar", "units": 1, "parts": 8, "counted": 6, "label": "6/8" }
+      ]
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here…  8/5  8/6",
+      "expected": "8/5",
+      "demo": "…we can say that *eight fifths* is greater, because there are fewer parts per whole unit, and so each part is bigger.  8/5 > 8/6",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 5, "counted": 8, "label": "8/5" },
+        { "kind": "bar", "units": 2, "parts": 6, "counted": 8, "label": "8/6" }
+      ]
+    },
+    {
+      "src": "II:18",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But what do we do when the two fractions look like this?  3/4  7/10  The parts aren’t the same size. And they’re not counting the same number of parts.",
+      "expected": "equivalent fractions",
+      "demo": "Well, to compare them, we rewrite them as *equivalent fractions*, and we make the bottom numbers the same each time."
+    },
+    {
+      "src": "II:21",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "First, we multiply by one each time:  3/4 × ▢/▢  7/10 × ▢/▢  Here, we multiply by ten over ten.",
+      "expected": "10/10",
+      "demo": "3/4 × *10/10*. Because ten was on the bottom of the second fraction."
+    },
+    {
+      "src": "II:24",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here, we multiply by four over four.  3/4 × 10/10  7/10 × ▢/▢",
+      "expected": "4/4",
+      "demo": "7/10 × *4/4*. Because four was on the bottom of the first fraction."
+    },
+    {
+      "src": "II:27",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This will give us a pair of equivalent fractions.  3/4 × 10/10  7/10 × 4/4",
+      "expected": "30/40 28/40",
+      "demo": "*30/40  28/40*. And each fraction has the same number on bottom."
+    },
+    {
+      "src": "II:33",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If we want to compare these two fractions:  3/5  7/10  We multiply the first fraction by this…",
+      "expected": "10/10",
+      "demo": "3/5 × *10/10*  7/10 × ▢/▢"
+    },
+    {
+      "src": "II:35",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And the second fraction by this…  3/5 × 10/10  7/10 × ▢/▢",
+      "expected": "5/5",
+      "demo": "3/5 × 10/10  7/10 × *5/5*"
+    },
+    {
+      "src": "II:37",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Which gives us a pair of equivalent fractions.  3/5 × 10/10  7/10 × 5/5",
+      "expected": "30/50 35/50",
+      "demo": "*30/50  35/50*. With the same number on the bottom."
+    },
+    {
+      "src": "II:43",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, if we want to compare these two fractions:  3/5  4/6  We multiply the first fraction by this…",
+      "expected": "6/6",
+      "demo": "3/5 × *6/6*  4/6 × ▢/▢"
+    },
+    {
+      "src": "II:45",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And the second fraction by this…  3/5 × 6/6  4/6 × ▢/▢",
+      "expected": "5/5",
+      "demo": "3/5 × 6/6  4/6 × *5/5*"
+    },
+    {
+      "src": "II:47",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Which gives us a pair of equivalent fractions.  3/5 × 6/6  4/6 × 5/5",
+      "expected": "18/30 20/30",
+      "demo": "*18/30  20/30*. With the same number on the bottom."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We’re going to look at pairs of fractions. Each time, we want to create a new pair of equivalent fractions that have the same number on the bottom. For each pair, write what we need to multiply by. What fractions do we need to multiply by?  3/5  6/10",
+      "expected": "10/10 5/5",
+      "accept": ["10/10 and 5/5"],
+      "demo": "3/5 × *10/10*  6/10 × *5/5*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  3/5  16/10",
+      "expected": "10/10 5/5",
+      "accept": ["10/10 and 5/5"],
+      "demo": "3/5 × *10/10*  16/10 × *5/5*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  3/7  16/10",
+      "expected": "10/10 7/7",
+      "accept": ["10/10 and 7/7"],
+      "demo": "3/7 × *10/10*  16/10 × *7/7*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  3/72  16/10",
+      "expected": "10/10 72/72",
+      "accept": ["10/10 and 72/72"],
+      "demo": "3/72 × *10/10*  16/10 × *72/72*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  3/72  16/100",
+      "expected": "100/100 72/72",
+      "accept": ["100/100 and 72/72"],
+      "demo": "3/72 × *100/100*  16/100 × *72/72*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  (√3)/72  16/100",
+      "expected": "100/100 72/72",
+      "accept": ["100/100 and 72/72"],
+      "demo": "(√3)/72 × *100/100*  16/100 × *72/72*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  (√3)/72  16/(100x)",
+      "expected": "(100x)/(100x) 72/72",
+      "accept": ["100x/100x 72/72", "(100x)/(100x) and 72/72"],
+      "demo": "(√3)/72 × *(100x)/(100x)*  16/(100x) × *72/72*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  (√3)/(72a + b)  16/(100x)",
+      "expected": "(100x)/(100x) (72a + b)/(72a + b)",
+      "accept": ["(100x)/(100x) (72a+b)/(72a+b)", "100x/100x (72a+b)/(72a+b)", "100x/100x (72a + b)/(72a + b)"],
+      "demo": "(√3)/(72a + b) × *(100x)/(100x)*  16/(100x) × *(72a + b)/(72a + b)*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fractions do we need to multiply by?  a/b  x/y",
+      "expected": "y/y b/b",
+      "accept": ["y/y and b/b"],
+      "demo": "a/b × *y/y*  x/y × *b/b*"
+    }
+  ]
+}

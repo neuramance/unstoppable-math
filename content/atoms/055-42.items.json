@@ -1,0 +1,152 @@
+{
+  "label": "42",
+  "items": [
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Some fractions can be written as whole numbers. Some fractions cannot be expressed as whole numbers. How do we know if a fraction can be written as a whole number?",
+      "expected": "the times table of the bottom number",
+      "demo": "Well, if the top number is in *the times table of the bottom number*, then the fraction can be written as a whole number.",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "fractions" }]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "For example, can thirty-one over ten be written as a whole number?",
+      "expected": "no",
+      "demo": "*No*. How do I know? Because thirty-one is not in the ten times table."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Can thirty over ten be written as a whole number?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? Because thirty is in the ten times table. Ten times thirty is thirty."
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Can thirty over five be written as a whole number?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? Because thirty is in the five times table. Five times six is thirty."
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Can twenty over five be written as a whole number?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? Because twenty is in the five times table, five times four is twenty."
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Can twenty over six be written as a whole number?",
+      "expected": "no",
+      "demo": "*No*. How do I know? Because twenty is not in the six times table."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to say whether fractions can be written as whole numbers. Can this fraction be written as a whole number? How do you know?  20/5",
+      "expected": "yes",
+      "demo": "*Yes*, because twenty is in the five times table."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? How do you know?  22/5",
+      "expected": "no",
+      "demo": "*No*, because twenty-two is not in the five times table."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? How do you know?  30/10",
+      "expected": "yes",
+      "demo": "*Yes*, because thirty is in the ten times table."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? How do you know?  9/2",
+      "expected": "no",
+      "demo": "*No*, because nine is not in the two times table."
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? How do you know?  9/3",
+      "expected": "yes",
+      "demo": "*Yes*, because nine is in the three times table."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which of these can be written as whole numbers?  15/5  16/5  15/3  16/3",
+      "expected": "15/5 and 15/3",
+      "accept": ["15/5 15/3", "15/3 and 15/5", "15/3 15/5"],
+      "demo": "*15/5* and *15/3*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which of these can be written as a whole number?  20/10  21/10  30/10",
+      "expected": "20/10 and 30/10",
+      "accept": ["20/10 30/10", "30/10 and 20/10", "30/10 20/10"],
+      "demo": "*20/10* and *30/10*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? How do you know?  7/1",
+      "expected": "yes",
+      "demo": "*Yes*, because seven is in the one times table."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? How do you know?  5/10",
+      "expected": "no",
+      "demo": "*No*, because five is not in the ten times table."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? How do you know?  10/10",
+      "expected": "yes",
+      "demo": "*Yes*, because ten is in the ten times table."
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Give this your best guess. Can this fraction be written as a whole number?  (40a)/(10a)",
+      "expected": "yes",
+      "demo": "*Yes*."
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Priya says three sevenths can be written as a whole number because three and seven are both whole numbers. Is Priya right? How do you know?  3/7",
+      "expected": "no",
+      "demo": "*No*. Three is not in the seven times table."
+    }
+  ]
+}

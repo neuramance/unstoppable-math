@@ -1,0 +1,155 @@
+{
+  "label": "37b",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Starting with three fourths… …we’ve seen that to write an equivalent fraction with twenty on the bottom… 3/4 ▢/20 …an equation like this one will help us. 3/4 × ▢/▢ = ▢/20 Next, to make an equivalent fraction, this must have a value of 1. So top and bottom must be the same. But what number should we write on top and bottom? To answer that we ask this: four times what is equal to twenty?",
+      "expected": "5/5",
+      "demo": "Four times *five* is equal to twenty. So we write five here... and here… 3/4 × 5/5 = ▢/20",
+      "expr": "3/4 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "II:14",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "If we wanted an equivalent fraction that had forty on the bottom, we would write this: 3/4 × ▢/▢ = ▢/40 Four times what is equal to forty?",
+      "expected": "10/10",
+      "demo": "Four times *ten* is equal to forty. So we write ten here... and here… 3/4 × 10/10 = ▢/40",
+      "expr": "3/4 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "II:20",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "If we wanted an equivalent fraction that had six on the top, we would write this: 3/4 × ▢/▢ = 6/▢ Three times what is equal to six?",
+      "expected": "2/2",
+      "demo": "Three times *two* is equal to six. So we write two here... and here… 3/4 × 2/2 = 6/▢",
+      "expr": "3/4 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to write the fraction with a value of one. We’re starting with three fifths, and we want an equivalent fraction with thirty on top. What is the fraction equal to one? 3/5 × ▢/▢ = 30/▢",
+      "expected": "10/10",
+      "demo": "Three times *ten* is equal to thirty. So we write ten on top and bottom: 3/5 × 10/10 = 30/▢.",
+      "expr": "3/5 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with three fifths, and we want an equivalent fraction with thirty on bottom. What is the fraction equal to one? 3/5 × ▢/▢ = ▢/30",
+      "expected": "6/6",
+      "demo": "Five times *six* is equal to thirty. So we write six on top and bottom: 3/5 × 6/6 = ▢/30.",
+      "expr": "3/5 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with three fifths, and we want an equivalent fraction with twelve on top. What is the fraction equal to one? 3/5 × ▢/▢ = 12/▢",
+      "expected": "4/4",
+      "demo": "Three times *four* is equal to twelve. So we write four on top and bottom: 3/5 × 4/4 = 12/▢.",
+      "expr": "3/5 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with three fifths, and we want an equivalent fraction with thirty on bottom. Write the equation that helps us. 3/5 ▢/30",
+      "expected": "30",
+      "demo": "Three fifths, times by a fraction, is equal to something over *thirty*: 3/5 × ▢/▢ = ▢/30.",
+      "expr": "3/5 × ▢/▢ =",
+      "frac": { "num": "", "den": null }
+    },
+    {
+      "src": "EX:2a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with three fifths, and we want an equivalent fraction with thirty on top. First, write the equation that helps us. 3/5 30/▢",
+      "expected": "30",
+      "demo": "Three fifths, times by a fraction, is equal to *thirty* over something: 3/5 × ▢/▢ = 30/▢.",
+      "expr": "3/5 × ▢/▢ =",
+      "frac": { "num": null, "den": "" }
+    },
+    {
+      "src": "EX:2b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then fill the blanks with the fraction equal to one. 3/5 × ▢/▢ = 30/▢",
+      "expected": "10/10",
+      "demo": "Three times *ten* is equal to thirty: 3/5 × 10/10 = 30/▢.",
+      "expr": "3/5 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:3a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with ten over four, and we want an equivalent fraction with seventy on top. First, write the equation that helps us. 10/4 70/▢",
+      "expected": "70",
+      "demo": "Ten over four, times by a fraction, is equal to *seventy* over something: 10/4 × ▢/▢ = 70/▢.",
+      "expr": "10/4 × ▢/▢ =",
+      "frac": { "num": null, "den": "" }
+    },
+    {
+      "src": "EX:3b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then fill the blanks with the fraction equal to one. 10/4 × ▢/▢ = 70/▢",
+      "expected": "7/7",
+      "demo": "Ten times *seven* is equal to seventy: 10/4 × 7/7 = 70/▢.",
+      "expr": "10/4 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:4a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with nine over ten, and we want an equivalent fraction with forty on bottom. First, write the equation that helps us. 9/10 ▢/40",
+      "expected": "40",
+      "demo": "Nine over ten, times by a fraction, is equal to something over *forty*: 9/10 × ▢/▢ = ▢/40.",
+      "expr": "9/10 × ▢/▢ =",
+      "frac": { "num": "", "den": null }
+    },
+    {
+      "src": "EX:4b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then fill the blanks with the fraction equal to one. 9/10 × ▢/▢ = ▢/40",
+      "expected": "4/4",
+      "demo": "Ten times *four* is equal to forty: 9/10 × 4/4 = ▢/40.",
+      "expr": "9/10 ×",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:5a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with seven over three, and we want an equivalent fraction with fifteen on bottom. First, write the equation that helps us. 7/3 ▢/15",
+      "expected": "15",
+      "demo": "Seven over three, times by a fraction, is equal to something over *fifteen*: 7/3 × ▢/▢ = ▢/15.",
+      "expr": "7/3 × ▢/▢ =",
+      "frac": { "num": "", "den": null }
+    },
+    {
+      "src": "EX:5b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then fill the blanks with the fraction equal to one. 7/3 × ▢/▢ = ▢/15",
+      "expected": "5/5",
+      "demo": "Three times *five* is equal to fifteen: 7/3 × 5/5 = ▢/15.",
+      "expr": "7/3 ×",
+      "frac": { "num": null, "den": null }
+    }
+  ]
+}

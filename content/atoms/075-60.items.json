@@ -1,0 +1,198 @@
+{
+  "label": "60",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To add two mixed numbers, like these: 3 4/12 + 5 2/12 First I add the whole numbers:",
+      "expected": "8 + 4/12 + 2/12",
+      "demo": "*8 + 4/12 + 2/12*"
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Then I add the fractions: 8 + (4 + 2)/12 8 + 6/12",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "8 6/12",
+      "demo": "*8 6/12*"
+    },
+    {
+      "src": "II:12",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To add these two mixed numbers: 10 4/12 + 5 2/12 First I add the whole numbers:",
+      "expected": "15 + 4/12 + 2/12",
+      "demo": "*15 + 4/12 + 2/12*"
+    },
+    {
+      "src": "II:16",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Then I add the fractions: 15 + (4 + 2)/12",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "15 6/12",
+      "demo": "*15 6/12*"
+    },
+    {
+      "src": "II:20",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, to add these two mixed numbers: 10 4/7 + 5 2/7 First I add the whole numbers:",
+      "expected": "15 + 4/7 + 2/7",
+      "demo": "*15 + 4/7 + 2/7*"
+    },
+    {
+      "src": "II:24",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Then I add the fractions: 15 + (4 + 2)/7 15 + 6/7",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "15 6/7",
+      "demo": "*15 6/7*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to add mixed numbers. Add the whole numbers. 2 3/10 + 4 4/10",
+      "expected": "6 + 3/10 + 4/10",
+      "accept": ["6+3/10+4/10"],
+      "demo": "*6 + 3/10 + 4/10*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Add the fractions. 6 + 3/10 + 4/10",
+      "expected": "6 + 7/10",
+      "accept": ["6+7/10"],
+      "demo": "*6 + 7/10*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "6 + 7/10 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "6 7/10",
+      "demo": "*6 7/10*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Add the whole numbers. 5 2/10 + 4 4/10",
+      "expected": "9 + 2/10 + 4/10",
+      "accept": ["9+2/10+4/10"],
+      "demo": "*9 + 2/10 + 4/10*"
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Add the fractions. 9 + 2/10 + 4/10",
+      "expected": "9 + 6/10",
+      "accept": ["9+6/10"],
+      "demo": "*9 + 6/10*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "9 + 6/10 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "9 6/10",
+      "demo": "*9 6/10*"
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Add the whole numbers. 5 2/7 + 4 4/7",
+      "expected": "9 + 2/7 + 4/7",
+      "accept": ["9+2/7+4/7"],
+      "demo": "*9 + 2/7 + 4/7*"
+    },
+    {
+      "src": "IT:12",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Add the fractions. 9 + 2/7 + 4/7",
+      "expected": "9 + 6/7",
+      "accept": ["9+6/7"],
+      "demo": "*9 + 6/7*"
+    },
+    {
+      "src": "IT:13",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "9 + 6/7 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "9 6/7",
+      "demo": "*9 6/7*"
+    },
+    {
+      "src": "IT:15",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Add the whole numbers. 12 1/5 + 3 3/5",
+      "expected": "15 + 1/5 + 3/5",
+      "accept": ["15+1/5+3/5"],
+      "demo": "*15 + 1/5 + 3/5*"
+    },
+    {
+      "src": "IT:16",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Add the fractions. 15 + 1/5 + 3/5",
+      "expected": "15 + 4/5",
+      "accept": ["15+4/5"],
+      "demo": "*15 + 4/5*"
+    },
+    {
+      "src": "IT:17",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express it as a single mixed number.",
+      "expr": "15 + 4/5 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "15 4/5",
+      "demo": "*15 4/5*"
+    },
+    {
+      "src": "IT:19",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "3 2/5 + 4 2/5 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "7 4/5",
+      "demo": "*7 4/5*"
+    },
+    {
+      "src": "IT:20",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "6 3/12 + 2 5/12 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "8 8/12",
+      "demo": "*8 8/12*"
+    },
+    {
+      "src": "IT:21",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express as a single mixed number.",
+      "expr": "10 4/9 + 7 2/9 =",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "17 6/9",
+      "demo": "*17 6/9*"
+    }
+  ]
+}

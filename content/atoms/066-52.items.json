@@ -1,0 +1,138 @@
+{
+  "label": "52",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When people first thought about fractions they thought about taking something and breaking it up into smaller parts, like this. That's where the word fraction comes from. The ancient Latin word, frangere, meaning to fracture or to break into parts.",
+      "expected": "less than a whole unit",
+      "demo": "So in the beginning a fraction always meant *less than a whole unit*, and so the top number was always smaller than the bottom number.",
+      "figures": [{ "kind": "bar", "units": 1, "parts": 5 }]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But we've seen that a fraction can represent more than one whole unit. Here the top number is bigger than the bottom number.",
+      "expected": "whether the fraction includes a whole unit or not",
+      "demo": "So we have given fractions a name that tells us *whether the fraction includes a whole unit or not*.",
+      "figures": [{ "kind": "bar", "units": 2, "parts": 5, "counted": 7 }]
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "For example, here is five sixths.  5/6  The top is smaller than the bottom, so this is less than one whole unit.",
+      "expected": "a proper fraction",
+      "demo": "We call this a *proper fraction*."
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change.  7/6  Now the top is bigger than the bottom, so this is more than one whole unit.",
+      "expected": "an improper fraction",
+      "demo": "We call this an *improper fraction*."
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change again.  7/9",
+      "expected": "a proper fraction",
+      "demo": "The top is smaller than the bottom again, so this is a *proper fraction*."
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But now…  10/9",
+      "expected": "an improper fraction",
+      "demo": "The top is bigger than the bottom – we call this an *improper fraction*. Each time, we compare the top with the bottom. If the top is smaller, it is proper. If the top is bigger, it is improper."
+    },
+    {
+      "src": "II:12",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Because fractions less than a whole unit came first, they were called the ‘proper’ fractions. Then, fractions representing more than a whole unit were called ‘improper’. Proper has many meanings in English, and one of them is ‘correct’, as if only these types of fraction were the real, true, ‘correct’ fractions… …and as if there was something wrong with these types of fractions; in the beginning they were seen as improper, ‘incorrect.’",
+      "expected": "both are correct",
+      "demo": "Today, we think of fractions very differently, and *both are correct* forms of fractions; but old, historic names have a way of sticking around."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Is this fraction proper or improper? How do you know?  3/8",
+      "expected": "proper",
+      "demo": "*Proper*, because the top is smaller than the bottom."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this fraction proper or improper? How do you know?  8/3",
+      "expected": "improper",
+      "demo": "*Improper*, because the top is bigger than the bottom."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this fraction proper or improper? How do you know?  9/10",
+      "expected": "proper",
+      "demo": "*Proper*, because the top is smaller than the bottom."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this fraction proper or improper? How do you know?  10/9",
+      "expected": "improper",
+      "demo": "*Improper*, because the top is bigger than the bottom."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which of these are improper fractions?  2/7  7/2  20/7  7/20",
+      "expected": "7/2 and 20/7",
+      "accept": ["7/2 20/7", "20/7 and 7/2", "20/7 7/2"],
+      "demo": "*7/2 and 20/7* – the top is bigger than the bottom."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which of these are proper fractions?  1/100  99/100  100/99",
+      "expected": "1/100 and 99/100",
+      "accept": ["1/100 99/100", "99/100 and 1/100", "99/100 1/100"],
+      "demo": "*1/100 and 99/100* – the top is smaller than the bottom."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this fraction proper or improper? How do you know?  5/1",
+      "expected": "improper",
+      "demo": "*Improper*, because the top is bigger than the bottom."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "a represents an unknown number. Is this fraction proper or improper? How do you know?  a/9",
+      "expected": "it depends on a",
+      "accept": ["it depends", "depends on a", "depends"],
+      "demo": "*It depends on a*. If a is smaller than nine it is proper, and if a is bigger than nine it is improper."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Give this your best guess: is this fraction proper or improper?  6/6  What made you choose your answer?",
+      "expected": "improper",
+      "demo": "*Improper*, because proper fractions break whole units into something less than a whole unit."
+    }
+  ]
+}

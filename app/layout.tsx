@@ -9,7 +9,7 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 const stix = STIX_Two_Text({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-stix' })
 
-export const metadata: Metadata = { title: 'Unstoppable Math' }
+export const metadata: Metadata = { title: 'Unstoppable Math', icons: { icon: '/favicon.svg' } }
 
 const s = stylex.create({
   html: {

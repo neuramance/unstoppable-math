@@ -1,0 +1,23 @@
+{
+  "label": "74",
+  "items": [
+    {
+      "src": "TBL:1a",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Evaluate.  7/10 + 15/100",
+      "expected": "70/100 + 15/100",
+      "demo": "First, I rewrite seven tenths as an equivalent fraction with a bottom value of one hundred: *70/100 + 15/100*"
+    },
+    {
+      "src": "TBL:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "7/10 + 15/100 =",
+      "frac": { "num": null, "den": null },
+      "expected": "85/100",
+      "demo": "70/100 + 15/100 = *85/100*"
+    }
+  ]
+}

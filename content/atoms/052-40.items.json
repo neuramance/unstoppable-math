@@ -1,0 +1,129 @@
+{
+  "label": "40",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When a fraction has one on the bottom, we can write it as a whole number instead. My turn first: here is a fraction with one on the bottom.  3/1  There is one part per whole unit, and three parts are counted, so this is three whole units. We write it like this.",
+      "expected": "3",
+      "demo": "*3*"
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change.  7/1  There is still one part per whole unit, and now seven parts are counted, so this is seven whole units. We write it like this.",
+      "expected": "7",
+      "demo": "*7*"
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change again.  10/1  There is still one part per whole unit, and now ten parts are counted, so this is ten whole units. We write it like this.",
+      "expected": "10",
+      "demo": "*10*"
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Each time, the bottom number is one, so each part is a whole unit. And each time, the top number tells us how many whole units there are.",
+      "expected": "the top number",
+      "demo": "So to write a fraction with one on the bottom as a whole number, we just write *the top number*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Write this fraction as a whole number.  5/1",
+      "expected": "5",
+      "demo": "*5*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this fraction as a whole number.  8/1",
+      "expected": "8",
+      "demo": "*8*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this fraction as a whole number.  12/1",
+      "expected": "12",
+      "demo": "*12*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this fraction as a whole number.  1/1",
+      "expected": "1",
+      "demo": "*1*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this fraction as a whole number.  100/1",
+      "expected": "100",
+      "demo": "*100*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this fraction as a whole number: nine over one.",
+      "expected": "9",
+      "demo": "*9*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Six whole units are shaded, and each whole unit has one part. Write that as a whole number.",
+      "expected": "6",
+      "demo": "*6*",
+      "figures": [
+        { "kind": "bar", "units": 3, "parts": 1, "counted": 3, "orientation": "vertical" },
+        { "kind": "bar", "units": 3, "parts": 1, "counted": 3, "orientation": "vertical" }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this fraction as a whole number.  a/1",
+      "expected": "a",
+      "demo": "*a*"
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Tom has 12/1 litres of paint. How many litres is that?",
+      "expected": "12",
+      "demo": "*12* litres."
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number?  4/3",
+      "expected": "no",
+      "demo": "*No*. There are three parts per whole unit, so the parts are smaller than a whole unit."
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Sam says that 1/5 can be written as the whole number five, because it has a one in it. Is Sam right? How do you know?",
+      "expected": "no",
+      "demo": "*No*. The one has to be the bottom number. Here the bottom number is five, so there are five parts per whole unit, and only one part is counted."
+    }
+  ]
+}

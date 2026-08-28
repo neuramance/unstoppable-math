@@ -1,0 +1,99 @@
+{
+  "label": "37a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "I’m going to show you how to write new fractions that are equivalent to a starting fraction. Let’s say we start with this fraction: 3/4 And we want to create new fraction with 20 on the bottom, like this; 3/4 ▢/20 My turn first to write the equation that will help us. We know we have to multiply top and bottom, by a new fraction equal to one, so we write this: 3/4 × ▢/▢ = ▢/20",
+      "expected": "3/4 × ▢/▢ = ▢/20",
+      "demo": "Three fourths, times by a fraction, is equal to *something over twenty*."
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If we wanted an equivalent fraction that had 28 on the bottom, we would write this: 3/4 × ▢/▢ = ▢/28",
+      "expected": "3/4 × ▢/▢ = ▢/28",
+      "demo": "Three fourths, times by a fraction, is equal to *something over twenty*."
+    },
+    {
+      "src": "II:13",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If we wanted an equivalent fraction that had 15 on the top, we would write this: 3/4 × ▢/▢ = 15/▢",
+      "expected": "3/4 × ▢/▢ = 15/▢",
+      "demo": "Three fourths, times by a fraction, is equal to *fifteen over something*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to write the equation that will help us. We’re starting with three fourths, and we want an equivalent fraction with sixteen on top. Write the equation that will help us. 3/4 16/▢",
+      "expected": "16",
+      "demo": "Three fourths, times by a fraction, is equal to *sixteen* over something: 3/4 × ▢/▢ = 16/▢.",
+      "expr": "3/4 × ▢/▢ =",
+      "frac": { "num": null, "den": "" }
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with three fourths, and we want an equivalent fraction with sixteen on bottom. Write the equation that will help us.",
+      "expected": "16",
+      "demo": "Three fourths, times by a fraction, is equal to something over *sixteen*: 3/4 × ▢/▢ = ▢/16.",
+      "expr": "3/4 × ▢/▢ =",
+      "frac": { "num": "", "den": null }
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with three fourths, and we want an equivalent fraction with twenty-six on top. Write the equation that will help us.",
+      "expected": "26",
+      "demo": "Three fourths, times by a fraction, is equal to *twenty-six* over something: 3/4 × ▢/▢ = 26/▢.",
+      "expr": "3/4 × ▢/▢ =",
+      "frac": { "num": null, "den": "" }
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with nine fourths, and we want an equivalent fraction with eighteen on top. Write the equation that will help us.",
+      "expected": "18",
+      "demo": "Nine fourths, times by a fraction, is equal to *eighteen* over something: 9/4 × ▢/▢ = 18/▢.",
+      "expr": "9/4 × ▢/▢ =",
+      "frac": { "num": null, "den": "" }
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with five sevenths, and we want an equivalent fraction with one hundred on top. Write the equation that will help us.",
+      "expected": "100",
+      "demo": "Five sevenths, times by a fraction, is equal to *one hundred* over something: 5/7 × ▢/▢ = 100/▢.",
+      "expr": "5/7 × ▢/▢ =",
+      "frac": { "num": null, "den": "" }
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with nineteen over thirty, and we want an equivalent fraction with one ninety on bottom. Write the equation that will help us.",
+      "expected": "190",
+      "demo": "Nineteen over thirty, times by a fraction, is equal to something over *one ninety*: 19/30 × ▢/▢ = ▢/190.",
+      "expr": "19/30 × ▢/▢ =",
+      "frac": { "num": "", "den": null }
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "We’re starting with three R over thirty, and we want an equivalent fraction with sixty on bottom. Write the equation that will help us.",
+      "expected": "60",
+      "demo": "Three R over thirty, times by a fraction, is equal to something over *sixty*: 3R/30 × ▢/▢ = ▢/60.",
+      "expr": "3R/30 × ▢/▢ =",
+      "frac": { "num": "", "den": null }
+    }
+  ]
+}

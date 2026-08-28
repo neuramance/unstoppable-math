@@ -1,0 +1,209 @@
+{
+  "label": "71",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Mathematical models help us to answer questions about real life. For example, say one serving of trail mix uses two thirds 2/3 cup of nuts. How many cups of nuts are needed for five servings? First, I can model that like this.",
+      "expected": "5 × 2/3",
+      "demo": "*5 × 2/3*"
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And now I can use the model to answer the question: 5/1 × 2/3 (5 × 2)/(1 × 3)",
+      "frac": { "num": null, "den": null },
+      "expected": "10/3",
+      "demo": "*10/3*. Ten thirds cups of nuts are needed."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to answer questions about real life situations. Write a model for this situation. One bag holds three fourths 3/4 kilograms of flour. How much flour is in six bags?",
+      "expected": "6 × 3/4",
+      "accept": ["6 x 3/4", "6 * 3/4", "6*3/4"],
+      "demo": "*6 × 3/4*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now use the model to answer the question.",
+      "expr": "6 × 3/4 =",
+      "frac": { "num": null, "den": null },
+      "expected": "18/4",
+      "demo": "6/1 × 3/4. (6 × 3)/(1 × 4). *18/4*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. One bag holds three fourths 3/4 kilograms of flour. How much flour is in nine bags?",
+      "expected": "9 × 3/4",
+      "accept": ["9 x 3/4", "9 * 3/4", "9*3/4"],
+      "demo": "*9 × 3/4*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now use the model to answer the question.",
+      "expr": "9 × 3/4 =",
+      "frac": { "num": null, "den": null },
+      "expected": "27/4",
+      "demo": "9/1 × 3/4. (9 × 3)/(1 × 4). *27/4*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. One bag holds five sixths 5/6 kilograms of flour. How much flour is in nine bags?",
+      "expected": "9 × 5/6",
+      "accept": ["9 x 5/6", "9 * 5/6", "9*5/6"],
+      "demo": "*9 × 5/6*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now use the model to answer the question.",
+      "expr": "9 × 5/6 =",
+      "frac": { "num": null, "den": null },
+      "expected": "45/6",
+      "demo": "9/1 × 5/6. (9 × 5)/(1 × 6). *45/6*"
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. One bag holds five sixths 5/6 kilograms of flour. How much flour is in three bags?",
+      "expected": "3 × 5/6",
+      "accept": ["3 x 5/6", "3 * 5/6", "3*5/6"],
+      "demo": "*3 × 5/6*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now use the model to answer the question.",
+      "expr": "3 × 5/6 =",
+      "frac": { "num": null, "den": null },
+      "expected": "15/6",
+      "demo": "3/1 × 5/6. (3 × 5)/(1 × 6). *15/6*"
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "One jar holds two fifths 2/5 litre of juice. How much juice is in ten jars?",
+      "frac": { "num": null, "den": null },
+      "expected": "20/5",
+      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*"
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "One jar holds seven tenths 7/10 litre of juice. How much juice is in three jars?",
+      "frac": { "num": null, "den": null },
+      "expected": "21/10",
+      "demo": "First, I can model that like this: 3 × 7/10. And now I can use the model to answer the question: *21/10*"
+    },
+    {
+      "src": "IT:12",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "One step is three eighths 3/8 metre long. How far is five steps?",
+      "frac": { "num": null, "den": null },
+      "expected": "15/8",
+      "demo": "First, I can model that like this: 5 × 3/8. And now I can use the model to answer the question: *15/8*"
+    },
+    {
+      "src": "IT:13",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "One portion of cake uses two thirds 2/3 of a block of butter. How much butter is needed for four portions?",
+      "frac": { "num": null, "den": null },
+      "expected": "8/3",
+      "demo": "First, I can model that like this: 4 × 2/3. And now I can use the model to answer the question: *8/3*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A step is two fifths 2/5 metres long. How far is ten steps?",
+      "frac": { "num": null, "den": null },
+      "expected": "20/5",
+      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Each jar holds seven tenths 7/10 litre of juice. How much juice fills three jars?",
+      "frac": { "num": null, "den": null },
+      "expected": "21/10",
+      "demo": "First, I can model that like this: 3 × 7/10. And now I can use the model to answer the question: *21/10*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "One lap of the track is nine fourths 9/4 kilometres. How far is two laps?",
+      "frac": { "num": null, "den": null },
+      "expected": "18/4",
+      "demo": "First, I can model that like this: 2 × 9/4. And now I can use the model to answer the question: *18/4*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Each portion of cake uses one eighth 1/8 of a block of butter. How much butter for seven portions?",
+      "frac": { "num": null, "den": null },
+      "expected": "7/8",
+      "demo": "First, I can model that like this: 7 × 1/8. And now I can use the model to answer the question: *7/8*"
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Sam drinks three tenths 3/10 litre of water, six times in a day. How much water does Sam drink altogether?",
+      "frac": { "num": null, "den": null },
+      "expected": "18/10",
+      "demo": "First, I can model that like this: 6 × 3/10. And now I can use the model to answer the question: *18/10*"
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Ten steps are taken, each two fifths 2/5 metres long. How far is that altogether?",
+      "frac": { "num": null, "den": null },
+      "expected": "20/5",
+      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*"
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "One serving uses two thirds 2/3 cup of nuts. How many cups are needed for n servings?",
+      "expected": "(2n)/3",
+      "accept": ["2n/3", "(2 × n)/3", "(2 x n)/3"],
+      "demo": "First, I can model that like this: n × 2/3. And now I can use the model to answer the question: *(2n)/3*"
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here is a model, and its result. Write a question it could answer. 4 × 1/2 = 4/2",
+      "expected": "Four cups each hold half a litre. How much altogether?",
+      "accept": [
+        "four cups each holding half a litre, asking how much altogether",
+        "four cups each hold half a litre. how much is that altogether"
+      ],
+      "demo": "Any question repeating one half four times and asking for the total. For example: *Four cups each hold half a litre. How much altogether?*"
+    }
+  ]
+}

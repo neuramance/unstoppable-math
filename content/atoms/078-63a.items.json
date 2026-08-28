@@ -1,0 +1,109 @@
+{
+  "label": "63a",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Sometimes, we try to subtract a mixed number… 3 4/10 - 1 7/10 We subtract the whole number…",
+      "expected": "2 + 4/10 - 7/10",
+      "demo": "*2 + 4/10 - 7/10*"
+    },
+    {
+      "src": "II:12",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, seven is greater than five, so we can’t subtract it without getting into negative values… 2 + (-3/10) ...which we’re not going to do just yet. Instead, we’re going to get to result a different way. When we see that the fist fraction is smaller than the second, we rewrite the first mixed number … 3 4/10 - 1 7/10 … like this:",
+      "expected": "2 14/10 - 1 7/10",
+      "demo": "*2 14/10 - 1 7/10*"
+    },
+    {
+      "src": "II:16",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "In this case: 3 6/10 - 1 7/10 We would rewrite it like this:",
+      "expected": "2 16/10 - 1 7/10",
+      "demo": "*2 16/10 - 1 7/10*"
+    },
+    {
+      "src": "II:20",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here… 24 6/10 - 1 7/10 We would rewrite it like this:",
+      "expected": "23 16/10 - 1 7/10",
+      "demo": "*23 16/10 - 1 7/10* Each time, we subtract one from the whole number, and add the bottom of the fraction to the top."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to rewrite the first mixed number, so we can subtract from it. Rewrite the first mixed number: 24 3/10 - 1 7/10",
+      "expected": "23 13/10 - 1 7/10",
+      "accept": ["23 13/10"],
+      "demo": "*23 13/10 - 1 7/10* We subtract one from the whole number, and add the bottom of the fraction to the top."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite the first mixed number: 24 3/8 - 1 7/8",
+      "expected": "23 11/8 - 1 7/8",
+      "accept": ["23 11/8"],
+      "demo": "*23 11/8 - 1 7/8*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite the first mixed number: 4 3/5 - 1 4/5",
+      "expected": "3 8/5 - 1 4/5",
+      "accept": ["3 8/5"],
+      "demo": "*3 8/5 - 1 4/5*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite the first mixed number: 4 3/5 - 3 4/5",
+      "expected": "3 8/5 - 3 4/5",
+      "accept": ["3 8/5"],
+      "demo": "*3 8/5 - 3 4/5*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite the first mixed number: 4 10/13 - 3 12/13",
+      "expected": "3 23/13 - 3 12/13",
+      "accept": ["3 23/13"],
+      "demo": "*3 23/13 - 3 12/13*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite the first mixed number: 4 10/20 - 3 12/20",
+      "expected": "3 30/20 - 3 12/20",
+      "accept": ["3 30/20"],
+      "demo": "*3 30/20 - 3 12/20*"
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite the first mixed number: 4 10/30 - 3 12/30",
+      "expected": "3 40/30 - 3 12/30",
+      "accept": ["3 40/30"],
+      "demo": "*3 40/30 - 3 12/30*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite the first mixed number: 4 7/30 - 3 12/30",
+      "expected": "3 37/30 - 3 12/30",
+      "accept": ["3 37/30"],
+      "demo": "*3 37/30 - 3 12/30*"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "label": "67",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that a whole number can be written as a fraction over one. So, this expression… 4 × 5/3",
+      "expected": "4/1 × 5/3",
+      "demo": "Can be written like this *4/1 × 5/3*"
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This expression... 7 × 5/3",
+      "expected": "7/1 × 5/3",
+      "demo": "Can be written like this. *7/1 × 5/3*"
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And this expression… 7 × 2/3",
+      "expected": "7/1 × 2/3",
+      "demo": "Can be written like this. *7/1 × 2/3*"
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Express as the multiplication of two fractions. 3 × 2/5",
+      "expected": "3/1 × 2/5",
+      "accept": ["3/1 x 2/5", "3/1 * 2/5", "3/1*2/5"],
+      "demo": "*3/1 × 2/5*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as the multiplication of two fractions. 3 × 2/7",
+      "expected": "3/1 × 2/7",
+      "accept": ["3/1 x 2/7", "3/1 * 2/7", "3/1*2/7"],
+      "demo": "*3/1 × 2/7*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as the multiplication of two fractions. 8 × 2/7",
+      "expected": "8/1 × 2/7",
+      "accept": ["8/1 x 2/7", "8/1 * 2/7", "8/1*2/7"],
+      "demo": "*8/1 × 2/7*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as the multiplication of two fractions. 1 × 4/9",
+      "expected": "1/1 × 4/9",
+      "accept": ["1/1 x 4/9", "1/1 * 4/9", "1/1*4/9"],
+      "demo": "*1/1 × 4/9*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as the multiplication of two fractions. 100 × 3/10",
+      "expected": "100/1 × 3/10",
+      "accept": ["100/1 x 3/10", "100/1 * 3/10", "100/1*3/10"],
+      "demo": "*100/1 × 3/10*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as the multiplication of two fractions. 5 × 1/6",
+      "expected": "5/1 × 1/6",
+      "accept": ["5/1 x 1/6", "5/1 * 1/6", "5/1*1/6"],
+      "demo": "*5/1 × 1/6*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as the multiplication of two fractions. a × 2/3",
+      "expected": "a/1 × 2/3",
+      "accept": ["a/1 x 2/3", "a/1 * 2/3", "a/1*2/3"],
+      "demo": "*a/1 × 2/3*"
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here is a multiplication of two fractions. Rewrite it with a whole number. 6/1 × 5/8",
+      "expected": "6 × 5/8",
+      "accept": ["6 x 5/8", "6 * 5/8", "6*5/8"],
+      "demo": "*6 × 5/8*"
+    }
+  ]
+}

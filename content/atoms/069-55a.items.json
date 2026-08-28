@@ -1,0 +1,150 @@
+{
+  "label": "55a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To rewrite an improper fraction as a mixed number, first we turn this into a division calculation:  19/5",
+      "expected": "19 ÷ 5",
+      "demo": "*19 ÷ 5*."
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Our fraction had five on the bottom. Draw that here, above and to the right of the division.",
+      "expr": "19 ÷ 5",
+      "frac": { "num": "", "den": null },
+      "expected": "5",
+      "demo": "*5* on the bottom, above and to the right of the division."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If our fraction had had a seven on the bottom instead:  19/7  Then first we would turn that into a division problem.",
+      "expected": "19 ÷ 7",
+      "demo": "*19 ÷ 7*."
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And then draw the fraction with a seven on bottom, above and to the right of the division.",
+      "expr": "19 ÷ 7",
+      "frac": { "num": "", "den": null },
+      "expected": "7",
+      "demo": "*7* on the bottom, above and to the right of the division."
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And if our fraction looked like this:  219/73  Then first we would turn that into a division problem.",
+      "expected": "219 ÷ 73",
+      "demo": "*219 ÷ 73*."
+    },
+    {
+      "src": "II:13",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And then draw the fraction with seventy-three on bottom, above and to the right of the division.",
+      "expr": "219 ÷ 73",
+      "frac": { "num": "", "den": null },
+      "expected": "73",
+      "demo": "*73* on the bottom, above and to the right of the division."
+    },
+    {
+      "src": "IT:2a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to rewrite improper fractions as division calculations. Rewrite this as a division calculation.  80/73",
+      "expected": "80 ÷ 73",
+      "accept": ["80÷73", "80 divided by 73"],
+      "demo": "*80 ÷ 73*."
+    },
+    {
+      "src": "IT:2b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "And then draw the fraction with seventy-three on bottom, above and to the right of the division.",
+      "expr": "80 ÷ 73",
+      "frac": { "num": "", "den": null },
+      "expected": "73",
+      "demo": "*73* on the bottom, above and to the right of the division."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  8/7",
+      "expected": "8 ÷ 7",
+      "accept": ["8÷7", "8 divided by 7"],
+      "demo": "*8 ÷ 7*."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  18/7",
+      "expected": "18 ÷ 7",
+      "accept": ["18÷7", "18 divided by 7"],
+      "demo": "*18 ÷ 7*."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  18/10",
+      "expected": "18 ÷ 10",
+      "accept": ["18÷10", "18 divided by 10"],
+      "demo": "*18 ÷ 10*."
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  18/15",
+      "expected": "18 ÷ 15",
+      "accept": ["18÷15", "18 divided by 15"],
+      "demo": "*18 ÷ 15*."
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  21/4",
+      "expected": "21 ÷ 4",
+      "accept": ["21÷4", "21 divided by 4"],
+      "demo": "*21 ÷ 4*."
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  500/29",
+      "expected": "500 ÷ 29",
+      "accept": ["500÷29", "500 divided by 29"],
+      "demo": "*500 ÷ 29*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  18/(10x)",
+      "expected": "18 ÷ 10x",
+      "accept": ["18÷10x", "18 ÷ (10x)", "18÷(10x)"],
+      "demo": "*18 ÷ 10x*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite this as a division calculation.  a/b",
+      "expected": "a ÷ b",
+      "accept": ["a÷b", "a divided by b"],
+      "demo": "*a ÷ b*."
+    }
+  ]
+}

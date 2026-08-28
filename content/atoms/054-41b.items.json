@@ -1,0 +1,183 @@
+{
+  "label": "41b",
+  "items": [
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that all integers can be represented as fractions. Now, there are equivalent fractions that also represent integers. For example, here is a number line up to five. It is divided into fourths - four parts per whole unit. To write the numbers on top, we use the four times table. Zero times four is zero. One times four is four. Two times four is eight. Three times four is twelve. Four times four is sixteen. And five times four is twenty.",
+      "expected": "0/4 4/4 8/4 12/4 16/4 20/4",
+      "demo": "*0/4  4/4  8/4  12/4  16/4  20/4*. So, this fraction is equal to zero… This fraction is equal to one… This fraction is equal to two… This fraction is equal to three… This fraction is equal to four… And this fraction is equal to five…",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 4, "unitMarks": "blank-fractions" },
+        { "kind": "number-line", "units": 5, "parts": 4, "unitMarks": "fractions" }
+      ]
+    },
+    {
+      "src": "II:26",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, watch what I change. Three parts per whole unit, so the fractions are thirds. Three times table… Zero… three… six… nine… twelve… fifteen.",
+      "expected": "0/3 3/3 6/3 9/3 12/3 15/3",
+      "demo": "*0/3  3/3  6/3  9/3  12/3  15/3*. This fraction is equal to zero… This fraction is equal to one… This fraction is equal to two… This fraction is equal to three… This fraction is equal to four… And this fraction is equal to five…",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "blank-fractions" },
+        { "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "fractions" }
+      ]
+    },
+    {
+      "src": "II:38",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "One more time, watch what I change. Ten parts per whole unit, so the fractions are tenths. Zero… ten… twenty… thirty… forty… fifty.",
+      "expected": "0/10 10/10 20/10 30/10 40/10 50/10",
+      "demo": "*0/10  10/10  20/10  30/10  40/10  50/10*. This fraction is equal to zero… This fraction is equal to one… This fraction is equal to two… This fraction is equal to three… This fraction is equal to four… And this fraction is equal to five…",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "blank-fractions" },
+        { "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "fractions" }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Write in the bottom of each fraction.  ▢/▢  ▢/▢  ▢/▢  ▢/▢  ▢/▢  ▢/▢",
+      "expected": "5",
+      "accept": ["five on the bottom of every fraction", "5 5 5 5 5 5"],
+      "demo": "*Five* on the bottom of every fraction.",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 5 }]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now write in the top of each fraction.",
+      "expected": "0/5 5/5 10/5 15/5 20/5 25/5",
+      "accept": ["0 5 10 15 20 25"],
+      "demo": "*0/5  5/5  10/5  15/5  20/5  25/5*",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 5, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This fraction is equal to what?  15/5",
+      "expected": "three",
+      "demo": "*Three*.",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 5, "unitMarks": "fractions" }]
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what I change. Write in the bottom of each fraction.  ▢/▢  ▢/▢  ▢/▢  ▢/▢  ▢/▢  ▢/▢",
+      "expected": "2",
+      "accept": ["two on the bottom of every fraction", "2 2 2 2 2 2"],
+      "demo": "*Two* on the bottom of every fraction.",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 2 }]
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now write in the top of each fraction.",
+      "expected": "0/2 2/2 4/2 6/2 8/2 10/2",
+      "accept": ["0 2 4 6 8 10"],
+      "demo": "*0/2  2/2  4/2  6/2  8/2  10/2*",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 2, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This fraction is equal to what?  8/2",
+      "expected": "four",
+      "demo": "*Four*.",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 2, "unitMarks": "fractions" }]
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what I change again. Write in the bottom of each fraction.  ▢/▢  ▢/▢  ▢/▢  ▢/▢  ▢/▢  ▢/▢",
+      "expected": "10",
+      "accept": ["ten on the bottom of every fraction", "10 10 10 10 10 10"],
+      "demo": "*Ten* on the bottom of every fraction.",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 10 }]
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now write in the top of each fraction.",
+      "expected": "0/10 10/10 20/10 30/10 40/10 50/10",
+      "accept": ["0 10 20 30 40 50"],
+      "demo": "*0/10  10/10  20/10  30/10  40/10  50/10*",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This fraction is equal to what?  20/10",
+      "expected": "two",
+      "demo": "*Two*.",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "fractions" }]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here is a number line split into thirds, with the fractions written above each whole unit. Write down a fraction that is equal to two.",
+      "expected": "6/3",
+      "demo": "*6/3*",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "fractions" }]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Using the same number line, write down a fraction that is equal to five.",
+      "expected": "15/3",
+      "demo": "*15/3*",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "fractions" }]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here is a number line split into fourths. Write down a fraction that is equal to three.",
+      "expected": "12/4",
+      "demo": "*12/4*",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 4, "unitMarks": "fractions" }]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This fraction is equal to what whole number?  20/4",
+      "expected": "five",
+      "demo": "*Five*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This fraction is equal to what whole number?  18/3",
+      "expected": "six",
+      "demo": "*Six*."
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write down a fraction made of sixths that is equal to two.",
+      "expected": "12/6",
+      "demo": "*12/6*",
+      "frac": { "num": null, "den": null }
+    }
+  ]
+}

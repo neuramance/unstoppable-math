@@ -1,0 +1,109 @@
+{
+  "label": "53",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "In symbols, a mixed number is a whole number written to the left of a fraction. What you don’t see, is that there’s a secret plus symbol there; the whole number and the fraction are added together. For example, here’s a mixed number.  2 3/5",
+      "expected": "2 + 3/5",
+      "demo": "I can rewrite it like this: *2 + 3/5*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change.  2 4/5",
+      "expected": "2 + 4/5",
+      "demo": "I can rewrite it like this *2 + 4/5*."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, watch what I change again.  7 4/5",
+      "expected": "7 + 4/5",
+      "demo": "I can rewrite it like this. *7 + 4/5*."
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "We can also go the other way. Here is a sum.  7 + 1/3",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "7 1/3",
+      "demo": "I can rewrite it as a mixed number, like this. *7 1/3*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Express the mixed number as a sum.  3 2/5",
+      "expected": "3 + 2/5",
+      "accept": ["3+2/5"],
+      "demo": "*3 + 2/5*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express the mixed number as a sum.  3 2/7",
+      "expected": "3 + 2/7",
+      "accept": ["3+2/7"],
+      "demo": "*3 + 2/7*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the sum as a mixed number.  4 + 2/7",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "4 2/7",
+      "demo": "*4 2/7*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express the mixed number as a sum.  10 1/2",
+      "expected": "10 + 1/2",
+      "accept": ["10+1/2"],
+      "demo": "*10 + 1/2*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the sum as a mixed number.  1 + 99/100",
+      "frac": { "whole": null, "num": null, "den": null },
+      "expected": "1 99/100",
+      "demo": "*1 99/100*."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express the mixed number as a sum.  6 3/4",
+      "expected": "6 + 3/4",
+      "accept": ["6+3/4"],
+      "demo": "*6 + 3/4*."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express the mixed number as a sum.  a b/c",
+      "expected": "a + b/c",
+      "accept": ["a+b/c"],
+      "demo": "*a + b/c*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Ben says 2 3/5 means two multiplied by three fifths. Is Ben right? How do you know?",
+      "expected": "no",
+      "demo": "*No*. A mixed number means the whole number added to the fraction, not multiplied."
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "label": "66",
+  "items": [
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that this fraction, seven fifths… 7/5 …is made up of… well… seven fifths. 7/5 = 1/5 + 1/5 + 1/5 + 1/5 + 1/5 + 1/5 + 1/5 But that’s a lot of fifths to write out. So, we can use multiplication instead. Adding seven fifths is the same as multiplying one fifth by seven. For example, here I can rewrite seven fifths 7/5…",
+      "expected": "7 × 1/5",
+      "demo": "…as seven times one fifth. *7 × 1/5*"
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "I can rewrite four fifths 4/5…",
+      "expected": "4 × 1/5",
+      "demo": "… as four times one fifth. 4/5 = *4 × 1/5*"
+    },
+    {
+      "src": "II:11",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And I can rewrite four ninths 4/9…",
+      "expected": "4 × 1/9",
+      "demo": "…As four times one ninth. 4/9 = *4 × 1/9*"
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Write three fifths 3/5 as a multiple of one fifth 1/5.",
+      "expected": "3 × 1/5",
+      "accept": ["3 x 1/5", "3 * 1/5", "3*1/5"],
+      "demo": "*3 × 1/5*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write three eighths 3/8 as a multiple of one eighth 1/8.",
+      "expected": "3 × 1/8",
+      "accept": ["3 x 1/8", "3 * 1/8", "3*1/8"],
+      "demo": "*3 × 1/8*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write six eighths 6/8 as a multiple of one eighth 1/8.",
+      "expected": "6 × 1/8",
+      "accept": ["6 x 1/8", "6 * 1/8", "6*1/8"],
+      "demo": "*6 × 1/8*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write 12/7 as a multiple of 1/7.",
+      "expected": "12 × 1/7",
+      "accept": ["12 x 1/7", "12 * 1/7", "12*1/7"],
+      "demo": "*12 × 1/7*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write 1/6 as a multiple of 1/6.",
+      "expected": "1 × 1/6",
+      "accept": ["1 x 1/6", "1 * 1/6", "1*1/6"],
+      "demo": "*1 × 1/6*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write 9/100 as a multiple of 1/100.",
+      "expected": "9 × 1/100",
+      "accept": ["9 x 1/100", "9 * 1/100", "9*1/100"],
+      "demo": "*9 × 1/100*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a/3 as a multiple of 1/3.",
+      "expected": "a × 1/3",
+      "accept": ["a x 1/3", "a * 1/3", "a*1/3"],
+      "demo": "*a × 1/3*"
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here is a multiple of a unit fraction. Write it as a single fraction.",
+      "expr": "5 × 1/4 =",
+      "frac": { "num": null, "den": null },
+      "expected": "5/4",
+      "demo": "*5/4*"
+    }
+  ]
+}

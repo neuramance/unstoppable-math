@@ -1,0 +1,81 @@
+{
+  "label": "82",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve just seen that the bottom number of a fraction is called the denominator. The top number has a technical name too. The top number of a fraction is called the numerator.",
+      "expected": "numerator",
+      "demo": "The top number of a fraction is called the *numerator*."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Again, the numerator is ‘doing something’, since it ends in ‘-ator’. What’s it doing?",
+      "expected": "Numbering",
+      "demo": "*Numbering*. The numerator numbers, or counts, how many parts we have."
+    },
+    {
+      "src": "II:11",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If the bottom number is eight, then the parts are eighths. If the top number is five, then we count five eighths. If it’s three we count three eighths. And if it’s seven we count seven eighths. So the top number is the numerator, the numberer, the counter.",
+      "expected": "numerator",
+      "demo": "The top number is the *numerator*, the numberer, the counter."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the word after me: ‘numerator’",
+      "expected": "Numerator",
+      "demo": "*Numerator*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which part of a fraction is the numerator?",
+      "expected": "the top number",
+      "accept": ["top number", "the top", "top"],
+      "demo": "The numerator is *the top number*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we call the top number of a fraction?",
+      "expected": "Numerator",
+      "accept": ["the numerator"],
+      "demo": "We call the top number of a fraction the *numerator*."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Why is the top number called the numerator?",
+      "expected": "because numerator means the thing that counts, and the top number counts the parts",
+      "accept": [
+        "because it counts the parts",
+        "it counts the parts",
+        "the top number counts the parts",
+        "because the top number counts the parts",
+        "numerator means the thing that counts",
+        "it counts how many parts we have",
+        "because it counts how many parts we have"
+      ],
+      "demo": "Because numerator means ‘the thing that counts’, and the top number *counts the parts*."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "And what do we call the bottom number of a fraction?",
+      "expected": "Denominator",
+      "accept": ["the denominator"],
+      "demo": "*Denominator*."
+    }
+  ]
+}

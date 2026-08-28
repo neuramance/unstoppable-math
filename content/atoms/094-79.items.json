@@ -1,0 +1,195 @@
+{
+  "label": "79",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "The column a digit sits in tells us what kind of part it counts: tenths… hundredths… or thousandths. For example, here is 0.09. Zero tenths, and nine hundredths.",
+      "expr": "0.09 =",
+      "frac": { "num": null, "den": null },
+      "expected": "9/100",
+      "demo": "Zero tenths, and nine hundredths: *9/100*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Watch what I change. Nine tenths.",
+      "expr": "0.9 =",
+      "frac": { "num": null, "den": null },
+      "expected": "9/10",
+      "demo": "Nine tenths: *9/10*."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Watch what I change again. Three tenths.",
+      "expr": "0.3 =",
+      "frac": { "num": null, "den": null },
+      "expected": "3/10",
+      "demo": "Three tenths: *3/10*. Each time, we count the digits to the right of the point. First column is tenths, second column is hundredths, third column is thousandths."
+    },
+    {
+      "src": "IT:1a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Is the 4 in the tenths column or the hundredths?  0.04",
+      "expected": "Hundredths",
+      "accept": ["the hundredths", "hundredths column", "the hundredths column"],
+      "demo": "*Hundredths*."
+    },
+    {
+      "src": "IT:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite the value in fraction form.",
+      "expr": "0.04 =",
+      "frac": { "num": null, "den": null },
+      "expected": "4/100",
+      "demo": "*4/100*."
+    },
+    {
+      "src": "IT:2a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is the 4 in the tenths column or the hundredths?  0.4",
+      "expected": "Tenths",
+      "accept": ["the tenths", "tenths column", "the tenths column"],
+      "demo": "*Tenths*."
+    },
+    {
+      "src": "IT:2b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite the value in fraction form.",
+      "expr": "0.4 =",
+      "frac": { "num": null, "den": null },
+      "expected": "4/10",
+      "demo": "*4/10*."
+    },
+    {
+      "src": "IT:3a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is the 7 in the tenths column or the hundredths?  0.7",
+      "expected": "Tenths",
+      "accept": ["the tenths", "tenths column", "the tenths column"],
+      "demo": "*Tenths*."
+    },
+    {
+      "src": "IT:3b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite the value in fraction form.",
+      "expr": "0.7 =",
+      "frac": { "num": null, "den": null },
+      "expected": "7/10",
+      "demo": "*7/10*."
+    },
+    {
+      "src": "IT:4a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is the 7 in the tenths column or the hundredths?  0.07",
+      "expected": "Hundredths",
+      "accept": ["the hundredths", "hundredths column", "the hundredths column"],
+      "demo": "*Hundredths*."
+    },
+    {
+      "src": "IT:4b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite the value in fraction form.",
+      "expr": "0.07 =",
+      "frac": { "num": null, "den": null },
+      "expected": "7/100",
+      "demo": "*7/100*."
+    },
+    {
+      "src": "EX:1a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is the 1 in the tenths column or the hundredths?  0.01",
+      "expected": "Hundredths",
+      "accept": ["the hundredths", "hundredths column", "the hundredths column"],
+      "demo": "*Hundredths*."
+    },
+    {
+      "src": "EX:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Rewrite the value in fraction form.",
+      "expr": "0.01 =",
+      "frac": { "num": null, "den": null },
+      "expected": "1/100",
+      "demo": "*1/100*."
+    },
+    {
+      "src": "EX:2a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "In 0.36, which column is the 6 in?",
+      "expected": "Hundredths",
+      "accept": ["the hundredths", "hundredths column", "the hundredths column"],
+      "demo": "*Hundredths*."
+    },
+    {
+      "src": "EX:2b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "In 0.36, which column is the 6 in? Rewrite just that digit’s value in fraction form.",
+      "expr": "0.36 =",
+      "frac": { "num": null, "den": null },
+      "expected": "6/100",
+      "demo": "The 6 is in the hundredths column: *6/100*."
+    },
+    {
+      "src": "EX:3a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "In 0.36, which column is the 3 in?",
+      "expected": "Tenths",
+      "accept": ["the tenths", "tenths column", "the tenths column"],
+      "demo": "*Tenths*."
+    },
+    {
+      "src": "EX:3b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "In 0.36, which column is the 3 in? Rewrite just that digit’s value in fraction form.",
+      "expr": "0.36 =",
+      "frac": { "num": null, "den": null },
+      "expected": "3/10",
+      "demo": "The 3 is in the tenths column: *3/10*."
+    },
+    {
+      "src": "EX:4a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "In 5.08, which column is the 8 in?",
+      "expected": "Hundredths",
+      "accept": ["the hundredths", "hundredths column", "the hundredths column"],
+      "demo": "*Hundredths*."
+    },
+    {
+      "src": "EX:4b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "In 5.08, which column is the 8 in? Rewrite just that digit’s value in fraction form.",
+      "expr": "5.08 =",
+      "frac": { "num": null, "den": null },
+      "expected": "8/100",
+      "demo": "The 8 is in the hundredths column: *8/100*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which is bigger, 0.5 or 0.05? How do you know?",
+      "expected": "0.5",
+      "demo": "*0.5*, because the five is in the tenths column, and tenths are bigger parts than hundredths."
+    }
+  ]
+}

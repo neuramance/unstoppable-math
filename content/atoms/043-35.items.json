@@ -1,0 +1,165 @@
+{
+  "label": "35",
+  "items": [
+    {
+      "src": "TBL:1a",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Given this fraction: 3/4 Complete the space below, and then write the equivalent fraction.",
+      "expected": "5",
+      "demo": "To multiply by one, top and bottom must be the same. The bottom is five, so we write *five* on top: 5/5.",
+      "expr": "3/4 ×",
+      "frac": { "num": null, "den": "5" }
+    },
+    {
+      "src": "TBL:1b",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Then write the equivalent fraction.",
+      "expected": "15/20",
+      "demo": "Three times five is fifteen, and four times five is twenty. Three fourths is equivalent to *fifteen over twenty*.",
+      "expr": "3/4 × 5/5 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:1a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Fill in the blank to multiply three fourths by one.",
+      "expected": "5",
+      "demo": "The bottom is five, so the top must be *five*. Five over five is equal to one.",
+      "expr": "3/4 ×",
+      "frac": { "num": null, "den": "5" }
+    },
+    {
+      "src": "IT:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then, evaluate to write an equivalent fraction.",
+      "expected": "15/20",
+      "demo": "Three times five is fifteen, and four times five is twenty: *15/20*.",
+      "expr": "3/4 × 5/5 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:2a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Fill in the blank to multiply seven thirds by one.",
+      "expected": "10",
+      "demo": "The bottom is ten, so the top must be *ten*. Ten over ten is equal to one.",
+      "expr": "7/3 ×",
+      "frac": { "num": null, "den": "10" }
+    },
+    {
+      "src": "IT:2b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then, evaluate to write an equivalent fraction.",
+      "expected": "70/30",
+      "demo": "Seven times ten is seventy, and three times ten is thirty: *70/30*.",
+      "expr": "7/3 × 10/10 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Fill in the blank to multiply two fifths by one.",
+      "expected": "3",
+      "demo": "The bottom is three, so the top must be *three*. Three over three is equal to one.",
+      "expr": "2/5 ×",
+      "frac": { "num": null, "den": "3" }
+    },
+    {
+      "src": "IT:3b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then, evaluate to write an equivalent fraction.",
+      "expected": "6/15",
+      "demo": "Two times three is six, and five times three is fifteen: *6/15*.",
+      "expr": "2/5 × 3/3 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3c",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Fill in the blank to multiply one half by one.",
+      "expected": "4",
+      "demo": "The top is four, so the bottom must be *four*. Four over four is equal to one.",
+      "expr": "1/2 ×",
+      "frac": { "num": "4", "den": null }
+    },
+    {
+      "src": "IT:3d",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then, evaluate to write an equivalent fraction.",
+      "expected": "4/8",
+      "demo": "One times four is four, and two times four is eight: *4/8*.",
+      "expr": "1/2 × 4/4 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3e",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Fill in the blank to multiply three fourths by one.",
+      "expected": "2",
+      "demo": "The bottom is two, so the top must be *two*. Two over two is equal to one.",
+      "expr": "3/4 ×",
+      "frac": { "num": null, "den": "2" }
+    },
+    {
+      "src": "IT:3f",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then, evaluate to write an equivalent fraction.",
+      "expected": "6/8",
+      "demo": "Three times two is six, and four times two is eight: *6/8*.",
+      "expr": "3/4 × 2/2 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3g",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Fill in the blank to multiply five sixths by one.",
+      "expected": "5",
+      "demo": "The top is five, so the bottom must be *five*. Five over five is equal to one.",
+      "expr": "5/6 ×",
+      "frac": { "num": "5", "den": null }
+    },
+    {
+      "src": "IT:3h",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then, evaluate to write an equivalent fraction.",
+      "expected": "25/30",
+      "demo": "Five times five is twenty-five, and six times five is thirty: *25/30*.",
+      "expr": "5/6 × 5/5 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "IT:3i",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Fill in the blank to multiply four thirds by one.",
+      "expected": "6",
+      "demo": "The bottom is six, so the top must be *six*. Six over six is equal to one.",
+      "expr": "4/3 ×",
+      "frac": { "num": null, "den": "6" }
+    },
+    {
+      "src": "IT:3j",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Then, evaluate to write an equivalent fraction.",
+      "expected": "24/18",
+      "demo": "Four times six is twenty-four, and three times six is eighteen: *24/18*.",
+      "expr": "4/3 × 6/6 =",
+      "frac": { "num": null, "den": null }
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "label": "41a",
+  "items": [
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that all integers can be represented as fractions. Now, there are equivalent fractions that also represent integers. For example, these whole units are split into fourths. Zero times four is zero. One times four is four. Two times four is eight. Three times four is twelve. Four times four is sixteen. And five times four is twenty.",
+      "expected": "0/4 4/4 8/4 12/4 16/4 20/4",
+      "demo": "*0/4  4/4  8/4  12/4  16/4  20/4*",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 4, "unitMarks": "blank-fractions" },
+        { "kind": "number-line", "units": 5, "parts": 4, "unitMarks": "fractions" }
+      ]
+    },
+    {
+      "src": "II:14",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change. These whole units are split into thirds. Zero times three is zero. One times three is three. Two times three is six. Three times three is nine. Four times three is twelve. And five times three is fifteen.",
+      "expected": "0/3 3/3 6/3 9/3 12/3 15/3",
+      "demo": "*0/3  3/3  6/3  9/3  12/3  15/3*",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "blank-fractions" },
+        { "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "fractions" }
+      ]
+    },
+    {
+      "src": "II:23",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, these whole units are split into tenths. Zero times ten is zero. One times ten is ten. Two times ten is twenty. Three times ten is thirty. Four times ten is forty. And five times ten is fifty.",
+      "expected": "0/10 10/10 20/10 30/10 40/10 50/10",
+      "demo": "*0/10  10/10  20/10  30/10  40/10  50/10*",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "blank-fractions" },
+        { "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "fractions" }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to write the top part of each fraction. Write in the top part of each fraction. These whole units are split into fifths.",
+      "expected": "0/5 5/5 10/5 15/5 20/5 25/5",
+      "accept": ["0 5 10 15 20 25"],
+      "demo": "*0/5  5/5  10/5  15/5  20/5  25/5*",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 5, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what I change. Write in the top part of each fraction. These whole units are split into halves.",
+      "expected": "0/2 2/2 4/2 6/2 8/2 10/2",
+      "accept": ["0 2 4 6 8 10"],
+      "demo": "*0/2  2/2  4/2  6/2  8/2  10/2*",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 2, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what I change again. Write in the top part of each fraction. These whole units are split into tenths.",
+      "expected": "0/10 10/10 20/10 30/10 40/10 50/10",
+      "accept": ["0 10 20 30 40 50"],
+      "demo": "*0/10  10/10  20/10  30/10  40/10  50/10*",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write in the top part of each fraction. These two whole units are split into thirds.",
+      "expected": "0/3 3/3 6/3",
+      "accept": ["0 3 6"],
+      "demo": "*0/3  3/3  6/3*",
+      "figures": [{ "kind": "number-line", "units": 2, "parts": 3, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write in the top part of each fraction. These three whole units are split into fourths.",
+      "expected": "0/4 4/4 8/4 12/4",
+      "accept": ["0 4 8 12"],
+      "demo": "*0/4  4/4  8/4  12/4*",
+      "figures": [{ "kind": "number-line", "units": 3, "parts": 4, "unitMarks": "blank-fractions" }]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write in the top part of each fraction. These six whole units are split into halves.  ▢/2  ▢/2  ▢/2  ▢/2  ▢/2  ▢/2  ▢/2",
+      "expected": "0/2 2/2 4/2 6/2 8/2 10/2 12/2",
+      "accept": ["0 2 4 6 8 10 12"],
+      "demo": "*0/2  2/2  4/2  6/2  8/2  10/2  12/2*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write in the top part of each fraction. This one whole unit is split into sevenths.",
+      "expected": "0/7 7/7",
+      "accept": ["0 7"],
+      "demo": "*0/7  7/7*",
+      "figures": [{ "kind": "number-line", "units": 1, "parts": 7, "unitMarks": "blank-fractions" }]
+    }
+  ]
+}

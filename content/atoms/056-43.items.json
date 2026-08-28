@@ -1,0 +1,156 @@
+{
+  "label": "43",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "I’m going to show you how to rewrite a fraction as a whole number. My turn first: here's a fraction.  24/8  Is the top number in the bottom number's times table? Yes, twenty-four is in the eight times table. What times eight is twenty-four?",
+      "expected": "3",
+      "demo": "Three times eight is twenty-four. So *three* is equal to twenty-four eighths."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now...  30/10  Thirty is in the ten times table. What times ten is thirty?",
+      "expected": "3",
+      "demo": "Three times ten is thirty. So *three* is equal to thirty over ten.  3 = 30/10"
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally:  50/10  Fifty is in the ten times table. What times ten is fifty?",
+      "expected": "5",
+      "demo": "Five times ten is fifty. So *five* is equal to fifth over ten.  5 = 50/10  Each time, we ask what the bottom number is multiplied by to make the top number. That tells us the whole number equal in value to the fraction."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Can this fraction be written as a whole number?  20/5",
+      "expected": "yes",
+      "demo": "*Yes*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write this fraction as a whole number.  20/5",
+      "expected": "4",
+      "demo": "*4*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This fraction can be written as a whole number. Five times what is thirty-five? Write the whole number.  35/5",
+      "expected": "7",
+      "demo": "*7*. Five times seven is thirty-five."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  60/10",
+      "expected": "Yes, and 6",
+      "accept": ["yes 6", "6"],
+      "demo": "*Yes*, and *6*."
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  9/3",
+      "expected": "Yes, and 3",
+      "accept": ["yes 3", "3"],
+      "demo": "*Yes*, and *3*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  18/3",
+      "expected": "Yes, and 6",
+      "accept": ["yes 6", "6"],
+      "demo": "*Yes*, and *6*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  13/5",
+      "expected": "no",
+      "demo": "*No*, because thirteen is not in the five times table."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  26/3",
+      "expected": "no",
+      "demo": "*No*, because twenty-six is not in the three times table."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  100/10",
+      "expected": "Yes, and 10",
+      "accept": ["yes 10", "10"],
+      "demo": "*Yes*, and *10*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  7/7",
+      "expected": "Yes, and 1",
+      "accept": ["yes 1", "1"],
+      "demo": "*Yes*, and *1*."
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  15/4",
+      "expected": "no",
+      "demo": "*No*, because fifteen is not in the four times table."
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If yes, write the whole number.  12/1",
+      "expected": "Yes, and 12",
+      "accept": ["yes 12", "12"],
+      "demo": "*Yes*, and *12*."
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Sanjay has thirty-five fifths of a litre of paint. How many litres is that?  35/5",
+      "expected": "7",
+      "demo": "*7* litres."
+    },
+    {
+      "src": "EX:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can this fraction be written as a whole number? If it can, write it.  22/5",
+      "expected": "no",
+      "demo": "*No*. Twenty-two is not in the five times table."
+    },
+    {
+      "src": "EX:10",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Give this your best guess: write this fraction as a whole number.  (6a)/6",
+      "expected": "a",
+      "accept": ["1a"],
+      "demo": "*a*"
+    }
+  ]
+}

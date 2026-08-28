@@ -1,0 +1,115 @@
+{
+  "label": "37c",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Starting with three fourths… …we’ve seen that to write an equivalent fraction with twenty on the bottom… …an equation like this one will help us. 3/4 × ▢/▢ = ▢/20 Next, to make an equivalent fraction, this must have a value of 1. So top and bottom must be the same. Four times five is equal to twenty. So we write five here... and here… 3/4 × 5/5 = ▢/20 Now, finally, three times five is fifteen, so we write fifteen here.",
+      "expected": "15",
+      "demo": "Three fourths… is equivalent to *fifteen over twenty*.",
+      "expr": "3/4 × 5/5 =",
+      "frac": { "num": null, "den": "20" }
+    },
+    {
+      "src": "II:15",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "If we wanted an equivalent fraction that had forty on the bottom, we would write this: 3/4 × ▢/▢ = ▢/40 Four times what is equal to forty? Four times ten is equal to forty. So we write ten here... and here… 3/4 × 10/10 = ▢/40 And then finally, three times ten is thirty.",
+      "expected": "30",
+      "demo": "So, three fourths… is equivalent to *thirty over forty*.",
+      "expr": "3/4 × 10/10 =",
+      "frac": { "num": null, "den": "40" }
+    },
+    {
+      "src": "II:24",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "If we wanted an equivalent fraction that had six on the top, we would write this: 3/4 × ▢/▢ = 6/▢ Three times what is equal to six? Three times two is equal to six. So we write two here… and here… 3/4 × 2/2 = 6/▢ And, finally, four times two is eight.",
+      "expected": "8",
+      "demo": "So, three fourths… is equivalent to *six over eight*.",
+      "expr": "3/4 × 2/2 =",
+      "frac": { "num": "6", "den": null }
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to write the equivalent fraction. Three fourths is equivalent to what fraction with forty on the bottom?",
+      "expected": "30",
+      "demo": "Three times ten is thirty. Three fourths is equivalent to *thirty over forty*.",
+      "expr": "3/4 × 10/10 =",
+      "frac": { "num": null, "den": "40" }
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Three fourths is equivalent to what fraction with six on top?",
+      "expected": "8",
+      "demo": "Four times two is eight. Three fourths is equivalent to *six over eight*.",
+      "expr": "3/4 × 2/2 =",
+      "frac": { "num": "6", "den": null }
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Three fifths, is equivalent to what fraction with thirty on top?",
+      "expected": "50",
+      "demo": "Five times ten is fifty. Three fifths is equivalent to *thirty over fifty*.",
+      "expr": "3/5 × 10/10 =",
+      "frac": { "num": "30", "den": null }
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Three fourths is equivalent to what fraction with forty on the bottom? 3/4 ▢/40",
+      "expected": "30/40",
+      "demo": "3/4 × 10/10 = 30/40. Three fourths is equivalent to *thirty over forty*.",
+      "expr": "3/4 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Three fifths is equivalent to what fraction with thirty on the bottom?",
+      "expected": "18/30",
+      "demo": "3/5 × 6/6 = 18/30. Three fifths is equivalent to *eighteen over thirty*.",
+      "expr": "3/5 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Ten over four is equivalent to what fraction with fifty on top?",
+      "expected": "50/20",
+      "demo": "10/4 × 5/5 = 50/20. Ten over four is equivalent to *fifty over twenty*.",
+      "expr": "10/4 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Six over ten is equivalent to what fraction with forty on bottom?",
+      "expected": "24/40",
+      "demo": "6/10 × 4/4 = 24/40. Six over ten is equivalent to *twenty-four over forty*.",
+      "expr": "6/10 =",
+      "frac": { "num": null, "den": null }
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Seven over three is equivalent to what fraction with fifteen on the bottom?",
+      "expected": "35/15",
+      "demo": "7/3 × 5/5 = 35/15. Seven over three is equivalent to *thirty-five over fifteen*.",
+      "expr": "7/3 =",
+      "frac": { "num": null, "den": null }
+    }
+  ]
+}

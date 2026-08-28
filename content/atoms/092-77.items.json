@@ -1,0 +1,85 @@
+{
+  "label": "77",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "A mixed number with one hundred on the bottom can also be written in decimal form. My turn first: here is seven and fifty-two hundredths.  7 52/100  I can write it in decimal form, like this.",
+      "expected": "7.52",
+      "demo": "Seven and fifty-two hundredths in decimal form is *7.52*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change.  7 46/100  I write this in decimal form, like this.",
+      "expected": "7.46",
+      "demo": "In decimal form: *7.46*."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change again.  73 46/100  I write this in decimal form, like this.",
+      "expected": "73.46",
+      "demo": "In decimal form: *73.46*. Each time, the whole number goes to the left of the decimal point, and the top number of the fraction goes after it."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Rewrite in decimal form.  4 31/100",
+      "expected": "4.31",
+      "demo": "Four and thirty-one hundredths is *4.31*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  4 83/100",
+      "expected": "4.83",
+      "demo": "Four and eighty-three hundredths is *4.83*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  49 83/100",
+      "expected": "49.83",
+      "demo": "Forty-nine and eighty-three hundredths is *49.83*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  12 99/100",
+      "expected": "12.99",
+      "demo": "Twelve and ninety-nine hundredths is *12.99*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  6 5/100",
+      "expected": "6.05",
+      "demo": "Six and five hundredths is *6.05*."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  1 50/100",
+      "expected": "1.50",
+      "demo": "One and fifty hundredths is *1.50*."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  8 3/10",
+      "expected": "8.3",
+      "demo": "Eight and three tenths is *8.3*."
+    }
+  ]
+}

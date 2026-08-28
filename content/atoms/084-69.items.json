@@ -1,0 +1,25 @@
+{
+  "label": "69",
+  "items": [
+    {
+      "src": "TBL:1a",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Evaluate:",
+      "expr": "4 × 5/3 =",
+      "frac": { "num": null, "den": null },
+      "expected": "20/3",
+      "demo": "4/1 × 5/3. (4 × 5)/(1 × 3). *20/3*"
+    },
+    {
+      "src": "TBL:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate:",
+      "expr": "4 × 5/3 =",
+      "frac": { "num": null, "den": null },
+      "expected": "20/3",
+      "demo": "4/1 × 5/3. (4 × 5)/(1 × 3). *20/3*"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "label": "65",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Mathematical models help us to answer questions about real life. For example, say a jug holds five eighths 5/8 litre of water, and Maya pours in ten eighths 10/8 litre more. How much water is there now in the jug? First, I can model that like this.",
+      "expected": "5/8 + 10/8",
+      "demo": "*5/8 + 10/8*"
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And now I can use the model to answer the question: (5 + 10)/8",
+      "frac": { "num": null, "den": null },
+      "expected": "15/8",
+      "demo": "*15/8*. There are twelve eighths litres of water in the jug."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to answer questions about real life situations. Write a model for this situation. A jug holds five eighths 5/8 litre. Maya pours out two eighths 2/8 litre. How much is left?",
+      "expected": "5/8-2/8",
+      "demo": "*5/8-2/8*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now use the model to answer the question.",
+      "expr": "5/8-2/8 =",
+      "frac": { "num": null, "den": null },
+      "expected": "3/8",
+      "demo": "(5-2)/8. *3/8*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds five eighths 5/8 litre. Maya pours out three eighths 3/8 litre. How much is left?",
+      "expected": "5/8-3/8",
+      "demo": "*5/8-3/8*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now use the model to answer the question.",
+      "expr": "5/8-3/8 =",
+      "frac": { "num": null, "den": null },
+      "expected": "2/8",
+      "demo": "(5-3)/8. *2/8*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds five eighths 5/8 litre. Maya pours in three eighths 3/8 litre. How much is in the jug now?",
+      "expected": "5/8 + 3/8",
+      "accept": ["5/8+3/8"],
+      "demo": "*5/8 + 3/8*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now use the model to answer the question. 5/8 + 3/8",
+      "expected": "8/8",
+      "accept": ["1"],
+      "demo": "(5 + 3)/8. *8/8*, or one."
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write a model for this situation. A jug holds seven tenths 7/10 litre. Maya pours in two tenths 2/10 litre. How much is in the jug now?",
+      "expected": "7/10 + 2/10",
+      "accept": ["7/10+2/10"],
+      "demo": "*7/10 + 2/10*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now use the model to answer the question.",
+      "expr": "7/10 + 2/10 =",
+      "frac": { "num": null, "den": null },
+      "expected": "9/10",
+      "demo": "(7 + 2)/10. *9/10*"
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A jug holds seven tenths 7/10 litre. Maya pours out three tenths 3/10 litre. How much is left?",
+      "frac": { "num": null, "den": null },
+      "expected": "4/10",
+      "demo": "First, I can model that like this: 7/10-3/10. And now I can use the model to answer the question: *4/10*"
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A jug holds nine tenths 9/10 litre. Maya pours out four tenths 4/10 litre. How much is left?",
+      "frac": { "num": null, "den": null },
+      "expected": "5/10",
+      "demo": "First, I can model that like this: 9/10-4/10. And now I can use the model to answer the question: *5/10*"
+    },
+    {
+      "src": "IT:12",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A jug holds four tenths 4/10 litre. Maya pours in five tenths 5/10 litre. How much is in the jug now?",
+      "frac": { "num": null, "den": null },
+      "expected": "9/10",
+      "demo": "First, I can model that like this: 4/10 + 5/10. And now I can use the model to answer the question: *9/10*"
+    },
+    {
+      "src": "IT:13",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A jug holds three eighths 3/8 litre. Maya pours in four eighths 4/8 litre. How much is in the jug now?",
+      "frac": { "num": null, "den": null },
+      "expected": "7/8",
+      "demo": "First, I can model that like this: 3/8 + 4/8. And now I can use the model to answer the question: *7/8*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A tank holds three fifths 3/5 litre. Sam drains two fifths 2/5 litre. How much is left?",
+      "frac": { "num": null, "den": null },
+      "expected": "1/5",
+      "demo": "First, I can model that like this: 3/5-2/5. And now I can use the model to answer the question: *1/5*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A ribbon is seven tenths 7/10 metre long. Sam cuts off three tenths 3/10 metre. How long is the ribbon now?",
+      "frac": { "num": null, "den": null },
+      "expected": "4/10",
+      "demo": "First, I can model that like this: 7/10-3/10. And now I can use the model to answer the question: *4/10*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A ribbon is seven tenths 7/10 metre long. Sam joins on three tenths 3/10 metre. How long is the ribbon now?",
+      "frac": { "num": null, "den": null },
+      "expected": "10/10",
+      "demo": "First, I can model that like this: 7/10 + 3/10. And now I can use the model to answer the question: *10/10*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Sam walks three eighths 3/8 kilometre, then walks a further two eighths 2/8 kilometre. How far has Sam walked altogether?",
+      "frac": { "num": null, "den": null },
+      "expected": "5/8",
+      "demo": "First, I can model that like this: 3/8 + 2/8. And now I can use the model to answer the question: *5/8*"
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Maya pours out two eighths 2/8 litre from a jug that holds five eighths 5/8 litre. How much is left in the jug?",
+      "frac": { "num": null, "den": null },
+      "expected": "3/8",
+      "demo": "First, I can model that like this: 5/8-2/8. And now I can use the model to answer the question: *3/8*"
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "A jug holds nine fourths 9/4 litre. Maya pours out three fourths 3/4 litre. How much is left?",
+      "frac": { "num": null, "den": null },
+      "expected": "6/4",
+      "demo": "First, I can model that like this: 9/4-3/4. And now I can use the model to answer the question: *6/4*"
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "A jug holds five eighths 5/8 litre. Maya pours out b eighths b/8 litre. How much is left?",
+      "expected": "(5-b)/8",
+      "demo": "First, I can model that like this: 5/8-b/8. And now I can use the model to answer the question: *(5-b)/8*"
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here is a model, and its result. Write a question it could answer. 7/10 + 2/10 = 9/10",
+      "expected": "A jug holds seven tenths litre. Maya pours in two tenths litre. How much is in the jug now?",
+      "accept": ["A jug holds 7/10 litre. Maya pours in 2/10 litre. How much is in the jug now?"],
+      "demo": "Any question adding two tenths of a unit to seven tenths of a unit and asking for the total. For example: *A jug holds seven tenths litre. Maya pours in two tenths litre. How much is in the jug now?*"
+    }
+  ]
+}

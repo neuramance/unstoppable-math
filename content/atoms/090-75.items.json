@@ -1,0 +1,94 @@
+{
+  "label": "75",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that fractions can represent division. Now, we can use that fact to convert a number from fraction form into decimal form. For example, this fraction can be read as fifty-two over one hundred.  52/100  It can also be read as fifty-two divided by one hundred, which is this, in decimal form.",
+      "expected": "0.52",
+      "demo": "Fifty-two divided by one hundred, in decimal form, is *0.52*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change.  47/100  Forty-seven hundredths, or forty-seven divided by one hundred.",
+      "expected": "0.47",
+      "demo": "Forty-seven hundredths in decimal form is *0.47*."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Once more, watch what I change.  7/100  Seven hundredths, or seven divided by one hundred.",
+      "expected": "0.07",
+      "demo": "Seven hundredths in decimal form is *0.07*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Rewrite in decimal form.  31/100",
+      "expected": "0.31",
+      "demo": "Thirty-one hundredths is *0.31*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  83/100",
+      "expected": "0.83",
+      "demo": "Eighty-three hundredths is *0.83*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  3/100",
+      "expected": "0.03",
+      "demo": "Three hundredths is *0.03*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  99/100",
+      "expected": "0.99",
+      "demo": "Ninety-nine hundredths is *0.99*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  50/100",
+      "expected": "0.50",
+      "demo": "Fifty hundredths is *0.50*."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  100/100",
+      "expected": "1.00",
+      "demo": "One hundred hundredths is *1.00*."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Rewrite in decimal form.  4/10",
+      "expected": "0.4",
+      "demo": "Four tenths is *0.4*."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Ben writes 7/100 as 0.7. Is Ben right? How do you know?",
+      "expected": "No",
+      "accept": ["no he isn’t", "no he is not", "no ben is not right", "no ben is wrong", "no it is 0.07"],
+      "demo": "*No*. 0.7 is seven tenths. Seven hundredths needs a zero in the tenths column, so it is 0.07."
+    }
+  ]
+}

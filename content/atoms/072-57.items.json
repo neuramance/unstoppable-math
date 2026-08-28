@@ -1,0 +1,167 @@
+{
+  "label": "57",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We've seen how to write a mixed number as a single fraction. 3 4/5",
+      "expected": "(3 (5) + 4)/5",
+      "demo": "*(3 (5) + 4)/5*"
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Now we'll evaluate the top to write the mixed number as an improper fraction. My turn first: Three times five is fifteen… (15 + 4)/5 …and fifteen add four is nineteen.",
+      "frac": { "num": null, "den": null },
+      "expected": "19/5",
+      "demo": "*19/5* So the improper fraction is nineteen fifths."
+    },
+    {
+      "src": "II:11",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change. 3 2/5 As a single fraction, I write this.",
+      "expected": "(3 (5) + 2)/5",
+      "demo": "*(3 (5) + 2)/5*"
+    },
+    {
+      "src": "II:14",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Three times five is fifteen… (15 + 2)/5 …add two is seventeen.",
+      "frac": { "num": null, "den": null },
+      "expected": "17/5",
+      "demo": "*17/5*"
+    },
+    {
+      "src": "II:16",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change again. 2 2/5 I write it as a single fraction:",
+      "expected": "(2 (5) + 2)/5",
+      "demo": "*(2 (5) + 2)/5*"
+    },
+    {
+      "src": "II:18",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Two times five is ten… (10 + 2)/5 …add two is twelve.",
+      "frac": { "num": null, "den": null },
+      "expected": "12/5",
+      "demo": "*12/5*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to write mixed numbers as improper fractions. Evaluate to give an improper fraction:",
+      "expr": "(4 (2) + 3)/2 =",
+      "frac": { "num": null, "den": null },
+      "expected": "11/2",
+      "demo": "*11/2*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express this as a single fraction 2 3/5",
+      "expected": "(2 (5) + 3)/5",
+      "accept": ["(2(5) + 3)/5", "(2(5)+3)/5", "(2 × 5 + 3)/5", "(2 x 5 + 3)/5"],
+      "demo": "*(2 (5) + 3)/5*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate to give an improper fraction:",
+      "expr": "(2 (5) + 3)/5 =",
+      "frac": { "num": null, "den": null },
+      "expected": "13/5",
+      "demo": "*13/5*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express this as a single fraction 7 3/10",
+      "expected": "(7 (10) + 3)/10",
+      "accept": ["(7(10) + 3)/10", "(7(10)+3)/10", "(7 × 10 + 3)/10", "(7 x 10 + 3)/10"],
+      "demo": "*(7 (10) + 3)/10*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate to give an improper fraction:",
+      "expr": "(7 (10) + 3)/10 =",
+      "frac": { "num": null, "den": null },
+      "expected": "73/10",
+      "demo": "*73/10*"
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this as an improper fraction. 2 3/7",
+      "frac": { "num": null, "den": null },
+      "expected": "17/7",
+      "demo": "First, I write it as a single fraction: (2 (7) + 3)/7. And then, I evaluate: *17/7*"
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this as an improper fraction. 4 1/3",
+      "frac": { "num": null, "den": null },
+      "expected": "13/3",
+      "demo": "First, I write it as a single fraction: (4 (3) + 1)/3. And then, I evaluate: *13/3*"
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this as an improper fraction. 3 1/10",
+      "frac": { "num": null, "den": null },
+      "expected": "31/10",
+      "demo": "First, I write it as a single fraction: (3 (10) + 1)/10. And then, I evaluate: *31/10*"
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this as an improper fraction. 1 1/2",
+      "frac": { "num": null, "den": null },
+      "expected": "3/2",
+      "demo": "First, I write it as a single fraction: (1 (2) + 1)/2. And then, I evaluate: *3/2*"
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this as an improper fraction. 10 3/10",
+      "frac": { "num": null, "den": null },
+      "expected": "103/10",
+      "demo": "First, I write it as a single fraction: (10 (10) + 3)/10. And then, I evaluate: *103/10*"
+    },
+    {
+      "src": "IT:12",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this as an improper fraction. 2 1/3",
+      "frac": { "num": null, "den": null },
+      "expected": "7/3",
+      "demo": "First, I write it as a single fraction: (2 (3) + 1)/3. And then, I evaluate: *7/3*"
+    },
+    {
+      "src": "IT:13",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Sanjay has two and three fifths litres of paint. Express that as an improper fraction of litres. 2 3/5",
+      "frac": { "num": null, "den": null },
+      "expected": "13/5",
+      "demo": "First, I write it as a single fraction: (2 (5) + 3)/5. And then, I evaluate: *13/5*"
+    }
+  ]
+}

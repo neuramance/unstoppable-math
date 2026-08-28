@@ -1,0 +1,101 @@
+{
+  "label": "56",
+  "items": [
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that we can rewrite an improper fraction as a mixed number. We can also write a mixed number as an improper fraction. First, we write it as a single fraction. My turn first: here’s a mixed number. 3 4/5 I write it as a single fraction, like this.",
+      "expected": "(3(5) + 4)/5",
+      "demo": "*(3(5) + 4)/5*"
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now… watch what I change. 3 2/5 I write this as a single fraction, like this.",
+      "expected": "(3(5) + 2)/5",
+      "demo": "*(3(5) + 2)/5*"
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, watch what I change again. 2 2/5 I write this as a single fraction, like this.",
+      "expected": "(2(5) + 2)/5",
+      "demo": "*(2(5) + 2)/5* Each time, we multiply the whole number by the bottom number, and then add the top number."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Express as a single fraction. 2 3/5",
+      "expected": "(2(5) + 3)/5",
+      "accept": ["(2(5)+3)/5", "(2 × 5 + 3)/5", "(2 x 5 + 3)/5"],
+      "demo": "*(2(5) + 3)/5*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 2 3/7",
+      "expected": "(2(7) + 3)/7",
+      "accept": ["(2(7)+3)/7", "(2 × 7 + 3)/7", "(2 x 7 + 3)/7"],
+      "demo": "*(2(7) + 3)/7*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 4 3/7",
+      "expected": "(4(7) + 3)/7",
+      "accept": ["(4(7)+3)/7", "(4 × 7 + 3)/7", "(4 x 7 + 3)/7"],
+      "demo": "*(4(7) + 3)/7*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 1 1/2",
+      "expected": "(1(2) + 1)/2",
+      "accept": ["(1(2)+1)/2", "(1 × 2 + 1)/2", "(1 x 2 + 1)/2"],
+      "demo": "*(1(2) + 1)/2*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 10 3/10",
+      "expected": "(10(10) + 3)/10",
+      "accept": ["(10(10)+3)/10", "(10 × 10 + 3)/10", "(10 x 10 + 3)/10"],
+      "demo": "*(10(10) + 3)/10*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 2 7/4",
+      "expected": "(2(4) + 7)/4",
+      "accept": ["(2(4)+7)/4", "(2 × 4 + 7)/4", "(2 x 4 + 7)/4"],
+      "demo": "*(2(4) + 7)/4*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. a 2/3",
+      "expected": "(3a + 2)/3",
+      "accept": ["(3a+2)/3", "(a(3) + 2)/3", "(a(3)+2)/3"],
+      "demo": "*(3a + 2)/3*"
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 3x 1/√5",
+      "expected": "(3x(√5) + 1)/(√5)",
+      "accept": ["(3x (√5) + 1)/(√5)", "(3x(√5)+1)/(√5)", "(3x√5 + 1)/√5", "(3x√5+1)/√5"],
+      "demo": "*(3x(√5) + 1)/(√5)*"
+    }
+  ]
+}

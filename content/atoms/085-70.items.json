@@ -1,0 +1,110 @@
+{
+  "label": "70",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When a situation in real life repeats the same fraction, we can model it as a multiplication. For example: one serving of trail mix uses two thirds 2/3 cup of nuts. How many cups are needed for five servings?",
+      "expected": "5 × 2/3",
+      "demo": "Five servings, each using two thirds of a cup 2/3 cup, so I write five times two thirds. *5 × 2/3*"
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change. One serving uses two thirds 2/3 cup. How many cups for four servings?",
+      "expected": "4 × 2/3",
+      "demo": "*4 × 2/3*"
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what I change again. One serving uses five eighths 5/8 cup. How many cups for four servings?",
+      "expected": "4 × 5/8",
+      "demo": "*4 × 5/8*"
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Model this situation. One bag holds three fourths 3/4 kilograms of flour. How much flour is in six bags?",
+      "expected": "6 × 3/4",
+      "accept": ["6 x 3/4", "6 * 3/4", "6*3/4"],
+      "demo": "*6 × 3/4*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Model this situation. One bag holds three fourths 3/4 kilograms of flour. How much flour is in nine bags?",
+      "expected": "9 × 3/4",
+      "accept": ["9 x 3/4", "9 * 3/4", "9*3/4"],
+      "demo": "*9 × 3/4*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Model this situation. One bag holds five sixths 5/6 kilograms of flour. How much flour is in nine bags?",
+      "expected": "9 × 5/6",
+      "accept": ["9 x 5/6", "9 * 5/6", "9*5/6"],
+      "demo": "*9 × 5/6*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Model this situation. A step is two fifths 2/5 metres long. How far is ten steps?",
+      "expected": "10 × 2/5",
+      "accept": ["10 x 2/5", "10 * 2/5", "10*2/5"],
+      "demo": "*10 × 2/5*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Model this situation. Each jar holds seven tenths 7/10 litre of juice. How much juice fills three jars?",
+      "expected": "3 × 7/10",
+      "accept": ["3 x 7/10", "3 * 7/10", "3*7/10"],
+      "demo": "*3 × 7/10*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Model this situation. One lap of the track is nine fourths 9/4 kilometres. How far is two laps?",
+      "expected": "2 × 9/4",
+      "accept": ["2 x 9/4", "2 * 9/4", "2*9/4"],
+      "demo": "*2 × 9/4*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Model this situation. Each portion of cake uses one eighth 1/8 of a block of butter. How much butter for seven portions?",
+      "expected": "7 × 1/8",
+      "accept": ["7 x 1/8", "7 * 1/8", "7*1/8"],
+      "demo": "*7 × 1/8*"
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Model this situation. One serving uses two thirds 2/3 cup of nuts. How many cups are needed for n servings?",
+      "expected": "n × 2/3",
+      "accept": ["n x 2/3", "n * 2/3", "n*2/3"],
+      "demo": "*n × 2/3*"
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here is a model. Write a situation it could describe. 4 × 1/2",
+      "expected": "four cups each holding half a litre",
+      "accept": ["four cups each hold half a litre", "4 cups, each holding half a litre"],
+      "demo": "Any situation repeating one half four times. For example: *four cups each holding half a litre*."
+    }
+  ]
+}

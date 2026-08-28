@@ -1,0 +1,61 @@
+{
+  "label": "80",
+  "items": [
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "We can compare these two values in decimal form…  0.5  0.35  …by converting them into fraction form. This value has one digit to the right of the decimal point, so these are tenths.",
+      "expr": "0.5 =",
+      "frac": { "num": null, "den": null },
+      "expected": "5/10",
+      "demo": "One digit to the right of the decimal point, so these are tenths: *5/10*."
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "This value has two digits to the right of the decimal point, so these are hundredths.",
+      "expr": "0.35 =",
+      "frac": { "num": null, "den": null },
+      "expected": "35/100",
+      "demo": "Two digits to the right of the decimal point, so these are hundredths: *35/100*."
+    },
+    {
+      "src": "II:12",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "We can rewrite five tenths as hundredths, by multiplying top and bottom by ten.",
+      "expr": "5/10 =",
+      "frac": { "num": null, "den": null },
+      "expected": "50/100",
+      "demo": "Multiplying top and bottom by ten: *50/100*."
+    },
+    {
+      "src": "II:16",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now we can see that this fraction 50/100 is greater than this one 35/100.  50/100 > 35/100  And so zero point five is greater than zero point three five.",
+      "expected": "0.5 > 0.35",
+      "demo": "Zero point five is greater than zero point three five: *0.5 > 0.35*"
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to say which value in decimal form is greater. Complete the space with < or >  50/100 ▢ 35/100",
+      "expected": ">",
+      "accept": ["50/100 > 35/100", "greater than", "greater"],
+      "demo": "*50/100 > 35/100*"
+    },
+    {
+      "src": "TBL:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Complete the space with < or >  0.5 ▢ 0.35",
+      "expected": ">",
+      "accept": ["0.5 > 0.35", "greater than", "greater"],
+      "demo": "*0.5 > 0.35*, because 50/100 > 35/100."
+    }
+  ]
+}
