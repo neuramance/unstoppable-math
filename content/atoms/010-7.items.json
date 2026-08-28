@@ -1,0 +1,192 @@
+{
+  "label": "7",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here is a picture fraction. It has five parts per whole unit, and seven parts are counted in total. So I can express it using a symbol, like this.",
+      "expected": "7/5",
+      "demo": "Like this: *7/5*.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "This picture fraction has three parts per whole unit, and eight parts are counted in total, so I can express it using symbol, like this.",
+      "expected": "8/3",
+      "demo": "Like this: *8/3*.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Express this picture fraction using a symbol.",
+      "expected": "5/4",
+      "demo": "*5/4*. Five parts counted in total, four parts per whole unit.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:2a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "4/3",
+      "demo": "*4/3*. Four parts counted in total, three parts per whole unit.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 4,
+          "band": true,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "IT:2b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "8/5",
+      "demo": "*8/5*. Eight parts counted in total, five parts per whole unit.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 8
+        }
+      ]
+    },
+    {
+      "src": "IT:2c",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "3/2",
+      "demo": "*3/2*. Three parts counted in total, two parts per whole unit.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 2,
+          "counted": 3,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "IT:2d",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "7/4",
+      "demo": "*7/4*. Seven parts counted in total, four parts per whole unit.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 4,
+          "counted": 7
+        }
+      ]
+    },
+    {
+      "src": "IT:2e",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "7/6",
+      "demo": "*7/6*. Seven parts counted in total, six parts per whole unit.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "hexagon",
+          "units": 2,
+          "parts": 6,
+          "counted": 7
+        }
+      ]
+    },
+    {
+      "src": "IT:2f",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "5/8",
+      "demo": "*5/8*. Five parts counted in total, eight parts per whole unit.",
+      "frac": {
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 8,
+          "columns": 4,
+          "counted": 5
+        }
+      ]
+    }
+  ]
+}

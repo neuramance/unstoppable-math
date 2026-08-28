@@ -1,0 +1,137 @@
+{
+  "label": "23",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "This picture fraction shows thirteen fifths. But we can also see that it counts two whole units… Plus, three fifths more. So we can also write that in symbols as a mixed number, like this.",
+      "expected": "2 3/5",
+      "demo": "Two whole units… plus three fifths more: *2 3/5*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 4, "parts": 5, "counted": 13 }]
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here there are three units counted, plus one fifth. We write that as a mixed number like this.",
+      "expected": "3 1/5",
+      "demo": "Three units counted, plus one fifth: *3 1/5*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 4, "parts": 5, "counted": 16 }]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And here there is one unit counted, plus one seventh. We write that as a mixed number like this",
+      "expected": "1 1/7",
+      "demo": "One unit counted, plus one seventh: *1 1/7*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 2, "parts": 7, "counted": 8 }]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn, express the picture fraction as a mixed number.",
+      "expected": "1 5/7",
+      "demo": "One whole unit, plus five sevenths: *1 5/7*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 2, "parts": 7, "counted": 12 }]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "3 5/7",
+      "demo": "Three whole units, plus five sevenths: *3 5/7*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 4, "parts": 7, "counted": 26 }]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "3 5/6",
+      "demo": "Three whole units, plus five sixths: *3 5/6*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 4, "parts": 6, "counted": 23 }]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 1/3",
+      "demo": "Two whole units, plus one third: *2 1/3*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 3, "parts": 3, "counted": 7 }]
+    },
+    {
+      "src": "EX:1a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 1/4",
+      "demo": "Two whole units, plus one fourth: *2 1/4*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "number-line", "units": 3, "parts": 4, "counted": 9, "band": true }]
+    },
+    {
+      "src": "EX:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "3 3/8",
+      "demo": "Three whole units, plus three eighths: *3 3/8*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [
+        { "kind": "number-line", "units": 4, "parts": 8, "counted": 27, "band": true, "orientation": "vertical" }
+      ]
+    },
+    {
+      "src": "EX:1c",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "4 1/6",
+      "demo": "Four whole units, plus one sixth: *4 1/6*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 5, "parts": 6, "counted": 25 }]
+    },
+    {
+      "src": "EX:1d",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 2/5",
+      "demo": "Two whole units, plus two fifths: *2 2/5*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 3, "parts": 5, "counted": 12, "orientation": "vertical" }]
+    },
+    {
+      "src": "EX:1e",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 1/3",
+      "demo": "Two whole units, plus one third: *2 1/3*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "circle", "units": 3, "parts": 3, "counted": 7 }]
+    },
+    {
+      "src": "EX:1f",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "1 5/6",
+      "demo": "One whole unit, plus five sixths: *1 5/6*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "hexagon", "units": 2, "parts": 6, "counted": 11 }]
+    }
+  ]
+}

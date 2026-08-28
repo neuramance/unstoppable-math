@@ -1,0 +1,86 @@
+{
+  "label": "24",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "shade",
+      "prompt": "Here, the mixed number tells us that we have two whole units, plus three fifths. So I can show that as a picture fraction by counting along two whole units… plus three fifths.  2 3/5",
+      "expected": "13",
+      "demo": "I count along two whole units… plus three fifths: *thirteen* parts shaded.",
+      "figures": [{ "kind": "bar", "units": 3, "parts": 5 }]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Your turn. Shade the diagram so that it matches the mixed number.  1 5/7",
+      "expected": "12",
+      "demo": "One whole unit, plus five sevenths: *twelve* parts shaded.",
+      "figures": [{ "kind": "bar", "units": 2, "parts": 7 }]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  3 5/7",
+      "expected": "26",
+      "demo": "Three whole units, plus five sevenths: *twenty-six* parts shaded.",
+      "figures": [{ "kind": "bar", "units": 4, "parts": 7 }]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  3 5/6",
+      "expected": "23",
+      "demo": "Three whole units, plus five sixths: *twenty-three* parts shaded.",
+      "figures": [{ "kind": "bar", "units": 4, "parts": 6 }]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  2 1/3",
+      "expected": "7",
+      "demo": "Two whole units, plus one third: *seven* parts shaded.",
+      "figures": [{ "kind": "bar", "units": 3, "parts": 3 }]
+    },
+    {
+      "src": "EX:1a",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  2 1/4",
+      "expected": "9",
+      "demo": "Two whole units, plus one fourth: *nine* parts shaded.",
+      "figures": [{ "kind": "number-line", "units": 3, "parts": 4 }]
+    },
+    {
+      "src": "EX:1b",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  3 3/8",
+      "expected": "27",
+      "demo": "Three whole units, plus three eighths: *twenty-seven* parts shaded.",
+      "figures": [{ "kind": "number-line", "units": 4, "parts": 8, "orientation": "vertical" }]
+    },
+    {
+      "src": "EX:1c",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  2 2/5",
+      "expected": "12",
+      "demo": "Two whole units, plus two fifths: *twelve* parts shaded.",
+      "figures": [{ "kind": "bar", "units": 3, "parts": 5, "orientation": "vertical" }]
+    },
+    {
+      "src": "EX:1d",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  4 5/8",
+      "expected": "37",
+      "demo": "Four whole units, plus five eighths: *thirty-seven* parts shaded.",
+      "figures": [{ "kind": "bar", "units": 5, "parts": 8 }]
+    }
+  ]
+}

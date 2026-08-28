@@ -1,0 +1,93 @@
+{
+  "label": "34a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 3/4 × 5/5",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 3/4 × 2/2",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "src": "IT:2a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 7/12 × 5/5",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "src": "IT:2b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 3/4 × 5/4",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "src": "IT:2c",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 2/5 × 9/9",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "src": "IT:2d",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 7/12 × 10/9",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "src": "IT:2e",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 1/2 × 6/6",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "src": "IT:2f",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 5/8 × 8/5",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "src": "IT:2g",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 9/10 × 3/3",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "src": "IT:2h",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 4/7 × 6/7",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "src": "IT:2i",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 6/11 × 12/12",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    }
+  ]
+}

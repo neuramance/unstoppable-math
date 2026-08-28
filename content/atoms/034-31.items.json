@@ -1,0 +1,21 @@
+{
+  "label": "31",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If the top and bottom of a fraction are the same, then the fraction has a value of one.",
+      "expected": "one",
+      "demo": "The fraction has a value of *one*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, if the top and bottom of a fraction are the same, what is the value of the fraction?",
+      "expected": "one",
+      "demo": "*One*. If the top and bottom of a fraction are the same, the fraction has a value of one."
+    }
+  ]
+}

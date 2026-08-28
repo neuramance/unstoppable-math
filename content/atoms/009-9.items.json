@@ -1,0 +1,50 @@
+{
+  "label": "9",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When we have a picture like any of these, split into parts, we call that picture a fraction.",
+      "expected": "fraction",
+      "demo": "We call that picture a *fraction*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3
+        },
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Fraction comes from a Latin root, frangere, which meant to fragment, to fracture, or more simply – to break into parts.",
+      "expected": "broken into parts",
+      "demo": "So, a fraction is something that has been *broken into parts*."
+    },
+    {
+      "src": "TBL:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Why do we call it a fraction?",
+      "expected": "frangere",
+      "demo": "Fraction comes from the Latin root, *frangere*, meaning to break, fracture or fragment.",
+      "accept": [
+        "from the latin root frangere",
+        "from the latin root frangere meaning to break",
+        "from the latin root frangere meaning to break fracture or fragment",
+        "it comes from the latin root frangere",
+        "to break",
+        "it means to break",
+        "because it means to break into parts"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "label": "22",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To read a mixed number out loud, we say the whole number, then say the word ‘and’, then say the fraction. So we read this, as ‘two and three fifths’.  2 3/5",
+      "expected": "two and three fifths",
+      "demo": "*Two and three fifths*."
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And we read this, as ‘nine and two tenths’.  9 2/10",
+      "expected": "nine and two tenths",
+      "demo": "*Nine and two tenths*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Say the mixed number out loud.  5 3/7",
+      "expected": "five and three sevenths",
+      "demo": "*Five and three sevenths*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  5 2/7",
+      "expected": "five and two sevenths",
+      "demo": "*Five and two sevenths*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  5 2/9",
+      "expected": "five and two ninths",
+      "demo": "*Five and two ninths*."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  7 2/9",
+      "expected": "seven and two ninths",
+      "demo": "*Seven and two ninths*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  3 12/20",
+      "expected": "three and twelve twentieths",
+      "demo": "*Three and twelve twentieths*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  1 1/2",
+      "expected": "one and one half",
+      "demo": "*One and one half*.",
+      "accept": ["one and a half"]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  3 3/4",
+      "expected": "three and three fourths",
+      "demo": "*Three and three fourths*.",
+      "accept": ["three and three quarters"]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  3 1/3",
+      "expected": "three and one third",
+      "demo": "*Three and one third*.",
+      "accept": ["three and a third"]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  100 10/100",
+      "expected": "one hundred and ten hundredths",
+      "demo": "*One hundred and ten hundredths*."
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "label": "33",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can use pictures, like this one, to find equivalent fractions. My turn to find the fraction over twenty that is equivalent to two fifths.",
+      "expected": "twenty",
+      "demo": "This picture fraction shows a rectangle split into five columns… Four rows… And *twenty* parts altogether.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "columns": 5
+        }
+      ]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Because there are five columns, I can shade two fifths of the diagram by shading two out of five columns, like this.",
+      "expected": "eight",
+      "demo": "And now, I can count that I’ve shaded *eight* parts out of twenty. So, eight twentieths are equivalent to two fifths. 8/20 = 2/5",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "columns": 5,
+          "counted": 8
+        }
+      ]
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn again. What fraction over twenty is equivalent to three fourths?",
+      "frac": { "num": null, "den": "20" },
+      "expected": "15",
+      "demo": "The diagram has four rows, so I shade three of the four rows. I can now count the shaded parts: fifteen shaded parts out of twenty. So *fifteen twentieths* are equivalent to three fourths. 15/20 = 3/4",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "columns": 5,
+          "counted": 15
+        }
+      ]
+    },
+    {
+      "src": "IT:3a",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Your turn to use the picture to find equivalent fractions. This rectangle is split into six columns, three rows, and eighteen parts. What fraction over eighteen is equivalent to three sixths?",
+      "expected": "9",
+      "demo": "I can shade three sixths by shading three out of six columns: *nine* parts out of eighteen. 9/18 = 3/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "src": "IT:3b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "What fraction over eighteen is equivalent to three sixths?",
+      "frac": { "num": null, "den": "18" },
+      "expected": "9",
+      "demo": "*Nine eighteenths* are equivalent to three sixths. 9/18 = 3/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6,
+          "counted": 9
+        }
+      ]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to two sixths?",
+      "expected": "6",
+      "demo": "I shade two of the six columns: *six* parts out of eighteen. 6/18 = 2/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to one sixth?",
+      "expected": "3",
+      "demo": "I shade one of the six columns: *three* parts out of eighteen. 3/18 = 1/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to one third?",
+      "expected": "6",
+      "demo": "The rectangle has three rows. I shade one of the three rows: *six* parts out of eighteen. 6/18 = 1/3",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to two thirds?",
+      "expected": "12",
+      "demo": "I shade two of the three rows: *twelve* parts out of eighteen. 12/18 = 2/3",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to three thirds?",
+      "expected": "18",
+      "demo": "I shade three of the three rows: *eighteen* parts out of eighteen. 18/18 = 3/3",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fraction over six is equivalent to fifteen over eighteen?",
+      "expected": "5/6",
+      "accept": ["five sixths", "5 over 6", "five over six"],
+      "demo": "Fifteen parts out of eighteen is five of the six columns. So *five sixths* are equivalent to fifteen over eighteen. 5/6 = 15/18",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6,
+          "counted": 15
+        }
+      ]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fraction over six is equivalent to twelve over eighteen?",
+      "expected": "4/6",
+      "accept": ["four sixths", "4 over 6", "four over six"],
+      "demo": "Twelve parts out of eighteen is four of the six columns. So *four sixths* are equivalent to twelve over eighteen. 4/6 = 12/18",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6,
+          "counted": 12
+        }
+      ]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This rectangle is split into ten columns, two rows, and twenty parts. What fraction over ten is equivalent to sixteen over twenty?",
+      "expected": "8/10",
+      "accept": ["eight tenths", "8 over 10", "eight over ten"],
+      "demo": "Sixteen parts out of twenty is eight of the ten columns. So *eight tenths* are equivalent to sixteen over twenty. 8/10 = 16/20",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "columns": 10,
+          "counted": 16
+        }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fraction over two is equivalent to ten over twenty?",
+      "expected": "1/2",
+      "accept": ["one half", "a half", "one over two", "1 over 2"],
+      "demo": "Ten parts out of twenty is one of the two rows. So *one half* is equivalent to ten over twenty. 1/2 = 10/20",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "columns": 10,
+          "counted": 10
+        }
+      ]
+    }
+  ]
+}

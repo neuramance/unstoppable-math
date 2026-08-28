@@ -1,0 +1,194 @@
+{
+  "label": "12",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here is a picture fraction. It has two parts per whole unit.",
+      "expected": "two",
+      "demo": "*Two* parts per whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what happens to the size of each part as I increase the number of parts per whole unit.",
+      "expected": "smaller",
+      "demo": "As I increase the number of parts per whole unit, the parts get *smaller*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 6
+        }
+      ]
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, as I decrease the number of parts per whole unit, the parts get bigger again.",
+      "expected": "bigger",
+      "demo": "So, the more parts per whole unit, the *smaller* the size of each part. And, the fewer parts per whole unit, the *bigger* the size of each part.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part as the number of parts per unit increases?",
+      "expected": "the size of each part gets smaller",
+      "demo": "The size of each part gets *smaller*.",
+      "accept": [
+        "smaller",
+        "gets smaller",
+        "it gets smaller",
+        "they get smaller",
+        "the parts get smaller",
+        "each part gets smaller"
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part as the number of parts per unit decreases?",
+      "expected": "the size of each part gets bigger",
+      "demo": "The size of each part gets *bigger*.",
+      "accept": [
+        "bigger",
+        "gets bigger",
+        "it gets bigger",
+        "they get bigger",
+        "the parts get bigger",
+        "each part gets bigger"
+      ]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part of a fraction as the bottom number of the symbol increases?",
+      "expected": "the size of each part gets smaller",
+      "demo": "The size of each part gets *smaller*.",
+      "accept": [
+        "smaller",
+        "gets smaller",
+        "it gets smaller",
+        "they get smaller",
+        "the parts get smaller",
+        "each part gets smaller"
+      ]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part of a fraction as the bottom number of the symbol decreases?",
+      "expected": "the size of each part gets bigger",
+      "demo": "The size of each part gets *bigger*.",
+      "accept": [
+        "bigger",
+        "gets bigger",
+        "it gets bigger",
+        "they get bigger",
+        "the parts get bigger",
+        "each part gets bigger"
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/5  10/9. Which fraction has the bigger sized parts?",
+      "expected": "10/5",
+      "demo": "*10/5* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How do you know?",
+      "expected": "it has fewer parts per whole unit",
+      "demo": "*10/5* has bigger sized parts, because it has *fewer parts per whole unit*.",
+      "accept": [
+        "fewer parts per whole unit",
+        "because it has fewer parts per whole unit",
+        "10/5 has fewer parts per whole unit",
+        "fewer parts per unit",
+        "fewer parts"
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/10  10/9. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "10/9",
+      "demo": "*10/9* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/10  30/9. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "30/9",
+      "demo": "*30/9* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: a/10  a/9. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "a/9",
+      "demo": "*a/9* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: a/10  a/900. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "a/10",
+      "demo": "*a/10* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are five fractions in symbol form: 10/1  10/2  10/3  10/4  10/5. Which fraction has the biggest sized parts? How do you know?",
+      "expected": "10/1",
+      "demo": "*10/1* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are three fractions in symbol form: 10/x  10/d  10/z. The letter d represents the smallest number. The letter z represents the largest number. Which fraction has the biggest sized parts? How do you know?",
+      "expected": "10/d",
+      "demo": "*10/d* has biggest sized parts, because d represents the smallest number, and so 10/d it has fewer parts per whole unit."
+    },
+    {
+      "src": "EX:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/10  10/9. Which fraction has the smaller sized parts? How do you know?",
+      "expected": "10/10",
+      "demo": "*10/10* has smaller sized parts, because it has more parts per whole unit."
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "label": "28",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Given a number line… Then even without seeing the line split into parts, or seeing those parts shaded, we can say whether two fractions are equivalent. So long as they point to the same position on the number line, then the fractions are equivalent. So, these two fractions are not equivalent, because they do not point to the same place on the number line.",
+      "expected": "not equivalent",
+      "demo": "These are *not equivalent*, because they do not point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 3, "counted": 15, "label": "15/3" },
+        { "kind": "number-line", "units": 5, "parts": 9, "counted": 30, "label": "30/9" }
+      ]
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And these two are not equivalent either.",
+      "expected": "not equivalent",
+      "demo": "These are *not equivalent*, because they do not point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 3, "counted": 11, "label": "11/3" },
+        { "kind": "number-line", "units": 5, "parts": 9, "counted": 30, "label": "30/9" }
+      ]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But these two are equivalent, because they point to the same place on the number line.",
+      "expected": "equivalent",
+      "demo": "These are *equivalent*, because they point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 3, "counted": 10, "label": "10/3" },
+        { "kind": "number-line", "units": 5, "parts": 9, "counted": 30, "label": "30/9" }
+      ]
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And these two are equivalent.",
+      "expected": "equivalent",
+      "demo": "These are *equivalent*, because they point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 3, "parts": 5, "counted": 13, "label": "13/5" },
+        { "kind": "number-line", "units": 3, "parts": 15, "counted": 39, "label": "39/15" }
+      ]
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And these two fractions are equivalent.",
+      "expected": "equivalent",
+      "demo": "These are *equivalent*, because they point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 1, "parts": 10, "counted": 4, "label": "4/10" },
+        { "kind": "number-line", "units": 1, "parts": 20, "counted": 8, "label": "8/20" }
+      ]
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But these two are not equivalent.",
+      "expected": "not equivalent",
+      "demo": "These are *not equivalent*, because they do not point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 1, "parts": 10, "counted": 4, "label": "4/10" },
+        { "kind": "number-line", "units": 1, "parts": 20, "counted": 9, "label": "9/20" }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, because they point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 4, "parts": 2, "counted": 7, "label": "7/2" },
+        { "kind": "number-line", "units": 4, "parts": 6, "counted": 21, "label": "21/6" }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, because they do not point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 5, "parts": 2, "counted": 7, "label": "7/2" },
+        { "kind": "number-line", "units": 5, "parts": 4, "counted": 17, "label": "17/4" }
+      ]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*, they point to the same place on the number line.",
+      "figures": [
+        { "kind": "number-line", "units": 4, "parts": 2, "counted": 7, "label": "7/2" },
+        { "kind": "number-line", "units": 4, "parts": 6, "counted": 21, "label": "21/6" }
+      ]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent?  10/15  100/150",
+      "expected": "yes",
+      "demo": "*Yes*, they point to the same place on the number line."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two mixed numbers equivalent?  3 10/15  3 100/150",
+      "expected": "yes",
+      "demo": "*Yes*, they point to the same place on the number line."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fractions are equivalent?  6/4  5/2  9/6  7/3  1/4",
+      "expected": "6/4 and 9/6",
+      "demo": "*6/4 and 9/6* point to the same place on the number line.",
+      "accept": ["9/6 and 6/4", "6/4 9/6", "9/6 6/4"]
+    }
+  ]
+}

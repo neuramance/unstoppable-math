@@ -1,0 +1,65 @@
+{
+  "label": "32a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We read this fraction as five twelfths. But there is a second way we can read fractions. Sometimes we read fractions by saying the top number, then the word ‘over’, then the bottom number. 5/12",
+      "expected": "five over twelve",
+      "demo": "So, we can read that fraction as five twelfths, or we can read it as *five over twelve*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can read this fraction as one hundred three over two hundred fifteen. 103/215",
+      "expected": "one hundred three over two hundred fifteen",
+      "demo": "*One hundred three over two hundred fifteen*."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And we can read this fraction as one plus P over two hundred fifteen a. (1 + P)/(215a)",
+      "expected": "one plus P over two hundred fifteen a",
+      "demo": "*One plus P over two hundred fifteen a*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to say the fractions. Say this fraction out loud. 7/10",
+      "expected": "seven over ten",
+      "accept": ["seven tenths"],
+      "demo": "*Seven over ten*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say this fraction out loud. 72/1",
+      "expected": "seventy-two over one",
+      "accept": ["72 over 1"],
+      "demo": "*Seventy-two over one*."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say this fraction out loud. (72R)/b",
+      "expected": "seventy-two R over b",
+      "accept": ["72R over b", "72 R over b"],
+      "demo": "*Seventy-two R over b*."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say this fraction out loud. (72R)/(b-5)",
+      "expected": "seventy-two R over b minus five",
+      "accept": ["72R over b minus five", "72 R over b minus five"],
+      "demo": "*Seventy-two R over b minus five*."
+    }
+  ]
+}

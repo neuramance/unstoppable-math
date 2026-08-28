@@ -1,0 +1,67 @@
+{
+  "label": "14a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Given these two symbolic fractions, this one is greater. 5/3  8/3",
+      "expected": "8/3",
+      "demo": "*8/3* is greater."
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "One fraction is greater than another fraction if it shades more space. So, this fraction is greater than this one, because it shades more space.",
+      "expected": "it shades more space",
+      "demo": "This fraction is greater, because *it shades more space*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Looking at the symbols for each fraction, each symbol shows the same number of parts per whole unit…",
+      "expected": "a bigger number on top",
+      "demo": "…and then the fraction that shades more space has a *bigger number on top*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "label": "8/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        }
+      ]
+    },
+    {
+      "src": "TBL:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fraction is greater? How do you know?  5/3  8/3",
+      "expected": "8/3",
+      "demo": "*8/3* is greater, because it has more parts."
+    }
+  ]
+}

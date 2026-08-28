@@ -1,0 +1,85 @@
+{
+  "label": "29",
+  "items": [
+    {
+      "src": "TBL:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "3/10 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "7/10",
+      "demo": "Three tenths are shaded, so *7/10* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "pentagon", "units": 1, "parts": 10, "counted": 3 }]
+    },
+    {
+      "src": "IT:1a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "3/8 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "5/8",
+      "demo": "Three eighths are shaded, so *5/8* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 1, "parts": 8, "counted": 3 }]
+    },
+    {
+      "src": "IT:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "1/6 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "5/6",
+      "demo": "One sixth is shaded, so *5/6* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "circle", "units": 1, "parts": 6, "counted": 1 }]
+    },
+    {
+      "src": "IT:1c",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "7/10 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "3/10",
+      "demo": "Seven tenths are shaded, so *3/10* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "number-line", "units": 1, "parts": 10, "counted": 7, "band": true }]
+    },
+    {
+      "src": "IT:1d",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "4/9 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "5/9",
+      "demo": "Four ninths are shaded, so *5/9* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "grid", "units": 1, "parts": 9, "counted": 4, "columns": 3 }]
+    },
+    {
+      "src": "IT:1e",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "2/5 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "3/5",
+      "demo": "Two fifths are shaded, so *3/5* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "bar", "units": 1, "parts": 5, "counted": 2, "orientation": "vertical" }]
+    },
+    {
+      "src": "IT:1f",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "5/6 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "1/6",
+      "demo": "Five sixths are shaded, so *1/6* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "hexagon", "units": 1, "parts": 6, "counted": 5 }]
+    },
+    {
+      "src": "IT:1g",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "3/4 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "1/4",
+      "demo": "Three fourths are shaded, so *1/4* is not shaded.",
+      "frac": { "num": null, "den": null },
+      "figures": [{ "kind": "square", "units": 1, "parts": 4, "counted": 3 }]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "label": "18",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To read a fraction out loud, we first say the top number, then we say the name of the parts. So here, we have five halves. 5/2",
+      "expected": "five halves",
+      "demo": "*Five halves*."
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here we have five thirds. 5/3",
+      "expected": "five thirds",
+      "demo": "*Five thirds*."
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here we have five fourths. 5/4",
+      "expected": "five fourths",
+      "demo": "*Five fourths*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here we have four fourths. 4/4",
+      "expected": "four fourths",
+      "demo": "*Four fourths*."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here we have four sevenths. 4/7",
+      "expected": "four sevenths",
+      "demo": "*Four sevenths*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, say the fraction out loud. 4/8",
+      "expected": "four eighths",
+      "demo": "*Four eighths*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 4/9",
+      "expected": "four ninths",
+      "demo": "*Four ninths*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 7/9",
+      "expected": "seven ninths",
+      "demo": "*Seven ninths*."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 17/9",
+      "expected": "seventeen ninths",
+      "demo": "*Seventeen ninths*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 34/6",
+      "expected": "thirty-four sixths",
+      "demo": "*Thirty-four sixths*.",
+      "accept": ["34 sixths"]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 100/3",
+      "expected": "one hundred thirds",
+      "demo": "*One hundred thirds*.",
+      "accept": ["a hundred thirds", "hundred thirds", "100 thirds"]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 1/2",
+      "expected": "one half",
+      "demo": "*One half*.",
+      "accept": ["a half"]
+    }
+  ]
+}

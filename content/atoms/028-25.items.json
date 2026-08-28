@@ -1,0 +1,72 @@
+{
+  "label": "25",
+  "items": [
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "In English, the word ‘value’, as in, the value of a number, means the amount the number represents. We can represent the same value in lots of different ways. For example, each of these represents a value of five.",
+      "expected": "five",
+      "demo": "Each of these represents a value of *five*.",
+      "count": "units",
+      "figures": [
+        { "kind": "circle", "units": 5, "parts": 1 },
+        { "kind": "number-line", "units": 5, "parts": 1, "counted": 5, "label": "5" }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Each of these represents a value of seven.",
+      "expected": "seven",
+      "demo": "Each of these represents a value of *seven*.",
+      "count": "parts",
+      "figures": [{ "kind": "grid", "units": 1, "parts": 7, "counted": 7, "columns": 7 }]
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And each of these represents a value of three.",
+      "expected": "three",
+      "demo": "Each of these represents a value of *three*.",
+      "count": "units",
+      "figures": [
+        { "kind": "circle", "units": 3, "parts": 1 },
+        { "kind": "number-line", "units": 3, "parts": 1, "counted": 3, "label": "3" }
+      ]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So when we talk about value of a number, or any other representation in mathematics, we’re talking about the amount it represents.",
+      "expected": "the amount it represents",
+      "demo": "We’re talking about *the amount it represents*."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we mean by the value of a number?",
+      "expected": "the amount it represents",
+      "demo": "*The amount it represents*.",
+      "accept": [
+        "the amount the number represents",
+        "the amount represented",
+        "amount it represents",
+        "its position on the number line",
+        "the amount it represents, or its position on the number line"
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What word means the amount represented by a number?",
+      "expected": "value",
+      "demo": "*Value*."
+    }
+  ]
+}

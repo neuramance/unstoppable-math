@@ -1,0 +1,118 @@
+{
+  "label": "17",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These two symbols tell us that one number is greater than the other. <  >",
+      "expected": "greater",
+      "demo": "These two symbols tell us that one number is *greater* than the other."
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "One side of the symbol is smaller than the other side. One side of the symbol is larger than the other side. We always write the smaller number next to the smaller side of the symbol, and the larger number next to the larger side of the symbol. <  >",
+      "expected": "smaller number next to the smaller side",
+      "demo": "We always write the *smaller* number next to the *smaller* side of the symbol, and the *larger* number next to the *larger* side of the symbol."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "For example, five thirds is less than eight thirds, so we write the symbol like this. 5/3 ▢ 8/3",
+      "expected": "<",
+      "demo": "5/3 *<* 8/3. The smaller number is next to the smaller part of the symbol, and the larger number is next to the larger part of the symbol."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But five thirds is greater than five eighths, so this time we write the symbol like this. 5/3 ▢ 5/8",
+      "expected": ">",
+      "demo": "5/3 *>* 5/8. Again, the smaller number is next to the smaller part of the symbol, and the larger number is next to the larger part of the symbol."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, write the correct symbol into the blank space. 5/10 ▢ 18/10",
+      "expected": "<",
+      "demo": "5/10 *<* 18/10."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 51/10 ▢ 18/10",
+      "expected": ">",
+      "demo": "51/10 *>* 18/10."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/3 ▢ 10/20",
+      "expected": ">",
+      "demo": "10/3 *>* 10/20."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/19 ▢ 10/20",
+      "expected": ">",
+      "demo": "10/19 *>* 10/20."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/19 ▢ 10/18",
+      "expected": "<",
+      "demo": "10/19 *<* 10/18."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/19 ▢ 10/19",
+      "expected": "=",
+      "demo": "10/19 *=* 10/19. The fractions are equal, so neither the smaller side nor the larger side fits.",
+      "accept": ["equal", "equals", "neither"]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 100/19 ▢ 10/19",
+      "expected": ">",
+      "demo": "100/19 *>* 10/19."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 1/1 ▢ 2/1",
+      "expected": "<",
+      "demo": "1/1 *<* 2/1."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 1/1 ▢ 1/2",
+      "expected": ">",
+      "demo": "1/1 *>* 1/2."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 1/2 ▢ 1/1",
+      "expected": "<",
+      "demo": "1/2 *<* 1/1."
+    }
+  ]
+}

@@ -6,7 +6,40 @@
     "2": "2",
     "3": "3a",
     "4": "3b",
-    "5": "3"
+    "5": "3",
+    "6": "4",
+    "7": "5",
+    "8": "6",
+    "9": "9",
+    "10": "7",
+    "11": "8",
+    "12": "10",
+    "13": "11",
+    "14": "12",
+    "15": "13",
+    "16": "14",
+    "17": "14a",
+    "18": "15",
+    "19": "16",
+    "20": "17",
+    "21": "18",
+    "22": "19",
+    "23": "20",
+    "24": "21",
+    "25": "22",
+    "26": "23",
+    "27": "24",
+    "28": "25",
+    "29": "26",
+    "30": "27",
+    "31": "28",
+    "32": "29",
+    "33": "30",
+    "34": "31",
+    "35": "32a",
+    "36": "32",
+    "37": "33",
+    "38": "34a"
   },
   "narrative": "land-before-counting.mp4",
   "items": [
@@ -1066,6 +1099,4893 @@
           ]
         }
       ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "I’m going to show you how we count the parts of a fraction. My turn first. Here there are seven parts.",
+      "expected": "seven",
+      "demo": "One, two, three, four, five, six, seven. *Seven* parts.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here there are still seven parts.",
+      "expected": "seven",
+      "demo": "Still *seven* parts.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 7,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here there are three parts.",
+      "expected": "three",
+      "demo": "*Three* parts.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. How many parts are counted?",
+      "expected": "two",
+      "demo": "*Two* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 2,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what changed. How many parts are counted now?",
+      "expected": "two",
+      "demo": "*Two* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 2,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now, how many parts are counted?",
+      "expected": "five",
+      "demo": "*Five* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "six",
+      "demo": "*Six* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 6,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "three",
+      "demo": "*Three* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 3,
+          "counted": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "seven",
+      "demo": "*Seven* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 7
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "six",
+      "demo": "*Six* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 6,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "nine",
+      "demo": "*Nine* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4,
+          "counted": 9,
+          "orientation": "vertical",
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "five",
+      "demo": "*Five* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 4,
+          "parts": 2,
+          "counted": 5
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "one",
+      "demo": "*One* part is counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "triangle",
+          "units": 3,
+          "parts": 3,
+          "counted": 1
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "fourteen",
+      "demo": "*Fourteen* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "counted": 14,
+          "columns": 2
+        }
+      ]
+    },
+    {
+      "row": 7,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "We can write the number of parts in a whole unit using a symbol. For example, here there are five parts per whole unit. We can write that like this.",
+      "expected": "5",
+      "demo": "We draw a short horizontal line, and then write the number of parts per whole unit underneath that line: *5*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5
+        }
+      ],
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 7,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here, there are seven parts per whole unit. We can write that like this.",
+      "expected": "7",
+      "demo": "Each time, we draw a short horizontal line, and then write the number of parts per whole unit underneath that line: *7*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 7
+        }
+      ],
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 7,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Here there are three parts per whole unit. Write that using a symbol.",
+      "expected": "3",
+      "demo": "We write *3* underneath the line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3
+        }
+      ],
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 7,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now, here are six parts per whole unit. Write that using a symbol.",
+      "expected": "6",
+      "demo": "We write *6* underneath the line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 6
+        }
+      ],
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 7,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there are twenty-six parts per whole unit. Write that using a symbol.",
+      "expected": "26",
+      "demo": "We write *26* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 7,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there is one part per whole unit. Write that using a symbol.",
+      "expected": "1",
+      "demo": "We write *1* underneath the line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 1
+        }
+      ],
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 7,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "I’m picturing a shape with four parts per whole unit. How can I show that using a symbol?",
+      "expected": "4",
+      "demo": "We write *4* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 8,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "We can also write the number of counted parts using a symbol. For example, here there are seven parts counted. We can write that like this.",
+      "expected": "7",
+      "demo": "We draw a short horizontal line, and then write the number of counted parts above that line: *7*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": ""
+      }
+    },
+    {
+      "row": 8,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here, there are three parts counted. We can write that like this.",
+      "expected": "3",
+      "demo": "Each time, we draw a short horizontal line, and then write the number of counted parts above that line: *3*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 3,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": ""
+      }
+    },
+    {
+      "row": 8,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Here there are six parts counted. Write that using a symbol.",
+      "expected": "6",
+      "demo": "We write *6* above the line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 6,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": ""
+      }
+    },
+    {
+      "row": 8,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now, here are nine parts counted. Write that using a symbol.",
+      "expected": "9",
+      "demo": "We write *9* above the line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 9,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": ""
+      }
+    },
+    {
+      "row": 8,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there are ten parts per whole unit. Write that using a symbol.",
+      "expected": "10",
+      "demo": "We write *10* underneath the line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10
+        }
+      ],
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "row": 8,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there is one part counted. Write that using a symbol.",
+      "expected": "1",
+      "demo": "We write *1* above the line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 1,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": ""
+      }
+    },
+    {
+      "row": 8,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "I’m picturing a shape with twenty-five parts counted. How can I show that using a symbol?",
+      "expected": "25",
+      "demo": "We write *25* above the line.",
+      "frac": {
+        "num": null,
+        "den": ""
+      }
+    },
+    {
+      "row": 9,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When we have a picture like any of these, split into parts, we call that picture a fraction.",
+      "expected": "fraction",
+      "demo": "We call that picture a *fraction*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3
+        },
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "row": 9,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Fraction comes from a Latin root, frangere, which meant to fragment, to fracture, or more simply – to break into parts.",
+      "expected": "broken into parts",
+      "demo": "So, a fraction is something that has been *broken into parts*."
+    },
+    {
+      "row": 9,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Why do we call it a fraction?",
+      "expected": "frangere",
+      "demo": "Fraction comes from the Latin root, *frangere*, meaning to break, fracture or fragment.",
+      "accept": [
+        "from the latin root frangere",
+        "from the latin root frangere meaning to break",
+        "from the latin root frangere meaning to break fracture or fragment",
+        "it comes from the latin root frangere",
+        "to break",
+        "it means to break",
+        "because it means to break into parts"
+      ]
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here is a picture fraction. It has five parts per whole unit, and seven parts are counted in total. So I can express it using a symbol, like this.",
+      "expected": "7/5",
+      "demo": "Like this: *7/5*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "This picture fraction has three parts per whole unit, and eight parts are counted in total, so I can express it using symbol, like this.",
+      "expected": "8/3",
+      "demo": "Like this: *8/3*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Express this picture fraction using a symbol.",
+      "expected": "5/4",
+      "demo": "*5/4*. Five parts counted in total, four parts per whole unit.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "4/3",
+      "demo": "*4/3*. Four parts counted in total, three parts per whole unit.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 4,
+          "orientation": "vertical",
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "8/5",
+      "demo": "*8/5*. Eight parts counted in total, five parts per whole unit.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 8
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "3/2",
+      "demo": "*3/2*. Three parts counted in total, two parts per whole unit.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 2,
+          "counted": 3,
+          "orientation": "vertical"
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "7/4",
+      "demo": "*7/4*. Seven parts counted in total, four parts per whole unit.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 4,
+          "counted": 7
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "7/6",
+      "demo": "*7/6*. Seven parts counted in total, six parts per whole unit.",
+      "figures": [
+        {
+          "kind": "hexagon",
+          "units": 2,
+          "parts": 6,
+          "counted": 7
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 10,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express this picture fraction using a symbol.",
+      "expected": "5/8",
+      "demo": "*5/8*. Five parts counted in total, eight parts per whole unit.",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 8,
+          "counted": 5,
+          "columns": 4
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "model",
+      "mode": "shade",
+      "prompt": "Here is a fraction in symbol form: 8/3. And here is an incomplete picture fraction.",
+      "expected": "8",
+      "demo": "The symbol tells me there are eight parts counted in total, so I shade *eight* parts in the picture fraction, like this.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Your turn. Shade the diagram so that it matches the symbolic fraction: 7/3",
+      "expected": "7",
+      "demo": "The symbol tells me there are *seven* parts counted in total, so I shade seven parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Watch what I change. Now, shade the diagram so that it matches the symbolic fraction: 7/4",
+      "expected": "7",
+      "demo": "The symbol tells me there are *seven* parts counted in total, so I shade seven parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 7/4",
+      "expected": "7",
+      "demo": "The symbol tells me there are *seven* parts counted in total, so I shade seven parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "orientation": "vertical",
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 3/4",
+      "expected": "3",
+      "demo": "The symbol tells me there are *three* parts counted in total, so I shade three parts.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 3/2",
+      "expected": "3",
+      "demo": "The symbol tells me there are *three* parts counted in total, so I shade three parts.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 5/2",
+      "expected": "5",
+      "demo": "The symbol tells me there are *five* parts counted in total, so I shade five parts.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 5/4",
+      "expected": "5",
+      "demo": "The symbol tells me there are *five* parts counted in total, so I shade five parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 12,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which number, top or bottom, tells how many parts make one whole unit?\n8/3",
+      "expected": "Bottom",
+      "demo": "The *bottom* number tells how many parts make one whole unit.",
+      "accept": [
+        "the bottom",
+        "bottom number",
+        "the bottom number"
+      ]
+    },
+    {
+      "row": 13,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which number, top or bottom, tells how many parts there are?\n8/3",
+      "expected": "Top",
+      "demo": "The *top* number tells how many parts there are.",
+      "accept": [
+        "the top",
+        "top number",
+        "the top number"
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here is a picture fraction. It has two parts per whole unit.",
+      "expected": "two",
+      "demo": "*Two* parts per whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Watch what happens to the size of each part as I increase the number of parts per whole unit.",
+      "expected": "smaller",
+      "demo": "As I increase the number of parts per whole unit, the parts get *smaller*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 6
+        }
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Now, as I decrease the number of parts per whole unit, the parts get bigger again.",
+      "expected": "bigger",
+      "demo": "So, the more parts per whole unit, the *smaller* the size of each part. And, the fewer parts per whole unit, the *bigger* the size of each part.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part as the number of parts per unit increases?",
+      "expected": "the size of each part gets smaller",
+      "demo": "The size of each part gets *smaller*.",
+      "accept": [
+        "smaller",
+        "gets smaller",
+        "it gets smaller",
+        "they get smaller",
+        "the parts get smaller",
+        "each part gets smaller"
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part as the number of parts per unit decreases?",
+      "expected": "the size of each part gets bigger",
+      "demo": "The size of each part gets *bigger*.",
+      "accept": [
+        "bigger",
+        "gets bigger",
+        "it gets bigger",
+        "they get bigger",
+        "the parts get bigger",
+        "each part gets bigger"
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part of a fraction as the bottom number of the symbol increases?",
+      "expected": "the size of each part gets smaller",
+      "demo": "The size of each part gets *smaller*.",
+      "accept": [
+        "smaller",
+        "gets smaller",
+        "it gets smaller",
+        "they get smaller",
+        "the parts get smaller",
+        "each part gets smaller"
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the size of each part of a fraction as the bottom number of the symbol decreases?",
+      "expected": "the size of each part gets bigger",
+      "demo": "The size of each part gets *bigger*.",
+      "accept": [
+        "bigger",
+        "gets bigger",
+        "it gets bigger",
+        "they get bigger",
+        "the parts get bigger",
+        "each part gets bigger"
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/5  10/9. Which fraction has the bigger sized parts?",
+      "expected": "10/5",
+      "demo": "*10/5* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How do you know?",
+      "expected": "it has fewer parts per whole unit",
+      "demo": "*10/5* has bigger sized parts, because it has *fewer parts per whole unit*.",
+      "accept": [
+        "fewer parts per whole unit",
+        "because it has fewer parts per whole unit",
+        "10/5 has fewer parts per whole unit",
+        "fewer parts per unit",
+        "fewer parts"
+      ]
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/10  10/9. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "10/9",
+      "demo": "*10/9* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/10  30/9. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "30/9",
+      "demo": "*30/9* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: a/10  a/9. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "a/9",
+      "demo": "*a/9* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: a/10  a/900. Which fraction has the bigger sized parts? How do you know?",
+      "expected": "a/10",
+      "demo": "*a/10* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are five fractions in symbol form: 10/1  10/2  10/3  10/4  10/5. Which fraction has the biggest sized parts? How do you know?",
+      "expected": "10/1",
+      "demo": "*10/1* has bigger sized parts, because it has fewer parts per whole unit."
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are three fractions in symbol form: 10/x  10/d  10/z. The letter d represents the smallest number. The letter z represents the largest number. Which fraction has the biggest sized parts? How do you know?",
+      "expected": "10/d",
+      "demo": "*10/d* has biggest sized parts, because d represents the smallest number, and so 10/d it has fewer parts per whole unit."
+    },
+    {
+      "row": 14,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form: 10/10  10/9. Which fraction has the smaller sized parts? How do you know?",
+      "expected": "10/10",
+      "demo": "*10/10* has smaller sized parts, because it has more parts per whole unit."
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here is a picture fraction. It has five parts per whole unit.",
+      "expected": "five",
+      "demo": "*Five* parts per whole unit.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 7
+        }
+      ]
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Seven parts are counted, and so its symbol has a seven on top.",
+      "expected": "seven",
+      "demo": "*Seven* parts are counted, and so its symbol has a seven on top.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "label": "7/5"
+        }
+      ]
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "As more parts are counted… the number on top increases.",
+      "expected": "increases",
+      "demo": "As more parts are counted, the number on top *increases*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "label": "7/5"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 9,
+          "label": "9/5"
+        }
+      ]
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "As fewer parts are counted… the number on top decreases.",
+      "expected": "decreases",
+      "demo": "As fewer parts are counted, the number on top *decreases*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "label": "7/5"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 3,
+          "label": "3/5"
+        }
+      ]
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the number of counted parts as the top number increases?",
+      "expected": "there are more parts counted",
+      "demo": "There are *more parts counted*.",
+      "accept": [
+        "it increases",
+        "increases",
+        "more parts counted",
+        "more parts are counted",
+        "more"
+      ]
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What happens to the number of counted parts as the top number decreases?",
+      "expected": "there are fewer parts counted",
+      "demo": "There are *fewer parts counted*.",
+      "accept": [
+        "it decreases",
+        "decreases",
+        "fewer parts counted",
+        "fewer parts are counted",
+        "fewer"
+      ]
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which counts more parts? How do you know? 10/5  40/5",
+      "expected": "40/5",
+      "demo": "*40/5*, because the top number is bigger."
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which counts more parts? How do you know? 23/7  82/17",
+      "expected": "82/17",
+      "demo": "*82/17*, because the top number is bigger."
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which counts more parts? How do you know? 10/a  9/a",
+      "expected": "10/a",
+      "demo": "*10/a* counts more parts, because the top number is bigger."
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are five fractions in symbol form. Which fraction counts more parts? How do you know? 1/10  2/10  3/10  4/10  5/10",
+      "expected": "5/10",
+      "demo": "*5/10* counts more parts, because the top number is bigger."
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction counts the most parts? How do you know? x/10  d/10  z/10",
+      "expected": "z/10",
+      "demo": "*z/10* counts the most parts, because z represents the largest number on top of the symbol."
+    },
+    {
+      "row": 15,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction counts the fewest number of parts? How do you know? 10/10  9/10",
+      "expected": "9/10",
+      "demo": "*9/10* counts the fewest number of parts, because it has the smallest top number."
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These two fractions have parts that are the same size. 5/3  8/3",
+      "expected": "the same size",
+      "demo": "These two fractions have parts that are *the same size*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "label": "8/3"
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This one is greater, because it counts more parts. 5/3  8/3",
+      "expected": "8/3",
+      "demo": "*8/3* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "label": "8/3"
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here… This one is greater, because it counts more parts. 5/4  8/4",
+      "expected": "8/4",
+      "demo": "*8/4* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "label": "5/4"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 8,
+          "label": "8/4"
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And now… This one is greater, because it counts more parts. 15/4  8/4",
+      "expected": "15/4",
+      "demo": "*15/4* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 4,
+          "counted": 15,
+          "label": "15/4"
+        },
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 4,
+          "counted": 8,
+          "label": "8/4"
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Which fraction is greater? How do you know? 15/10  8/10",
+      "expected": "15/10",
+      "demo": "*15/10* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 15,
+          "label": "15/10"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 8,
+          "label": "8/10"
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now. which fraction is greater? How do you know? 15/10  18/10",
+      "expected": "18/10",
+      "demo": "*18/10* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 15,
+          "label": "15/10"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 18,
+          "label": "18/10"
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 7/4  11/4",
+      "expected": "11/4",
+      "demo": "*11/4* is greater. The bottom numbers are the same, so the parts are the same size. 11/4 has the bigger top number, so it counts more parts."
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 23/10  82/10",
+      "expected": "82/10",
+      "demo": "*82/10* is greater. The bottom numbers are the same, so the parts are the same size. 82/10 has the bigger top number, so it counts more parts."
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. The letter a represents a bigger number than b. Which fraction is greater? How do you know? a/10  b/10",
+      "expected": "a/10",
+      "demo": "*a/10* is greater. The bottom numbers are the same, so the parts are the same size. a is the bigger top number, so a/10 counts more parts."
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are five fractions in symbol form. Which fraction is the greatest? How do you know? 1/10  2/10  3/10  4/10  5/10",
+      "expected": "5/10",
+      "demo": "*5/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. 5/10 has the biggest top number, so it counts the most parts."
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction is the greatest? How do you know? x/10  d/10  z/10",
+      "expected": "z/10",
+      "demo": "*z/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. z is the biggest top number, so z/10 counts the most parts."
+    },
+    {
+      "row": 16,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is the lesser? How do you know? 10/3  9/3",
+      "expected": "9/3",
+      "demo": "*9/3* is the lesser. The bottom numbers are the same, so the parts are the same size. 9/3 has the smaller top number, so it counts fewer parts."
+    },
+    {
+      "row": 17,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Given these two symbolic fractions, this one is greater. 5/3  8/3",
+      "expected": "8/3",
+      "demo": "*8/3* is greater."
+    },
+    {
+      "row": 17,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "One fraction is greater than another fraction if it shades more space. So, this fraction is greater than this one, because it shades more space.",
+      "expected": "it shades more space",
+      "demo": "This fraction is greater, because *it shades more space*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5
+        }
+      ]
+    },
+    {
+      "row": 17,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Looking at the symbols for each fraction, each symbol shows the same number of parts per whole unit…",
+      "expected": "a bigger number on top",
+      "demo": "…and then the fraction that shades more space has a *bigger number on top*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "label": "8/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        }
+      ]
+    },
+    {
+      "row": 17,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fraction is greater? How do you know?  5/3  8/3",
+      "expected": "8/3",
+      "demo": "*8/3* is greater, because it has more parts."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These two fractions count the same number of parts. 5/3  5/8",
+      "expected": "the same number of parts",
+      "demo": "These two fractions count *the same number of parts*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 8,
+          "counted": 5,
+          "label": "5/8"
+        }
+      ]
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This one is greater, because it has fewer parts per whole unit and so each part is larger. 5/3  5/8",
+      "expected": "5/3",
+      "demo": "*5/3* is greater, because it has fewer parts per whole unit and so each part is larger.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 8,
+          "counted": 5,
+          "label": "5/8"
+        }
+      ]
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here… This one is greater, because it has fewer parts per whole unit and so each part is larger. 7/3  7/8",
+      "expected": "7/3",
+      "demo": "*7/3* is greater, because it has fewer parts per whole unit and so each part is larger.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 7,
+          "label": "7/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 8,
+          "counted": 7,
+          "label": "7/8"
+        }
+      ]
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And now… This one is greater, because it has fewer parts per whole unit and so each part is larger. 7/13  7/8",
+      "expected": "7/8",
+      "demo": "*7/8* is greater, because it has fewer parts per whole unit and so each part is larger.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 13,
+          "counted": 7,
+          "label": "7/13"
+        },
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 8,
+          "counted": 7,
+          "label": "7/8"
+        }
+      ]
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Which fraction is greater? How do you know? 17/13  17/8",
+      "expected": "17/8",
+      "demo": "*17/8*, because the bottom number is smaller, so each part is bigger."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now. which fraction is greater? How do you know? 17/13  17/14",
+      "expected": "17/13",
+      "demo": "*17/13*, because the bottom number is smaller, so each part is bigger."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 7/3  7/8",
+      "expected": "7/3",
+      "demo": "*7/3* is greater. The top numbers are the same, so both fractions count the same number of parts. 7/3 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 23/14  23/9",
+      "expected": "23/9",
+      "demo": "*23/9* is greater. The top numbers are the same, so both fractions count the same number of parts. 23/9 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. The letter a represents a bigger number than b. Which fraction is greater? How do you know? 17/a  17/b",
+      "expected": "17/b",
+      "demo": "*17/b* is greater. The top numbers are the same, so both fractions count the same number of parts. b is the smaller bottom number, so 17/b has fewer parts per whole unit and each part is larger."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are five fractions in symbol form. Which fraction is the greatest? How do you know? 7/3  7/5  7/8  7/13  7/14",
+      "expected": "7/3",
+      "demo": "*7/3* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. 7/3 has the smallest bottom number, so it has the fewest parts per whole unit and the largest parts."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction is the greatest? How do you know? 17/x  17/d  17/z",
+      "expected": "17/d",
+      "demo": "*17/d* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. d is the smallest bottom number, so 17/d has the fewest parts per whole unit and the largest parts."
+    },
+    {
+      "row": 18,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is the lesser? How do you know? 17/13  17/8",
+      "expected": "17/13",
+      "demo": "*17/13* is the lesser. The top numbers are the same, so both fractions count the same number of parts. 17/13 has the bigger bottom number, so it has more parts per whole unit and each part is smaller."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that we can only compare two fractions directly if their parts are the same size. For example, we can say that seven thirds is greater than two thirds, because thirds are the same size, and so seven thirds is greater than just two thirds.",
+      "expected": "seven thirds",
+      "demo": "*Seven thirds* is greater than two thirds, because thirds are the same size.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 3,
+          "counted": 2
+        },
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 3,
+          "counted": 7
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But what if we’re counting thirds of different sized units? For example, here – two rectangles, split into thirds, one rectangle larger than the other – the parts are not the same size, so we cannot compare the two fractions directly.",
+      "expected": "not the same size",
+      "demo": "The parts are *not the same size*, so we cannot compare the two fractions directly."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here, we can compare them directly, because the units are the same size",
+      "expected": "the same size",
+      "demo": "We can compare them directly, because the units are *the same size*.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 5
+        },
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "One set of circles is now larger than the other set. But here we cannot compare them directly, because the units are not the same size",
+      "expected": "not the same size",
+      "demo": "We cannot compare them directly, because the units are *not the same size*."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Two horizontal number lines each go up to three, with units split into fourths, but one number line is longer than the other. And here, we cannot compare them directly, because the units are not the same size",
+      "expected": "not the same size",
+      "demo": "We cannot compare them directly, because the units are *not the same size*."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But here, we can compare them directly, because the units are the same size",
+      "expected": "the same size",
+      "demo": "We can compare them directly, because the units are *the same size*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can these two fractions be compared directly?",
+      "expected": "yes",
+      "demo": "*Yes*, because the units are the same size.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "counted": 8,
+          "label": "8/5"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "counted": 10,
+          "label": "10/5"
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can these two fractions be compared directly?",
+      "expected": "yes",
+      "demo": "*Yes*, because the units are the same size.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7,
+          "counted": 8,
+          "label": "8/7"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7,
+          "counted": 10,
+          "label": "10/7"
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "The number lines still show 8/7 and 10/7, but one number line has shrunk to be shorter than the other. Can these two fractions be compared directly?",
+      "expected": "no",
+      "demo": "*No*, because the units are not the same size."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Two circles of different sizes are each split into eighths. One part is shaded in one circle, showing 1/8, and three parts are shaded in the other, showing 3/8. Can these two fractions be compared directly?",
+      "expected": "no",
+      "demo": "*No*, because the units are not the same size."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can these two fractions be compared directly?",
+      "expected": "yes",
+      "demo": "*Yes*, because the units are the same size.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 8,
+          "counted": 1,
+          "label": "1/8"
+        },
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 8,
+          "counted": 3,
+          "label": "3/8"
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Ben ate 2/3 of a small pizza. Jen ate 2/3 of a large pizza. Did they eat the same amount of pizza? How do you know?",
+      "expected": "no",
+      "demo": "*No*, because the pizzas were not the same size."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Two fields are the same size. 7/10 of the first is planted, and 7/10 of the second is planted. Is the same amount of land planted? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, because the fields are the same size."
+    },
+    {
+      "row": 19,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Mia read 2/5 of a short book. Leo read 2/5 of a long book. Did they read the same number of pages? How do you know?",
+      "expected": "no",
+      "demo": "*No*, because the books were not the same size."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These two symbols tell us that one number is greater than the other. <  >",
+      "expected": "greater",
+      "demo": "These two symbols tell us that one number is *greater* than the other."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "One side of the symbol is smaller than the other side. One side of the symbol is larger than the other side. We always write the smaller number next to the smaller side of the symbol, and the larger number next to the larger side of the symbol. <  >",
+      "expected": "smaller number next to the smaller side",
+      "demo": "We always write the *smaller* number next to the *smaller* side of the symbol, and the *larger* number next to the *larger* side of the symbol."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "For example, five thirds is less than eight thirds, so we write the symbol like this. 5/3 ▢ 8/3",
+      "expected": "<",
+      "demo": "5/3 *<* 8/3. The smaller number is next to the smaller part of the symbol, and the larger number is next to the larger part of the symbol."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But five thirds is greater than five eighths, so this time we write the symbol like this. 5/3 ▢ 5/8",
+      "expected": ">",
+      "demo": "5/3 *>* 5/8. Again, the smaller number is next to the smaller part of the symbol, and the larger number is next to the larger part of the symbol."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, write the correct symbol into the blank space. 5/10 ▢ 18/10",
+      "expected": "<",
+      "demo": "5/10 *<* 18/10."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 51/10 ▢ 18/10",
+      "expected": ">",
+      "demo": "51/10 *>* 18/10."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/3 ▢ 10/20",
+      "expected": ">",
+      "demo": "10/3 *>* 10/20."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/19 ▢ 10/20",
+      "expected": ">",
+      "demo": "10/19 *>* 10/20."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/19 ▢ 10/18",
+      "expected": "<",
+      "demo": "10/19 *<* 10/18."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 10/19 ▢ 10/19",
+      "expected": "=",
+      "demo": "10/19 *=* 10/19. The fractions are equal, so neither the smaller side nor the larger side fits.",
+      "accept": [
+        "equal",
+        "equals",
+        "neither"
+      ]
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 100/19 ▢ 10/19",
+      "expected": ">",
+      "demo": "100/19 *>* 10/19."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 1/1 ▢ 2/1",
+      "expected": "<",
+      "demo": "1/1 *<* 2/1."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 1/1 ▢ 1/2",
+      "expected": ">",
+      "demo": "1/1 *>* 1/2."
+    },
+    {
+      "row": 20,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Write the correct symbol into the blank space. 1/2 ▢ 1/1",
+      "expected": "<",
+      "demo": "1/2 *<* 1/1."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To read a fraction out loud, we first say the top number, then we say the name of the parts. So here, we have five halves. 5/2",
+      "expected": "five halves",
+      "demo": "*Five halves*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here we have five thirds. 5/3",
+      "expected": "five thirds",
+      "demo": "*Five thirds*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here we have five fourths. 5/4",
+      "expected": "five fourths",
+      "demo": "*Five fourths*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here we have four fourths. 4/4",
+      "expected": "four fourths",
+      "demo": "*Four fourths*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here we have four sevenths. 4/7",
+      "expected": "four sevenths",
+      "demo": "*Four sevenths*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, say the fraction out loud. 4/8",
+      "expected": "four eighths",
+      "demo": "*Four eighths*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 4/9",
+      "expected": "four ninths",
+      "demo": "*Four ninths*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 7/9",
+      "expected": "seven ninths",
+      "demo": "*Seven ninths*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 17/9",
+      "expected": "seventeen ninths",
+      "demo": "*Seventeen ninths*."
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 34/6",
+      "expected": "thirty-four sixths",
+      "demo": "*Thirty-four sixths*.",
+      "accept": [
+        "34 sixths"
+      ]
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 100/3",
+      "expected": "one hundred thirds",
+      "demo": "*One hundred thirds*.",
+      "accept": [
+        "a hundred thirds",
+        "hundred thirds",
+        "100 thirds"
+      ]
+    },
+    {
+      "row": 21,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction out loud. 1/2",
+      "expected": "one half",
+      "demo": "*One half*.",
+      "accept": [
+        "a half"
+      ]
+    },
+    {
+      "row": 22,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When there is a four on the bottom, we call the parts ‘fourths’. However, you might sometimes hear another name for fourths.",
+      "expected": "fourths",
+      "demo": "*Fourths*."
+    },
+    {
+      "row": 22,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Sometimes, they’re also called quarters. This is because quattuor is the Latin word for ‘four’.",
+      "expected": "quarters",
+      "demo": "*Quarters*."
+    },
+    {
+      "row": 22,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So you might sometimes hear fourths being called ‘quarters’, but we’ll stick to calling them fourths.",
+      "expected": "fourths",
+      "demo": "We’ll stick to calling them *fourths*."
+    },
+    {
+      "row": 22,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many quarters? (Say it)  5/4",
+      "expected": "five quarters",
+      "demo": "*Five quarters*."
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Write five fourths as a symbol.",
+      "expected": "5/4",
+      "demo": "Five fourths is written *5/4*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write three fifths as a symbol.",
+      "expected": "3/5",
+      "demo": "Three fifths is written *3/5*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write seven halves as a symbol.",
+      "expected": "7/2",
+      "demo": "Seven halves is written *7/2*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write nine fourths as a symbol.",
+      "expected": "9/4",
+      "demo": "Nine fourths is written *9/4*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write one third as a symbol.",
+      "expected": "1/3",
+      "demo": "One third is written *1/3*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write eleven sixths as a symbol.",
+      "expected": "11/6",
+      "demo": "Eleven sixths is written *11/6*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write fourteen tenths as a symbol.",
+      "expected": "14/10",
+      "demo": "Fourteen tenths is written *14/10*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 23,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write twenty twelfths as a symbol.",
+      "expected": "20/12",
+      "demo": "Twenty twelfths is written *20/12*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "This picture fraction shows thirteen fifths. But we can also see that it counts two whole units… Plus, three fifths more. So we can also write that in symbols like this.",
+      "expected": "2 3/5",
+      "demo": "Two whole units… plus three fifths more: *2 3/5*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "counted": 13,
+          "band": true
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When we write a fraction like that, we call it a mixed number, since it’s a mixture of a whole number… and a fraction.  2 3/5",
+      "expected": "mixed number",
+      "demo": "We call it a *mixed number*, since it’s a mixture of a whole number… and a fraction."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, for example, this is not a mixed number, since there is no whole number.  13/5",
+      "expected": "not a mixed number",
+      "demo": "This is *not a mixed number*, since there is no whole number."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And this is not a mixed number, since there is no whole number.  3/5",
+      "expected": "not a mixed number",
+      "demo": "This is *not a mixed number*, since there is no whole number."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But this is a mixed number, because it has a whole number plus a fraction.  2 3/5",
+      "expected": "a mixed number",
+      "demo": "This is *a mixed number*, because it has a whole number plus a fraction."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And this is a mixed number, because it has a whole number plus a fraction.  782 3/5",
+      "expected": "a mixed number",
+      "demo": "This is *a mixed number*, because it has a whole number plus a fraction."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This is also a mixed number, because it has a whole number plus a fraction.  782 3/51",
+      "expected": "a mixed number",
+      "demo": "This is *a mixed number*, because it has a whole number plus a fraction."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But this is not a mixed number, because there is no fraction.  782",
+      "expected": "not a mixed number",
+      "demo": "This is *not a mixed number*, because there is no fraction."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Is this a mixed number? How do you know?  82/15",
+      "expected": "no",
+      "demo": "*No*, because there is no whole number."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  5 7/15",
+      "expected": "yes",
+      "demo": "*Yes*, because it has a whole number plus a fraction."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  9 9/10",
+      "expected": "yes",
+      "demo": "*Yes*, because it has a whole number plus a fraction."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  9/10",
+      "expected": "no",
+      "demo": "*No*, because there is no whole number."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  10/9",
+      "expected": "no",
+      "demo": "*No*, because there is no whole number."
+    },
+    {
+      "row": 24,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  10",
+      "expected": "no",
+      "demo": "*No*, because there is no fraction."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "To read a mixed number out loud, we say the whole number, then say the word ‘and’, then say the fraction. So we read this, as ‘two and three fifths’.  2 3/5",
+      "expected": "two and three fifths",
+      "demo": "*Two and three fifths*."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And we read this, as ‘nine and two tenths’.  9 2/10",
+      "expected": "nine and two tenths",
+      "demo": "*Nine and two tenths*."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Say the mixed number out loud.  5 3/7",
+      "expected": "five and three sevenths",
+      "demo": "*Five and three sevenths*."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  5 2/7",
+      "expected": "five and two sevenths",
+      "demo": "*Five and two sevenths*."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  5 2/9",
+      "expected": "five and two ninths",
+      "demo": "*Five and two ninths*."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  7 2/9",
+      "expected": "seven and two ninths",
+      "demo": "*Seven and two ninths*."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  3 12/20",
+      "expected": "three and twelve twentieths",
+      "demo": "*Three and twelve twentieths*."
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  1 1/2",
+      "expected": "one and one half",
+      "demo": "*One and one half*.",
+      "accept": [
+        "one and a half"
+      ]
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  3 3/4",
+      "expected": "three and three fourths",
+      "demo": "*Three and three fourths*.",
+      "accept": [
+        "three and three quarters"
+      ]
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  3 1/3",
+      "expected": "three and one third",
+      "demo": "*Three and one third*.",
+      "accept": [
+        "three and a third"
+      ]
+    },
+    {
+      "row": 25,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the mixed number out loud.  100 10/100",
+      "expected": "one hundred and ten hundredths",
+      "demo": "*One hundred and ten hundredths*."
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "This picture fraction shows thirteen fifths. But we can also see that it counts two whole units… Plus, three fifths more. So we can also write that in symbols as a mixed number, like this.",
+      "expected": "2 3/5",
+      "demo": "Two whole units… plus three fifths more: *2 3/5*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 4,
+          "parts": 5,
+          "counted": 13
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here there are three units counted, plus one fifth. We write that as a mixed number like this.",
+      "expected": "3 1/5",
+      "demo": "Three units counted, plus one fifth: *3 1/5*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 4,
+          "parts": 5,
+          "counted": 16
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And here there is one unit counted, plus one seventh. We write that as a mixed number like this",
+      "expected": "1 1/7",
+      "demo": "One unit counted, plus one seventh: *1 1/7*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 7,
+          "counted": 8
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn, express the picture fraction as a mixed number.",
+      "expected": "1 5/7",
+      "demo": "One whole unit, plus five sevenths: *1 5/7*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 7,
+          "counted": 12
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "3 5/7",
+      "demo": "Three whole units, plus five sevenths: *3 5/7*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 4,
+          "parts": 7,
+          "counted": 26
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "3 5/6",
+      "demo": "Three whole units, plus five sixths: *3 5/6*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 4,
+          "parts": 6,
+          "counted": 23
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 1/3",
+      "demo": "Two whole units, plus one third: *2 1/3*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 3,
+          "counted": 7
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 1/4",
+      "demo": "Two whole units, plus one fourth: *2 1/4*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4,
+          "counted": 9,
+          "band": true
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "3 3/8",
+      "demo": "Three whole units, plus three eighths: *3 3/8*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 8,
+          "counted": 27,
+          "orientation": "vertical",
+          "band": true
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "4 1/6",
+      "demo": "Four whole units, plus one sixth: *4 1/6*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 5,
+          "parts": 6,
+          "counted": 25
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 2/5",
+      "demo": "Two whole units, plus two fifths: *2 2/5*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 5,
+          "counted": 12,
+          "orientation": "vertical"
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "2 1/3",
+      "demo": "Two whole units, plus one third: *2 1/3*.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 3,
+          "parts": 3,
+          "counted": 7
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 26,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Express the picture fraction as a mixed number.",
+      "expected": "1 5/6",
+      "demo": "One whole unit, plus five sixths: *1 5/6*.",
+      "figures": [
+        {
+          "kind": "hexagon",
+          "units": 2,
+          "parts": 6,
+          "counted": 11
+        }
+      ],
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "model",
+      "mode": "shade",
+      "prompt": "Here, the mixed number tells us that we have two whole units, plus three fifths. So I can show that as a picture fraction by counting along two whole units… plus three fifths.  2 3/5",
+      "expected": "13",
+      "demo": "I count along two whole units… plus three fifths: *thirteen* parts shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Your turn. Shade the diagram so that it matches the mixed number.  1 5/7",
+      "expected": "12",
+      "demo": "One whole unit, plus five sevenths: *twelve* parts shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 7
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  3 5/7",
+      "expected": "26",
+      "demo": "Three whole units, plus five sevenths: *twenty-six* parts shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 4,
+          "parts": 7
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  3 5/6",
+      "expected": "23",
+      "demo": "Three whole units, plus five sixths: *twenty-three* parts shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 4,
+          "parts": 6
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  2 1/3",
+      "expected": "7",
+      "demo": "Two whole units, plus one third: *seven* parts shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  2 1/4",
+      "expected": "9",
+      "demo": "Two whole units, plus one fourth: *nine* parts shaded.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  3 3/8",
+      "expected": "27",
+      "demo": "Three whole units, plus three eighths: *twenty-seven* parts shaded.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 8,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  2 2/5",
+      "expected": "12",
+      "demo": "Two whole units, plus two fifths: *twelve* parts shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 5,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the mixed number.  4 5/8",
+      "expected": "37",
+      "demo": "Four whole units, plus five eighths: *thirty-seven* parts shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 5,
+          "parts": 8
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "In English, the word ‘value’, as in, the value of a number, means the amount the number represents. We can represent the same value in lots of different ways. For example, each of these represents a value of five.",
+      "expected": "five",
+      "demo": "Each of these represents a value of *five*.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 5,
+          "parts": 1
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 1,
+          "counted": 5,
+          "label": "5"
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Each of these represents a value of seven.",
+      "expected": "seven",
+      "demo": "Each of these represents a value of *seven*.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 7,
+          "counted": 7,
+          "columns": 7
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And each of these represents a value of three.",
+      "expected": "three",
+      "demo": "Each of these represents a value of *three*.",
+      "count": "units",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 3,
+          "parts": 1
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 1,
+          "counted": 3,
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So when we talk about value of a number, or any other representation in mathematics, we’re talking about the amount it represents.",
+      "expected": "the amount it represents",
+      "demo": "We’re talking about *the amount it represents*."
+    },
+    {
+      "row": 28,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What do we mean by the value of a number?",
+      "expected": "the amount it represents",
+      "demo": "*The amount it represents*.",
+      "accept": [
+        "the amount the number represents",
+        "the amount represented",
+        "amount it represents",
+        "its position on the number line",
+        "the amount it represents, or its position on the number line"
+      ]
+    },
+    {
+      "row": 28,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What word means the amount represented by a number?",
+      "expected": "value",
+      "demo": "*Value*."
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When working with whole numbers, the digits tell us value the number. If the digits change, the value of the number changes. Just looking at a number line, this digit points here.",
+      "expected": "five",
+      "demo": "The digit *five* points here. The digits change, the value must change with them.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 1,
+          "counted": 5,
+          "label": "5"
+        }
+      ]
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Fractions are the first time this rule breaks. The digits can change, while the value does not change. For example, this fraction points here on the number line.",
+      "expected": "5/3",
+      "demo": "The fraction *5/3* points here on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        }
+      ]
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Change the digits… and it still points here. Change them again… and it still points here!",
+      "expected": "the value does not change",
+      "demo": "The digits change… but *the value does not change*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 6,
+          "counted": 10,
+          "label": "10/6"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 9,
+          "counted": 15,
+          "label": "15/9"
+        }
+      ]
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can see why by looking at picture fractions. These three fractions, have different digits. That means the size of the parts is different each time. And the number of parts is different each time. But the total amount of each unit that is shaded remains the same.  5/3  10/6  15/9",
+      "expected": "the same",
+      "demo": "But the total amount of each unit that is shaded remains *the same*.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 6,
+          "counted": 10,
+          "label": "10/6"
+        }
+      ]
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When two or more fractions have different numbers on top and bottom, but they still have the same value, we call them equivalent.",
+      "expected": "equivalent",
+      "demo": "We call them *equivalent*. This is a word that comes from Latin, and it just means equal value."
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the word after me: ‘equivalent’",
+      "expected": "equivalent",
+      "demo": "*Equivalent*."
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "When two or more fractions have equal value, what do we call them?",
+      "expected": "equivalent",
+      "demo": "*Equivalent*."
+    },
+    {
+      "row": 29,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "If two or more fractions are equivalent, what does that mean?",
+      "expected": "they have equal value",
+      "demo": "It means *they have equal value*.",
+      "accept": [
+        "equal value",
+        "they have the same value",
+        "the same value",
+        "same value",
+        "equal in value"
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "I’m going to show you how to tell if two symbolic fractions are equivalent, using their picture fractions. My turn first. Are these two fractions equivalent?",
+      "expected": "no",
+      "demo": "*No*. How do I know? The same amount is not shaded in each picture fraction.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 4,
+          "counted": 3,
+          "label": "3/4"
+        },
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 7,
+          "counted": 6,
+          "label": "6/7"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? The same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 4,
+          "counted": 3,
+          "label": "3/4"
+        },
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 8,
+          "counted": 6,
+          "label": "6/8"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? The same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "label": "5/4"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 8,
+          "counted": 10,
+          "label": "10/8"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? The same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "label": "5/4"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 12,
+          "counted": 15,
+          "label": "15/12"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "no",
+      "demo": "*No*. How do I know? The same amount is not shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 5,
+          "counted": 5,
+          "label": "5/5"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 12,
+          "counted": 15,
+          "label": "15/12"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 3,
+          "counted": 2,
+          "label": "2/3"
+        },
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 9,
+          "counted": 6,
+          "label": "6/9"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 2,
+          "counted": 3,
+          "label": "3/2"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "counted": 6,
+          "label": "6/4"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "label": "5/4"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 8,
+          "counted": 9,
+          "label": "9/8"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "label": "5/4"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 8,
+          "counted": 11,
+          "label": "11/8"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "label": "5/4"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 8,
+          "counted": 10,
+          "label": "10/8"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 2,
+          "counted": 1,
+          "label": "1/2"
+        },
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 4,
+          "counted": 2,
+          "label": "2/4"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 4,
+          "counted": 3,
+          "label": "3/4",
+          "band": true
+        },
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 8,
+          "counted": 6,
+          "label": "6/8",
+          "band": true
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 3,
+          "counted": 4,
+          "label": "4/3"
+        },
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 6,
+          "counted": 7,
+          "label": "7/6"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 10,
+          "counted": 4,
+          "label": "4/10",
+          "columns": 5
+        },
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 5,
+          "counted": 2,
+          "label": "2/5",
+          "columns": 5
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 6,
+          "counted": 5,
+          "label": "5/6"
+        },
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 4,
+          "counted": 3,
+          "label": "3/4"
+        }
+      ]
+    },
+    {
+      "row": 30,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        {
+          "kind": "hexagon",
+          "units": 1,
+          "parts": 6,
+          "counted": 3,
+          "label": "3/6"
+        },
+        {
+          "kind": "hexagon",
+          "units": 1,
+          "parts": 2,
+          "counted": 1,
+          "label": "1/2"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Given a number line… Then even without seeing the line split into parts, or seeing those parts shaded, we can say whether two fractions are equivalent. So long as they point to the same position on the number line, then the fractions are equivalent. So, these two fractions are not equivalent, because they do not point to the same place on the number line.",
+      "expected": "not equivalent",
+      "demo": "These are *not equivalent*, because they do not point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 3,
+          "counted": 15,
+          "label": "15/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 9,
+          "counted": 30,
+          "label": "30/9"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And these two are not equivalent either.",
+      "expected": "not equivalent",
+      "demo": "These are *not equivalent*, because they do not point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 3,
+          "counted": 11,
+          "label": "11/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 9,
+          "counted": 30,
+          "label": "30/9"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But these two are equivalent, because they point to the same place on the number line.",
+      "expected": "equivalent",
+      "demo": "These are *equivalent*, because they point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 3,
+          "counted": 10,
+          "label": "10/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 9,
+          "counted": 30,
+          "label": "30/9"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And these two are equivalent.",
+      "expected": "equivalent",
+      "demo": "These are *equivalent*, because they point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "counted": 13,
+          "label": "13/5"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 15,
+          "counted": 39,
+          "label": "39/15"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And these two fractions are equivalent.",
+      "expected": "equivalent",
+      "demo": "These are *equivalent*, because they point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 10,
+          "counted": 4,
+          "label": "4/10"
+        },
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 20,
+          "counted": 8,
+          "label": "8/20"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But these two are not equivalent.",
+      "expected": "not equivalent",
+      "demo": "These are *not equivalent*, because they do not point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 10,
+          "counted": 4,
+          "label": "4/10"
+        },
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 20,
+          "counted": 9,
+          "label": "9/20"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, because they point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 2,
+          "counted": 7,
+          "label": "7/2"
+        },
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 6,
+          "counted": 21,
+          "label": "21/6"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, because they do not point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 2,
+          "counted": 7,
+          "label": "7/2"
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 4,
+          "counted": 17,
+          "label": "17/4"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*, they point to the same place on the number line.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 2,
+          "counted": 7,
+          "label": "7/2"
+        },
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 6,
+          "counted": 21,
+          "label": "21/6"
+        }
+      ]
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent?  10/15  100/150",
+      "expected": "yes",
+      "demo": "*Yes*, they point to the same place on the number line."
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two mixed numbers equivalent?  3 10/15  3 100/150",
+      "expected": "yes",
+      "demo": "*Yes*, they point to the same place on the number line."
+    },
+    {
+      "row": 31,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which fractions are equivalent?  6/4  5/2  9/6  7/3  1/4",
+      "expected": "6/4 and 9/6",
+      "demo": "*6/4 and 9/6* point to the same place on the number line.",
+      "accept": [
+        "9/6 and 6/4",
+        "6/4 9/6",
+        "9/6 6/4"
+      ]
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "3/10 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "7/10",
+      "demo": "Three tenths are shaded, so *7/10* is not shaded.",
+      "figures": [
+        {
+          "kind": "pentagon",
+          "units": 1,
+          "parts": 10,
+          "counted": 3
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "3/8 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "5/8",
+      "demo": "Three eighths are shaded, so *5/8* is not shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 8,
+          "counted": 3
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "1/6 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "5/6",
+      "demo": "One sixth is shaded, so *5/6* is not shaded.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 6,
+          "counted": 1
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "7/10 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "3/10",
+      "demo": "Seven tenths are shaded, so *3/10* is not shaded.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 10,
+          "counted": 7,
+          "band": true
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "4/9 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "5/9",
+      "demo": "Four ninths are shaded, so *5/9* is not shaded.",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 9,
+          "counted": 4,
+          "columns": 3
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "2/5 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "3/5",
+      "demo": "Two fifths are shaded, so *3/5* is not shaded.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 5,
+          "counted": 2,
+          "orientation": "vertical"
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "5/6 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "1/6",
+      "demo": "Five sixths are shaded, so *1/6* is not shaded.",
+      "figures": [
+        {
+          "kind": "hexagon",
+          "units": 1,
+          "parts": 6,
+          "counted": 5
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 32,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "3/4 of the diagram are shaded. What fraction is NOT shaded?",
+      "expected": "1/4",
+      "demo": "Three fourths are shaded, so *1/4* is not shaded.",
+      "figures": [
+        {
+          "kind": "square",
+          "units": 1,
+          "parts": 4,
+          "counted": 3
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If we’re told how much of a picture fraction is shaded, there’s then a rule to how much is not shaded.",
+      "expected": "the bottom number",
+      "demo": "The number of parts shaded and number of parts not shaded always sum to *the bottom number* in the symbolic fraction..",
+      "figures": [
+        {
+          "kind": "pentagon",
+          "units": 1,
+          "parts": 5,
+          "counted": 3,
+          "label": "3/5"
+        }
+      ]
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So here, there are ten parts in the whole unit.",
+      "expected": "seven",
+      "demo": "Three parts are shaded. *Seven* parts are not shaded. Three and seven sum to make ten.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 10,
+          "counted": 3,
+          "label": "3/10"
+        }
+      ]
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here, there are five parts in the whole unit.",
+      "expected": "four",
+      "demo": "One part is shaded. *Four* parts are not shaded. One and four sum to make five.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 5,
+          "counted": 1,
+          "label": "1/5"
+        }
+      ]
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, here there are six parts in the whole unit.",
+      "expected": "two",
+      "demo": "Four parts are shaded. *Two* parts are not shaded. Four and two sum to make six.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 6,
+          "counted": 4,
+          "label": "4/6"
+        }
+      ]
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, even without a picture… if I know that two tenths are shaded, then I also know that eight parts are not shaded, because two and eight sum to make ten.",
+      "expected": "eight",
+      "demo": "*Eight* parts are not shaded, 8/10, because two and eight sum to make ten. (2 + 8)/10"
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And if I know that three sevenths are NOT shaded, then I also know that four sevenths are shaded, because three and four sum to make seven.",
+      "expected": "four sevenths",
+      "demo": "*Four sevenths* are shaded, 4/7, because three and four sum to make seven. (3 + 4)/7"
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Two tenths of a picture are shaded 2/10. How many parts are not shaded?",
+      "expected": "eight",
+      "demo": "*Eight* parts are not shaded, because two and eight sum to make ten."
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Seven tenths of a picture are shaded 7/10. How many are not shaded?",
+      "expected": "three",
+      "demo": "*Three* parts are not shaded, because seven and three sum to make ten."
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Seven tenths of a picture are NOT shaded 7/10. How many are shaded?",
+      "expected": "three",
+      "demo": "*Three* parts are shaded, because seven and three sum to make ten."
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Three eighths of a picture are shaded 3/8. How many parts are not shaded?",
+      "expected": "five",
+      "demo": "*Five* parts are not shaded, because three and five sum to make eight."
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Two sixths of a picture are shaded 2/6. How many parts are not shaded?",
+      "expected": "four",
+      "demo": "*Four* parts are not shaded, because two and four sum to make six."
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Four ninths of a picture are NOT shaded 4/9. How many are shaded?",
+      "expected": "five",
+      "demo": "*Five* parts are shaded, because four and five sum to make nine."
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Six sevenths of a picture are shaded 6/7. How many are not shaded?",
+      "expected": "one",
+      "demo": "*One* part is not shaded, because six and one sum to make seven."
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We’re using the letter n to represent an unknown number. If eight twentieths of a picture are shaded 8/20, which of these shows the sum of the shaded and unshaded parts combined?  (8 + 8)/20  12/20  (8 + 12)/20  (12 + 12)/20",
+      "expected": "(8 + 12)/20",
+      "demo": "Eight parts are shaded and twelve parts are not shaded, so the sum of the shaded and unshaded parts is *(8 + 12)/20*.",
+      "accept": [
+        "(8+12)/20",
+        "(8 + 12) / 20",
+        "8+12/20",
+        "8 + 12 / 20"
+      ]
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We’re using the letter n to represent an unknown number. If two fifths of a picture are shaded 2/5 , which of these is true?  2 + n = 5  1 + n = 5  2-n = 5  x-n = 5",
+      "expected": "2 + n = 5",
+      "demo": "*2 + n = 5*. The number of parts shaded and number of parts not shaded always sum to the bottom number in the symbolic fraction..",
+      "accept": [
+        "2+n=5",
+        "2+n = 5",
+        "2 + n=5"
+      ]
+    },
+    {
+      "row": 33,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Three parts of a picture fraction are shaded 3/▢. Five parts are not shaded 5/▢. What number goes on the bottom of each symbolic fraction?",
+      "expected": "eight",
+      "demo": "*Eight*, because three and five sum to make eight."
+    },
+    {
+      "row": 34,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If the top and bottom of a fraction are the same, then the fraction has a value of one.",
+      "expected": "one",
+      "demo": "The fraction has a value of *one*."
+    },
+    {
+      "row": 34,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn, if the top and bottom of a fraction are the same, what is the value of the fraction?",
+      "expected": "one",
+      "demo": "*One*. If the top and bottom of a fraction are the same, the fraction has a value of one."
+    },
+    {
+      "row": 35,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We read this fraction as five twelfths. But there is a second way we can read fractions. Sometimes we read fractions by saying the top number, then the word ‘over’, then the bottom number. 5/12",
+      "expected": "five over twelve",
+      "demo": "So, we can read that fraction as five twelfths, or we can read it as *five over twelve*."
+    },
+    {
+      "row": 35,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can read this fraction as one hundred three over two hundred fifteen. 103/215",
+      "expected": "one hundred three over two hundred fifteen",
+      "demo": "*One hundred three over two hundred fifteen*."
+    },
+    {
+      "row": 35,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And we can read this fraction as one plus P over two hundred fifteen a. (1 + P)/(215a)",
+      "expected": "one plus P over two hundred fifteen a",
+      "demo": "*One plus P over two hundred fifteen a*."
+    },
+    {
+      "row": 35,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to say the fractions. Say this fraction out loud. 7/10",
+      "expected": "seven over ten",
+      "demo": "*Seven over ten*.",
+      "accept": [
+        "seven tenths"
+      ]
+    },
+    {
+      "row": 35,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say this fraction out loud. 72/1",
+      "expected": "seventy-two over one",
+      "demo": "*Seventy-two over one*.",
+      "accept": [
+        "72 over 1"
+      ]
+    },
+    {
+      "row": 35,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say this fraction out loud. (72R)/b",
+      "expected": "seventy-two R over b",
+      "demo": "*Seventy-two R over b*.",
+      "accept": [
+        "72R over b",
+        "72 R over b"
+      ]
+    },
+    {
+      "row": 35,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say this fraction out loud. (72R)/(b-5)",
+      "expected": "seventy-two R over b minus five",
+      "demo": "*Seventy-two R over b minus five*.",
+      "accept": [
+        "72R over b minus five",
+        "72 R over b minus five"
+      ]
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "If the top and bottom of a fraction are the same, then the fraction has a value of one. So, I’m going to show you fractions equal to one, but part of each fraction is missing. My turn to say the fraction equal to one.",
+      "expected": "12D",
+      "demo": "*12D over 12D*. How do I know 12D over 12D equals one? Because the top and bottom are the same.",
+      "frac": {
+        "num": "12D",
+        "den": null
+      }
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn again. What fraction equals one?",
+      "expected": "12",
+      "demo": "*12 over 12*. How do I know it equals one? Because the top and bottom are the same.",
+      "frac": {
+        "num": "12",
+        "den": null
+      }
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Say the fraction that equals one. How do you know?",
+      "expected": "2",
+      "demo": "*Two over two*. Because the top and bottom are the same.",
+      "frac": {
+        "num": "2",
+        "den": null
+      }
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Say the fraction that equals one. How do you know?",
+      "expected": "2",
+      "demo": "*Two over two*. Because the top and bottom are the same.",
+      "frac": {
+        "num": null,
+        "den": "2"
+      }
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Say the fraction that equals one. How do you know?",
+      "expected": "17",
+      "demo": "*Seventeen over seventeen*. Because the top and bottom are the same.",
+      "frac": {
+        "num": null,
+        "den": "17"
+      }
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? ▢/(3 + R)",
+      "expected": "3 + R",
+      "demo": "*Three plus R over three plus R*. Because the top and bottom are the same.",
+      "accept": [
+        "3+R",
+        "(3 + R)",
+        "(3+R)"
+      ]
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? (100R)/▢",
+      "expected": "100R",
+      "demo": "*One hundred R over one hundred R*. Because the top and bottom are the same.",
+      "accept": [
+        "100 R"
+      ]
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? ▢/(2/3)",
+      "expected": "2/3",
+      "demo": "*Two thirds over two thirds*. Because the top and bottom are the same.",
+      "accept": [
+        "two thirds"
+      ]
+    },
+    {
+      "row": 36,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? (5R/7)/▢",
+      "expected": "5R/7",
+      "demo": "*Five R over seven, over five R over seven*. Because the top and bottom are the same.",
+      "accept": [
+        "5 R/7",
+        "(5R/7)",
+        "5R / 7"
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can use pictures, like this one, to find equivalent fractions. My turn to find the fraction over twenty that is equivalent to two fifths.",
+      "expected": "twenty",
+      "demo": "This picture fraction shows a rectangle split into five columns… Four rows… And *twenty* parts altogether.",
+      "count": "parts",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "columns": 5
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Because there are five columns, I can shade two fifths of the diagram by shading two out of five columns, like this.",
+      "expected": "eight",
+      "demo": "And now, I can count that I’ve shaded *eight* parts out of twenty. So, eight twentieths are equivalent to two fifths. 8/20 = 2/5",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "counted": 8,
+          "columns": 5
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn again. What fraction over twenty is equivalent to three fourths?",
+      "expected": "15",
+      "demo": "The diagram has four rows, so I shade three of the four rows. I can now count the shaded parts: fifteen shaded parts out of twenty. So *fifteen twentieths* are equivalent to three fourths. 15/20 = 3/4",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "counted": 15,
+          "columns": 5
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": "20"
+      }
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Your turn to use the picture to find equivalent fractions. This rectangle is split into six columns, three rows, and eighteen parts. What fraction over eighteen is equivalent to three sixths?",
+      "expected": "9",
+      "demo": "I can shade three sixths by shading three out of six columns: *nine* parts out of eighteen. 9/18 = 3/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "What fraction over eighteen is equivalent to three sixths?",
+      "expected": "9",
+      "demo": "*Nine eighteenths* are equivalent to three sixths. 9/18 = 3/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "counted": 9,
+          "columns": 6
+        }
+      ],
+      "frac": {
+        "num": null,
+        "den": "18"
+      }
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to two sixths?",
+      "expected": "6",
+      "demo": "I shade two of the six columns: *six* parts out of eighteen. 6/18 = 2/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to one sixth?",
+      "expected": "3",
+      "demo": "I shade one of the six columns: *three* parts out of eighteen. 3/18 = 1/6",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to one third?",
+      "expected": "6",
+      "demo": "The rectangle has three rows. I shade one of the three rows: *six* parts out of eighteen. 6/18 = 1/3",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to two thirds?",
+      "expected": "12",
+      "demo": "I shade two of the three rows: *twelve* parts out of eighteen. 12/18 = 2/3",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "shade",
+      "prompt": "What fraction over eighteen is equivalent to three thirds?",
+      "expected": "18",
+      "demo": "I shade three of the three rows: *eighteen* parts out of eighteen. 18/18 = 3/3",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fraction over six is equivalent to fifteen over eighteen?",
+      "expected": "5/6",
+      "demo": "Fifteen parts out of eighteen is five of the six columns. So *five sixths* are equivalent to fifteen over eighteen. 5/6 = 15/18",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "counted": 15,
+          "columns": 6
+        }
+      ],
+      "accept": [
+        "five sixths",
+        "5 over 6",
+        "five over six"
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fraction over six is equivalent to twelve over eighteen?",
+      "expected": "4/6",
+      "demo": "Twelve parts out of eighteen is four of the six columns. So *four sixths* are equivalent to twelve over eighteen. 4/6 = 12/18",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "counted": 12,
+          "columns": 6
+        }
+      ],
+      "accept": [
+        "four sixths",
+        "4 over 6",
+        "four over six"
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "This rectangle is split into ten columns, two rows, and twenty parts. What fraction over ten is equivalent to sixteen over twenty?",
+      "expected": "8/10",
+      "demo": "Sixteen parts out of twenty is eight of the ten columns. So *eight tenths* are equivalent to sixteen over twenty. 8/10 = 16/20",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "counted": 16,
+          "columns": 10
+        }
+      ],
+      "accept": [
+        "eight tenths",
+        "8 over 10",
+        "eight over ten"
+      ]
+    },
+    {
+      "row": 37,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "What fraction over two is equivalent to ten over twenty?",
+      "expected": "1/2",
+      "demo": "Ten parts out of twenty is one of the two rows. So *one half* is equivalent to ten over twenty. 1/2 = 10/20",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 20,
+          "counted": 10,
+          "columns": 10
+        }
+      ],
+      "accept": [
+        "one half",
+        "a half",
+        "one over two",
+        "1 over 2"
+      ]
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 3/4 × 5/5",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 3/4 × 2/2",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 7/12 × 5/5",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 3/4 × 5/4",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 2/5 × 9/9",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 7/12 × 10/9",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 1/2 × 6/6",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 5/8 × 8/5",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 9/10 × 3/3",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? 4/7 × 6/7",
+      "expected": "no",
+      "demo": "*No*, because the top and bottom are not the same."
+    },
+    {
+      "row": 38,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are we multiplying by one? How do you know? 6/11 × 12/12",
+      "expected": "yes",
+      "demo": "*Yes*, because the top and bottom are the same."
     }
   ]
 }

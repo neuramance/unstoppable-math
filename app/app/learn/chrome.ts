@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { d, g, t } from '@/app/tokens.stylex'
 
-export const riseKf = stylex.keyframes({
+const riseKf = stylex.keyframes({
   from: { opacity: 0, transform: 'translateY(16px)' },
 })
 

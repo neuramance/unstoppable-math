@@ -1,0 +1,141 @@
+{
+  "label": "6",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "We can also write the number of counted parts using a symbol. For example, here there are seven parts counted. We can write that like this.",
+      "expected": "7",
+      "demo": "We draw a short horizontal line, and then write the number of counted parts above that line: *7*.",
+      "frac": {
+        "num": null,
+        "den": ""
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here, there are three parts counted. We can write that like this.",
+      "expected": "3",
+      "demo": "Each time, we draw a short horizontal line, and then write the number of counted parts above that line: *3*.",
+      "frac": {
+        "num": null,
+        "den": ""
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Here there are six parts counted. Write that using a symbol.",
+      "expected": "6",
+      "demo": "We write *6* above the line.",
+      "frac": {
+        "num": null,
+        "den": ""
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 6,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now, here are nine parts counted. Write that using a symbol.",
+      "expected": "9",
+      "demo": "We write *9* above the line.",
+      "frac": {
+        "num": null,
+        "den": ""
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 9,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there are ten parts per whole unit. Write that using a symbol.",
+      "expected": "10",
+      "demo": "We write *10* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10
+        }
+      ]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there is one part counted. Write that using a symbol.",
+      "expected": "1",
+      "demo": "We write *1* above the line.",
+      "frac": {
+        "num": null,
+        "den": ""
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 1,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "I’m picturing a shape with twenty-five parts counted. How can I show that using a symbol?",
+      "expected": "25",
+      "demo": "We write *25* above the line.",
+      "frac": {
+        "num": null,
+        "den": ""
+      }
+    }
+  ]
+}

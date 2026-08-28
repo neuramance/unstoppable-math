@@ -1,0 +1,14 @@
+{
+  "label": "11",
+  "items": [
+    {
+      "src": "TBL:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which number, top or bottom, tells how many parts there are?\n8/3",
+      "expected": "Top",
+      "demo": "The *top* number tells how many parts there are.",
+      "accept": ["the top", "top number", "the top number"]
+    }
+  ]
+}

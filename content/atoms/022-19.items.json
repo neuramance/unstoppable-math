@@ -1,0 +1,37 @@
+{
+  "label": "19",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When there is a four on the bottom, we call the parts ‘fourths’. However, you might sometimes hear another name for fourths.",
+      "expected": "fourths",
+      "demo": "*Fourths*."
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Sometimes, they’re also called quarters. This is because quattuor is the Latin word for ‘four’.",
+      "expected": "quarters",
+      "demo": "*Quarters*."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So you might sometimes hear fourths being called ‘quarters’, but we’ll stick to calling them fourths.",
+      "expected": "fourths",
+      "demo": "We’ll stick to calling them *fourths*."
+    },
+    {
+      "src": "TBL:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many quarters? (Say it)  5/4",
+      "expected": "five quarters",
+      "demo": "*Five quarters*."
+    }
+  ]
+}

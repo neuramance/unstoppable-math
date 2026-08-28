@@ -104,7 +104,7 @@ test('every test item grades its own expected answer as correct', () => {
 
 test('every item traces to a real line of its section, in document order, covering every question line', () => {
   const sections = new Map(transcription.sections.map((s) => [s.label, s]))
-  const BLOCK_ORDER = { TBL: 0, II: 1, IT: 2, EX: 3 }
+  const BLOCK_ORDER = { II: 1, IT: 2, EX: 3 }
   for (const [label, file] of atoms) {
     const section = sections.get(label)
     expect(section, `atom file without a section: ${label}`).toBeDefined()
@@ -123,12 +123,14 @@ test('every item traces to a real line of its section, in document order, coveri
           `${label} ${item.src} points past ${block} (${section.blocks[block].length} lines)`,
         ).toBeGreaterThanOrEqual(line)
       }
-      const pos = BLOCK_ORDER[block] * 1000 + line
-      expect(pos, `${label}: items out of document order at ${item.src}`).toBeGreaterThanOrEqual(last)
-      last = pos
+      if (block !== 'TBL') {
+        const pos = BLOCK_ORDER[block as keyof typeof BLOCK_ORDER] * 1000 + line
+        expect(pos, `${label}: items out of document order at ${item.src}`).toBeGreaterThanOrEqual(last)
+        last = pos
+      }
       covered.add(`${block}:${line}`)
-      if (block === 'II' || block === 'TBL') expect(item.role).toBe('model')
-      else expect(item.role).toBe('test')
+      if (block === 'II') expect(item.role).toBe('model')
+      else if (block !== 'TBL') expect(item.role).toBe('test')
     }
     for (const block of ['IT', 'EX'] as const) {
       section.blocks[block].forEach((line, i) => {

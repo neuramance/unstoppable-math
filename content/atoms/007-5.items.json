@@ -1,0 +1,124 @@
+{
+  "label": "5",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "We can write the number of parts in a whole unit using a symbol. For example, here there are five parts per whole unit. We can write that like this.",
+      "expected": "5",
+      "demo": "We draw a short horizontal line, and then write the number of parts per whole unit underneath that line: *5*.",
+      "frac": {
+        "num": "",
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Here, there are seven parts per whole unit. We can write that like this.",
+      "expected": "7",
+      "demo": "Each time, we draw a short horizontal line, and then write the number of parts per whole unit underneath that line: *7*.",
+      "frac": {
+        "num": "",
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 7
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Here there are three parts per whole unit. Write that using a symbol.",
+      "expected": "3",
+      "demo": "We write *3* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Now, here are six parts per whole unit. Write that using a symbol.",
+      "expected": "6",
+      "demo": "We write *6* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 6
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there are twenty-six parts per whole unit. Write that using a symbol.",
+      "expected": "26",
+      "demo": "We write *26* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Here there is one part per whole unit. Write that using a symbol.",
+      "expected": "1",
+      "demo": "We write *1* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "I’m picturing a shape with four parts per whole unit. How can I show that using a symbol?",
+      "expected": "4",
+      "demo": "We write *4* underneath the line.",
+      "frac": {
+        "num": "",
+        "den": null
+      }
+    }
+  ]
+}

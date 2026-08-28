@@ -1,0 +1,255 @@
+{
+  "label": "4",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "I’m going to show you how we count the parts of a fraction. My turn first. Here there are seven parts.",
+      "expected": "seven",
+      "demo": "One, two, three, four, five, six, seven. *Seven* parts.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 5,
+          "counted": 7,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here there are still seven parts.",
+      "expected": "seven",
+      "demo": "Still *seven* parts.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 7,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And here there are three parts.",
+      "expected": "three",
+      "demo": "*Three* parts.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. How many parts are counted?",
+      "expected": "two",
+      "demo": "*Two* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 2,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what changed. How many parts are counted now?",
+      "expected": "two",
+      "demo": "*Two* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 2,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now, how many parts are counted?",
+      "expected": "five",
+      "demo": "*Five* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "six",
+      "demo": "*Six* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 6,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "three",
+      "demo": "*Three* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 3,
+          "counted": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "seven",
+      "demo": "*Seven* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 7
+        }
+      ]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "six",
+      "demo": "*Six* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 6,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "nine",
+      "demo": "*Nine* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4,
+          "counted": 9,
+          "band": true,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "five",
+      "demo": "*Five* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 4,
+          "parts": 2,
+          "counted": 5
+        }
+      ]
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "one",
+      "demo": "*One* part is counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "triangle",
+          "units": 3,
+          "parts": 3,
+          "counted": 1
+        }
+      ]
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "How many parts are counted?",
+      "expected": "fourteen",
+      "demo": "*Fourteen* parts are counted.",
+      "count": "counted",
+      "figures": [
+        {
+          "kind": "grid",
+          "units": 1,
+          "parts": 18,
+          "columns": 2,
+          "counted": 14
+        }
+      ]
+    }
+  ]
+}

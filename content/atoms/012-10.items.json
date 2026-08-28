@@ -1,0 +1,14 @@
+{
+  "label": "10",
+  "items": [
+    {
+      "src": "TBL:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Which number, top or bottom, tells how many parts make one whole unit?\n8/3",
+      "expected": "Bottom",
+      "demo": "The *bottom* number tells how many parts make one whole unit.",
+      "accept": ["the bottom", "bottom number", "the bottom number"]
+    }
+  ]
+}

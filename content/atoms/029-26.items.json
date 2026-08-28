@@ -1,0 +1,81 @@
+{
+  "label": "26",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When working with whole numbers, the digits tell us value the number. If the digits change, the value of the number changes. Just looking at a number line, this digit points here.",
+      "expected": "five",
+      "demo": "The digit *five* points here. The digits change, the value must change with them.",
+      "count": "counted",
+      "figures": [{ "kind": "number-line", "units": 5, "parts": 1, "counted": 5, "label": "5" }]
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Fractions are the first time this rule breaks. The digits can change, while the value does not change. For example, this fraction points here on the number line.",
+      "expected": "5/3",
+      "demo": "The fraction *5/3* points here on the number line.",
+      "figures": [{ "kind": "number-line", "units": 2, "parts": 3, "counted": 5, "label": "5/3" }]
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Change the digits… and it still points here. Change them again… and it still points here!",
+      "expected": "the value does not change",
+      "demo": "The digits change… but *the value does not change*.",
+      "figures": [
+        { "kind": "number-line", "units": 2, "parts": 6, "counted": 10, "label": "10/6" },
+        { "kind": "number-line", "units": 2, "parts": 9, "counted": 15, "label": "15/9" }
+      ]
+    },
+    {
+      "src": "II:15",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can see why by looking at picture fractions. These three fractions, have different digits. That means the size of the parts is different each time. And the number of parts is different each time. But the total amount of each unit that is shaded remains the same.  5/3  10/6  15/9",
+      "expected": "the same",
+      "demo": "But the total amount of each unit that is shaded remains *the same*.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 3, "counted": 5, "label": "5/3" },
+        { "kind": "bar", "units": 2, "parts": 6, "counted": 10, "label": "10/6" }
+      ]
+    },
+    {
+      "src": "II:16",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When two or more fractions have different numbers on top and bottom, but they still have the same value, we call them equivalent.",
+      "expected": "equivalent",
+      "demo": "We call them *equivalent*. This is a word that comes from Latin, and it just means equal value."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the word after me: ‘equivalent’",
+      "expected": "equivalent",
+      "demo": "*Equivalent*."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "When two or more fractions have equal value, what do we call them?",
+      "expected": "equivalent",
+      "demo": "*Equivalent*."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "If two or more fractions are equivalent, what does that mean?",
+      "expected": "they have equal value",
+      "demo": "It means *they have equal value*.",
+      "accept": ["equal value", "they have the same value", "the same value", "same value", "equal in value"]
+    }
+  ]
+}

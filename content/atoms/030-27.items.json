@@ -1,0 +1,197 @@
+{
+  "label": "27",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "I’m going to show you how to tell if two symbolic fractions are equivalent, using their picture fractions. My turn first. Are these two fractions equivalent?",
+      "expected": "no",
+      "demo": "*No*. How do I know? The same amount is not shaded in each picture fraction.",
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 4, "counted": 3, "label": "3/4" },
+        { "kind": "bar", "units": 1, "parts": 7, "counted": 6, "label": "6/7" }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? The same amount is shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 4, "counted": 3, "label": "3/4" },
+        { "kind": "bar", "units": 1, "parts": 8, "counted": 6, "label": "6/8" }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? The same amount is shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
+        { "kind": "bar", "units": 2, "parts": 8, "counted": 10, "label": "10/8" }
+      ]
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "yes",
+      "demo": "*Yes*. How do I know? The same amount is shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
+        { "kind": "bar", "units": 2, "parts": 12, "counted": 15, "label": "15/12" }
+      ]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Are these two fraction equivalent?",
+      "expected": "no",
+      "demo": "*No*. How do I know? The same amount is not shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 5, "counted": 5, "label": "5/5" },
+        { "kind": "bar", "units": 2, "parts": 12, "counted": 15, "label": "15/12" }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 1, "parts": 3, "counted": 2, "label": "2/3" },
+        { "kind": "bar", "units": 1, "parts": 9, "counted": 6, "label": "6/9" }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 2, "counted": 3, "label": "3/2" },
+        { "kind": "bar", "units": 2, "parts": 4, "counted": 6, "label": "6/4" }
+      ]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
+        { "kind": "bar", "units": 2, "parts": 8, "counted": 9, "label": "9/8" }
+      ]
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
+        { "kind": "bar", "units": 2, "parts": 8, "counted": 11, "label": "11/8" }
+      ]
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
+        { "kind": "bar", "units": 2, "parts": 8, "counted": 10, "label": "10/8" }
+      ]
+    },
+    {
+      "src": "EX:1a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        { "kind": "circle", "units": 1, "parts": 2, "counted": 1, "label": "1/2" },
+        { "kind": "circle", "units": 1, "parts": 4, "counted": 2, "label": "2/4" }
+      ]
+    },
+    {
+      "src": "EX:1b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        { "kind": "number-line", "units": 1, "parts": 4, "counted": 3, "band": true, "label": "3/4" },
+        { "kind": "number-line", "units": 1, "parts": 8, "counted": 6, "band": true, "label": "6/8" }
+      ]
+    },
+    {
+      "src": "EX:1c",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        { "kind": "bar", "units": 2, "parts": 3, "counted": 4, "label": "4/3" },
+        { "kind": "bar", "units": 2, "parts": 6, "counted": 7, "label": "7/6" }
+      ]
+    },
+    {
+      "src": "EX:1d",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        { "kind": "grid", "units": 1, "parts": 10, "counted": 4, "columns": 5, "label": "4/10" },
+        { "kind": "grid", "units": 1, "parts": 5, "counted": 2, "columns": 5, "label": "2/5" }
+      ]
+    },
+    {
+      "src": "EX:1e",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "no",
+      "demo": "*No*, the same amount is not shaded each time.",
+      "figures": [
+        { "kind": "circle", "units": 1, "parts": 6, "counted": 5, "label": "5/6" },
+        { "kind": "circle", "units": 1, "parts": 4, "counted": 3, "label": "3/4" }
+      ]
+    },
+    {
+      "src": "EX:1f",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Are these two fractions equivalent? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, the same amount is shaded each time.",
+      "figures": [
+        { "kind": "hexagon", "units": 1, "parts": 6, "counted": 3, "label": "3/6" },
+        { "kind": "hexagon", "units": 1, "parts": 2, "counted": 1, "label": "1/2" }
+      ]
+    }
+  ]
+}

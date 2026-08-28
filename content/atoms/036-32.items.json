@@ -1,0 +1,86 @@
+{
+  "label": "32",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "If the top and bottom of a fraction are the same, then the fraction has a value of one. So, I’m going to show you fractions equal to one, but part of each fraction is missing. My turn to say the fraction equal to one.",
+      "frac": { "num": "12D", "den": null },
+      "expected": "12D",
+      "demo": "*12D over 12D*. How do I know 12D over 12D equals one? Because the top and bottom are the same."
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn again. What fraction equals one?",
+      "frac": { "num": "12", "den": null },
+      "expected": "12",
+      "demo": "*12 over 12*. How do I know it equals one? Because the top and bottom are the same."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn. Say the fraction that equals one. How do you know?",
+      "frac": { "num": "2", "den": null },
+      "expected": "2",
+      "demo": "*Two over two*. Because the top and bottom are the same."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Say the fraction that equals one. How do you know?",
+      "frac": { "num": null, "den": "2" },
+      "expected": "2",
+      "demo": "*Two over two*. Because the top and bottom are the same."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Say the fraction that equals one. How do you know?",
+      "frac": { "num": null, "den": "17" },
+      "expected": "17",
+      "demo": "*Seventeen over seventeen*. Because the top and bottom are the same."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? ▢/(3 + R)",
+      "expected": "3 + R",
+      "accept": ["3+R", "(3 + R)", "(3+R)"],
+      "demo": "*Three plus R over three plus R*. Because the top and bottom are the same."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? (100R)/▢",
+      "expected": "100R",
+      "accept": ["100 R"],
+      "demo": "*One hundred R over one hundred R*. Because the top and bottom are the same."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? ▢/(2/3)",
+      "expected": "2/3",
+      "accept": ["two thirds"],
+      "demo": "*Two thirds over two thirds*. Because the top and bottom are the same."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Say the fraction that equals one. How do you know? (5R/7)/▢",
+      "expected": "5R/7",
+      "accept": ["5 R/7", "(5R/7)", "5R / 7"],
+      "demo": "*Five R over seven, over five R over seven*. Because the top and bottom are the same."
+    }
+  ]
+}

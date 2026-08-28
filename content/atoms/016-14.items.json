@@ -1,0 +1,197 @@
+{
+  "label": "14",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These two fractions have parts that are the same size. 5/3  8/3",
+      "expected": "the same size",
+      "demo": "These two fractions have parts that are *the same size*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "label": "8/3"
+        }
+      ]
+    },
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This one is greater, because it counts more parts. 5/3  8/3",
+      "expected": "8/3",
+      "demo": "*8/3* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 8,
+          "label": "8/3"
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here… This one is greater, because it counts more parts. 5/4  8/4",
+      "expected": "8/4",
+      "demo": "*8/4* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 5,
+          "label": "5/4"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "counted": 8,
+          "label": "8/4"
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And now… This one is greater, because it counts more parts. 15/4  8/4",
+      "expected": "15/4",
+      "demo": "*15/4* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 4,
+          "counted": 15,
+          "label": "15/4"
+        },
+        {
+          "kind": "number-line",
+          "units": 4,
+          "parts": 4,
+          "counted": 8,
+          "label": "8/4"
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Which fraction is greater? How do you know? 15/10  8/10",
+      "expected": "15/10",
+      "demo": "*15/10* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 15,
+          "label": "15/10"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 8,
+          "label": "8/10"
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now. which fraction is greater? How do you know? 15/10  18/10",
+      "expected": "18/10",
+      "demo": "*18/10* is greater, because it counts more parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 15,
+          "label": "15/10"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 10,
+          "counted": 18,
+          "label": "18/10"
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 7/4  11/4",
+      "expected": "11/4",
+      "demo": "*11/4* is greater. The bottom numbers are the same, so the parts are the same size. 11/4 has the bigger top number, so it counts more parts."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 23/10  82/10",
+      "expected": "82/10",
+      "demo": "*82/10* is greater. The bottom numbers are the same, so the parts are the same size. 82/10 has the bigger top number, so it counts more parts."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. The letter a represents a bigger number than b. Which fraction is greater? How do you know? a/10  b/10",
+      "expected": "a/10",
+      "demo": "*a/10* is greater. The bottom numbers are the same, so the parts are the same size. a is the bigger top number, so a/10 counts more parts."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are five fractions in symbol form. Which fraction is the greatest? How do you know? 1/10  2/10  3/10  4/10  5/10",
+      "expected": "5/10",
+      "demo": "*5/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. 5/10 has the biggest top number, so it counts the most parts."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction is the greatest? How do you know? x/10  d/10  z/10",
+      "expected": "z/10",
+      "demo": "*z/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. z is the biggest top number, so z/10 counts the most parts."
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is the lesser? How do you know? 10/3  9/3",
+      "expected": "9/3",
+      "demo": "*9/3* is the lesser. The bottom numbers are the same, so the parts are the same size. 9/3 has the smaller top number, so it counts fewer parts."
+    }
+  ]
+}

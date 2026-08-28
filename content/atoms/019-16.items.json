@@ -1,0 +1,203 @@
+{
+  "label": "16",
+  "items": [
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve seen that we can only compare two fractions directly if their parts are the same size. For example, we can say that seven thirds is greater than two thirds, because thirds are the same size, and so seven thirds is greater than just two thirds.",
+      "expected": "seven thirds",
+      "demo": "*Seven thirds* is greater than two thirds, because thirds are the same size.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 3,
+          "counted": 2
+        },
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 3,
+          "counted": 7
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But what if we’re counting thirds of different sized units? For example, here – two rectangles, split into thirds, one rectangle larger than the other – the parts are not the same size, so we cannot compare the two fractions directly.",
+      "expected": "not the same size",
+      "demo": "The parts are *not the same size*, so we cannot compare the two fractions directly."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here, we can compare them directly, because the units are the same size",
+      "expected": "the same size",
+      "demo": "We can compare them directly, because the units are *the same size*.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 5
+        },
+        {
+          "kind": "circle",
+          "units": 2,
+          "parts": 5
+        }
+      ]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "One set of circles is now larger than the other set. But here we cannot compare them directly, because the units are not the same size",
+      "expected": "not the same size",
+      "demo": "We cannot compare them directly, because the units are *not the same size*."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Two horizontal number lines each go up to three, with units split into fourths, but one number line is longer than the other. And here, we cannot compare them directly, because the units are not the same size",
+      "expected": "not the same size",
+      "demo": "We cannot compare them directly, because the units are *not the same size*."
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But here, we can compare them directly, because the units are the same size",
+      "expected": "the same size",
+      "demo": "We can compare them directly, because the units are *the same size*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can these two fractions be compared directly?",
+      "expected": "yes",
+      "demo": "*Yes*, because the units are the same size.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "counted": 8,
+          "label": "8/5"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "counted": 10,
+          "label": "10/5"
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can these two fractions be compared directly?",
+      "expected": "yes",
+      "demo": "*Yes*, because the units are the same size.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7,
+          "counted": 8,
+          "label": "8/7"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 7,
+          "counted": 10,
+          "label": "10/7"
+        }
+      ]
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "The number lines still show 8/7 and 10/7, but one number line has shrunk to be shorter than the other. Can these two fractions be compared directly?",
+      "expected": "no",
+      "demo": "*No*, because the units are not the same size."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Two circles of different sizes are each split into eighths. One part is shaded in one circle, showing 1/8, and three parts are shaded in the other, showing 3/8. Can these two fractions be compared directly?",
+      "expected": "no",
+      "demo": "*No*, because the units are not the same size."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Can these two fractions be compared directly?",
+      "expected": "yes",
+      "demo": "*Yes*, because the units are the same size.",
+      "figures": [
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 8,
+          "counted": 1,
+          "label": "1/8"
+        },
+        {
+          "kind": "circle",
+          "units": 1,
+          "parts": 8,
+          "counted": 3,
+          "label": "3/8"
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Ben ate 2/3 of a small pizza. Jen ate 2/3 of a large pizza. Did they eat the same amount of pizza? How do you know?",
+      "expected": "no",
+      "demo": "*No*, because the pizzas were not the same size."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Two fields are the same size. 7/10 of the first is planted, and 7/10 of the second is planted. Is the same amount of land planted? How do you know?",
+      "expected": "yes",
+      "demo": "*Yes*, because the fields are the same size."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Mia read 2/5 of a short book. Leo read 2/5 of a long book. Did they read the same number of pages? How do you know?",
+      "expected": "no",
+      "demo": "*No*, because the books were not the same size."
+    }
+  ]
+}

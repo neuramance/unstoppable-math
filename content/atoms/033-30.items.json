@@ -1,0 +1,171 @@
+{
+  "label": "30",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "If we’re told how much of a picture fraction is shaded, there’s then a rule to how much is not shaded.",
+      "expected": "the bottom number",
+      "demo": "The number of parts shaded and number of parts not shaded always sum to *the bottom number* in the symbolic fraction..",
+      "figures": [
+        {
+          "kind": "pentagon",
+          "units": 1,
+          "parts": 5,
+          "counted": 3,
+          "label": "3/5"
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So here, there are ten parts in the whole unit.",
+      "expected": "seven",
+      "demo": "Three parts are shaded. *Seven* parts are not shaded. Three and seven sum to make ten.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 10,
+          "counted": 3,
+          "label": "3/10"
+        }
+      ]
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here, there are five parts in the whole unit.",
+      "expected": "four",
+      "demo": "One part is shaded. *Four* parts are not shaded. One and four sum to make five.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 5,
+          "counted": 1,
+          "label": "1/5"
+        }
+      ]
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Finally, here there are six parts in the whole unit.",
+      "expected": "two",
+      "demo": "Four parts are shaded. *Two* parts are not shaded. Four and two sum to make six.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 6,
+          "counted": 4,
+          "label": "4/6"
+        }
+      ]
+    },
+    {
+      "src": "II:12",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, even without a picture… if I know that two tenths are shaded, then I also know that eight parts are not shaded, because two and eight sum to make ten.",
+      "expected": "eight",
+      "demo": "*Eight* parts are not shaded, 8/10, because two and eight sum to make ten. (2 + 8)/10"
+    },
+    {
+      "src": "II:13",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And if I know that three sevenths are NOT shaded, then I also know that four sevenths are shaded, because three and four sum to make seven.",
+      "expected": "four sevenths",
+      "demo": "*Four sevenths* are shaded, 4/7, because three and four sum to make seven. (3 + 4)/7"
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Two tenths of a picture are shaded 2/10. How many parts are not shaded?",
+      "expected": "eight",
+      "demo": "*Eight* parts are not shaded, because two and eight sum to make ten."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Seven tenths of a picture are shaded 7/10. How many are not shaded?",
+      "expected": "three",
+      "demo": "*Three* parts are not shaded, because seven and three sum to make ten."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Seven tenths of a picture are NOT shaded 7/10. How many are shaded?",
+      "expected": "three",
+      "demo": "*Three* parts are shaded, because seven and three sum to make ten."
+    },
+    {
+      "src": "IT:4a",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Three eighths of a picture are shaded 3/8. How many parts are not shaded?",
+      "expected": "five",
+      "demo": "*Five* parts are not shaded, because three and five sum to make eight."
+    },
+    {
+      "src": "IT:4b",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Two sixths of a picture are shaded 2/6. How many parts are not shaded?",
+      "expected": "four",
+      "demo": "*Four* parts are not shaded, because two and four sum to make six."
+    },
+    {
+      "src": "IT:4c",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Four ninths of a picture are NOT shaded 4/9. How many are shaded?",
+      "expected": "five",
+      "demo": "*Five* parts are shaded, because four and five sum to make nine."
+    },
+    {
+      "src": "IT:4d",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Six sevenths of a picture are shaded 6/7. How many are not shaded?",
+      "expected": "one",
+      "demo": "*One* part is not shaded, because six and one sum to make seven."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We’re using the letter n to represent an unknown number. If eight twentieths of a picture are shaded 8/20, which of these shows the sum of the shaded and unshaded parts combined?  (8 + 8)/20  12/20  (8 + 12)/20  (12 + 12)/20",
+      "expected": "(8 + 12)/20",
+      "accept": ["(8+12)/20", "(8 + 12) / 20", "8+12/20", "8 + 12 / 20"],
+      "demo": "Eight parts are shaded and twelve parts are not shaded, so the sum of the shaded and unshaded parts is *(8 + 12)/20*."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "We’re using the letter n to represent an unknown number. If two fifths of a picture are shaded 2/5 , which of these is true?  2 + n = 5  1 + n = 5  2-n = 5  x-n = 5",
+      "expected": "2 + n = 5",
+      "accept": ["2+n=5", "2+n = 5", "2 + n=5"],
+      "demo": "*2 + n = 5*. The number of parts shaded and number of parts not shaded always sum to the bottom number in the symbolic fraction.."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Three parts of a picture fraction are shaded 3/▢. Five parts are not shaded 5/▢. What number goes on the bottom of each symbolic fraction?",
+      "expected": "eight",
+      "demo": "*Eight*, because three and five sum to make eight."
+    }
+  ]
+}

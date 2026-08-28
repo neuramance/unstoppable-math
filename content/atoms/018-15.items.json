@@ -1,0 +1,165 @@
+{
+  "label": "15",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "These two fractions count the same number of parts. 5/3  5/8",
+      "expected": "the same number of parts",
+      "demo": "These two fractions count *the same number of parts*.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 8,
+          "counted": 5,
+          "label": "5/8"
+        }
+      ]
+    },
+    {
+      "src": "II:2",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This one is greater, because it has fewer parts per whole unit and so each part is larger. 5/3  5/8",
+      "expected": "5/3",
+      "demo": "*5/3* is greater, because it has fewer parts per whole unit and so each part is larger.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3,
+          "counted": 5,
+          "label": "5/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 8,
+          "counted": 5,
+          "label": "5/8"
+        }
+      ]
+    },
+    {
+      "src": "II:3",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Here… This one is greater, because it has fewer parts per whole unit and so each part is larger. 7/3  7/8",
+      "expected": "7/3",
+      "demo": "*7/3* is greater, because it has fewer parts per whole unit and so each part is larger.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "counted": 7,
+          "label": "7/3"
+        },
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 8,
+          "counted": 7,
+          "label": "7/8"
+        }
+      ]
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And now… This one is greater, because it has fewer parts per whole unit and so each part is larger. 7/13  7/8",
+      "expected": "7/8",
+      "demo": "*7/8* is greater, because it has fewer parts per whole unit and so each part is larger.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 13,
+          "counted": 7,
+          "label": "7/13"
+        },
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 8,
+          "counted": 7,
+          "label": "7/8"
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Which fraction is greater? How do you know? 17/13  17/8",
+      "expected": "17/8",
+      "demo": "*17/8*, because the bottom number is smaller, so each part is bigger."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Now. which fraction is greater? How do you know? 17/13  17/14",
+      "expected": "17/13",
+      "demo": "*17/13*, because the bottom number is smaller, so each part is bigger."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 7/3  7/8",
+      "expected": "7/3",
+      "demo": "*7/3* is greater. The top numbers are the same, so both fractions count the same number of parts. 7/3 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 23/14  23/9",
+      "expected": "23/9",
+      "demo": "*23/9* is greater. The top numbers are the same, so both fractions count the same number of parts. 23/9 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. The letter a represents a bigger number than b. Which fraction is greater? How do you know? 17/a  17/b",
+      "expected": "17/b",
+      "demo": "*17/b* is greater. The top numbers are the same, so both fractions count the same number of parts. b is the smaller bottom number, so 17/b has fewer parts per whole unit and each part is larger."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are five fractions in symbol form. Which fraction is the greatest? How do you know? 7/3  7/5  7/8  7/13  7/14",
+      "expected": "7/3",
+      "demo": "*7/3* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. 7/3 has the smallest bottom number, so it has the fewest parts per whole unit and the largest parts."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction is the greatest? How do you know? 17/x  17/d  17/z",
+      "expected": "17/d",
+      "demo": "*17/d* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. d is the smallest bottom number, so 17/d has the fewest parts per whole unit and the largest parts."
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Here are two fractions in symbol form. Which fraction is the lesser? How do you know? 17/13  17/8",
+      "expected": "17/13",
+      "demo": "*17/13* is the lesser. The top numbers are the same, so both fractions count the same number of parts. 17/13 has the bigger bottom number, so it has more parts per whole unit and each part is smaller."
+    }
+  ]
+}

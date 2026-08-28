@@ -1,0 +1,119 @@
+{
+  "label": "21",
+  "items": [
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "This picture fraction shows thirteen fifths. But we can also see that it counts two whole units… Plus, three fifths more. So we can also write that in symbols like this.",
+      "expected": "2 3/5",
+      "demo": "Two whole units… plus three fifths more: *2 3/5*.",
+      "frac": { "whole": null, "num": null, "den": null },
+      "figures": [{ "kind": "number-line", "units": 3, "parts": 5, "counted": 13, "band": true }]
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "When we write a fraction like that, we call it a mixed number, since it’s a mixture of a whole number… and a fraction.  2 3/5",
+      "expected": "mixed number",
+      "demo": "We call it a *mixed number*, since it’s a mixture of a whole number… and a fraction."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, for example, this is not a mixed number, since there is no whole number.  13/5",
+      "expected": "not a mixed number",
+      "demo": "This is *not a mixed number*, since there is no whole number."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And this is not a mixed number, since there is no whole number.  3/5",
+      "expected": "not a mixed number",
+      "demo": "This is *not a mixed number*, since there is no whole number."
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But this is a mixed number, because it has a whole number plus a fraction.  2 3/5",
+      "expected": "a mixed number",
+      "demo": "This is *a mixed number*, because it has a whole number plus a fraction."
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And this is a mixed number, because it has a whole number plus a fraction.  782 3/5",
+      "expected": "a mixed number",
+      "demo": "This is *a mixed number*, because it has a whole number plus a fraction."
+    },
+    {
+      "src": "II:10",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "This is also a mixed number, because it has a whole number plus a fraction.  782 3/51",
+      "expected": "a mixed number",
+      "demo": "This is *a mixed number*, because it has a whole number plus a fraction."
+    },
+    {
+      "src": "II:11",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "But this is not a mixed number, because there is no fraction.  782",
+      "expected": "not a mixed number",
+      "demo": "This is *not a mixed number*, because there is no fraction."
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn. Is this a mixed number? How do you know?  82/15",
+      "expected": "no",
+      "demo": "*No*, because there is no whole number."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  5 7/15",
+      "expected": "yes",
+      "demo": "*Yes*, because it has a whole number plus a fraction."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  9 9/10",
+      "expected": "yes",
+      "demo": "*Yes*, because it has a whole number plus a fraction."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  9/10",
+      "expected": "no",
+      "demo": "*No*, because there is no whole number."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  10/9",
+      "expected": "no",
+      "demo": "*No*, because there is no whole number."
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Is this a mixed number? How do you know?  10",
+      "expected": "no",
+      "demo": "*No*, because there is no fraction."
+    }
+  ]
+}

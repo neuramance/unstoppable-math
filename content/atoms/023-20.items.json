@@ -1,0 +1,101 @@
+{
+  "label": "20",
+  "items": [
+    {
+      "src": "TBL:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Write five fourths as a symbol.",
+      "expected": "5/4",
+      "demo": "Five fourths is written *5/4*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "src": "IT:1a",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write three fifths as a symbol.",
+      "expected": "3/5",
+      "demo": "Three fifths is written *3/5*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "src": "IT:1b",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write seven halves as a symbol.",
+      "expected": "7/2",
+      "demo": "Seven halves is written *7/2*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "src": "IT:1c",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write nine fourths as a symbol.",
+      "expected": "9/4",
+      "demo": "Nine fourths is written *9/4*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "src": "IT:1d",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write one third as a symbol.",
+      "expected": "1/3",
+      "demo": "One third is written *1/3*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "src": "IT:1e",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write eleven sixths as a symbol.",
+      "expected": "11/6",
+      "demo": "Eleven sixths is written *11/6*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "src": "IT:1f",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write fourteen tenths as a symbol.",
+      "expected": "14/10",
+      "demo": "Fourteen tenths is written *14/10*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "src": "IT:1g",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Write twenty twelfths as a symbol.",
+      "expected": "20/12",
+      "demo": "Twenty twelfths is written *20/12*.",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    }
+  ]
+}

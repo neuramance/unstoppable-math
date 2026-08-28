@@ -1,0 +1,132 @@
+{
+  "label": "8",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "shade",
+      "prompt": "Here is a fraction in symbol form: 8/3. And here is an incomplete picture fraction.",
+      "expected": "8",
+      "demo": "The symbol tells me there are eight parts counted in total, so I shade *eight* parts in the picture fraction, like this.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:1",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Your turn. Shade the diagram so that it matches the symbolic fraction: 7/3",
+      "expected": "7",
+      "demo": "The symbol tells me there are *seven* parts counted in total, so I shade seven parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 3,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Watch what I change. Now, shade the diagram so that it matches the symbolic fraction: 7/4",
+      "expected": "7",
+      "demo": "The symbol tells me there are *seven* parts counted in total, so I shade seven parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4,
+          "band": true
+        }
+      ]
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 7/4",
+      "expected": "7",
+      "demo": "The symbol tells me there are *seven* parts counted in total, so I shade seven parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "band": true,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 3/4",
+      "expected": "3",
+      "demo": "The symbol tells me there are *three* parts counted in total, so I shade three parts.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 4,
+          "orientation": "vertical"
+        }
+      ]
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 3/2",
+      "expected": "3",
+      "demo": "The symbol tells me there are *three* parts counted in total, so I shade three parts.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 5/2",
+      "expected": "5",
+      "demo": "The symbol tells me there are *five* parts counted in total, so I shade five parts.",
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 3,
+          "parts": 2
+        }
+      ]
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "shade",
+      "prompt": "Shade the diagram so that it matches the symbolic fraction: 5/4",
+      "expected": "5",
+      "demo": "The symbol tells me there are *five* parts counted in total, so I shade five parts.",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 4,
+          "band": true
+        }
+      ]
+    }
+  ]
+}
