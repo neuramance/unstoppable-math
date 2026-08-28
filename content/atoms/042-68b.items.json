@@ -1,0 +1,64 @@
+{
+  "label": "68b",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn to evaluate the expression. 3/4 × 10/5",
+      "frac": { "num": null, "den": null },
+      "expected": "30/20",
+      "demo": "First, I write it as a single fraction: (3 × 10)/(4 × 5). And then, I evaluate: *30/20*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to evaluate the expression. Evaluate.",
+      "expr": "10/3 × 4/5 =",
+      "frac": { "num": null, "den": null },
+      "expected": "40/15",
+      "demo": "First, I write it as a single fraction: (10 × 4)/(3 × 5). And then, I evaluate: *40/15*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "10/3 × 9/5 =",
+      "frac": { "num": null, "den": null },
+      "expected": "90/15",
+      "demo": "First, I write it as a single fraction: (10 × 9)/(3 × 5). And then, I evaluate: *90/15*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "10/4 × 9/2 =",
+      "frac": { "num": null, "den": null },
+      "expected": "90/8",
+      "demo": "First, I write it as a single fraction: (10 × 9)/(4 × 2). And then, I evaluate: *90/8*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "3/3 × 5/5 =",
+      "frac": { "num": null, "den": null },
+      "expected": "15/15",
+      "demo": "First, I write it as a single fraction: (3 × 5)/(3 × 5). And then, I evaluate: *15/15*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "1/7 × 19/3 =",
+      "frac": { "num": null, "den": null },
+      "expected": "19/21",
+      "demo": "First, I write it as a single fraction: (1 × 19)/(7 × 3). And then, I evaluate: *19/21*"
+    }
+  ]
+}

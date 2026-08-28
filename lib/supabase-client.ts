@@ -13,7 +13,9 @@ function create() {
     NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
   })
   if (!parsed.success) {
-    throw new Error('sync unavailable: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY not set, so the app runs local-only')
+    throw new Error(
+      'sync unavailable: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY not set, so the app runs local-only',
+    )
   }
   return createBrowserClient<Database>(
     parsed.data.NEXT_PUBLIC_SUPABASE_URL,

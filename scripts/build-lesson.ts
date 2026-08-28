@@ -1,6 +1,13 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { z } from 'zod'
-import { FIGURE_KINDS, FIGURE_ORIENTATIONS, FIGURE_UNIT_MARKS, MAX_PARTS, maxPartsFor, maxUnitsFor } from '../lib/figures'
+import {
+  FIGURE_KINDS,
+  FIGURE_ORIENTATIONS,
+  FIGURE_UNIT_MARKS,
+  MAX_PARTS,
+  maxPartsFor,
+  maxUnitsFor,
+} from '../lib/figures'
 import type { Lesson } from '../lib/lesson'
 
 const AtomFigure = z
@@ -20,7 +27,9 @@ const AtomFigure = z
   .refine((f) => f.units <= maxUnitsFor(f.kind), 'too many units for this figure kind')
   .refine((f) => f.parts <= maxPartsFor(f.kind, f.units), 'too many parts for this figure kind')
   .refine(
-    (f) => f.bounds === undefined || (f.bounds.length === f.parts - 1 && f.bounds.every((b, i, a) => i === 0 || b > a[i - 1]!)),
+    (f) =>
+      f.bounds === undefined ||
+      (f.bounds.length === f.parts - 1 && f.bounds.every((b, i, a) => i === 0 || b > a[i - 1]!)),
     'bounds must be parts - 1 ascending cuts',
   )
 

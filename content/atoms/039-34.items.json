@@ -1,0 +1,221 @@
+{
+  "label": "34",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Sometimes we need to say whether two fractions are equivalent, and we won’t have a picture to help us. I’ll show you how to say whether two fractions are equivalent, even without a picture to help. Here’s the rule: if a fraction 3/4 is multiplied by one 3/4 × 5/5, then the new fraction 3/4 × 5/5 = 15/20 is equivalent to the original.",
+      "expected": "equivalent to the original",
+      "demo": "If a fraction is multiplied by one, then the new fraction is *equivalent to the original*. 3/4 × 5/5 = 15/20"
+    },
+    {
+      "src": "II:4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, has three fourths been multiplied by one? 3/4 × 10/5 = 30/20",
+      "expected": "no",
+      "demo": "*No*, three fourths has not been multiplied by one."
+    },
+    {
+      "src": "II:5",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, is thirty over twenty equivalent to three over four? 3/4 × 10/5 = 30/20",
+      "expected": "no",
+      "demo": "*No*, thirty over twenty is not equivalent to three over four."
+    },
+    {
+      "src": "II:6",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Has three fourths been multiplied by one? 3/4 × 10/9 = 30/36",
+      "expected": "no",
+      "demo": "*No*, three fourths has not been multiplied by one."
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, is thirty over thirty-six equivalent to three over four? 3/4 × 10/9 = 30/36",
+      "expected": "no",
+      "demo": "*No*, thirty over thirty-six is not equivalent to three over four."
+    },
+    {
+      "src": "II:8",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Has three fourths been multiplied by one? 3/4 × 10/10 = 30/40",
+      "expected": "yes",
+      "demo": "*Yes*, three fourths has been multiplied by one."
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, is thirty over forty equivalent to three over four? 3/4 × 10/10 = 30/40",
+      "expected": "yes",
+      "demo": "*Yes*, thirty over forty is equivalent to three over four."
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to say if the fractions are equivalent. Has three fourths been multiplied by one? 3/4 × 5/5 = 15/20",
+      "expected": "yes",
+      "demo": "*Yes*, three fourths has been multiplied by one."
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is fifteen over twenty-five equivalent to three fourths? 3/4 × 5/5 = 15/20",
+      "expected": "yes",
+      "demo": "*Yes*, because three fourths was multiplied by a fraction equal to one."
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three fifths been multiplied by one? 3/5 × 5/5 = 15/25",
+      "expected": "yes",
+      "demo": "*Yes*, three fifths has been multiplied by one."
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is fifteen over twenty-five equivalent to three fifths? 3/5 × 5/5 = 15/25",
+      "expected": "yes",
+      "demo": "*Yes*, because three fifths was multiplied by a fraction equal to one."
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three fifths been multiplied by one? 3/5 × 6/5 = 18/25",
+      "expected": "no",
+      "demo": "*No*, three fifths has not been multiplied by one."
+    },
+    {
+      "src": "IT:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is eighteen over twenty-five equivalent to three fifths? 3/5 × 6/5 = 18/25",
+      "expected": "no",
+      "demo": "*No*, because three fifths was not multiplied by a fraction equal to one."
+    },
+    {
+      "src": "IT:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 9/10 = 63/120",
+      "expected": "no",
+      "demo": "*No*, seven twelfths has not been multiplied by one."
+    },
+    {
+      "src": "IT:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is sixty-three over one hundred twenty equivalent to seven twelfths? 7/12 × 9/10 = 63/120",
+      "expected": "no",
+      "demo": "*No*, because seven twelfths was not multiplied by a fraction equal to one."
+    },
+    {
+      "src": "IT:10",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 10/10 = 70/120",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "src": "IT:11",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is seventy over one hundred twenty equivalent to seven twelfths? 7/12 × 10/10 = 70/120",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 57/62 = 399/744",
+      "expected": "no",
+      "demo": "*No*, seven twelfths has not been multiplied by one."
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × 57/62 = 399/744",
+      "expected": "no",
+      "demo": "*No*, because seven twelfths was not multiplied by a fraction equal to one."
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 57/57 = 399/684",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × 57/57 = 399/684",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    },
+    {
+      "src": "EX:5",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × a/a = (7a)/(12a)",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "src": "EX:6",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × a/a = (7a)/(12a)",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    },
+    {
+      "src": "EX:7",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × (a + 1)/a = (7 (a + 1))/(12a)",
+      "expected": "no",
+      "demo": "*No*, seven twelfths has not been multiplied by one."
+    },
+    {
+      "src": "EX:8",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × (a + 1)/a = (7 (a + 1))/(12a)",
+      "expected": "no",
+      "demo": "*No*, because seven twelfths was not multiplied by a fraction equal to one."
+    },
+    {
+      "src": "EX:9",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × (a + 1)/(a + 1) = (7 (a + 1))/(12 (a + 1))",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "src": "EX:10",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × (a + 1)/(a + 1) = (7 (a + 1))/(12 (a + 1))",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    }
+  ]
+}

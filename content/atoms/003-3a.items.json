@@ -107,9 +107,7 @@
           "parts": 6
         }
       ],
-      "accept": [
-        "six"
-      ]
+      "accept": ["six"]
     },
     {
       "src": "IT:3a",
@@ -141,9 +139,7 @@
           "parts": 4
         }
       ],
-      "accept": [
-        "four"
-      ]
+      "accept": ["four"]
     },
     {
       "src": "EX:1a",

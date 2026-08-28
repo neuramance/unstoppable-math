@@ -495,7 +495,11 @@ export function Intro({ onDone }: { onDone: () => void }) {
       >
         <div {...stylex.props(s.mark)}>
           <img
-            {...stylex.props(s.markImg, frame !== null && s.markWidth(`${frame.mark}px`), titlePhase === 'in' && s.markForm)}
+            {...stylex.props(
+              s.markImg,
+              frame !== null && s.markWidth(`${frame.mark}px`),
+              titlePhase === 'in' && s.markForm,
+            )}
             src="/intro/wordmark.webp"
             alt="Unstoppable Math"
           />
@@ -504,11 +508,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
           Mastering math is a solved problem.
         </p>
       </div>
-      <button
-        {...stylex.props(s.prompt, promptGone && s.gone)}
-        type="button"
-        data-cuelume-press="tick"
-      >
+      <button {...stylex.props(s.prompt, promptGone && s.gone)} type="button" data-cuelume-press="tick">
         <span aria-hidden="true">{'\u{1F50A}'}</span> Tap for sound
       </button>
       <div {...stylex.props(s.controls, controlsGone && s.gone)}>

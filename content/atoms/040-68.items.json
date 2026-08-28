@@ -1,0 +1,97 @@
+{
+  "label": "68",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve been looking at expressions like this one. 3/4 × 10/5 It shows two fractions multiplied together. So… how do we actually multiply fractions? First, we can express these as a single fraction, like this.",
+      "expected": "(3 × 10)/(4 × 5)",
+      "demo": "*(3 × 10)/(4 × 5)*"
+    },
+    {
+      "src": "II:9",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can express these as a single fraction… 7/4 × 10/5 …like this.",
+      "expected": "(7 × 10)/(4 × 5)",
+      "demo": "*(7 × 10)/(4 × 5)*"
+    },
+    {
+      "src": "II:13",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And we can express these as a single fraction… 7/4 × 10/3 …like this.",
+      "expected": "(7 × 10)/(4 × 3)",
+      "demo": "*(7 × 10)/(4 × 3)*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to express fraction multiplication as a single fraction. Express as a single fraction. 7/9 × 10/3",
+      "expected": "(7 × 10)/(9 × 3)",
+      "accept": ["(7 x 10)/(9 x 3)", "(7 * 10)/(9 * 3)", "(7*10)/(9*3)", "7 × 10 / 9 × 3", "7 x 10 / 9 x 3"],
+      "demo": "*(7 × 10)/(9 × 3)*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what I change. Now express as a single fraction. 7/9 × 20/3",
+      "expected": "(7 × 20)/(9 × 3)",
+      "accept": ["(7 x 20)/(9 x 3)", "(7 * 20)/(9 * 3)", "(7*20)/(9*3)", "7 × 20 / 9 × 3", "7 x 20 / 9 x 3"],
+      "demo": "*(7 × 20)/(9 × 3)*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "I’m going to change just one thing. Now express as a single fraction. 7/19 × 20/3",
+      "expected": "(7 × 20)/(19 × 3)",
+      "accept": ["(7 x 20)/(19 x 3)", "(7 * 20)/(19 * 3)", "(7*20)/(19*3)", "7 × 20 / 19 × 3", "7 x 20 / 19 x 3"],
+      "demo": "*(7 × 20)/(19 × 3)*"
+    },
+    {
+      "src": "EX:1",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 7/19 × 20/(3x)",
+      "expected": "(7 × 20)/(19 × 3x)",
+      "accept": ["(7 x 20)/(19 x 3x)", "(7 * 20)/(19 * 3x)", "(7*20)/(19*3x)", "7 × 20 / 19 × 3x", "7 x 20 / 19 x 3x"],
+      "demo": "*(7 × 20)/(19 × 3x)*"
+    },
+    {
+      "src": "EX:2",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. (√7)/19 × 20/(3x)",
+      "expected": "(√7 × 20)/(19 × 3x)",
+      "accept": ["(√7 x 20)/(19 x 3x)", "(sqrt7 × 20)/(19 × 3x)", "(sqrt7 x 20)/(19 x 3x)", "(sqrt(7) x 20)/(19 x 3x)"],
+      "demo": "*(√7 × 20)/(19 × 3x)*"
+    },
+    {
+      "src": "EX:3",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. (√7)/19 × 2013/(3x)",
+      "expected": "(√7 × 2013)/(19 × 3x)",
+      "accept": [
+        "(√7 x 2013)/(19 x 3x)",
+        "(sqrt7 × 2013)/(19 × 3x)",
+        "(sqrt7 x 2013)/(19 x 3x)",
+        "(sqrt(7) x 2013)/(19 x 3x)"
+      ],
+      "demo": "*(√7 × 2013)/(19 × 3x)*"
+    },
+    {
+      "src": "EX:4",
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. R/(1-B) × (4/3)/(2B)",
+      "expected": "(R × 4/3)/((1-B) × 2B)",
+      "accept": ["(R x 4/3)/((1-B) x 2B)", "(R * 4/3)/((1-B) * 2B)", "(R*4/3)/((1-B)*2B)"],
+      "demo": "*(R × 4/3)/((1-B) × 2B)*"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "label": "68a",
+  "items": [
+    {
+      "src": "II:1",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn to evaluate the expression. (3 × 10)/(4 × 5) I evaluate it like this.",
+      "frac": { "num": null, "den": null },
+      "expected": "30/20",
+      "demo": "*30/20*"
+    },
+    {
+      "src": "II:7",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "I evaluate this expression… (7 × 10)/(4 × 5) …like this.",
+      "frac": { "num": null, "den": null },
+      "expected": "70/20",
+      "demo": "*70/20*"
+    },
+    {
+      "src": "II:11",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And I evaluate this expression… (7 × 10)/(4 × 3) …like this.",
+      "frac": { "num": null, "den": null },
+      "expected": "70/12",
+      "demo": "*70/12*"
+    },
+    {
+      "src": "IT:2",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to evaluate the expression. Evaluate.",
+      "expr": "(10 × 4)/(3 × 5) =",
+      "frac": { "num": null, "den": null },
+      "expected": "40/15",
+      "demo": "*40/15*"
+    },
+    {
+      "src": "IT:3",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "(10 × 9)/(3 × 5) =",
+      "frac": { "num": null, "den": null },
+      "expected": "90/15",
+      "demo": "*90/15*"
+    },
+    {
+      "src": "IT:4",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "(10 × 9)/(4 × 2) =",
+      "frac": { "num": null, "den": null },
+      "expected": "90/8",
+      "demo": "*90/8*"
+    },
+    {
+      "src": "IT:5",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "(3 × 3)/(5 × 5) =",
+      "frac": { "num": null, "den": null },
+      "expected": "9/25",
+      "demo": "*9/25*"
+    },
+    {
+      "src": "IT:6",
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expr": "(1 × 19)/(7 × 3) =",
+      "frac": { "num": null, "den": null },
+      "expected": "19/21",
+      "demo": "*19/21*"
+    }
+  ]
+}

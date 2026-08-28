@@ -46,7 +46,11 @@ export class Boundary extends Component<{ children: ReactNode }, { crashed: bool
             }
           </p>
           <div {...stylex.props(s.ctarow)}>
-            <button {...stylex.props(chrome.btn, chrome.ghost)} onClick={() => location.reload()} data-cuelume-press="press">
+            <button
+              {...stylex.props(chrome.btn, chrome.ghost)}
+              onClick={() => location.reload()}
+              data-cuelume-press="press"
+            >
               Reload
             </button>
             <button {...stylex.props(chrome.btn, chrome.ghost)} onClick={clearProgress} data-cuelume-press="press">

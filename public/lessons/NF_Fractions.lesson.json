@@ -39,7 +39,11 @@
     "35": "32a",
     "36": "32",
     "37": "33",
-    "38": "34a"
+    "38": "34a",
+    "39": "34",
+    "40": "68",
+    "41": "68a",
+    "42": "68b"
   },
   "narrative": "land-before-counting.mp4",
   "items": [
@@ -5986,6 +5990,576 @@
       "prompt": "Are we multiplying by one? How do you know? 6/11 × 12/12",
       "expected": "yes",
       "demo": "*Yes*, because the top and bottom are the same."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Sometimes we need to say whether two fractions are equivalent, and we won’t have a picture to help us. I’ll show you how to say whether two fractions are equivalent, even without a picture to help. Here’s the rule: if a fraction 3/4 is multiplied by one 3/4 × 5/5, then the new fraction 3/4 × 5/5 = 15/20 is equivalent to the original.",
+      "expected": "equivalent to the original",
+      "demo": "If a fraction is multiplied by one, then the new fraction is *equivalent to the original*. 3/4 × 5/5 = 15/20"
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, has three fourths been multiplied by one? 3/4 × 10/5 = 30/20",
+      "expected": "no",
+      "demo": "*No*, three fourths has not been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, is thirty over twenty equivalent to three over four? 3/4 × 10/5 = 30/20",
+      "expected": "no",
+      "demo": "*No*, thirty over twenty is not equivalent to three over four."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Has three fourths been multiplied by one? 3/4 × 10/9 = 30/36",
+      "expected": "no",
+      "demo": "*No*, three fourths has not been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, is thirty over thirty-six equivalent to three over four? 3/4 × 10/9 = 30/36",
+      "expected": "no",
+      "demo": "*No*, thirty over thirty-six is not equivalent to three over four."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Has three fourths been multiplied by one? 3/4 × 10/10 = 30/40",
+      "expected": "yes",
+      "demo": "*Yes*, three fourths has been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "So, is thirty over forty equivalent to three over four? 3/4 × 10/10 = 30/40",
+      "expected": "yes",
+      "demo": "*Yes*, thirty over forty is equivalent to three over four."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to say if the fractions are equivalent. Has three fourths been multiplied by one? 3/4 × 5/5 = 15/20",
+      "expected": "yes",
+      "demo": "*Yes*, three fourths has been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is fifteen over twenty-five equivalent to three fourths? 3/4 × 5/5 = 15/20",
+      "expected": "yes",
+      "demo": "*Yes*, because three fourths was multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three fifths been multiplied by one? 3/5 × 5/5 = 15/25",
+      "expected": "yes",
+      "demo": "*Yes*, three fifths has been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is fifteen over twenty-five equivalent to three fifths? 3/5 × 5/5 = 15/25",
+      "expected": "yes",
+      "demo": "*Yes*, because three fifths was multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three fifths been multiplied by one? 3/5 × 6/5 = 18/25",
+      "expected": "no",
+      "demo": "*No*, three fifths has not been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is eighteen over twenty-five equivalent to three fifths? 3/5 × 6/5 = 18/25",
+      "expected": "no",
+      "demo": "*No*, because three fifths was not multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 9/10 = 63/120",
+      "expected": "no",
+      "demo": "*No*, seven twelfths has not been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is sixty-three over one hundred twenty equivalent to seven twelfths? 7/12 × 9/10 = 63/120",
+      "expected": "no",
+      "demo": "*No*, because seven twelfths was not multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 10/10 = 70/120",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So is seventy over one hundred twenty equivalent to seven twelfths? 7/12 × 10/10 = 70/120",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 57/62 = 399/744",
+      "expected": "no",
+      "demo": "*No*, seven twelfths has not been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × 57/62 = 399/744",
+      "expected": "no",
+      "demo": "*No*, because seven twelfths was not multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × 57/57 = 399/684",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × 57/57 = 399/684",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × a/a = (7a)/(12a)",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × a/a = (7a)/(12a)",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × (a + 1)/a = (7 (a + 1))/(12a)",
+      "expected": "no",
+      "demo": "*No*, seven twelfths has not been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × (a + 1)/a = (7 (a + 1))/(12a)",
+      "expected": "no",
+      "demo": "*No*, because seven twelfths was not multiplied by a fraction equal to one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Has three seven twelfths been multiplied by one? 7/12 × (a + 1)/(a + 1) = (7 (a + 1))/(12 (a + 1))",
+      "expected": "yes",
+      "demo": "*Yes*, seven twelfths has been multiplied by one."
+    },
+    {
+      "row": 39,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "So are these two fractions equivalent? 7/12 × (a + 1)/(a + 1) = (7 (a + 1))/(12 (a + 1))",
+      "expected": "yes",
+      "demo": "*Yes*, because seven twelfths was multiplied by a fraction equal to one."
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We’ve been looking at expressions like this one. 3/4 × 10/5 It shows two fractions multiplied together. So… how do we actually multiply fractions? First, we can express these as a single fraction, like this.",
+      "expected": "(3 × 10)/(4 × 5)",
+      "demo": "*(3 × 10)/(4 × 5)*"
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "We can express these as a single fraction… 7/4 × 10/5 …like this.",
+      "expected": "(7 × 10)/(4 × 5)",
+      "demo": "*(7 × 10)/(4 × 5)*"
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "model",
+      "mode": "typed",
+      "prompt": "And we can express these as a single fraction… 7/4 × 10/3 …like this.",
+      "expected": "(7 × 10)/(4 × 3)",
+      "demo": "*(7 × 10)/(4 × 3)*"
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Your turn to express fraction multiplication as a single fraction. Express as a single fraction. 7/9 × 10/3",
+      "expected": "(7 × 10)/(9 × 3)",
+      "demo": "*(7 × 10)/(9 × 3)*",
+      "accept": [
+        "(7 x 10)/(9 x 3)",
+        "(7 * 10)/(9 * 3)",
+        "(7*10)/(9*3)",
+        "7 × 10 / 9 × 3",
+        "7 x 10 / 9 x 3"
+      ]
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Watch what I change. Now express as a single fraction. 7/9 × 20/3",
+      "expected": "(7 × 20)/(9 × 3)",
+      "demo": "*(7 × 20)/(9 × 3)*",
+      "accept": [
+        "(7 x 20)/(9 x 3)",
+        "(7 * 20)/(9 * 3)",
+        "(7*20)/(9*3)",
+        "7 × 20 / 9 × 3",
+        "7 x 20 / 9 x 3"
+      ]
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "I’m going to change just one thing. Now express as a single fraction. 7/19 × 20/3",
+      "expected": "(7 × 20)/(19 × 3)",
+      "demo": "*(7 × 20)/(19 × 3)*",
+      "accept": [
+        "(7 x 20)/(19 x 3)",
+        "(7 * 20)/(19 * 3)",
+        "(7*20)/(19*3)",
+        "7 × 20 / 19 × 3",
+        "7 x 20 / 19 x 3"
+      ]
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. 7/19 × 20/(3x)",
+      "expected": "(7 × 20)/(19 × 3x)",
+      "demo": "*(7 × 20)/(19 × 3x)*",
+      "accept": [
+        "(7 x 20)/(19 x 3x)",
+        "(7 * 20)/(19 * 3x)",
+        "(7*20)/(19*3x)",
+        "7 × 20 / 19 × 3x",
+        "7 x 20 / 19 x 3x"
+      ]
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. (√7)/19 × 20/(3x)",
+      "expected": "(√7 × 20)/(19 × 3x)",
+      "demo": "*(√7 × 20)/(19 × 3x)*",
+      "accept": [
+        "(√7 x 20)/(19 x 3x)",
+        "(sqrt7 × 20)/(19 × 3x)",
+        "(sqrt7 x 20)/(19 x 3x)",
+        "(sqrt(7) x 20)/(19 x 3x)"
+      ]
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. (√7)/19 × 2013/(3x)",
+      "expected": "(√7 × 2013)/(19 × 3x)",
+      "demo": "*(√7 × 2013)/(19 × 3x)*",
+      "accept": [
+        "(√7 x 2013)/(19 x 3x)",
+        "(sqrt7 × 2013)/(19 × 3x)",
+        "(sqrt7 x 2013)/(19 x 3x)",
+        "(sqrt(7) x 2013)/(19 x 3x)"
+      ]
+    },
+    {
+      "row": 40,
+      "set": 1,
+      "role": "test",
+      "mode": "typed",
+      "prompt": "Express as a single fraction. R/(1-B) × (4/3)/(2B)",
+      "expected": "(R × 4/3)/((1-B) × 2B)",
+      "demo": "*(R × 4/3)/((1-B) × 2B)*",
+      "accept": [
+        "(R x 4/3)/((1-B) x 2B)",
+        "(R * 4/3)/((1-B) * 2B)",
+        "(R*4/3)/((1-B)*2B)"
+      ]
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn to evaluate the expression. (3 × 10)/(4 × 5) I evaluate it like this.",
+      "expected": "30/20",
+      "demo": "*30/20*",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "I evaluate this expression… (7 × 10)/(4 × 5) …like this.",
+      "expected": "70/20",
+      "demo": "*70/20*",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "And I evaluate this expression… (7 × 10)/(4 × 3) …like this.",
+      "expected": "70/12",
+      "demo": "*70/12*",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to evaluate the expression. Evaluate.",
+      "expected": "40/15",
+      "demo": "*40/15*",
+      "expr": "(10 × 4)/(3 × 5) =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "90/15",
+      "demo": "*90/15*",
+      "expr": "(10 × 9)/(3 × 5) =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "90/8",
+      "demo": "*90/8*",
+      "expr": "(10 × 9)/(4 × 2) =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "9/25",
+      "demo": "*9/25*",
+      "expr": "(3 × 3)/(5 × 5) =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 41,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "19/21",
+      "demo": "*19/21*",
+      "expr": "(1 × 19)/(7 × 3) =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 42,
+      "set": 1,
+      "role": "model",
+      "mode": "frac",
+      "prompt": "My turn to evaluate the expression. 3/4 × 10/5",
+      "expected": "30/20",
+      "demo": "First, I write it as a single fraction: (3 × 10)/(4 × 5). And then, I evaluate: *30/20*",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 42,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Your turn to evaluate the expression. Evaluate.",
+      "expected": "40/15",
+      "demo": "First, I write it as a single fraction: (10 × 4)/(3 × 5). And then, I evaluate: *40/15*",
+      "expr": "10/3 × 4/5 =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 42,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "90/15",
+      "demo": "First, I write it as a single fraction: (10 × 9)/(3 × 5). And then, I evaluate: *90/15*",
+      "expr": "10/3 × 9/5 =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 42,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "90/8",
+      "demo": "First, I write it as a single fraction: (10 × 9)/(4 × 2). And then, I evaluate: *90/8*",
+      "expr": "10/4 × 9/2 =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 42,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "15/15",
+      "demo": "First, I write it as a single fraction: (3 × 5)/(3 × 5). And then, I evaluate: *15/15*",
+      "expr": "3/3 × 5/5 =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
+    },
+    {
+      "row": 42,
+      "set": 1,
+      "role": "test",
+      "mode": "frac",
+      "prompt": "Evaluate.",
+      "expected": "19/21",
+      "demo": "First, I write it as a single fraction: (1 × 19)/(7 × 3). And then, I evaluate: *19/21*",
+      "expr": "1/7 × 19/3 =",
+      "frac": {
+        "num": null,
+        "den": null
+      }
     }
   ]
 }

@@ -138,7 +138,12 @@ function ScreenView() {
         ‹
       </button>
       <Learn dev={dev} onExit={exitToApp} />
-      <button {...stylex.props(s.devtoggle, dev && s.devtoggleOn)} aria-pressed={dev} onClick={toggleDev} data-cuelume-press="press">
+      <button
+        {...stylex.props(s.devtoggle, dev && s.devtoggleOn)}
+        aria-pressed={dev}
+        onClick={toggleDev}
+        data-cuelume-press="press"
+      >
         dev mode · {dev ? 'on' : 'off'}
       </button>
     </div>
