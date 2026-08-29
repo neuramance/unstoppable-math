@@ -982,7 +982,7 @@ function NarrativeFilm({ file, auto, dev, onDone }: { file: string; auto: boolea
       {cue !== null && (
         <p {...stylex.props(s.cap)}>
           {cue.lines.map((line, i) => (
-            <span {...stylex.props(s.capLine)} key={i}>
+            <span key={i} {...stylex.props(s.capLine)}>
               {line}
             </span>
           ))}

@@ -722,7 +722,7 @@ export function LessonPlayer({
 
   return (
     <>
-      <div {...stylex.props(chrome.pcard)} key={cardKey}>
+      <div key={cardKey} {...stylex.props(chrome.pcard)}>
         <p {...stylex.props(chrome.pq, spoken && chrome.voiced)} hidden={spoken} aria-live="polite">
           <LessonText text={item.prompt} />
         </p>
