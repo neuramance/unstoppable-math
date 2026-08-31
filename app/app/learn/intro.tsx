@@ -353,10 +353,8 @@ export function Intro({ onDone }: { onDone: () => void }) {
     }
 
     const skipIntro = () => {
-      if (arrived || !Number.isFinite(video.duration)) {
-        arrive()
-        return
-      }
+      markSeen()
+      if (arrived || !Number.isFinite(video.duration)) return arrive()
       const tail = video.duration * ARRIVE
       if (video.currentTime < tail) video.currentTime = tail
     }
