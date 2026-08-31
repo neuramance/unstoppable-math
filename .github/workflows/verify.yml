@@ -9,12 +9,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
+      - uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: next-${{ hashFiles('bun.lock') }}-${{ github.sha }}
+          restore-keys: next-${{ hashFiles('bun.lock') }}-
       - run: bun install --frozen-lockfile
       - run: cp .env.example .env.local
+      - run: nohup bunx supabase start -x studio,imgproxy,mailpit,edge-runtime,logflare,vector,supavisor,realtime,storage-api,postgres-meta > /tmp/supabase.log 2>&1 &
       - run: scripts/agent-verify
-      - run: bunx supabase start
+      - run: |
+          for i in $(seq 1 90); do bunx supabase status >/dev/null 2>&1 && exit 0; sleep 2; done
+          cat /tmp/supabase.log
+          exit 1
       - run: bun run test:db
-      - run: bunx playwright install --with-deps chrome
       - run: bun run test:e2e
       - uses: actions/upload-artifact@v4
         if: failure()
