@@ -1,52 +1,24 @@
-/* eslint-disable react-hooks/set-state-in-effect */
-
 import * as stylex from '@stylexjs/stylex'
-import type { StyleXStyles } from '@stylexjs/stylex'
 import { play } from 'cuelume'
-import { Fragment, useEffect, useRef, useState } from 'react'
-import { z } from 'zod'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal, flushSync } from 'react-dom'
-import { FigureView } from './figures-view'
-import { badgeCount, morphs, turnsOnly } from '@/lib/figures'
-import type { Figure } from '@/lib/figures'
-import { clipKey, replayLesson, spokenLesson } from '@/lib/lesson'
-import type { FracSlots, Lesson, TrialEntry } from '@/lib/lesson'
-import { EnterKey, shellInert } from './ui'
-import { chrome } from './chrome'
 import { d, g, t } from '@/app/tokens.stylex'
+import { morphs, turnsOnly } from '@/lib/figures'
+import type { Figure } from '@/lib/figures'
+import { replayLesson } from '@/lib/lesson'
+import type { Lesson, TrialEntry } from '@/lib/lesson'
+import { chrome } from './chrome'
+import { FigureView } from './figures-view'
+import { FracBox, labelStack, LessonText, Words } from './lesson-text'
+import { EnterKey, shellInert } from './ui'
+import { useLessonAnswer } from './use-lesson-answer'
+import { initialShown, useLessonVoice } from './use-lesson-voice'
 
 const riseKf = stylex.keyframes({
   from: { opacity: 0, transform: 'translateY(16px)' },
 })
 
 const styles = stylex.create({
-  mfrac: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    verticalAlign: 'middle',
-    fontWeight: 650,
-  },
-  mstack: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    fontSize: '0.76em',
-    lineHeight: 1.15,
-  },
-  mnum: {
-    borderBottomWidth: '1.5px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: 'currentColor',
-    paddingTop: 0,
-    paddingInline: '4px',
-    paddingBottom: '2px',
-  },
-  mden: {
-    paddingTop: '1px',
-  },
-  labelStack: {
-    fontSize: '1em',
-  },
   ldemo: {
     fontSize: '17px',
     lineHeight: 1.55,
@@ -179,58 +151,6 @@ const styles = stylex.create({
     textAlign: 'center',
     outlineStyle: 'none',
   },
-  lfrac: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '12px',
-  },
-  lstack: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '5px',
-  },
-  lbar: {
-    width: '100%',
-    minWidth: '48px',
-    height: '2.5px',
-    borderRadius: '1px',
-    backgroundColor: t.accent,
-  },
-  lslot: {
-    display: 'grid',
-    placeItems: 'center',
-    width: '60px',
-    height: '44px',
-    fontFamily: t.sans,
-    fontSize: '24px',
-    fontWeight: 700,
-    textAlign: 'center',
-    color: t.accent,
-  },
-  slotInput: {
-    appearance: 'none',
-    padding: 0,
-    borderWidth: '2px',
-    borderStyle: 'solid',
-    borderColor: `color-mix(in srgb, ${t.accent} 55%, transparent)`,
-    borderRadius: '10px',
-    backgroundColor: `color-mix(in srgb, ${t.accent} 6%, transparent)`,
-    transitionProperty: 'border-color, background-color, opacity',
-    transitionDuration: '0.16s',
-    transitionTimingFunction: 'ease',
-  },
-  slotEmpty: {
-    height: '22px',
-  },
-  slotRight: {
-    backgroundColor: d.gc,
-    borderColor: g.gline,
-    color: g.gon,
-  },
-  slotWrong: {
-    opacity: 0.5,
-  },
   lfigs: {
     display: 'flex',
     flexDirection: 'column',
@@ -272,164 +192,7 @@ const styles = stylex.create({
   },
 })
 
-function Words({ text, stack }: { text: string; stack?: StyleXStyles }) {
-  return (
-    <>
-      {text.split(/(\s+)/).map((w, i) => {
-        const m = /^(\d+)\/(\d+)([?.,:;]*)$/.exec(w)
-        if (!m) return <Fragment key={i}>{w}</Fragment>
-        return (
-          <Fragment key={i}>
-            <span {...stylex.props(styles.mfrac)}>
-              <span {...stylex.props(styles.mstack, stack)}>
-                <span {...stylex.props(styles.mnum)}>{m[1]}</span>
-                <span {...stylex.props(styles.mden)}>{m[2]}</span>
-              </span>
-            </span>
-            {m[3]}
-          </Fragment>
-        )
-      })}
-    </>
-  )
-}
-
-function LessonText({ text, bold, stack }: { text: string; bold?: StyleXStyles; stack?: StyleXStyles }) {
-  return (
-    <>
-      {text.split('*').map((seg, i) =>
-        i % 2 ? (
-          <b key={i} {...stylex.props(bold)}>
-            <Words text={seg} stack={stack} />
-          </b>
-        ) : (
-          <Fragment key={i}>
-            <Words text={seg} stack={stack} />
-          </Fragment>
-        ),
-      )}
-    </>
-  )
-}
-
-function FracBox({
-  frac,
-  values,
-  onChange,
-  disabled,
-  tone,
-}: {
-  frac: FracSlots
-  values: string[]
-  onChange: (i: number, v: string) => void
-  disabled: boolean
-  tone: 'right' | 'wrong' | null
-}) {
-  const slot = (fixed: string | null, name: string, i: number) => {
-    if (fixed !== null)
-      return fixed === '' ? (
-        <span {...stylex.props(styles.lslot, styles.slotEmpty)} />
-      ) : (
-        <span {...stylex.props(styles.lslot)}>{fixed}</span>
-      )
-    return (
-      <input
-        {...stylex.props(
-          styles.lslot,
-          styles.slotInput,
-          tone === 'right' && styles.slotRight,
-          tone === 'wrong' && styles.slotWrong,
-        )}
-        type="text"
-        inputMode="numeric"
-        value={values[i] ?? ''}
-        onChange={(e) => onChange(i, e.target.value)}
-        disabled={disabled}
-        aria-label={name}
-        autoComplete="off"
-        autoFocus={i === 0}
-      />
-    )
-  }
-  const wholeInputs = frac.whole === null ? 1 : 0
-  const numInputs = frac.num === null ? 1 : 0
-  return (
-    <span {...stylex.props(styles.lfrac)}>
-      {frac.whole !== undefined && slot(frac.whole, 'units', 0)}
-      <span {...stylex.props(styles.lstack)}>
-        {slot(frac.num, 'numerator', wholeInputs)}
-        <span {...stylex.props(styles.lbar)} />
-        {slot(frac.den, 'denominator', wholeInputs + numInputs)}
-      </span>
-    </span>
-  )
-}
-
 type Feedback = { typed: string; correct: boolean }
-
-const COUNT_WORDS = [
-  'one',
-  'two',
-  'three',
-  'four',
-  'five',
-  'six',
-  'seven',
-  'eight',
-  'nine',
-  'ten',
-  'eleven',
-  'twelve',
-  'thirteen',
-  'fourteen',
-  'fifteen',
-  'sixteen',
-  'seventeen',
-  'eighteen',
-  'nineteen',
-  'twenty',
-] as const
-
-export function scheduleCount(
-  n: number,
-  words: readonly (readonly [string, number])[],
-  endMs: number,
-): [number, number][] {
-  const pending = Array.from({ length: n }, (_, i) => i + 1)
-  const anchored = new Map<number, number>()
-  let at = 0
-  for (const k of pending) {
-    const want = COUNT_WORDS[k - 1]
-    if (want === undefined) continue
-    for (let i = at; i < words.length; i++) {
-      if (words[i][0].toLowerCase().replace(/[^a-z]/g, '') === want) {
-        anchored.set(k, words[i][1])
-        at = i + 1
-        break
-      }
-    }
-  }
-  const out: [number, number][] = []
-  let prev = 0
-  let i = 0
-  while (i < pending.length) {
-    const k = pending[i]
-    const a = anchored.get(k)
-    if (a !== undefined) {
-      prev = Math.max(a, prev)
-      out.push([k, prev])
-      i += 1
-      continue
-    }
-    let j = i
-    while (j < pending.length && !anchored.has(pending[j])) j += 1
-    const bound = j < pending.length ? Math.max(anchored.get(pending[j])!, prev) : Math.max(endMs, prev)
-    for (let q = i; q < j; q++) out.push([pending[q], prev + ((q - i + 1) * (bound - prev)) / (j - i + 1)])
-    prev = out.length > 0 ? out[out.length - 1][1] : prev
-    i = j
-  }
-  return out
-}
 
 function transitionDiagram(update: () => void, autoplay: boolean, turn = false): void {
   if (
@@ -450,35 +213,6 @@ function transitionDiagram(update: () => void, autoplay: boolean, turn = false):
   vt.finished.finally(() => document.documentElement.classList.remove('learn-turn')).catch(() => undefined)
 }
 
-const AlignmentIndex = z.record(
-  z.string(),
-  z.object({ end: z.number(), words: z.array(z.tuple([z.string(), z.number()])) }),
-)
-type Alignment = z.infer<typeof AlignmentIndex>
-let alignmentCache: Promise<Alignment> | null = null
-function alignmentIndex(): Promise<Alignment> {
-  alignmentCache ??= (async (): Promise<Alignment> => {
-    try {
-      const res = await fetch('/audio/lesson/alignment.json')
-      const parsed = AlignmentIndex.safeParse(await res.json())
-      if (res.ok && parsed.success) return parsed.data
-    } catch {}
-    alignmentCache = null
-    return {}
-  })()
-  return alignmentCache
-}
-
-const CC_KEY = 'um.cc'
-
-function loadCc(): boolean {
-  try {
-    return localStorage.getItem(CC_KEY) === '1'
-  } catch {
-    return false
-  }
-}
-
 export function LessonPlayer({
   lesson,
   log,
@@ -490,95 +224,45 @@ export function LessonPlayer({
   onTrial: (entry: TrialEntry) => void
   auto?: boolean
 }) {
-  const [typed, setTyped] = useState('')
-  const [slots, setSlots] = useState<string[]>([])
-  const [free, setFree] = useState('')
-  const [sel, setSel] = useState<number[]>([])
   const [feedback, setFeedback] = useState<Feedback | null>(null)
   const [cardKey, setCardKey] = useState(0)
   const [morphed, setMorphed] = useState(false)
-  const [voiced, setVoiced] = useState(false)
-  const [ccOn, setCcOn] = useState(loadCc)
-  const [shown, setShown] = useState<number | null>(() => {
-    const st = replayLesson(lesson, log).current
-    const first = st ? lesson.items[st.item] : null
-    return first && first.role === 'model' && first.figures?.length === 1 && first.count !== undefined ? 0 : null
-  })
-  const audRef = useRef<HTMLAudioElement | null>(null)
-  const voiceOkRef = useRef(true)
   const state = replayLesson(lesson, log)
   const step = state.current
   const item = step ? lesson.items[step.item] : null
   const model = item?.role === 'model'
   const reveal = model || feedback !== null
+  const voice = useLessonVoice(lesson, log, item, feedback !== null, model, auto)
+  const { shown } = voice
+  const answer = useLessonAnswer(item, feedback && !feedback.correct ? feedback.typed : null, reveal)
   const figures = item?.figures ?? []
-  const targets = item ? item.expected.split(/[\s/,]+/).map(Number) : []
-  const fracSlots = item?.frac
-    ? [...(item.frac.whole !== undefined ? [item.frac.whole] : []), item.frac.num, item.frac.den]
-    : []
-  const editable = fracSlots.filter((s) => s === null).length
-  const filled = Array.from({ length: editable }, (_, i) => (slots[i] ?? '').trim())
-  const canCheck = !item
-    ? false
-    : item.mode === 'typed'
-      ? typed.trim() !== ''
-      : item.mode === 'frac'
-        ? filled.every((s) => s !== '') || free.trim() !== ''
-        : figures.every((_, i) => (sel[i] ?? 0) > 0)
 
-  const clear = () => {
-    setTyped('')
-    setSlots([])
-    setFree('')
-    setSel([])
-  }
-  const serialize = () =>
-    item!.mode === 'typed'
-      ? typed.trim()
-      : item!.mode === 'frac'
-        ? free.trim() !== ''
-          ? free.trim()
-          : filled.join('/')
-        : sel.join(',')
-  const bless = () => {
-    const aud = audRef.current
-    if (aud === null || voiceOkRef.current || aud.src === '') return
-    aud.muted = true
-    void aud
-      .play()
-      .then(() => aud.pause())
-      .catch(() => undefined)
-      .finally(() => {
-        aud.muted = false
-      })
-  }
-  const check = (answer: string) => {
-    bless()
-    const after = replayLesson(lesson, [...log, { typed: answer }])
+  const check = (typed: string) => {
+    voice.bless()
+    const after = replayLesson(lesson, [...log, { typed }])
     play(after.lastCorrect ? 'success' : 'error')
-    transitionDiagram(() => setFeedback({ typed: answer, correct: after.lastCorrect === true }), auto)
+    transitionDiagram(() => setFeedback({ typed, correct: after.lastCorrect === true }), auto)
   }
   const leave = (entry: TrialEntry) => {
-    bless()
+    voice.bless()
     const next = replayLesson(lesson, [...log, entry]).current
     const nextItem = next ? lesson.items[next.item] : null
     const nf = nextItem?.figures
-    const nextShown =
-      nextItem && nextItem.role === 'model' && nf?.length === 1 && nextItem.count !== undefined ? 0 : null
+    const nextShown = initialShown(nextItem)
     if (morphs(figures, nf)) {
-      clear()
+      answer.clear()
       setFeedback(null)
       setMorphed(true)
-      setShown(nextShown)
+      voice.setShown(nextShown)
       onTrial(entry)
       return
     }
     transitionDiagram(
       () => {
-        clear()
+        answer.clear()
         setFeedback(null)
         setMorphed(false)
-        setShown(nextShown)
+        voice.setShown(nextShown)
         setCardKey((k) => k + 1)
         onTrial(entry)
       },
@@ -589,13 +273,8 @@ export function LessonPlayer({
   const advance = () => leave({ typed: feedback!.typed })
   const advanceModel = () => leave({ typed: '' })
 
-  const shownSlots = !reveal
-    ? slots
-    : feedback && !feedback.correct
-      ? feedback.typed.split(/[\s/]+/)
-      : item!.expected.split(/[\s/]+/)
-  const shownSel = reveal ? targets : sel
-  const countedFor = (fig: Figure, i: number) => (item!.mode === 'shade' ? (shownSel[i] ?? 0) : (fig.counted ?? 0))
+  const countedFor = (fig: Figure, i: number) =>
+    item!.mode === 'shade' ? (answer.shownSel[i] ?? 0) : (fig.counted ?? 0)
   const interactive = item?.mode === 'shade' && !reveal
 
   const continueRef = useRef<HTMLButtonElement>(null)
@@ -607,64 +286,6 @@ export function LessonPlayer({
   useEffect(() => {
     if (item?.mode === 'typed' && !model && feedback === null) answerRef.current?.focus()
   }, [item, model, feedback])
-
-  useEffect(() => {
-    if (!item || auto || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setVoiced(false)
-      setShown(null)
-      return
-    }
-    setVoiced(voiceOkRef.current)
-    const fig = item.figures?.length === 1 ? item.figures[0] : undefined
-    const counts = model && fig !== undefined && item.count !== undefined
-    const total = counts ? badgeCount(item.count, fig, fig.counted ?? 0) : 0
-    setShown(counts && voiceOkRef.current ? 0 : null)
-    const texts = feedback ? [item.demo] : model ? [item.prompt, item.demo] : [item.prompt]
-    const aud = (audRef.current ??= new Audio())
-    aud.onended = null
-    aud.pause()
-    const timers: ReturnType<typeof setTimeout>[] = []
-    let dead = false
-    let at = 0
-    const speak = () => {
-      const text = texts[at]
-      if (text === undefined) return
-      const finale = at === texts.length - 1
-      aud.src = `/audio/lesson/${clipKey(spokenLesson(text))}.mp3`
-      aud.onended = () => {
-        at += 1
-        speak()
-      }
-      aud.play().then(
-        () => {
-          voiceOkRef.current = true
-          setVoiced(true)
-          if (counts && finale) {
-            void alignmentIndex().then((index) => {
-              if (dead) return
-              const entry = index[clipKey(spokenLesson(text))]
-              const endMs =
-                entry?.end ?? (Number.isFinite(aud.duration) && aud.duration > 0 ? aud.duration * 1000 : total * 600)
-              for (const [k, delay] of scheduleCount(total, entry?.words ?? [], endMs))
-                timers.push(setTimeout(() => setShown(k), delay))
-            })
-          }
-        },
-        () => {
-          voiceOkRef.current = false
-          setVoiced(false)
-          setShown(null)
-        },
-      )
-    }
-    speak()
-    return () => {
-      dead = true
-      for (const timer of timers) clearTimeout(timer)
-      aud.onended = null
-      aud.pause()
-    }
-  }, [item, feedback, model, auto])
 
   useEffect(() => {
     if (!auto || state.done) return
@@ -683,7 +304,7 @@ export function LessonPlayer({
         e.preventDefault()
         if (feedback) advance()
         else if (model) advanceModel()
-        else if (canCheck) check(serialize())
+        else if (answer.canCheck) check(answer.serialize())
       }
     }
     window.addEventListener('keydown', onKey)
@@ -692,33 +313,12 @@ export function LessonPlayer({
 
   if (!item) return null
 
-  const pickCell = (i: number) => (n: number) => {
-    const next = [...sel]
-    next[i] = n
-    setSel(next)
-  }
-  const editSlot = (i: number, v: string) => {
-    const next = [...slots]
-    next[i] = v.replace(/\D/g, '')
-    setSlots(next)
-    setFree('')
-  }
-  const editFree = (v: string) => {
-    setFree(v.replace(/[^\d/ ]/g, ''))
-    setSlots([])
-  }
-  const spoken = voiced && !ccOn
+  const spoken = voice.voiced && !voice.ccOn
   const demo = (
     <p {...stylex.props(styles.ldemo, spoken && chrome.voiced)} hidden={spoken}>
       <LessonText text={item.demo} bold={styles.ldemoB} />
     </p>
   )
-  const setCc = (on: boolean) => {
-    setCcOn(on)
-    try {
-      localStorage.setItem(CC_KEY, on ? '1' : '0')
-    } catch {}
-  }
 
   return (
     <>
@@ -735,8 +335,8 @@ export function LessonPlayer({
                 counted={countedFor(fig, i)}
                 badge={reveal ? item.count : undefined}
                 shown={shown ?? undefined}
-                onPick={interactive ? pickCell(i) : undefined}
-                label={fig.label && <LessonText text={fig.label} stack={styles.labelStack} />}
+                onPick={interactive ? answer.pickCell(i) : undefined}
+                label={fig.label && <LessonText text={fig.label} stack={labelStack} />}
                 pop={{ ticks: morphed, badges: morphed || shown !== null }}
               />
             ))}
@@ -751,8 +351,8 @@ export function LessonPlayer({
             )}
             <FracBox
               frac={item.frac!}
-              values={shownSlots}
-              onChange={editSlot}
+              values={answer.shownSlots}
+              onChange={answer.editSlot}
               disabled={reveal}
               tone={feedback ? (feedback.correct ? 'right' : 'wrong') : null}
             />
@@ -762,15 +362,15 @@ export function LessonPlayer({
                 <input
                   {...stylex.props(styles.lfreeIn)}
                   type="text"
-                  value={free}
-                  onChange={(e) => editFree(e.target.value)}
+                  value={answer.free}
+                  onChange={(e) => answer.editFree(e.target.value)}
                   placeholder="3/5"
                   aria-label="Fraction as text"
                   autoComplete="off"
                   spellCheck={false}
                   enterKeyHint="done"
                 />
-                {free.trim() !== '' && <Words text={free} />}
+                {answer.free.trim() !== '' && <Words text={answer.free} />}
               </span>
             )}
           </div>
@@ -782,8 +382,8 @@ export function LessonPlayer({
               feedback !== null && (feedback.correct ? styles.pfillinRight : styles.pfillinWrong),
             )}
             type="text"
-            value={feedback ? feedback.typed : typed}
-            onChange={(e) => setTyped(e.target.value)}
+            value={feedback ? feedback.typed : answer.typed}
+            onChange={(e) => answer.setTyped(e.target.value)}
             disabled={feedback !== null}
             placeholder="Type your answer"
             aria-label="Your answer"
@@ -831,8 +431,8 @@ export function LessonPlayer({
             <span />
             <button
               {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary)}
-              disabled={!canCheck}
-              onClick={() => check(serialize())}
+              disabled={!answer.canCheck}
+              onClick={() => check(answer.serialize())}
               data-cuelume-press="press"
               data-cuelume-release="release"
             >
@@ -844,10 +444,10 @@ export function LessonPlayer({
       </div>
       {createPortal(
         <button
-          {...stylex.props(styles.lcc, ccOn && styles.lccOn)}
-          aria-pressed={ccOn}
+          {...stylex.props(styles.lcc, voice.ccOn && styles.lccOn)}
+          aria-pressed={voice.ccOn}
           aria-label="Captions"
-          onClick={() => setCc(!ccOn)}
+          onClick={() => voice.setCc(!voice.ccOn)}
           data-cuelume-press="tick"
         >
           cc

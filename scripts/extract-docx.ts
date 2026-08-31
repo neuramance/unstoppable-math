@@ -138,22 +138,28 @@ function mathText(node: Node): string {
   return joinPieces(mathPieces(node))
 }
 
+function runPiece(rt: string, rc: Node, images: Map<string, string>): Piece | undefined {
+  if (rt === 'w:t') return { kind: 'text', text: rawText(rc) }
+  if (rt === 'w:br') return { kind: 'text', text: '\n' }
+  if (rt === 'w:tab') return { kind: 'text', text: ' ' }
+  if (rt === 'w:noBreakHyphen') return { kind: 'text', text: '-' }
+  if (rt === 'w:drawing') {
+    const blip = findDescendant(rc, 'a:blip')
+    const rid = blip === undefined ? undefined : attr(blip, 'r:embed')
+    const file = rid === undefined ? undefined : images.get(rid)
+    if (file !== undefined) return { kind: 'unit', text: `[image:${file}]` }
+  }
+  return undefined
+}
+
 function paraText(p: Node, images: Map<string, string>): string {
   const pieces: Piece[] = []
   const walk = (node: Node): void => {
     for (const { tag, node: c } of kids(node)) {
       if (tag === 'w:r') {
         for (const { tag: rt, node: rc } of kids(c)) {
-          if (rt === 'w:t') pieces.push({ kind: 'text', text: rawText(rc) })
-          else if (rt === 'w:br') pieces.push({ kind: 'text', text: '\n' })
-          else if (rt === 'w:tab') pieces.push({ kind: 'text', text: ' ' })
-          else if (rt === 'w:noBreakHyphen') pieces.push({ kind: 'text', text: '-' })
-          else if (rt === 'w:drawing') {
-            const blip = findDescendant(rc, 'a:blip')
-            const rid = blip === undefined ? undefined : attr(blip, 'r:embed')
-            const file = rid === undefined ? undefined : images.get(rid)
-            if (file !== undefined) pieces.push({ kind: 'unit', text: `[image:${file}]` })
-          }
+          const piece = runPiece(rt, rc, images)
+          if (piece !== undefined) pieces.push(piece)
         }
       } else if (tag === 'm:oMath') pieces.push({ kind: 'unit', text: mathText(c) })
       else if (tag === 'm:oMathPara') {
@@ -232,19 +238,8 @@ export type Transcription = {
   sections: Section[]
 }
 
-export function extract(bytes: Buffer): Transcription {
-  const files = unzip(bytes)
-  const parser = new XMLParser({
-    preserveOrder: true,
-    ignoreAttributes: false,
-    trimValues: false,
-    parseTagValue: false,
-  })
-  const relsXml = files.get('word/_rels/document.xml.rels')
-  const docXml = files.get('word/document.xml')
-  if (relsXml === undefined || docXml === undefined) throw new Error('docx missing document parts')
+function imageRels(relsDoc: Node[]): Map<string, string> {
   const images = new Map<string, string>()
-  const relsDoc = parser.parse(relsXml.toString('utf8')) as Node[]
   const walkRels = (nodes: Node[]): void => {
     for (const n of nodes) {
       const tag = Object.keys(n).find((k) => k !== ':@')
@@ -258,19 +253,15 @@ export function extract(bytes: Buffer): Transcription {
     }
   }
   walkRels(relsDoc)
+  return images
+}
 
-  const doc = parser.parse(docXml.toString('utf8')) as Node[]
-  const docEl = doc.find((n) => Object.keys(n).includes('w:document'))
-  if (docEl === undefined) throw new Error('no w:document')
-  const bodyEl = kids(docEl).find((k) => k.tag === 'w:body')
-  if (bodyEl === undefined) throw new Error('no w:body')
+type Zone = 'atomisation' | 'headache' | 'instruction' | 'start'
 
-  const atomisation: TableRow[] = []
-  const headaches: { title: string; lines: string[] }[] = []
-  const sections: Section[] = []
-  const preamble: string[] = []
+type Body = Omit<Transcription, 'source'>
 
-  type Zone = 'atomisation' | 'headache' | 'instruction' | 'start'
+function parseBody(body: Node, images: Map<string, string>): Body {
+  const out: Body = { atomisation: [], headaches: [], preamble: [], sections: [] }
   let zone: Zone = 'start'
   let section: Section | undefined
   let block: 'II' | 'IT' | 'EX' | undefined
@@ -284,12 +275,30 @@ export function extract(bytes: Buffer): Transcription {
       blocks: { II: [], IT: [], EX: [] },
     }
     block = undefined
-    sections.push(section)
+    out.sections.push(section)
   }
 
-  for (const { tag, node } of kids(bodyEl.node)) {
+  const heading1 = (text: string): Zone => {
+    if (text === 'Fractions') return 'atomisation'
+    if (text.startsWith('Headache')) {
+      out.headaches.push({ title: text, lines: [] })
+      return 'headache'
+    }
+    return text === 'Initial Instruction' ? 'instruction' : zone
+  }
+
+  const body2 = (text: string): void => {
+    if (zone === 'headache') out.headaches.at(-1)?.lines.push(text)
+    else if (zone === 'instruction') {
+      if (section === undefined) out.preamble.push(text)
+      else if (block === undefined) section.notes.push(text)
+      else section.blocks[block].push(text)
+    }
+  }
+
+  for (const { tag, node } of kids(body)) {
     if (tag === 'w:tbl') {
-      if (zone === 'atomisation') atomisation.push(...tableRows(node, images).slice(1))
+      if (zone === 'atomisation') out.atomisation.push(...tableRows(node, images).slice(1))
       else if (zone === 'instruction' && section !== undefined && section.table === undefined)
         section.table = tableRows(node, images)[0]
       continue
@@ -297,36 +306,36 @@ export function extract(bytes: Buffer): Transcription {
     if (tag !== 'w:p') continue
     const level = headingLevel(node)
     const text = paraText(node, images)
-    if (level === 1) {
-      if (text === 'Fractions') zone = 'atomisation'
-      else if (text.startsWith('Headache')) {
-        zone = 'headache'
-        headaches.push({ title: text, lines: [] })
-      } else if (text === 'Initial Instruction') zone = 'instruction'
-      continue
-    }
-    if (zone === 'instruction' && level >= 2) {
+    if (level === 1) zone = heading1(text)
+    else if (zone === 'instruction' && level >= 2) {
       const label = text.trim()
       if (label === 'II' || label === 'IT' || label === 'EX') block = label
       else if (label !== '') startSection(label)
-      continue
-    }
-    if (level >= 2) continue
-    if (text === '') continue
-    if (zone === 'headache') headaches.at(-1)?.lines.push(text)
-    else if (zone === 'instruction') {
-      if (section === undefined) preamble.push(text)
-      else if (block === undefined) section.notes.push(text)
-      else section.blocks[block].push(text)
-    }
+    } else if (level < 2 && text !== '') body2(text)
   }
+  return out
+}
 
+export function extract(bytes: Buffer): Transcription {
+  const files = unzip(bytes)
+  const parser = new XMLParser({
+    preserveOrder: true,
+    ignoreAttributes: false,
+    trimValues: false,
+    parseTagValue: false,
+  })
+  const relsXml = files.get('word/_rels/document.xml.rels')
+  const docXml = files.get('word/document.xml')
+  if (relsXml === undefined || docXml === undefined) throw new Error('docx missing document parts')
+  const images = imageRels(parser.parse(relsXml.toString('utf8')) as Node[])
+  const doc = parser.parse(docXml.toString('utf8')) as Node[]
+  const docEl = doc.find((n) => Object.keys(n).includes('w:document'))
+  if (docEl === undefined) throw new Error('no w:document')
+  const bodyEl = kids(docEl).find((k) => k.tag === 'w:body')
+  if (bodyEl === undefined) throw new Error('no w:body')
   return {
     source: { file: 'Fractions_Atoms_Lessons.docx', sha256: createHash('sha256').update(bytes).digest('hex') },
-    atomisation,
-    headaches,
-    preamble,
-    sections,
+    ...parseBody(bodyEl.node, images),
   }
 }
 

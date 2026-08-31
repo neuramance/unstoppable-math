@@ -3,7 +3,8 @@ import { act, useState } from 'react'
 import { afterAll, beforeEach, expect, test } from 'vitest'
 import type { Lesson, TrialEntry } from '@/lib/lesson'
 import { clipKey, spokenLesson } from '@/lib/lesson'
-import { LessonPlayer, scheduleCount } from './teach'
+import { LessonPlayer } from './teach'
+import { scheduleCount } from './use-lesson-voice'
 
 class FakeAudio {
   static instances: FakeAudio[] = []

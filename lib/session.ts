@@ -170,6 +170,59 @@ export function activeMs(trials: Trial[], from: number): number {
   console.assert(sum >= 0)
   return sum
 }
+function replayRow(served: Lesson, trials: Trial[], from: number) {
+  const rowLog: Trial[] = []
+  let state = replayLesson(served, rowLog)
+  let i = from
+  while (!state.done && i < trials.length) {
+    rowLog.push(trials[i])
+    i += 1
+    state = replayLesson(served, rowLog)
+  }
+  return { rowLog, state, next: i }
+}
+function replayBlock(
+  lesson: Lesson,
+  block: BlockState,
+  blockNo: number,
+  trials: Trial[],
+  from: number,
+  startedAt: number,
+): { next: number; staleAt: StaleRow | null; live: boolean } {
+  const bp = block.plan
+  let i = from
+  for (let r = 0; r < bp.rows.length; r++) {
+    if (r > 0 && activeMs(trials.slice(from + 1, i), trials[from]?.at ?? startedAt) >= bp.budgetMs) {
+      block.cutBy = 'budget'
+      break
+    }
+    if (bp.rows[r].fp !== undefined && bp.rows[r].fp !== rowFingerprint(lesson, bp.rows[r], bp.kind)) {
+      block.cutBy = 'stale'
+      return { next: i, staleAt: { block: blockNo, index: r, row: bp.rows[r].row, set: bp.rows[r].set }, live: false }
+    }
+    const served = rowLesson(lesson, bp.rows[r], bp.kind)
+    if (served.items.length === 0) throw new Error('planned row missing from lesson')
+    const { rowLog, state, next } = replayRow(served, trials, i)
+    i = next
+    if (!state.done) {
+      block.current = { rowIndex: r, lesson: served, log: rowLog, state }
+      return { next: i, staleAt: null, live: false }
+    }
+    block.outcomes.push({
+      row: bp.rows[r].row,
+      set: bp.rows[r].set,
+      firm: state.firm,
+      rightFirstTry: state.rightFirstTry,
+      graded: state.gradedCount,
+      endedAt: rowLog[rowLog.length - 1]?.at ?? startedAt,
+    })
+    if (bp.kind === 'testing' && !state.firm) {
+      block.cutBy = 'notFirm'
+      break
+    }
+  }
+  return { next: i, staleAt: null, live: true }
+}
 export function replaySession(lesson: Lesson, plan: SessionPlan, trials: Trial[]): SessionState {
   const blocks: BlockState[] = []
   let i = 0
@@ -186,45 +239,10 @@ export function replaySession(lesson: Lesson, plan: SessionPlan, trials: Trial[]
       } else live = false
       continue
     }
-    const blockFirst = i
-    for (let r = 0; r < bp.rows.length; r++) {
-      if (r > 0 && activeMs(trials.slice(blockFirst + 1, i), trials[blockFirst]?.at ?? plan.startedAt) >= bp.budgetMs) {
-        block.cutBy = 'budget'
-        break
-      }
-      if (bp.rows[r].fp !== undefined && bp.rows[r].fp !== rowFingerprint(lesson, bp.rows[r], bp.kind)) {
-        block.cutBy = 'stale'
-        staleAt = { block: blocks.length - 1, index: r, row: bp.rows[r].row, set: bp.rows[r].set }
-        live = false
-        break
-      }
-      const served = rowLesson(lesson, bp.rows[r], bp.kind)
-      if (served.items.length === 0) throw new Error('planned row missing from lesson')
-      const rowLog: Trial[] = []
-      let state = replayLesson(served, rowLog)
-      while (!state.done && i < trials.length) {
-        rowLog.push(trials[i])
-        i += 1
-        state = replayLesson(served, rowLog)
-      }
-      if (!state.done) {
-        block.current = { rowIndex: r, lesson: served, log: rowLog, state }
-        live = false
-        break
-      }
-      block.outcomes.push({
-        row: bp.rows[r].row,
-        set: bp.rows[r].set,
-        firm: state.firm,
-        rightFirstTry: state.rightFirstTry,
-        graded: state.gradedCount,
-        endedAt: rowLog[rowLog.length - 1]?.at ?? plan.startedAt,
-      })
-      if (bp.kind === 'testing' && !state.firm) {
-        block.cutBy = 'notFirm'
-        break
-      }
-    }
+    const res = replayBlock(lesson, block, blocks.length - 1, trials, i, plan.startedAt)
+    i = res.next
+    staleAt = res.staleAt ?? staleAt
+    live = res.live
     block.done = block.current === null && block.cutBy !== 'stale'
   }
   const firstOpen = blocks.findIndex((b) => !b.done)
@@ -259,11 +277,8 @@ function plannedFrom(plan: SessionPlan, block: number, index: number): number[] 
     for (let r = b === block ? index : 0; r < plan.blocks[b].rows.length; r++) rows.push(plan.blocks[b].rows[r].row)
   return rows
 }
-export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
-  const sessions: {
-    plan: SessionPlan
-    trials: Trial[]
-  }[] = []
+function splitSessions(log: SessionLog): { plan: SessionPlan; trials: Trial[] }[] {
+  const sessions: { plan: SessionPlan; trials: Trial[] }[] = []
   for (const ev of log) {
     if (ev.kind === 'start') sessions.push({ plan: ev.plan, trials: [] })
     else {
@@ -272,6 +287,33 @@ export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
       open.trials.push({ typed: ev.typed, at: ev.at })
     }
   }
+  return sessions
+}
+function recordOutcomes(history: RowHistory, state: SessionState): void {
+  for (const b of state.blocks) {
+    if (b.plan.kind === 'instruction') continue
+    for (const o of b.outcomes) {
+      const rec = history.get(o.row) ?? {
+        row: o.row,
+        timesServed: 0,
+        firmed: false,
+        firmedAt: null,
+        lastServedAt: null,
+        misses: 0,
+      }
+      rec.timesServed += 1
+      rec.lastServedAt = o.endedAt
+      rec.misses += o.graded - o.rightFirstTry
+      if (b.plan.kind === 'testing' && o.firm && !rec.firmed) {
+        rec.firmed = true
+        rec.firmedAt = o.endedAt
+      }
+      history.set(o.row, rec)
+    }
+  }
+}
+export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
+  const sessions = splitSessions(log)
   const history: RowHistory = new Map()
   const stale = new Set<number>()
   const dropped = new Set<number>()
@@ -294,27 +336,7 @@ export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
       droppedTrials += state.unreplayed
       for (const row of plannedFrom(s.plan, state.staleAt.block, state.staleAt.index)) dropped.add(row)
     }
-    for (const b of state.blocks) {
-      if (b.plan.kind === 'instruction') continue
-      for (const o of b.outcomes) {
-        const rec = history.get(o.row) ?? {
-          row: o.row,
-          timesServed: 0,
-          firmed: false,
-          firmedAt: null,
-          lastServedAt: null,
-          misses: 0,
-        }
-        rec.timesServed += 1
-        rec.lastServedAt = o.endedAt
-        rec.misses += o.graded - o.rightFirstTry
-        if (b.plan.kind === 'testing' && o.firm && !rec.firmed) {
-          rec.firmed = true
-          rec.firmedAt = o.endedAt
-        }
-        history.set(o.row, rec)
-      }
-    }
+    recordOutcomes(history, state)
   }
   const asc = (a: number, b: number) => a - b
   const droppedRows = [...dropped].sort(asc)
@@ -367,6 +389,29 @@ function atomBlocks(lesson: Lesson, history: RowHistory, row: number): BlockPlan
     return rows.length === 0 ? [] : [{ kind, rows, budgetMs: TEACH_BUDGET_MS }]
   })
 }
+function scheduledBlocks(
+  lesson: Lesson,
+  history: RowHistory,
+  newRow: number,
+  review: BlockPlan[],
+  schedule: readonly string[],
+): BlockPlan[] {
+  const slots = [...new Set(schedule)].filter((s): s is ScheduleSlot =>
+    (SCHEDULE_SLOTS as readonly string[]).includes(s),
+  )
+  for (const s of DEFAULT_SCHEDULE) if (!slots.includes(s)) slots.push(s)
+  const blocks: BlockPlan[] = []
+  for (const slot of slots) {
+    if (slot === 'teach') blocks.push(...atomBlocks(lesson, history, newRow))
+    else if (slot === 'narrative') {
+      if (lesson.narrative !== undefined) blocks.push({ kind: 'narrative', rows: [], budgetMs: NARRATIVE_BUDGET_MS })
+    } else {
+      const pick = review[Number(slot.slice('review-'.length)) - 1]
+      if (pick) blocks.push(pick)
+    }
+  }
+  return blocks
+}
 export function planSession(
   lesson: Lesson,
   history: RowHistory,
@@ -388,23 +433,8 @@ export function planSession(
       rows: plannedRows(lesson, history, [row], 'review'),
       budgetMs: REVIEW_BUDGET_MS,
     }))
-    if (schedule !== undefined && newRow !== null) {
-      const slots = [...new Set(schedule)].filter((s): s is ScheduleSlot =>
-        (SCHEDULE_SLOTS as readonly string[]).includes(s),
-      )
-      for (const s of DEFAULT_SCHEDULE) if (!slots.includes(s)) slots.push(s)
-      for (const slot of slots) {
-        if (slot === 'teach') blocks.push(...atomBlocks(lesson, history, newRow))
-        else if (slot === 'narrative') {
-          if (lesson.narrative !== undefined)
-            blocks.push({ kind: 'narrative', rows: [], budgetMs: NARRATIVE_BUDGET_MS })
-        } else {
-          const pick = review[Number(slot.slice('review-'.length)) - 1]
-          if (pick) blocks.push(pick)
-        }
-      }
-      return { startedAt: now, blocks }
-    }
+    if (schedule !== undefined && newRow !== null)
+      return { startedAt: now, blocks: scheduledBlocks(lesson, history, newRow, review, schedule) }
     if (newRow === null) blocks.push(...review)
     else {
       const [first, ...rest] = review
