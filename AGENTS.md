@@ -4,7 +4,7 @@
 
 - After editing a file: `scripts/agent-verify <file>` — prettier + eslint on that file (~0.5s).
 - Before declaring any task done: `scripts/agent-verify` — format, lint, unit tests, production build in parallel, then typecheck (~3.5s warm). Exit 0 or the task is not done; report the failing check's output, never claim success past a red gate.
-- Pre-merge: `bun run check` — adds Supabase db tests and Playwright e2e (services via `bun run setup`).
+- On push: the pre-push hook (`.githooks/pre-push`, wired by `bun run setup`) runs the gate plus Supabase db tests and Playwright e2e, starting services if needed (~60s warm). Never push with `--no-verify`; a failed hook means the push does not happen.
 
 ## Complexity budget (enforced by eslint.config.mjs)
 

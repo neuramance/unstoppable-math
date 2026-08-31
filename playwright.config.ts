@@ -4,11 +4,7 @@ export default defineConfig({
   testDir: 'e2e',
   testMatch: '**/*.pw.ts',
   workers: 1,
-  use: {
-    baseURL: 'http://localhost:3000',
-    channel: process.env.CI ? 'chrome' : undefined,
-    trace: process.env.CI ? 'retain-on-failure' : 'off',
-  },
+  use: { baseURL: 'http://localhost:3000', trace: 'retain-on-failure' },
   webServer: {
     command: 'bun run start',
     url: 'http://localhost:3000',

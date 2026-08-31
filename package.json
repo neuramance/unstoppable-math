@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "setup": "bunx playwright install chromium && supabase start",
+    "setup": "bunx playwright install chromium && supabase start && git config core.hooksPath .githooks",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

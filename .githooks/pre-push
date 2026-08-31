@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -uo pipefail
+cd "$(git rev-parse --show-toplevel)"
+bunx supabase status >/dev/null 2>&1 ||
+  bunx supabase start -x studio,imgproxy,mailpit,edge-runtime,logflare,vector,supavisor,realtime,storage-api,postgres-meta
+scripts/agent-verify && bun run test:db && bun run test:e2e
