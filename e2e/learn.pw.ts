@@ -126,11 +126,13 @@ test('progress survives a reload and mirrors to app_state', async ({ page }) => 
     timeout: 10_000,
   })
   await expect(page.getByText(/block \d+ of \d+/)).toBeVisible()
+  const uid = await page.evaluate(() => localStorage.getItem('um.uid'))
+  expect(uid).toBeTruthy()
   await expect
     .poll(
       () =>
         execSync(
-          `docker exec supabase_db_unstoppable-math psql -U postgres -tAc "select count(*) from app_state where key like 'um.session.nf-fractions:%'"`,
+          `docker exec supabase_db_unstoppable-math psql -U postgres -tAc "select count(*) from app_state where user_id = '${uid}' and key like 'um.session.nf-fractions:%'"`,
           { encoding: 'utf8' },
         ).trim(),
       { timeout: 15_000 },
