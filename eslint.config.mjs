@@ -20,39 +20,10 @@ export default defineConfig([
   },
   {
     rules: {
-      complexity: ['error', 20],
+      complexity: ['error', 18],
       'max-depth': ['error', 4],
       'max-lines': ['error', 500],
       'max-lines-per-function': ['error', { max: 150 }],
-    },
-  },
-  {
-    files: ['app/app/learn/session.tsx'],
-    rules: { complexity: ['error', 30] },
-  },
-  {
-    files: ['app/app/learn/teach.tsx'],
-    rules: {
-      complexity: ['error', 32],
-      'max-lines-per-function': ['error', { max: 244 }],
-    },
-  },
-  {
-    files: ['app/app/learn/figures-view.tsx'],
-    rules: { 'max-lines': ['error', 671] },
-  },
-  {
-    files: ['app/app/learn/intro.tsx'],
-    rules: {
-      'max-lines': ['error', 532],
-      'max-lines-per-function': ['error', { max: 237 }],
-    },
-  },
-  {
-    files: ['app/app/learn/user-pill.tsx'],
-    rules: {
-      'max-lines': ['error', 582],
-      'max-lines-per-function': ['error', { max: 175 }],
     },
   },
   {

@@ -1,15 +1,15 @@
 import * as stylex from '@stylexjs/stylex'
 import { play } from 'cuelume'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type RefObject } from 'react'
 import { createPortal, flushSync } from 'react-dom'
 import { d, g, t } from '@/app/tokens.stylex'
 import { morphs, turnsOnly } from '@/lib/figures'
 import type { Figure } from '@/lib/figures'
 import { replayLesson } from '@/lib/lesson'
-import type { Lesson, TrialEntry } from '@/lib/lesson'
+import type { Lesson, LessonItem, TrialEntry } from '@/lib/lesson'
 import { chrome } from './chrome'
 import { FigureView } from './figures-view'
-import { FracBox, labelStack, LessonText, Words } from './lesson-text'
+import { FracRow, labelStack, LessonText, TypedRow } from './lesson-text'
 import { EnterKey, shellInert } from './ui'
 import { useLessonAnswer } from './use-lesson-answer'
 import { initialShown, useLessonVoice } from './use-lesson-voice'
@@ -75,82 +75,6 @@ const styles = stylex.create({
     backgroundColor: `color-mix(in srgb, ${t.ink} 6%, transparent)`,
     color: t.mut,
   },
-  pfillin: {
-    appearance: 'none',
-    width: '100%',
-    marginTop: '20px',
-    fontFamily: t.sans,
-    fontSize: '17px',
-    color: {
-      default: t.ink,
-      '::placeholder': `color-mix(in srgb, ${t.mut} 55%, transparent)`,
-    },
-    paddingBlock: '13px',
-    paddingInline: '16px',
-    borderWidth: '2px',
-    borderStyle: 'solid',
-    borderColor: `color-mix(in srgb, ${t.ink} 22%, transparent)`,
-    borderRadius: '12px',
-    backgroundColor: `color-mix(in srgb, ${t.ink} 3%, transparent)`,
-    boxShadow: `inset 0 2px 0 color-mix(in srgb, ${t.ink} 5%, transparent)`,
-    transitionProperty: 'border-color, background-color, opacity',
-    transitionDuration: '0.16s',
-    transitionTimingFunction: 'ease',
-  },
-  pfillinRight: {
-    backgroundColor: d.gc,
-    borderColor: g.gline,
-    color: g.gon,
-  },
-  pfillinWrong: {
-    opacity: 0.5,
-  },
-  lfracrow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '16px',
-    marginTop: '24px',
-    fontSize: '22px',
-  },
-  lexpr: {
-    fontFamily: t.sans,
-    fontSize: '24px',
-    fontWeight: 700,
-    color: t.accent,
-  },
-  lfree: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '12px',
-  },
-  num: {
-    fontFamily: t.mono,
-    fontSize: '12px',
-    letterSpacing: '0.14em',
-    textTransform: 'uppercase',
-    color: t.mut,
-  },
-  lfreeIn: {
-    width: '7ch',
-    paddingBlock: '9px',
-    paddingInline: '12px',
-    borderRadius: '10px',
-    borderWidth: '2px',
-    borderStyle: 'solid',
-    borderColor: {
-      default: `color-mix(in srgb, ${t.ink} 22%, transparent)`,
-      ':focus': `color-mix(in srgb, ${t.ink} 42%, transparent)`,
-    },
-    backgroundColor: `color-mix(in srgb, ${t.ink} 3%, transparent)`,
-    color: t.ink,
-    fontFamily: 'inherit',
-    fontSize: 'inherit',
-    fontStyle: 'inherit',
-    fontWeight: 'inherit',
-    lineHeight: 'inherit',
-    textAlign: 'center',
-    outlineStyle: 'none',
-  },
   lfigs: {
     display: 'flex',
     flexDirection: 'column',
@@ -193,6 +117,124 @@ const styles = stylex.create({
 })
 
 type Feedback = { typed: string; correct: boolean }
+
+function toneOf(feedback: Feedback | null): 'right' | 'wrong' | null {
+  if (feedback === null) return null
+  return feedback.correct ? 'right' : 'wrong'
+}
+
+function FigureRow({
+  item,
+  answer,
+  reveal,
+  shown,
+  morphed,
+}: {
+  item: LessonItem
+  answer: ReturnType<typeof useLessonAnswer>
+  reveal: boolean
+  shown: number | null
+  morphed: boolean
+}) {
+  const figures = item.figures ?? []
+  const interactive = item.mode === 'shade' && !reveal
+  const countedFor = (fig: Figure, i: number) =>
+    item.mode === 'shade' ? (answer.shownSel[i] ?? 0) : (fig.counted ?? 0)
+  if (figures.length === 0) return null
+  return (
+    <div {...stylex.props(styles.lfigs)} data-lfigs="">
+      {figures.map((fig, i) => (
+        <FigureView
+          key={i}
+          fig={fig}
+          counted={countedFor(fig, i)}
+          badge={reveal ? item.count : undefined}
+          shown={shown ?? undefined}
+          onPick={interactive ? answer.pickCell(i) : undefined}
+          label={fig.label && <LessonText text={fig.label} stack={labelStack} />}
+          pop={{ ticks: morphed, badges: morphed || shown !== null }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function LessonFooter({
+  model,
+  feedback,
+  demoText,
+  spoken,
+  canCheck,
+  continueRef,
+  onNext,
+  onContinue,
+  onCheck,
+}: {
+  model: boolean
+  feedback: Feedback | null
+  demoText: string
+  spoken: boolean
+  canCheck: boolean
+  continueRef: RefObject<HTMLButtonElement | null>
+  onNext: () => void
+  onContinue: () => void
+  onCheck: () => void
+}) {
+  const demo = (
+    <p {...stylex.props(styles.ldemo, spoken && chrome.voiced)} hidden={spoken}>
+      <LessonText text={demoText} bold={styles.ldemoB} />
+    </p>
+  )
+  if (model)
+    return (
+      <div {...stylex.props(styles.pfeed)}>
+        {demo}
+        <button
+          {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary, styles.feedBtn)}
+          onClick={onNext}
+          data-cuelume-press="press"
+          data-cuelume-release="release"
+        >
+          Next
+          <EnterKey />
+        </button>
+      </div>
+    )
+  if (feedback)
+    return (
+      <div {...stylex.props(styles.pfeed)} role="status">
+        <p {...stylex.props(styles.pverdict, !feedback.correct && styles.miss)}>
+          {feedback.correct ? 'correct' : 'not quite'}
+        </p>
+        {demo}
+        <button
+          ref={continueRef}
+          {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary, styles.feedBtn)}
+          onClick={onContinue}
+          data-cuelume-press="press"
+          data-cuelume-release="release"
+        >
+          Continue
+          <EnterKey />
+        </button>
+      </div>
+    )
+  return (
+    <div {...stylex.props(styles.pcheckrow)}>
+      <span />
+      <button
+        {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary)}
+        disabled={!canCheck}
+        onClick={onCheck}
+        data-cuelume-press="press"
+        data-cuelume-release="release"
+      >
+        Check
+        <EnterKey />
+      </button>
+    </div>
+  )
+}
 
 function transitionDiagram(update: () => void, autoplay: boolean, turn = false): void {
   if (
@@ -273,10 +315,6 @@ export function LessonPlayer({
   const advance = () => leave({ typed: feedback!.typed })
   const advanceModel = () => leave({ typed: '' })
 
-  const countedFor = (fig: Figure, i: number) =>
-    item!.mode === 'shade' ? (answer.shownSel[i] ?? 0) : (fig.counted ?? 0)
-  const interactive = item?.mode === 'shade' && !reveal
-
   const continueRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
     if (feedback) continueRef.current?.focus()
@@ -314,11 +352,7 @@ export function LessonPlayer({
   if (!item) return null
 
   const spoken = voice.voiced && !voice.ccOn
-  const demo = (
-    <p {...stylex.props(styles.ldemo, spoken && chrome.voiced)} hidden={spoken}>
-      <LessonText text={item.demo} bold={styles.ldemoB} />
-    </p>
-  )
+  const tone = toneOf(feedback)
 
   return (
     <>
@@ -326,121 +360,27 @@ export function LessonPlayer({
         <p {...stylex.props(chrome.pq, spoken && chrome.voiced)} hidden={spoken} aria-live="polite">
           <LessonText text={item.prompt} />
         </p>
-        {figures.length > 0 && (
-          <div {...stylex.props(styles.lfigs)} data-lfigs="">
-            {figures.map((fig, i) => (
-              <FigureView
-                key={i}
-                fig={fig}
-                counted={countedFor(fig, i)}
-                badge={reveal ? item.count : undefined}
-                shown={shown ?? undefined}
-                onPick={interactive ? answer.pickCell(i) : undefined}
-                label={fig.label && <LessonText text={fig.label} stack={labelStack} />}
-                pop={{ ticks: morphed, badges: morphed || shown !== null }}
-              />
-            ))}
-          </div>
-        )}
-        {item.mode === 'frac' && (
-          <div {...stylex.props(styles.lfracrow)}>
-            {item.expr && (
-              <span {...stylex.props(styles.lexpr)}>
-                <LessonText text={item.expr} />
-              </span>
-            )}
-            <FracBox
-              frac={item.frac!}
-              values={answer.shownSlots}
-              onChange={answer.editSlot}
-              disabled={reveal}
-              tone={feedback ? (feedback.correct ? 'right' : 'wrong') : null}
-            />
-            {!reveal && (
-              <span {...stylex.props(styles.lfree)}>
-                <span {...stylex.props(styles.num)}>or type it</span>
-                <input
-                  {...stylex.props(styles.lfreeIn)}
-                  type="text"
-                  value={answer.free}
-                  onChange={(e) => answer.editFree(e.target.value)}
-                  placeholder="3/5"
-                  aria-label="Fraction as text"
-                  autoComplete="off"
-                  spellCheck={false}
-                  enterKeyHint="done"
-                />
-                {answer.free.trim() !== '' && <Words text={answer.free} />}
-              </span>
-            )}
-          </div>
-        )}
+        <FigureRow item={item} answer={answer} reveal={reveal} shown={shown} morphed={morphed} />
+        {item.mode === 'frac' && <FracRow item={item} answer={answer} reveal={reveal} tone={tone} />}
         {item.mode === 'typed' && !model && (
-          <input
-            {...stylex.props(
-              styles.pfillin,
-              feedback !== null && (feedback.correct ? styles.pfillinRight : styles.pfillinWrong),
-            )}
-            type="text"
+          <TypedRow
             value={feedback ? feedback.typed : answer.typed}
-            onChange={(e) => answer.setTyped(e.target.value)}
-            disabled={feedback !== null}
-            placeholder="Type your answer"
-            aria-label="Your answer"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            enterKeyHint="done"
-            spellCheck={false}
-            autoFocus
-            ref={answerRef}
+            onType={answer.setTyped}
+            tone={tone}
+            answerRef={answerRef}
           />
         )}
-        {model ? (
-          <div {...stylex.props(styles.pfeed)}>
-            {demo}
-            <button
-              {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary, styles.feedBtn)}
-              onClick={advanceModel}
-              data-cuelume-press="press"
-              data-cuelume-release="release"
-            >
-              Next
-              <EnterKey />
-            </button>
-          </div>
-        ) : feedback ? (
-          <div {...stylex.props(styles.pfeed)} role="status">
-            <p {...stylex.props(styles.pverdict, !feedback.correct && styles.miss)}>
-              {feedback.correct ? 'correct' : 'not quite'}
-            </p>
-            {demo}
-            <button
-              ref={continueRef}
-              {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary, styles.feedBtn)}
-              onClick={advance}
-              data-cuelume-press="press"
-              data-cuelume-release="release"
-            >
-              Continue
-              <EnterKey />
-            </button>
-          </div>
-        ) : (
-          <div {...stylex.props(styles.pcheckrow)}>
-            <span />
-            <button
-              {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary)}
-              disabled={!answer.canCheck}
-              onClick={() => check(answer.serialize())}
-              data-cuelume-press="press"
-              data-cuelume-release="release"
-            >
-              Check
-              <EnterKey />
-            </button>
-          </div>
-        )}
+        <LessonFooter
+          model={model}
+          feedback={feedback}
+          demoText={item.demo}
+          spoken={spoken}
+          canCheck={answer.canCheck}
+          continueRef={continueRef}
+          onNext={advanceModel}
+          onContinue={advance}
+          onCheck={() => check(answer.serialize())}
+        />
       </div>
       {createPortal(
         <button

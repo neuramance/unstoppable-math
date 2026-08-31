@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { useEffect, useMemo, useState } from 'react'
 import type { Lesson } from '@/lib/lesson'
-import type { LogAudit } from '@/lib/session'
+import type { LogAudit, SessionState } from '@/lib/session'
 import { chrome } from './chrome'
 import { NarrativeFilm } from './narrative-film'
 import { DevDock } from './session-dev'
@@ -10,7 +10,7 @@ import { StackCard } from './session-stack'
 import { LessonPlayer } from './teach'
 import { EnterKey, shellInert } from './ui'
 import { useSessionLog } from './use-session-log'
-import { useSessionPhase } from './use-session-phase'
+import { useSessionPhase, type Phase } from './use-session-phase'
 
 const REGISTER = {
   eyebrow: 'Today · fractions',
@@ -67,6 +67,51 @@ function noticeFor(wiped: boolean, audit: LogAudit | null) {
   return null
 }
 
+function IdleHero({
+  blocks,
+  notice,
+  onBegin,
+}: {
+  blocks: number
+  notice: { tag: string; note: string } | null
+  onBegin: () => void
+}) {
+  return (
+    <section {...stylex.props(chrome.pintro)}>
+      <p {...stylex.props(chrome.eyebrow, chrome.rise)}>
+        {REGISTER.eyebrow}
+        {notice?.tag}
+      </p>
+      <h1 {...stylex.props(chrome.h1, chrome.rise)}>{REGISTER.heroTitle}</h1>
+      <p {...stylex.props(chrome.lede, chrome.rise)}>
+        {REGISTER.heroSub(blocks)}
+        {notice ? ` ${notice.note}` : ''}
+      </p>
+      <button
+        {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary, chrome.rise)}
+        onClick={onBegin}
+        data-cuelume-press="press"
+        data-cuelume-release="release"
+      >
+        {REGISTER.begin}
+        <EnterKey />
+      </button>
+    </section>
+  )
+}
+
+function stageOf(session: SessionState | null, playing: boolean, phase: Phase, lesson: Lesson, starts: number) {
+  const activeBlock = playing && session ? session.blocks[session.blockIndex] : null
+  const cur = activeBlock?.current ?? null
+  const film = phase === 'active' && activeBlock?.plan.kind === 'narrative' && lesson.narrative !== undefined
+  return {
+    activeBlock,
+    atItem: cur?.state.current?.item ?? null,
+    film: film ? { file: lesson.narrative!, key: starts } : null,
+    row: phase === 'active' && cur ? { cur, key: `${starts}:${session!.blockIndex}:${cur.rowIndex}` } : null,
+  }
+}
+
 export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean; onExit: () => void }) {
   const log = useSessionLog(lesson)
   const { session, live, history } = log
@@ -115,9 +160,7 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
     return () => window.removeEventListener('keydown', onKey)
   })
 
-  const activeBlock = playing && session ? session.blocks[session.blockIndex] : null
-  const cur = activeBlock?.current ?? null
-  const atItem = cur?.state.current?.item ?? null
+  const stage = stageOf(session, playing, phase, lesson, live?.starts ?? 0)
 
   return (
     <section {...stylex.props(s.sess, dev && s.sessWithDock)}>
@@ -129,8 +172,8 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
           onReset={reset}
           onJump={jump}
           playing={playing}
-          activeBlock={activeBlock}
-          atItem={atItem}
+          activeBlock={stage.activeBlock}
+          atItem={stage.atItem}
           history={history}
           atomRows={atomRows}
           atomOf={atomOf}
@@ -148,42 +191,21 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
         />
       </aside>
       <div {...stylex.props(s.sessmain, chrome.rise)}>
-        {phase === 'idle' && (
-          <section {...stylex.props(chrome.pintro)}>
-            <p {...stylex.props(chrome.eyebrow, chrome.rise)}>
-              {REGISTER.eyebrow}
-              {notice?.tag}
-            </p>
-            <h1 {...stylex.props(chrome.h1, chrome.rise)}>{REGISTER.heroTitle}</h1>
-            <p {...stylex.props(chrome.lede, chrome.rise)}>
-              {REGISTER.heroSub(plan.blocks.length)}
-              {notice ? ` ${notice.note}` : ''}
-            </p>
-            <button
-              {...stylex.props(chrome.btn, chrome.cta, chrome.gamePrimary, chrome.rise)}
-              onClick={begin}
-              data-cuelume-press="press"
-              data-cuelume-release="release"
-            >
-              {REGISTER.begin}
-              <EnterKey />
-            </button>
-          </section>
-        )}
-        {phase === 'active' && activeBlock?.plan.kind === 'narrative' && lesson.narrative && (
+        {phase === 'idle' && <IdleHero blocks={plan.blocks.length} notice={notice} onBegin={begin} />}
+        {stage.film && (
           <NarrativeFilm
-            key={live?.starts ?? 0}
-            file={lesson.narrative}
+            key={stage.film.key}
+            file={stage.film.file}
             auto={auto}
             dev={dev}
             onDone={() => log.append({ typed: '' })}
           />
         )}
-        {phase === 'active' && cur && (
+        {stage.row && (
           <LessonPlayer
-            key={`${live?.starts ?? 0}:${session?.blockIndex ?? 0}:${cur.rowIndex}`}
-            lesson={cur.lesson}
-            log={cur.log}
+            key={stage.row.key}
+            lesson={stage.row.cur.lesson}
+            log={stage.row.cur.log}
             onTrial={log.append}
             auto={auto}
           />

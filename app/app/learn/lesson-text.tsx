@@ -1,8 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { Fragment } from 'react'
+import { Fragment, type RefObject } from 'react'
 import { d, g, t } from '@/app/tokens.stylex'
-import type { FracSlots } from '@/lib/lesson'
+import type { FracSlots, LessonItem } from '@/lib/lesson'
+import type { useLessonAnswer } from './use-lesson-answer'
 
 const styles = stylex.create({
   mfrac: {
@@ -80,6 +81,82 @@ const styles = stylex.create({
     backgroundColor: d.gc,
     borderColor: g.gline,
     color: g.gon,
+  },
+  lfracrow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px',
+    marginTop: '24px',
+    fontSize: '22px',
+  },
+  lexpr: {
+    fontFamily: t.sans,
+    fontSize: '24px',
+    fontWeight: 700,
+    color: t.accent,
+  },
+  lfree: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '12px',
+  },
+  num: {
+    fontFamily: t.mono,
+    fontSize: '12px',
+    letterSpacing: '0.14em',
+    textTransform: 'uppercase',
+    color: t.mut,
+  },
+  lfreeIn: {
+    width: '7ch',
+    paddingBlock: '9px',
+    paddingInline: '12px',
+    borderRadius: '10px',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: {
+      default: `color-mix(in srgb, ${t.ink} 22%, transparent)`,
+      ':focus': `color-mix(in srgb, ${t.ink} 42%, transparent)`,
+    },
+    backgroundColor: `color-mix(in srgb, ${t.ink} 3%, transparent)`,
+    color: t.ink,
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
+    fontStyle: 'inherit',
+    fontWeight: 'inherit',
+    lineHeight: 'inherit',
+    textAlign: 'center',
+    outlineStyle: 'none',
+  },
+  pfillin: {
+    appearance: 'none',
+    width: '100%',
+    marginTop: '20px',
+    fontFamily: t.sans,
+    fontSize: '17px',
+    color: {
+      default: t.ink,
+      '::placeholder': `color-mix(in srgb, ${t.mut} 55%, transparent)`,
+    },
+    paddingBlock: '13px',
+    paddingInline: '16px',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: `color-mix(in srgb, ${t.ink} 22%, transparent)`,
+    borderRadius: '12px',
+    backgroundColor: `color-mix(in srgb, ${t.ink} 3%, transparent)`,
+    boxShadow: `inset 0 2px 0 color-mix(in srgb, ${t.ink} 5%, transparent)`,
+    transitionProperty: 'border-color, background-color, opacity',
+    transitionDuration: '0.16s',
+    transitionTimingFunction: 'ease',
+  },
+  pfillinRight: {
+    backgroundColor: d.gc,
+    borderColor: g.gline,
+    color: g.gon,
+  },
+  pfillinWrong: {
+    opacity: 0.5,
   },
   slotWrong: {
     opacity: 0.5,
@@ -178,5 +255,80 @@ export function FracBox({
         {slot(frac.den, 'denominator', wholeInputs + numInputs)}
       </span>
     </span>
+  )
+}
+
+export function FracRow({
+  item,
+  answer,
+  reveal,
+  tone,
+}: {
+  item: LessonItem
+  answer: ReturnType<typeof useLessonAnswer>
+  reveal: boolean
+  tone: 'right' | 'wrong' | null
+}) {
+  return (
+    <div {...stylex.props(styles.lfracrow)}>
+      {item.expr && (
+        <span {...stylex.props(styles.lexpr)}>
+          <LessonText text={item.expr} />
+        </span>
+      )}
+      <FracBox frac={item.frac!} values={answer.shownSlots} onChange={answer.editSlot} disabled={reveal} tone={tone} />
+      {!reveal && (
+        <span {...stylex.props(styles.lfree)}>
+          <span {...stylex.props(styles.num)}>or type it</span>
+          <input
+            {...stylex.props(styles.lfreeIn)}
+            type="text"
+            value={answer.free}
+            onChange={(e) => answer.editFree(e.target.value)}
+            placeholder="3/5"
+            aria-label="Fraction as text"
+            autoComplete="off"
+            spellCheck={false}
+            enterKeyHint="done"
+          />
+          {answer.free.trim() !== '' && <Words text={answer.free} />}
+        </span>
+      )}
+    </div>
+  )
+}
+
+export function TypedRow({
+  value,
+  onType,
+  tone,
+  answerRef,
+}: {
+  value: string
+  onType: (v: string) => void
+  tone: 'right' | 'wrong' | null
+  answerRef: RefObject<HTMLInputElement | null>
+}) {
+  return (
+    <input
+      {...stylex.props(
+        styles.pfillin,
+        tone === 'right' && styles.pfillinRight,
+        tone === 'wrong' && styles.pfillinWrong,
+      )}
+      type="text"
+      value={value}
+      onChange={(e) => onType(e.target.value)}
+      disabled={tone !== null}
+      placeholder="Type your answer"
+      aria-label="Your answer"
+      autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="off"
+      enterKeyHint="done"
+      spellCheck={false}
+      autoFocus
+      ref={answerRef}
+    />
   )
 }
