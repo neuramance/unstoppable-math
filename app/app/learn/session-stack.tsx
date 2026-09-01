@@ -19,6 +19,20 @@ const STACK_REGISTER = {
 
 const STRIDE = 78
 
+function pct(n: number, total: number): string {
+  console.assert(n >= 0)
+  console.assert(total >= 0)
+  if (total <= 0) return '0%'
+  return `${(Math.min(n, total) / total) * 100}%`
+}
+
+function barSpans(blocks: number, shown: number, stacked: boolean, complete: boolean) {
+  if (complete) return { done: blocks, current: 0 }
+  if (!stacked) return { done: 0, current: 0 }
+  const done = Math.max(0, Math.min(shown, blocks))
+  return { done, current: done < blocks ? 1 : 0 }
+}
+
 const rise = stylex.keyframes({
   from: { opacity: 0, transform: 'translateY(16px)' },
 })
@@ -88,30 +102,27 @@ const s = stylex.create({
   },
   sessdots: {
     display: 'flex',
-    gap: '5px',
-    marginBottom: '16px',
-  },
-  sessdot: {
+    overflow: 'hidden',
     height: '8px',
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: '0%',
+    marginBottom: '16px',
     borderRadius: '4px',
     borderWidth: '1.5px',
     borderStyle: 'solid',
     borderColor: `color-mix(in srgb, ${t.ink} 20%, transparent)`,
     backgroundColor: `color-mix(in srgb, ${t.ink} 6%, transparent)`,
-    transitionProperty: 'background-color',
+  },
+  sessfill: (width: string) => ({
+    width,
+    height: '100%',
+    transitionProperty: 'width',
     transitionDuration: '0.4s',
     transitionTimingFunction: 'ease',
-  },
-  sessdotDone: {
+  }),
+  sessfillDone: {
     backgroundColor: t.accent,
-    borderColor: `color-mix(in srgb, ${t.accent} 55%, ${t.ink})`,
   },
-  sessdotOn: {
+  sessfillOn: {
     backgroundColor: `color-mix(in srgb, ${t.ink} 45%, transparent)`,
-    borderColor: `color-mix(in srgb, ${t.ink} 60%, transparent)`,
   },
   stack: {
     position: 'relative',
@@ -258,6 +269,7 @@ export function StackCard({
 }) {
   const smashing = phase === 'crack' || phase === 'shatter'
   const stacked = phase === 'dropping' || phase === 'active' || smashing
+  const { done, current } = barSpans(plan.blocks.length, shown, stacked, phase === 'done')
   const meta =
     phase === 'done'
       ? STACK_REGISTER.complete
@@ -271,17 +283,16 @@ export function StackCard({
         <p {...stylex.props(s.sesstitle)}>{STACK_REGISTER.stackTitle}</p>
         <p {...stylex.props(s.sessmeta)}>{meta}</p>
       </div>
-      <div {...stylex.props(s.sessdots)}>
-        {plan.blocks.map((_, i) => (
-          <span
-            key={i}
-            {...stylex.props(
-              s.sessdot,
-              (stacked || phase === 'done') &&
-                (i < shown || phase === 'done' ? s.sessdotDone : i === shown && s.sessdotOn),
-            )}
-          />
-        ))}
+      <div
+        {...stylex.props(s.sessdots)}
+        role="progressbar"
+        aria-label={STACK_REGISTER.stackTitle}
+        aria-valuemin={0}
+        aria-valuemax={plan.blocks.length}
+        aria-valuenow={done}
+      >
+        <span {...stylex.props(s.sessfill(pct(done, plan.blocks.length)), s.sessfillDone)} />
+        <span {...stylex.props(s.sessfill(pct(current, plan.blocks.length)), s.sessfillOn)} />
       </div>
       <div {...stylex.props(s.stack)}>
         {[0, 1, 2, 3].map((i) => (
