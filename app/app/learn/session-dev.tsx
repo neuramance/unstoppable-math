@@ -1,9 +1,27 @@
 import * as stylex from '@stylexjs/stylex'
+import { useState } from 'react'
 import { t } from '@/app/tokens.stylex'
 import type { Lesson } from '@/lib/lesson'
 import { rowLesson, type RowHistory, type SessionState } from '@/lib/session'
 import { chrome } from './chrome'
 import { BLOCK_GLYPH, BLOCK_LABEL, KIND_TINT, tints, tintVars } from './session-blocks'
+
+const KINDS = ['instruction', 'testing'] as const
+const KIND_WORD = { instruction: 'instruction', testing: 'checking' } as const
+
+type ActiveBlock = SessionState['blocks'][number] | null
+
+function liveRowOf(playing: boolean, activeBlock: ActiveBlock): number | null {
+  if (!playing) return null
+  return activeBlock?.plan.rows[0]?.row ?? null
+}
+
+function liveSideOf(activeBlock: ActiveBlock): 'instruction' | 'testing' | null {
+  const kind = activeBlock?.plan.kind
+  if (kind === 'instruction') return 'instruction'
+  if (kind === 'testing' || kind === 'review') return 'testing'
+  return null
+}
 
 const s = stylex.create({
   devdock: {
@@ -14,12 +32,9 @@ const s = stylex.create({
     zIndex: 30,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    gap: '7px',
-    paddingBlock: '12px',
-    paddingInline: '16px',
-    maxHeight: '236px',
-    overflowY: 'auto',
+    gap: '9px',
+    paddingBlock: '11px',
+    paddingInline: '14px',
     borderWidth: '2px',
     borderStyle: 'solid',
     borderColor: `color-mix(in srgb, ${t.ink} 24%, transparent)`,
@@ -43,37 +58,70 @@ const s = stylex.create({
     textTransform: 'uppercase',
     color: `color-mix(in srgb, ${t.ink} 55%, transparent)`,
   },
+  devgrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(78px, 1fr))',
+    gap: '4px',
+    maxHeight: '144px',
+    overflowY: 'auto',
+  },
   devatom: {
     display: 'flex',
-    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    rowGap: '4px',
-    columnGap: '10px',
+    gap: '4px',
+    paddingInline: '3px',
+    paddingBlock: '2px',
+    borderRadius: '9px',
+  },
+  devatomOpen: {
+    backgroundColor: `color-mix(in srgb, ${t.ink} 9%, transparent)`,
   },
   devrun: {
     display: 'inline-flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'center',
     gap: '3px',
   },
+  devstrip: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '8px',
+    minHeight: '27px',
+    paddingTop: '8px',
+    borderTopWidth: '2px',
+    borderTopStyle: 'solid',
+    borderTopColor: `color-mix(in srgb, ${t.ink} 12%, transparent)`,
+  },
+  devstripGlyph: {
+    fontSize: '12px',
+    lineHeight: 1,
+    color: `color-mix(in srgb, ${t.ink} 45%, transparent)`,
+  },
   devatomCode: {
+    appearance: 'none',
+    margin: 0,
+    padding: 0,
+    borderWidth: 0,
+    borderStyle: 'none',
+    backgroundColor: 'transparent',
     fontFamily: t.sans,
     fontSize: '12.5px',
     fontWeight: 750,
     letterSpacing: '-0.01em',
-    color: `color-mix(in srgb, ${t.ink} 60%, transparent)`,
+    color: { default: `color-mix(in srgb, ${t.ink} 60%, transparent)`, ':hover': t.ink },
+    cursor: 'pointer',
   },
   devatomCodeFirm: {
     color: t.ink,
   },
   devjump: {
     appearance: 'none',
-    fontSize: '12px',
+    fontSize: '11px',
     lineHeight: 1,
-    width: '30px',
-    height: '27px',
+    width: '24px',
+    height: '22px',
     padding: 0,
     borderWidth: '2px',
     borderStyle: 'solid',
@@ -140,6 +188,108 @@ const s = stylex.create({
   },
 })
 
+function AtomChip({
+  lesson,
+  row,
+  code,
+  firmed,
+  open,
+  dim,
+  onOpen,
+  onJump,
+}: {
+  lesson: Lesson
+  row: number
+  code: string
+  firmed: boolean
+  open: boolean
+  dim: boolean
+  onOpen: () => void
+  onJump: (kind: 'instruction' | 'testing') => void
+}) {
+  return (
+    <div {...stylex.props(s.devatom, open && s.devatomOpen)}>
+      <button
+        {...stylex.props(s.devatomCode, firmed && s.devatomCodeFirm)}
+        onClick={onOpen}
+        aria-label={`atom ${code} items`}
+        aria-expanded={open}
+        title={`atom ${code}`}
+      >
+        {code}
+      </button>
+      {KINDS.map((kind) => {
+        if (rowLesson(lesson, { row, set: 1 }, kind).items.length === 0) return null
+        return (
+          <button
+            key={kind}
+            {...stylex.props(s.devjump, tintVars.tint, KIND_TINT[kind], dim && s.devjumpDim)}
+            onClick={() => onJump(kind)}
+            data-cuelume-press="tick"
+            aria-label={`atom ${code} ${KIND_WORD[kind]}`}
+            title={`${code} · ${BLOCK_LABEL[kind]}`}
+          >
+            {BLOCK_GLYPH[kind]}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+function ItemStrip({
+  lesson,
+  row,
+  code,
+  side,
+  atItem,
+  anyNow,
+  onJump,
+}: {
+  lesson: Lesson
+  row: number
+  code: string
+  side: 'instruction' | 'testing' | null
+  atItem: number | null
+  anyNow: boolean
+  onJump: (kind: 'instruction' | 'testing', item: number) => void
+}) {
+  return (
+    <div {...stylex.props(s.devstrip)}>
+      <span {...stylex.props(s.devdockHead)}>atom {code}</span>
+      {KINDS.map((kind) => {
+        const pieces = rowLesson(lesson, { row, set: 1 }, kind).items
+        if (pieces.length === 0) return null
+        return (
+          <span key={kind} {...stylex.props(s.devrun)}>
+            <span {...stylex.props(s.devstripGlyph)}>{BLOCK_GLYPH[kind]}</span>
+            {pieces.map((piece, i) => {
+              const nowDot = side === kind && atItem === i
+              return (
+                <button
+                  key={i}
+                  {...stylex.props(
+                    s.devjump,
+                    s.devjumpDot,
+                    tintVars.tint,
+                    KIND_TINT[kind],
+                    nowDot && s.devjumpNow,
+                    anyNow && !nowDot && s.devjumpDim,
+                  )}
+                  onClick={() => onJump(kind, i)}
+                  data-cuelume-press="tick"
+                  aria-label={`atom ${code} ${KIND_WORD[kind]} ${i + 1} of ${pieces.length}`}
+                  title={`${i + 1} of ${pieces.length} · ${piece.prompt}`}
+                />
+              )
+            })}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
+
 export function DevDock({
   lesson,
   auto,
@@ -165,8 +315,12 @@ export function DevDock({
   atomRows: number[]
   atomOf: (row: number) => string
 }) {
+  const [picked, setPicked] = useState<number | null>(null)
   const storyNow = playing && activeBlock?.plan.kind === 'narrative'
-  const anyNow = storyNow || (playing && activeBlock?.plan.kind !== 'narrative' && atItem !== null)
+  const anyNow = storyNow || (playing && atItem !== null)
+  const live = liveRowOf(playing, activeBlock)
+  const shown = picked ?? live ?? atomRows[0] ?? null
+  const side = shown === live ? liveSideOf(activeBlock) : null
 
   return (
     <aside {...stylex.props(s.devdock, chrome.rise)}>
@@ -201,54 +355,35 @@ export function DevDock({
           </button>
         )}
       </div>
-      {atomRows.map((row) => {
-        const active = playing && activeBlock?.plan.rows.some((r) => r.row === row) ? activeBlock.plan.kind : null
-        const side = active === 'review' ? 'testing' : active
-        const firmed = history?.get(row)?.firmed ?? false
-        return (
-          <div key={row} {...stylex.props(s.devatom)}>
-            <span {...stylex.props(s.devatomCode, firmed && s.devatomCodeFirm)}>{atomOf(row)}</span>
-            {(['instruction', 'testing'] as const).map((kind) => {
-              const pieces = rowLesson(lesson, { row, set: 1 }, kind).items
-              if (pieces.length === 0) return null
-              const word = kind === 'instruction' ? 'instruction' : 'checking'
-              return (
-                <span key={kind} {...stylex.props(s.devrun)}>
-                  <button
-                    {...stylex.props(s.devjump, tintVars.tint, KIND_TINT[kind], anyNow && s.devjumpDim)}
-                    onClick={() => onJump(row, Date.now(), kind)}
-                    data-cuelume-press="tick"
-                    aria-label={`atom ${atomOf(row)} ${word}`}
-                    title={`${atomOf(row)} · ${BLOCK_LABEL[kind]}`}
-                  >
-                    {BLOCK_GLYPH[kind]}
-                  </button>
-                  {pieces.map((piece, i) => {
-                    const nowDot = side === kind && atItem === i
-                    return (
-                      <button
-                        key={i}
-                        {...stylex.props(
-                          s.devjump,
-                          s.devjumpDot,
-                          tintVars.tint,
-                          KIND_TINT[kind],
-                          nowDot && s.devjumpNow,
-                          anyNow && !nowDot && s.devjumpDim,
-                        )}
-                        onClick={() => onJump(row, Date.now(), kind, i)}
-                        data-cuelume-press="tick"
-                        aria-label={`atom ${atomOf(row)} ${word} ${i + 1} of ${pieces.length}`}
-                        title={`${i + 1} of ${pieces.length} · ${piece.prompt}`}
-                      />
-                    )
-                  })}
-                </span>
-              )
-            })}
-          </div>
-        )
-      })}
+      <div {...stylex.props(s.devgrid)}>
+        {atomRows.map((row) => (
+          <AtomChip
+            key={row}
+            lesson={lesson}
+            row={row}
+            code={atomOf(row)}
+            firmed={history?.get(row)?.firmed ?? false}
+            open={row === shown}
+            dim={anyNow}
+            onOpen={() => setPicked(row)}
+            onJump={(kind) => {
+              setPicked(row)
+              onJump(row, Date.now(), kind)
+            }}
+          />
+        ))}
+      </div>
+      {shown !== null && (
+        <ItemStrip
+          lesson={lesson}
+          row={shown}
+          code={atomOf(shown)}
+          side={side}
+          atItem={atItem}
+          anyNow={anyNow}
+          onJump={(kind, item) => onJump(shown, Date.now(), kind, item)}
+        />
+      )}
     </aside>
   )
 }
