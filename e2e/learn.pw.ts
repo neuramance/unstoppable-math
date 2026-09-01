@@ -23,7 +23,7 @@ test('/ and /app redirect to the learn page, which carries the title and the pap
   await expect(page).toHaveURL(/\/app\/learn$/)
 })
 
-test('the intro film plays on a first visit, Skip lands on the page, and it stays gone for the session', async ({
+test.skip('the intro film plays on a first visit, Skip lands on the page, and it stays gone for the session', async ({
   page,
 }) => {
   await page.goto('/app/learn')

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
+const INTRO_ENABLED = false
 const SEEN_KEY = 'um.intro-seen'
 const INTRO_SRC = '/intro/intro.mp4'
 
@@ -55,6 +56,7 @@ function pageLuma(): number {
 }
 
 export function introPending(): boolean {
+  if (!INTRO_ENABLED) return false
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
   try {
     return sessionStorage.getItem(SEEN_KEY) !== '1'
