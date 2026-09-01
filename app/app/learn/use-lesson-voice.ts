@@ -110,6 +110,7 @@ export function useLessonVoice(
   feedback: boolean,
   model: boolean,
   auto: boolean,
+  muted: boolean,
 ) {
   const [voiced, setVoiced] = useState(false)
   const [ccOn, setCcOn] = useState(loadCc)
@@ -119,6 +120,13 @@ export function useLessonVoice(
   })
   const audRef = useRef<HTMLAudioElement | null>(null)
   const voiceOkRef = useRef(true)
+  const mutedRef = useRef(muted)
+
+  useEffect(() => {
+    mutedRef.current = muted
+    const aud = audRef.current
+    if (aud !== null) aud.muted = muted
+  }, [muted])
 
   const bless = () => {
     const aud = audRef.current
@@ -129,7 +137,7 @@ export function useLessonVoice(
       .then(() => aud.pause())
       .catch(() => undefined)
       .finally(() => {
-        aud.muted = false
+        aud.muted = mutedRef.current
       })
   }
 
@@ -163,6 +171,7 @@ export function useLessonVoice(
       if (text === undefined) return
       const finale = at === texts.length - 1
       aud.src = `/audio/lesson/${clipKey(spokenLesson(text))}.mp3`
+      aud.muted = mutedRef.current
       aud.onended = () => {
         at += 1
         speak()

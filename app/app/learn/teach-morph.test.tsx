@@ -60,7 +60,9 @@ const REDONE: Lesson = {
 
 function Host({ lesson, auto = false }: { lesson: Lesson; auto?: boolean }) {
   const [log, setLog] = useState<TrialEntry[]>([])
-  return <LessonPlayer lesson={lesson} log={log} onTrial={(e) => setLog((l) => [...l, e])} auto={auto} />
+  return (
+    <LessonPlayer lesson={lesson} log={log} onTrial={(e) => setLog((l) => [...l, e])} auto={auto} onMuted={() => {}} />
+  )
 }
 
 const card = () => document.querySelector('p[aria-live]')!.parentElement

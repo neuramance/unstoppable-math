@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import { setEnabled } from 'cuelume'
 import { useEffect, useMemo, useState } from 'react'
 import type { Lesson } from '@/lib/lesson'
 import type { LogAudit, SessionState } from '@/lib/session'
@@ -27,6 +28,22 @@ const REGISTER = {
 
 const WIDE = '@media (min-width: 1048px)'
 const NARROW = '@media (max-width: 760px)'
+
+const MUTE_STORE = 'um.muted'
+
+function readMuted(): boolean {
+  try {
+    return localStorage.getItem(MUTE_STORE) === '1'
+  } catch {
+    return false
+  }
+}
+
+function writeMuted(on: boolean) {
+  try {
+    localStorage.setItem(MUTE_STORE, on ? '1' : '0')
+  } catch {}
+}
 
 const s = stylex.create({
   sess: {
@@ -118,6 +135,14 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
   const phases = useSessionPhase(session)
   const { phase, shown, playing } = phases
   const [auto, setAuto] = useState(false)
+  const [muted, setMuted] = useState(readMuted)
+  useEffect(() => {
+    setEnabled(!muted)
+  }, [muted])
+  const mute = (next: boolean) => {
+    writeMuted(next)
+    setMuted(next)
+  }
 
   const plan = phase === 'idle' ? log.preview : (live?.plan ?? log.preview)
   const atomRows = useMemo(() => [...new Set(lesson.items.map((it) => it.row))], [lesson])
@@ -198,6 +223,7 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
             file={stage.film.file}
             auto={auto}
             dev={dev}
+            muted={muted}
             onDone={() => log.append({ typed: '' })}
           />
         )}
@@ -208,6 +234,8 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
             log={stage.row.cur.log}
             onTrial={log.append}
             auto={auto}
+            muted={muted}
+            onMuted={mute}
           />
         )}
         {phase === 'done' && session && <SessionDone session={session} onExit={onExit} />}

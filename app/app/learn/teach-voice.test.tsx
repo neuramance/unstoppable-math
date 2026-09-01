@@ -84,7 +84,9 @@ const SHOWN: Lesson = {
 
 function Host({ lesson, auto = false }: { lesson: Lesson; auto?: boolean }) {
   const [log, setLog] = useState<TrialEntry[]>([])
-  return <LessonPlayer lesson={lesson} log={log} onTrial={(e) => setLog((l) => [...l, e])} auto={auto} />
+  return (
+    <LessonPlayer lesson={lesson} log={log} onTrial={(e) => setLog((l) => [...l, e])} auto={auto} onMuted={() => {}} />
+  )
 }
 
 test('a prompt is spoken from its content-addressed clip and its text leaves the screen', async () => {

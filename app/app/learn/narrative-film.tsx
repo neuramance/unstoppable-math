@@ -156,11 +156,13 @@ export function NarrativeFilm({
   file,
   auto,
   dev,
+  muted,
   onDone,
 }: {
   file: string
   auto: boolean
   dev: boolean
+  muted: boolean
   onDone: () => void
 }) {
   const stageRef = useRef<HTMLDivElement>(null)
@@ -237,6 +239,7 @@ export function NarrativeFilm({
         src={`/videos/${file}`}
         playsInline
         preload="auto"
+        muted={muted}
         onEnded={() => void finish()}
         onError={() => void finish()}
       />

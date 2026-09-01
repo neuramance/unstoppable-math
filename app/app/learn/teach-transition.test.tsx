@@ -22,7 +22,9 @@ const lesson: Lesson = {
 
 const originalMatchMedia = window.matchMedia
 const originalStartViewTransition = document.startViewTransition
-const player = (auto = false) => <LessonPlayer lesson={lesson} log={[]} onTrial={() => {}} auto={auto} />
+const player = (auto = false) => (
+  <LessonPlayer lesson={lesson} log={[]} onTrial={() => {}} auto={auto} onMuted={() => {}} />
+)
 
 function reducedMotion(matches: boolean): void {
   window.matchMedia = ((query: string) => ({

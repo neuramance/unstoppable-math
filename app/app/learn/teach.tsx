@@ -82,11 +82,16 @@ const styles = stylex.create({
     marginTop: '22px',
     viewTransitionName: 'learn-diagram',
   },
-  lcc: {
+  lbar: {
     position: 'fixed',
     right: '18px',
     bottom: '58px',
     zIndex: 5,
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
+  lcc: {
     fontFamily: t.mono,
     fontSize: '11px',
     fontWeight: 700,
@@ -255,16 +260,56 @@ function transitionDiagram(update: () => void, autoplay: boolean, turn = false):
   vt.finished.finally(() => document.documentElement.classList.remove('learn-turn')).catch(() => undefined)
 }
 
+function LessonBar({
+  muted,
+  onMuted,
+  ccOn,
+  onCc,
+}: {
+  muted: boolean
+  onMuted: (next: boolean) => void
+  ccOn: boolean
+  onCc: (next: boolean) => void
+}) {
+  return createPortal(
+    <div {...stylex.props(styles.lbar)}>
+      <button
+        {...stylex.props(styles.lcc, muted && styles.lccOn)}
+        aria-pressed={muted}
+        aria-label="Mute"
+        onClick={() => onMuted(!muted)}
+        data-cuelume-press="tick"
+      >
+        {muted ? 'muted' : 'mute'}
+      </button>
+      <button
+        {...stylex.props(styles.lcc, ccOn && styles.lccOn)}
+        aria-pressed={ccOn}
+        aria-label="Captions"
+        onClick={() => onCc(!ccOn)}
+        data-cuelume-press="tick"
+      >
+        cc
+      </button>
+    </div>,
+    document.body,
+  )
+}
+
 export function LessonPlayer({
   lesson,
   log,
   onTrial,
   auto = false,
+  muted = false,
+  onMuted,
 }: {
   lesson: Lesson
   log: TrialEntry[]
   onTrial: (entry: TrialEntry) => void
   auto?: boolean
+  muted?: boolean
+  onMuted: (next: boolean) => void
 }) {
   const [feedback, setFeedback] = useState<Feedback | null>(null)
   const [cardKey, setCardKey] = useState(0)
@@ -274,7 +319,7 @@ export function LessonPlayer({
   const item = step ? lesson.items[step.item] : null
   const model = item?.role === 'model'
   const reveal = model || feedback !== null
-  const voice = useLessonVoice(lesson, log, item, feedback !== null, model, auto)
+  const voice = useLessonVoice(lesson, log, item, feedback !== null, model, auto, muted)
   const { shown } = voice
   const answer = useLessonAnswer(item, feedback && !feedback.correct ? feedback.typed : null, reveal)
   const figures = item?.figures ?? []
@@ -382,18 +427,7 @@ export function LessonPlayer({
           onCheck={() => check(answer.serialize())}
         />
       </div>
-      {createPortal(
-        <button
-          {...stylex.props(styles.lcc, voice.ccOn && styles.lccOn)}
-          aria-pressed={voice.ccOn}
-          aria-label="Captions"
-          onClick={() => voice.setCc(!voice.ccOn)}
-          data-cuelume-press="tick"
-        >
-          cc
-        </button>,
-        document.body,
-      )}
+      <LessonBar muted={muted} onMuted={onMuted} ccOn={voice.ccOn} onCc={voice.setCc} />
     </>
   )
 }
