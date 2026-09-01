@@ -7,10 +7,12 @@ const lightBase = stylex.createTheme(t, {
   mut: '#6b6f76',
 })
 
+const paperInk = '#3b2f21'
+
 const paperBase = stylex.createTheme(t, {
   void: '#f8f7f3',
-  ink: '#3b2f21',
-  mut: '#a05e08',
+  ink: paperInk,
+  mut: paperInk,
 })
 
 const paperLine = stylex.createTheme(d, {
