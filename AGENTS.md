@@ -8,11 +8,8 @@
 
 ## Complexity budget (enforced by eslint.config.mjs)
 
-- Global ceilings: complexity 20, max-depth 4, 150 lines/function, 500 lines/file.
-- The per-file overrides at the bottom of eslint.config.mjs are grandfathered debt pins, a one-way ratchet:
-  - Never raise a pin. Never add a new file to the overrides.
-  - When you refactor a pinned file below its pin, lower or delete its override in the same change.
-  - When no file needs a looser global, tighten the global (20 → 15 → 10).
+- The ceiling values live only in eslint.config.mjs; read them there, never restate them here.
+- One-way ratchet: never loosen a ceiling, never add a per-file override; when the worst offender allows, tighten the global.
 - New code meets the globals. If a change would breach a ceiling, extract along a real seam (component, hook, module function) — never restructure solely to game the number, and never nest another level where a table, map, or early return works.
 - Prefer deleting and reusing over adding: search for an existing component, hook, or lib function before writing a new one. Match local style (no semicolons, single quotes, no comments).
 
