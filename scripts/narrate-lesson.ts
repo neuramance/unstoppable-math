@@ -2,12 +2,14 @@ import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { z } from 'zod'
-import { clipKey, spokenLesson, type Lesson } from '../lib/lesson'
+import { clipKey, SPEAKABLE, spokenLesson, type Lesson } from '../lib/lesson'
 
 const VOICE = 'U1xXYn8cDFT02st4a5oq'
 const MODEL = 'eleven_multilingual_v2'
 const FORMAT = 'mp3_44100_128'
 const ATTEMPTS = 3
+const HTTP_ATTEMPTS = 5
+const BACKOFF_MS = 2000
 const SPEECH_TARGET_DBFS = -18
 const PEAK_CEILING_DBFS = -1.5
 const SPEECH_FLOOR_DBFS = -28
@@ -32,13 +34,33 @@ function apiKey(): string {
   return key
 }
 
+async function post(url: string, init: RequestInit, what: string): Promise<Response> {
+  let last = 'no attempt made'
+  for (let attempt = 1; attempt <= HTTP_ATTEMPTS; attempt++) {
+    if (attempt > 1) await new Promise((done) => setTimeout(done, BACKOFF_MS * 2 ** (attempt - 2)))
+    try {
+      const res = await fetch(url, init)
+      if (res.ok) return res
+      last = `${res.status} ${res.statusText} ${(await res.text()).slice(0, 200)}`
+      if (res.status !== 408 && res.status !== 429 && res.status < 500) break
+    } catch (err) {
+      last = String(err)
+    }
+    console.warn(`retry ${what} (${attempt}/${HTTP_ATTEMPTS}): ${last}`)
+  }
+  throw new Error(`${what} failed: ${last}`)
+}
+
 async function speak(text: string, previous: string | undefined): Promise<Mp3> {
-  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}?output_format=${FORMAT}`, {
-    method: 'POST',
-    headers: { 'xi-api-key': apiKey(), 'content-type': 'application/json' },
-    body: JSON.stringify({ text, model_id: MODEL, ...(previous === undefined ? {} : { previous_text: previous }) }),
-  })
-  if (!res.ok) throw new Error(`ElevenLabs ${res.status} ${res.statusText}: ${await res.text()}`)
+  const res = await post(
+    `https://api.elevenlabs.io/v1/text-to-speech/${VOICE}?output_format=${FORMAT}`,
+    {
+      method: 'POST',
+      headers: { 'xi-api-key': apiKey(), 'content-type': 'application/json' },
+      body: JSON.stringify({ text, model_id: MODEL, ...(previous === undefined ? {} : { previous_text: previous }) }),
+    },
+    'text-to-speech',
+  )
   return new Uint8Array(await res.arrayBuffer())
 }
 
@@ -100,12 +122,11 @@ async function timed(key: string, mp3: Mp3, text: string): Promise<Timed> {
   const form = new FormData()
   form.append('file', new Blob([mp3], { type: 'audio/mpeg' }), `${key}.mp3`)
   form.append('text', text)
-  const res = await fetch('https://api.elevenlabs.io/v1/forced-alignment', {
-    method: 'POST',
-    headers: { 'xi-api-key': apiKey() },
-    body: form,
-  })
-  if (!res.ok) throw new Error(`forced-alignment ${res.status} for ${key}: ${await res.text()}`)
+  const res = await post(
+    'https://api.elevenlabs.io/v1/forced-alignment',
+    { method: 'POST', headers: { 'xi-api-key': apiKey() }, body: form },
+    `forced-alignment for ${key}`,
+  )
   const aligned = Aligned.parse(await res.json())
   const words = aligned.words
     .filter((word) => word.text.trim() !== '')
@@ -143,6 +164,19 @@ function scopeOf(spec: string | undefined): (row: number) => boolean {
   return (row) => row >= low && row <= high
 }
 
+function requireTools(): void {
+  apiKey()
+  try {
+    execFileSync('ffmpeg', ['-version'], { stdio: 'ignore' })
+  } catch {
+    throw new Error('ffmpeg is not on PATH, and the edge and loudness gates cannot run without it')
+  }
+}
+
+function chars(clips: [string, Clip][]): string {
+  return clips.reduce((sum, [, clip]) => sum + clip.text.length, 0).toLocaleString('en-US')
+}
+
 async function main(): Promise<void> {
   const inScope = scopeOf(process.argv[2])
   const lesson = JSON.parse(readFileSync(LESSON, 'utf8')) as Lesson
@@ -150,9 +184,22 @@ async function main(): Promise<void> {
   const plan = planned(lesson)
   const missing = [...plan].filter(([key]) => alignment[key] === undefined || !existsSync(`${CLIPS}/${key}.mp3`))
   const rows = [...new Set(missing.map(([, clip]) => clip.row))].sort((a, b) => a - b)
-  console.log(`${plan.size} clips the lesson speaks, ${missing.length} unrecorded, over rows ${rows.join(' ')}`)
+  console.log(`${plan.size} clips the lesson speaks, ${missing.length} unrecorded (${chars(missing)} characters)`)
+  console.log(`unrecorded rows: ${rows.join(' ')}`)
+  const scoped = missing.filter(([, clip]) => inScope(clip.row))
+  const ready = scoped.filter(([, clip]) => SPEAKABLE.test(clip.text))
+  const held = scoped.filter(([, clip]) => !SPEAKABLE.test(clip.text))
+  console.log(`in scope: ${scoped.length} clips; ${ready.length} speakable (${chars(ready)} characters)`)
+  if (held.length > 0) {
+    const glyphs = [...new Set(held.flatMap(([, clip]) => [...clip.text].filter((ch) => !SPEAKABLE.test(ch))))]
+    console.log(
+      `holding ${held.length} clips (${chars(held)} characters) whose text is not speech yet: ${glyphs.join(' ')}`,
+    )
+  }
+  if (ready.length === 0) return
+  requireTools()
   const failed: string[] = []
-  for (const [key, clip] of missing.filter(([, clip]) => inScope(clip.row))) {
+  for (const [at, [key, clip]] of ready.entries()) {
     const mp3 = await take(key, clip)
     if (mp3 === null) {
       failed.push(key)
@@ -166,7 +213,7 @@ async function main(): Promise<void> {
     writeFileSync(`${CLIPS}/${key}.mp3`, mp3)
     const keys = Object.keys(alignment).sort()
     writeFileSync(ALIGNMENT, `${JSON.stringify(Object.fromEntries(keys.map((k) => [k, alignment[k]])), null, 2)}\n`)
-    console.log(`wrote ${key} · "${clip.text}"`)
+    console.log(`[${at + 1}/${ready.length}] wrote ${key} · "${clip.text}"`)
   }
   if (failed.length > 0) throw new Error(`${failed.length} clips failed every take: ${failed.join(' ')}`)
 }

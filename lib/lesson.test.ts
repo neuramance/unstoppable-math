@@ -261,9 +261,13 @@ test('lessonSet: items without a set belong to set 1', () => {
   expect(lessonSet(l, 2).items.map((it) => it.expected)).toEqual(['1'])
 })
 
-test('spokenLesson strips the emphasis markers and nothing else, and clipKey keys distinct lines apart', () => {
+test('spokenLesson strips emphasis, folds typography to ASCII, collapses whitespace, and clipKey keys distinct lines apart', () => {
   expect(spokenLesson('It is split into *whole units*.')).toBe('It is split into whole units.')
   expect(spokenLesson('no markers')).toBe('no markers')
+  expect(spokenLesson('I’m ‘sure’ of it')).toBe("I'm 'sure' of it")
+  expect(spokenLesson('a – dash — here')).toBe('a - dash - here')
+  expect(spokenLesson('  two  spaces\nand a break  ')).toBe('two spaces and a break')
+  expect(spokenLesson(spokenLesson('I’m  here'))).toBe(spokenLesson('I’m  here'))
   expect(clipKey('a')).not.toBe(clipKey('b'))
   expect(clipKey(spokenLesson('*Five* fourths.'))).toBe(clipKey('Five fourths.'))
 })

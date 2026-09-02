@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { expect, test } from 'vitest'
-import { clipKey } from './lesson'
+import { clipKey, SPEAKABLE, spokenLesson } from './lesson'
 
 const AUDIO = join(process.cwd(), 'public/audio/lesson')
 const alignment = JSON.parse(readFileSync(join(AUDIO, 'alignment.json'), 'utf8')) as Record<
@@ -48,7 +48,7 @@ test('every clip is content-addressed off the line it speaks: its key round-trip
 test('the clip key is pinned by value, because changing it orphans every committed lesson clip at once', () => {
   expect(clipKey('How many parts in each whole unit?')).toBe('how-many-parts-in-each-whole-unit-f27ddbde')
   for (const key of keys) {
-    expect({ key, clean: /^[A-Za-z0-9 ,.?:;!'"()/…-]*$/.test(spokenOf(key)) }).toEqual({ key, clean: true })
+    expect({ key, clean: SPEAKABLE.test(spokenOf(key)) }).toEqual({ key, clean: true })
   }
 })
 
@@ -61,5 +61,13 @@ test('the slug lowercases, folds runs of non-alphanumerics to one dash, caps at 
   for (const key of keys) {
     const slug = key.slice(0, -9)
     expect({ key, tidy: slug.length <= 40 && !slug.includes('--') && !slug.endsWith('-') }).toEqual({ key, tidy: true })
+  }
+})
+
+test('the spoken form is idempotent on every committed clip, so normalizing it can never orphan one', () => {
+  for (const key of keys) {
+    const spoken = spokenOf(key)
+    expect({ key, stable: spokenLesson(spoken) }).toEqual({ key, stable: spoken })
+    expect({ key, derived: clipKey(spokenLesson(spoken)) }).toEqual({ key, derived: key })
   }
 })

@@ -203,8 +203,16 @@ export function replayLesson(lesson: Lesson, log: TrialEntry[]): LessonState {
     lastCorrect,
   }
 }
+export const SPEAKABLE = /^[A-Za-z0-9 ,.?:;!'"()/…-]*$/
 export function spokenLesson(text: string): string {
-  return text.replaceAll('*', '')
+  return text
+    .replaceAll('*', '')
+    .replace(/[’‘]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/[–—]/g, '-')
+    .split(/\s+/)
+    .filter(Boolean)
+    .join(' ')
 }
 export function clipKey(text: string): string {
   let h = 0x811c9dc5
