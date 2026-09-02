@@ -52,6 +52,64 @@ test.skipIf(filter !== undefined)(
   },
 )
 
+const honed = JSON.parse(readFileSync('content/umath1-set1.baseline.json', 'utf8')) as LessonItem[]
+
+const SCRIPT_CORRECTED: Record<number, Partial<LessonItem>> = {
+  26: { prompt: "These whole units have six parts each. What's the name of each part?" },
+  27: { prompt: "These whole units have seven parts each. What's the name of each part?" },
+  28: { prompt: 'Your turn. How many parts in each whole unit?' },
+  30: { prompt: 'How many parts in each whole unit?' },
+  32: { prompt: 'How many parts in each whole unit?' },
+  34: { prompt: 'How many parts in each whole unit?' },
+  36: { prompt: 'How many parts in each whole unit?' },
+  38: { prompt: 'How many parts in each whole unit?' },
+  40: {
+    prompt:
+      'There are three times when the number of parts has an unusual name. If the number of parts is two, we call them halves. Say halves:',
+  },
+  43: { prompt: 'How many parts in each whole unit?' },
+  45: { prompt: 'How many parts in each whole unit?' },
+  47: { prompt: 'How many parts in each whole unit?' },
+}
+
+const REASON_ACCEPTED: Record<number, Partial<LessonItem>> = {
+  60: { accept: ['Yes, because the parts are the same size.'] },
+  61: { accept: ['Yes, because the parts are the same size.'] },
+  62: { accept: ['No, because the parts are not the same size.'] },
+}
+
+test.skipIf(filter !== undefined)(
+  'the first five atoms serve the lesson umath_1 honed, bar reviewed corrections',
+  () => {
+    expect(honed).toHaveLength(62)
+    const want = honed.map((item, at) => ({ ...item, ...SCRIPT_CORRECTED[at + 1], ...REASON_ACCEPTED[at + 1] }))
+    expect(lesson.items.filter((item) => item.row <= 5)).toEqual(want)
+  },
+)
+
+test('every correction to the honed lesson quotes a line of the committed script', () => {
+  const sections = new Map(transcription.sections.map((s) => [s.label, s]))
+  const flat = (text: string) => text.replace(/[’‘]/g, "'").replace(/\s+/g, ' ')
+  for (const [at, correction] of Object.entries(SCRIPT_CORRECTED)) {
+    const item = honed[Number(at) - 1]
+    const label = lesson.atoms?.[String(item.row)]
+    const section = sections.get(String(label))
+    expect(section, `no section for atom ${label}`).toBeDefined()
+    if (section === undefined) continue
+    const script = flat(
+      (['II', 'IT', 'EX'] as const)
+        .flatMap((k) => section.blocks[k])
+        .join(' ')
+        .replace(/\[[^\]]*\]/g, ' '),
+    )
+    const corrected = flat(correction.prompt ?? '')
+    expect(script.includes(corrected) || corrected.includes(flat(section.blocks.II[0] ?? '')), {
+      message: `atom ${label} correction is not in its script: ${corrected}`,
+    } as never).toBe(true)
+    expect(script.includes(flat(item.prompt)), `umath_1 wording was already in the script: ${item.prompt}`).toBe(false)
+  }
+})
+
 test('every count item expects exactly what its figure shows', () => {
   for (const item of items()) {
     if (item.count === undefined) continue
