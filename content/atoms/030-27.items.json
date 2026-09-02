@@ -71,7 +71,8 @@
       "figures": [
         { "kind": "bar", "units": 1, "parts": 3, "counted": 2, "label": "2/3" },
         { "kind": "bar", "units": 1, "parts": 9, "counted": 6, "label": "6/9" }
-      ]
+      ],
+      "accept": ["Yes, the same amount is shaded each time."]
     },
     {
       "src": "IT:2",
@@ -83,7 +84,8 @@
       "figures": [
         { "kind": "bar", "units": 2, "parts": 2, "counted": 3, "label": "3/2" },
         { "kind": "bar", "units": 2, "parts": 4, "counted": 6, "label": "6/4" }
-      ]
+      ],
+      "accept": ["Yes, the same amount is shaded each time."]
     },
     {
       "src": "IT:3",
@@ -95,7 +97,8 @@
       "figures": [
         { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
         { "kind": "bar", "units": 2, "parts": 8, "counted": 9, "label": "9/8" }
-      ]
+      ],
+      "accept": ["No, the same amount is not shaded each time."]
     },
     {
       "src": "IT:4",
@@ -107,7 +110,8 @@
       "figures": [
         { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
         { "kind": "bar", "units": 2, "parts": 8, "counted": 11, "label": "11/8" }
-      ]
+      ],
+      "accept": ["No, the same amount is not shaded each time."]
     },
     {
       "src": "IT:5",
@@ -119,7 +123,8 @@
       "figures": [
         { "kind": "bar", "units": 2, "parts": 4, "counted": 5, "label": "5/4" },
         { "kind": "bar", "units": 2, "parts": 8, "counted": 10, "label": "10/8" }
-      ]
+      ],
+      "accept": ["Yes, the same amount is shaded each time."]
     },
     {
       "src": "EX:1a",
@@ -131,7 +136,8 @@
       "figures": [
         { "kind": "circle", "units": 1, "parts": 2, "counted": 1, "label": "1/2" },
         { "kind": "circle", "units": 1, "parts": 4, "counted": 2, "label": "2/4" }
-      ]
+      ],
+      "accept": ["Yes, the same amount is shaded each time."]
     },
     {
       "src": "EX:1b",
@@ -143,7 +149,8 @@
       "figures": [
         { "kind": "number-line", "units": 1, "parts": 4, "counted": 3, "band": true, "label": "3/4" },
         { "kind": "number-line", "units": 1, "parts": 8, "counted": 6, "band": true, "label": "6/8" }
-      ]
+      ],
+      "accept": ["Yes, the same amount is shaded each time."]
     },
     {
       "src": "EX:1c",
@@ -155,7 +162,8 @@
       "figures": [
         { "kind": "bar", "units": 2, "parts": 3, "counted": 4, "label": "4/3" },
         { "kind": "bar", "units": 2, "parts": 6, "counted": 7, "label": "7/6" }
-      ]
+      ],
+      "accept": ["No, the same amount is not shaded each time."]
     },
     {
       "src": "EX:1d",
@@ -167,7 +175,8 @@
       "figures": [
         { "kind": "grid", "units": 1, "parts": 10, "counted": 4, "columns": 5, "label": "4/10" },
         { "kind": "grid", "units": 1, "parts": 5, "counted": 2, "columns": 5, "label": "2/5" }
-      ]
+      ],
+      "accept": ["Yes, the same amount is shaded each time."]
     },
     {
       "src": "EX:1e",
@@ -179,7 +188,8 @@
       "figures": [
         { "kind": "circle", "units": 1, "parts": 6, "counted": 5, "label": "5/6" },
         { "kind": "circle", "units": 1, "parts": 4, "counted": 3, "label": "3/4" }
-      ]
+      ],
+      "accept": ["No, the same amount is not shaded each time."]
     },
     {
       "src": "EX:1f",
@@ -191,7 +201,8 @@
       "figures": [
         { "kind": "hexagon", "units": 1, "parts": 6, "counted": 3, "label": "3/6" },
         { "kind": "hexagon", "units": 1, "parts": 2, "counted": 1, "label": "1/2" }
-      ]
+      ],
+      "accept": ["Yes, the same amount is shaded each time."]
     }
   ]
 }

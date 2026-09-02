@@ -65,7 +65,8 @@
       "mode": "typed",
       "prompt": "Your turn. Is this fraction proper or improper? How do you know?  3/8",
       "expected": "proper",
-      "demo": "*Proper*, because the top is smaller than the bottom."
+      "demo": "*Proper*, because the top is smaller than the bottom.",
+      "accept": ["Proper, because the top is smaller than the bottom."]
     },
     {
       "src": "IT:2",
@@ -73,7 +74,8 @@
       "mode": "typed",
       "prompt": "Is this fraction proper or improper? How do you know?  8/3",
       "expected": "improper",
-      "demo": "*Improper*, because the top is bigger than the bottom."
+      "demo": "*Improper*, because the top is bigger than the bottom.",
+      "accept": ["Improper, because the top is bigger than the bottom."]
     },
     {
       "src": "IT:3",
@@ -81,7 +83,8 @@
       "mode": "typed",
       "prompt": "Is this fraction proper or improper? How do you know?  9/10",
       "expected": "proper",
-      "demo": "*Proper*, because the top is smaller than the bottom."
+      "demo": "*Proper*, because the top is smaller than the bottom.",
+      "accept": ["Proper, because the top is smaller than the bottom."]
     },
     {
       "src": "IT:4",
@@ -89,7 +92,8 @@
       "mode": "typed",
       "prompt": "Is this fraction proper or improper? How do you know?  10/9",
       "expected": "improper",
-      "demo": "*Improper*, because the top is bigger than the bottom."
+      "demo": "*Improper*, because the top is bigger than the bottom.",
+      "accept": ["Improper, because the top is bigger than the bottom."]
     },
     {
       "src": "EX:1",
@@ -115,7 +119,8 @@
       "mode": "typed",
       "prompt": "Is this fraction proper or improper? How do you know?  5/1",
       "expected": "improper",
-      "demo": "*Improper*, because the top is bigger than the bottom."
+      "demo": "*Improper*, because the top is bigger than the bottom.",
+      "accept": ["Improper, because the top is bigger than the bottom."]
     },
     {
       "src": "EX:4",

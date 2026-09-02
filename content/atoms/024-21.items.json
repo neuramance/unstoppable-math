@@ -73,7 +73,8 @@
       "mode": "typed",
       "prompt": "Your turn. Is this a mixed number? How do you know?  82/15",
       "expected": "no",
-      "demo": "*No*, because there is no whole number."
+      "demo": "*No*, because there is no whole number.",
+      "accept": ["No, because there is no whole number."]
     },
     {
       "src": "IT:2",
@@ -81,7 +82,8 @@
       "mode": "typed",
       "prompt": "Is this a mixed number? How do you know?  5 7/15",
       "expected": "yes",
-      "demo": "*Yes*, because it has a whole number plus a fraction."
+      "demo": "*Yes*, because it has a whole number plus a fraction.",
+      "accept": ["Yes, because it has a whole number plus a fraction."]
     },
     {
       "src": "IT:3",
@@ -89,7 +91,8 @@
       "mode": "typed",
       "prompt": "Is this a mixed number? How do you know?  9 9/10",
       "expected": "yes",
-      "demo": "*Yes*, because it has a whole number plus a fraction."
+      "demo": "*Yes*, because it has a whole number plus a fraction.",
+      "accept": ["Yes, because it has a whole number plus a fraction."]
     },
     {
       "src": "IT:4",
@@ -97,7 +100,8 @@
       "mode": "typed",
       "prompt": "Is this a mixed number? How do you know?  9/10",
       "expected": "no",
-      "demo": "*No*, because there is no whole number."
+      "demo": "*No*, because there is no whole number.",
+      "accept": ["No, because there is no whole number."]
     },
     {
       "src": "IT:5",
@@ -105,7 +109,8 @@
       "mode": "typed",
       "prompt": "Is this a mixed number? How do you know?  10/9",
       "expected": "no",
-      "demo": "*No*, because there is no whole number."
+      "demo": "*No*, because there is no whole number.",
+      "accept": ["No, because there is no whole number."]
     },
     {
       "src": "IT:6",
@@ -113,7 +118,8 @@
       "mode": "typed",
       "prompt": "Is this a mixed number? How do you know?  10",
       "expected": "no",
-      "demo": "*No*, because there is no fraction."
+      "demo": "*No*, because there is no fraction.",
+      "accept": ["No, because there is no fraction."]
     }
   ]
 }

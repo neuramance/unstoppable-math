@@ -83,7 +83,8 @@
       "figures": [
         { "kind": "number-line", "units": 4, "parts": 2, "counted": 7, "label": "7/2" },
         { "kind": "number-line", "units": 4, "parts": 6, "counted": 21, "label": "21/6" }
-      ]
+      ],
+      "accept": ["Yes, because they point to the same place on the number line."]
     },
     {
       "src": "IT:2",
@@ -95,7 +96,8 @@
       "figures": [
         { "kind": "number-line", "units": 5, "parts": 2, "counted": 7, "label": "7/2" },
         { "kind": "number-line", "units": 5, "parts": 4, "counted": 17, "label": "17/4" }
-      ]
+      ],
+      "accept": ["No, because they do not point to the same place on the number line."]
     },
     {
       "src": "IT:3",

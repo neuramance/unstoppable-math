@@ -97,7 +97,8 @@
           "units": 2,
           "parts": 2
         }
-      ]
+      ],
+      "accept": ["Yes, because the parts are the same size."]
     },
     {
       "src": "IT:2",
@@ -112,7 +113,8 @@
           "units": 2,
           "parts": 3
         }
-      ]
+      ],
+      "accept": ["Yes, because the parts are the same size."]
     },
     {
       "src": "IT:3",
@@ -128,7 +130,8 @@
           "parts": 5,
           "bounds": [0.1, 0.25, 0.45, 0.6]
         }
-      ]
+      ],
+      "accept": ["No, because the parts are not the same size."]
     }
   ]
 }
