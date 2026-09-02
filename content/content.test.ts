@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from 'vitest'
 import { badgeCount, shadeable } from '../lib/figures'
-import { gradeItem, normalizeAnswer, spokenLesson, type Lesson, type LessonItem } from '../lib/lesson'
+import { clipKey, gradeItem, normalizeAnswer, spokenLesson, type Lesson, type LessonItem } from '../lib/lesson'
 import { buildLesson, LessonFile, readAtomFiles } from '../scripts/build-lesson'
 import { extract, type Transcription } from '../scripts/extract-docx'
 
@@ -78,36 +78,46 @@ const REASON_ACCEPTED: Record<number, Partial<LessonItem>> = {
   62: { accept: ['No, because the parts are not the same size.'] },
 }
 
-test.skipIf(filter !== undefined)(
-  'the first five atoms serve the lesson umath_1 honed, bar reviewed corrections',
-  () => {
-    expect(honed).toHaveLength(62)
-    const want = honed.map((item, at) => ({ ...item, ...SCRIPT_CORRECTED[at + 1], ...REASON_ACCEPTED[at + 1] }))
-    expect(lesson.items.filter((item) => item.row <= 5)).toEqual(want)
-  },
-)
+test('the first five atoms serve the lesson umath_1 honed, bar reviewed corrections', () => {
+  expect(honed).toHaveLength(62)
+  const want = honed.map((item, at) => ({ ...item, ...SCRIPT_CORRECTED[at + 1], ...REASON_ACCEPTED[at + 1] }))
+  expect(lesson.items.filter((item) => item.row <= 5)).toEqual(want)
+})
 
-test('every correction to the honed lesson quotes a line of the committed script', () => {
+test('every correction drops wording the committed script never had, and 11 of the 12 quote it outright', () => {
   const sections = new Map(transcription.sections.map((s) => [s.label, s]))
-  const flat = (text: string) => text.replace(/[’‘]/g, "'").replace(/\s+/g, ' ')
-  for (const [at, correction] of Object.entries(SCRIPT_CORRECTED)) {
-    const item = honed[Number(at) - 1]
-    const label = lesson.atoms?.[String(item.row)]
-    const section = sections.get(String(label))
+  const flat = (text: string) => text.replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim()
+  const scriptOf = (at: string) => {
+    const label = String(lesson.atoms?.[String(honed[Number(at) - 1].row)])
+    const section = sections.get(label)
     expect(section, `no section for atom ${label}`).toBeDefined()
-    if (section === undefined) continue
-    const script = flat(
-      (['II', 'IT', 'EX'] as const)
-        .flatMap((k) => section.blocks[k])
-        .join(' ')
-        .replace(/\[[^\]]*\]/g, ' '),
-    )
-    const corrected = flat(correction.prompt ?? '')
-    expect(script.includes(corrected) || corrected.includes(flat(section.blocks.II[0] ?? '')), {
-      message: `atom ${label} correction is not in its script: ${corrected}`,
-    } as never).toBe(true)
-    expect(script.includes(flat(item.prompt)), `umath_1 wording was already in the script: ${item.prompt}`).toBe(false)
+    const blocks = (['II', 'IT', 'EX'] as const).flatMap((kind) => section?.blocks[kind] ?? [])
+    return flat(blocks.join(' ').replace(/\[[^\]]*\]/g, ' '))
   }
+  const corrections = Object.entries(SCRIPT_CORRECTED)
+  expect(corrections).toHaveLength(12)
+  for (const [at, correction] of corrections) {
+    const replaced = flat(honed[Number(at) - 1].prompt)
+    expect(correction.prompt, `correction at ${at} changes no prompt`).toBeDefined()
+    expect(scriptOf(at).includes(replaced), `the script already said it at ${at}: ${replaced}`).toBe(false)
+  }
+  const quoted = corrections.filter(([at, correction]) => scriptOf(at).includes(flat(correction.prompt ?? '')))
+  expect(quoted).toHaveLength(11)
+})
+
+const UNRECORDED = [
+  "These whole units have six parts each. What's the name of each part?",
+  "These whole units have seven parts each. What's the name of each part?",
+  'There are three times when the number of parts has an unusual name. If the number of parts is two, we call them halves. Say halves:',
+]
+
+test('every line the honed first five atoms speak is recorded, bar the three still awaiting the voice', () => {
+  const clips = new Set(Object.keys(JSON.parse(readFileSync('public/audio/lesson/alignment.json', 'utf8'))))
+  const spoken = lesson.items
+    .filter((item) => item.row <= 5)
+    .flatMap((item) => [item.prompt, item.demo])
+    .map(spokenLesson)
+  expect([...new Set(spoken.filter((text) => !clips.has(clipKey(text))))]).toEqual(UNRECORDED)
 })
 
 test('every count item expects exactly what its figure shows', () => {

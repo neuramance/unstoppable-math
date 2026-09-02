@@ -1773,6 +1773,30 @@
       ]
     ]
   },
+  "sevenths-190b90b7": {
+    "sha": "fbfe82ba4cb8",
+    "end": 539,
+    "words": [
+      [
+        "Sevenths.",
+        79
+      ]
+    ]
+  },
+  "six-parts-ed669b3d": {
+    "sha": "69cfbb79072a",
+    "end": 759,
+    "words": [
+      [
+        "Six",
+        119
+      ],
+      [
+        "parts.",
+        419
+      ]
+    ]
+  },
   "six-parts-in-each-whole-unit-7e5aa47e": {
     "sha": "bca1233e335a",
     "end": 1479,
@@ -1800,6 +1824,16 @@
       [
         "unit.",
         1179
+      ]
+    ]
+  },
+  "sixths-1610b39e": {
+    "sha": "9046583b2bca",
+    "end": 579,
+    "words": [
+      [
+        "Sixths.",
+        119
       ]
     ]
   },
