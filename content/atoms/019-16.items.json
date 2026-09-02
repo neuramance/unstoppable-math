@@ -181,7 +181,8 @@
       "mode": "typed",
       "prompt": "Ben ate 2/3 of a small pizza. Jen ate 2/3 of a large pizza. Did they eat the same amount of pizza? How do you know?",
       "expected": "no",
-      "demo": "*No*, because the pizzas were not the same size."
+      "demo": "*No*, because the pizzas were not the same size.",
+      "accept": ["No, because the pizzas were not the same size."]
     },
     {
       "src": "EX:2",
@@ -189,7 +190,8 @@
       "mode": "typed",
       "prompt": "Two fields are the same size. 7/10 of the first is planted, and 7/10 of the second is planted. Is the same amount of land planted? How do you know?",
       "expected": "yes",
-      "demo": "*Yes*, because the fields are the same size."
+      "demo": "*Yes*, because the fields are the same size.",
+      "accept": ["Yes, because the fields are the same size."]
     },
     {
       "src": "EX:3",
@@ -197,7 +199,8 @@
       "mode": "typed",
       "prompt": "Mia read 2/5 of a short book. Leo read 2/5 of a long book. Did they read the same number of pages? How do you know?",
       "expected": "no",
-      "demo": "*No*, because the books were not the same size."
+      "demo": "*No*, because the books were not the same size.",
+      "accept": ["No, because the books were not the same size."]
     }
   ]
 }

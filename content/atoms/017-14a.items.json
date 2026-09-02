@@ -61,7 +61,8 @@
       "mode": "typed",
       "prompt": "Which fraction is greater? How do you know?  5/3  8/3",
       "expected": "8/3",
-      "demo": "*8/3* is greater, because it has more parts."
+      "demo": "*8/3* is greater, because it has more parts.",
+      "accept": ["8/3 is greater, because it has more parts."]
     }
   ]
 }

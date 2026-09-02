@@ -103,7 +103,8 @@
       "mode": "typed",
       "prompt": "Your turn. Which fraction is greater? How do you know? 17/13  17/8",
       "expected": "17/8",
-      "demo": "*17/8*, because the bottom number is smaller, so each part is bigger."
+      "demo": "*17/8*, because the bottom number is smaller, so each part is bigger.",
+      "accept": ["17/8, because the bottom number is smaller, so each part is bigger."]
     },
     {
       "src": "IT:2",
@@ -111,7 +112,8 @@
       "mode": "typed",
       "prompt": "Now. which fraction is greater? How do you know? 17/13  17/14",
       "expected": "17/13",
-      "demo": "*17/13*, because the bottom number is smaller, so each part is bigger."
+      "demo": "*17/13*, because the bottom number is smaller, so each part is bigger.",
+      "accept": ["17/13, because the bottom number is smaller, so each part is bigger."]
     },
     {
       "src": "EX:1",

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from 'vitest'
 import { badgeCount, shadeable } from '../lib/figures'
-import { gradeItem, normalizeAnswer, type Lesson, type LessonItem } from '../lib/lesson'
+import { gradeItem, normalizeAnswer, spokenLesson, type Lesson, type LessonItem } from '../lib/lesson'
 import { buildLesson, LessonFile, readAtomFiles } from '../scripts/build-lesson'
 import { extract, type Transcription } from '../scripts/extract-docx'
 
@@ -101,6 +101,24 @@ test('every test item grades its own expected answer as correct', () => {
     if (item.role !== 'test') continue
     const graded: LessonItem = { row: 1, ...item }
     expect(gradeItem(graded, item.expected), `self-grade failed: ${item.prompt} → ${item.expected}`).toBe(true)
+  }
+})
+
+const ASKS_WHY = /how do you know|why\?|how can you tell/i
+const ONE_SENTENCE = /^[^.!?]*[.!?]?$/
+
+test('a graded item that asks for a reason accepts the reason it models', () => {
+  const reasoned = items().filter((item) => {
+    if (item.role !== 'test' || item.mode !== 'typed' || !ASKS_WHY.test(item.prompt)) return false
+    const modelled = spokenLesson(item.demo).trim()
+    return ONE_SENTENCE.test(modelled) && normalizeAnswer(modelled) !== normalizeAnswer(item.expected)
+  })
+  expect(reasoned).toHaveLength(66)
+  for (const item of reasoned) {
+    const modelled = spokenLesson(item.demo).trim()
+    const graded: LessonItem = { row: 1, ...item }
+    expect(gradeItem(graded, modelled), `rejects its own model: ${item.prompt} -> ${modelled}`).toBe(true)
+    expect(gradeItem(graded, item.expected), `rejects the short answer: ${item.prompt}`).toBe(true)
   }
 })
 

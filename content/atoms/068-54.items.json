@@ -47,7 +47,8 @@
       "mode": "typed",
       "prompt": "Your turn to decide if the fractions can be rewritten as mixed numbers. Can this fraction be rewritten as a mixed number? How do you know?  8/3",
       "expected": "yes",
-      "demo": "*Yes*, because it's improper."
+      "demo": "*Yes*, because it's improper.",
+      "accept": ["Yes, because it's improper."]
     },
     {
       "src": "IT:3",
@@ -55,7 +56,8 @@
       "mode": "typed",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  3/8",
       "expected": "no",
-      "demo": "*No*, because it's not improper."
+      "demo": "*No*, because it's not improper.",
+      "accept": ["No, because it's not improper."]
     },
     {
       "src": "IT:4",
@@ -63,7 +65,8 @@
       "mode": "typed",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  12/5",
       "expected": "yes",
-      "demo": "*Yes*, because it's improper."
+      "demo": "*Yes*, because it's improper.",
+      "accept": ["Yes, because it's improper."]
     },
     {
       "src": "IT:5",
@@ -71,7 +74,8 @@
       "mode": "typed",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  9/10",
       "expected": "no",
-      "demo": "*No*, because it's not improper."
+      "demo": "*No*, because it's not improper.",
+      "accept": ["No, because it's not improper."]
     },
     {
       "src": "IT:6",
@@ -79,7 +83,8 @@
       "mode": "typed",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  10/9",
       "expected": "yes",
-      "demo": "*Yes*, because it's improper."
+      "demo": "*Yes*, because it's improper.",
+      "accept": ["Yes, because it's improper."]
     },
     {
       "src": "EX:1",
