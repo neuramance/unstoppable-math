@@ -14,29 +14,26 @@ import {
 } from './session'
 import { historyOf, lesson, record, runSession, synth, withNarrative } from './session.fixtures'
 
-test('first session ever plans instruction/testing pairs in lesson order, set 1, with the story break at four', () => {
+test('first session ever plans one block per atom in lesson order, set 1, with the story break at four', () => {
   const plan = planSession(lesson, new Map(), 0)
   expect(plan.blocks.map((b): [string, number | null] => [b.kind, b.rows[0]?.row ?? null])).toEqual([
-    ['instruction', 1],
-    ['testing', 1],
-    ['instruction', 2],
-    ['testing', 2],
+    ['atom', 1],
+    ['atom', 2],
+    ['atom', 3],
+    ['atom', 4],
     ['narrative', null],
-    ['instruction', 3],
-    ['testing', 3],
+    ['atom', 5],
+    ['atom', 6],
   ])
   expect(plan.blocks.flatMap((b) => b.rows).every((r) => r.set === 1)).toBe(true)
 })
 
-test('steady state plans exactly one instruction/testing pair for the next unfirm atom amid firmed review', () => {
+test('steady state plans exactly one atom block for the next unfirm atom amid firmed review', () => {
   const history = historyOf(...[1, 2, 3, 4].map((r) => record(r)))
   const plan = planSession(lesson, history, 0)
-  const taught = plan.blocks.filter((b) => b.kind === 'instruction' || b.kind === 'testing')
+  const taught = plan.blocks.filter((b) => b.kind === 'atom')
   const review = plan.blocks.filter((b) => b.kind === 'review')
-  expect(taught.map((b) => [b.kind, ...b.rows.map((r) => r.row)])).toEqual([
-    ['instruction', 5],
-    ['testing', 5],
-  ])
+  expect(taught.map((b) => [b.kind, ...b.rows.map((r) => r.row)])).toEqual([['atom', 5]])
   expect(review.length).toBeGreaterThan(0)
   expect(plan.blocks[0].kind).toBe('review')
   const reviewRows = review.flatMap((b) => b.rows.map((r) => r.row))
@@ -55,12 +52,12 @@ test('everything firmed plans review-only sessions, closed by the story break', 
 test('a lesson with a narrative plans it as the break closing the first four blocks', () => {
   const l = withNarrative(synth(3, 'mtt'))
   const fresh = planSession(l, new Map(), 0)
-  expect(fresh.blocks[4]).toEqual({ kind: 'narrative', rows: [], budgetMs: NARRATIVE_BUDGET_MS })
-  expect([...fresh.blocks.slice(0, 4), ...fresh.blocks.slice(5)]).toEqual(
+  expect(fresh.blocks[3]).toEqual({ kind: 'narrative', rows: [], budgetMs: NARRATIVE_BUDGET_MS })
+  expect([...fresh.blocks.slice(0, 3), ...fresh.blocks.slice(4)]).toEqual(
     planSession(synth(3, 'mtt'), new Map(), 0).blocks,
   )
   const steady = planSession(l, historyOf(record(1)), 0)
-  expect(steady.blocks.length).toBeLessThanOrEqual(5)
+  expect(steady.blocks.length).toBeLessThanOrEqual(3)
   expect(steady.blocks[steady.blocks.length - 1].kind).toBe('narrative')
   const reviewOnly = planSession(l, historyOf(record(1), record(2), record(3)), 0)
   expect(reviewOnly.blocks[reviewOnly.blocks.length - 1].kind).toBe('narrative')
@@ -80,12 +77,11 @@ test('the default schedule emits exactly what the engine emits, with and without
   )
 })
 
-test('a saved schedule moves whole blocks: the teach pair stays adjacent, model before test', () => {
+test('a saved schedule moves whole blocks: the teach block travels as one seat', () => {
   const l = withNarrative(synth(3, 'mtt'))
   const plan = planSession(l, historyOf(record(1)), 0, ['teach', 'narrative', 'review-1'])
   expect(plan.blocks.map((b): [string, number | null] => [b.kind, b.rows[0]?.row ?? null])).toEqual([
-    ['instruction', 2],
-    ['testing', 2],
+    ['atom', 2],
     ['narrative', null],
     ['review', 1],
   ])
@@ -95,30 +91,23 @@ test('unknown slot names drop and missing slots rejoin in engine order, so a sta
   const l = withNarrative(synth(3, 'mtt'))
   const engine = planSession(l, historyOf(record(1)), 0)
   const plan = planSession(l, historyOf(record(1)), 0, ['bogus', 'narrative'])
-  expect(plan.blocks.map((b) => b.kind)).toEqual(['narrative', 'review', 'instruction', 'testing'])
+  expect(plan.blocks.map((b) => b.kind)).toEqual(['narrative', 'review', 'atom'])
   expect(plan.blocks.length).toBe(engine.blocks.length)
 })
 
-test('a one-section atom: the engine splices the film after four blocks, a saved order seats it', () => {
+test('a one-section atom is one block like any other, so a saved order seats it exactly as the engine does', () => {
   const base = synth(5, 'mtt')
   const l = withNarrative({ ...base, items: base.items.filter((it) => !(it.row === 5 && it.role === 'test')) })
   const history = historyOf(record(1), record(2), record(3), record(4))
   expect(planSession(l, history, 0).blocks.map((b) => b.kind)).toEqual([
     'review',
-    'instruction',
+    'atom',
     'review',
     'review',
     'narrative',
     'review',
   ])
-  expect(planSession(l, history, 0, DEFAULT_SCHEDULE).blocks.map((b) => b.kind)).toEqual([
-    'review',
-    'instruction',
-    'review',
-    'narrative',
-    'review',
-    'review',
-  ])
+  expect(planSession(l, history, 0, DEFAULT_SCHEDULE)).toEqual(planSession(l, history, 0))
 })
 
 test('cold start and review-only sessions ignore the schedule: their template has no teach slot to place', () => {
@@ -130,42 +119,35 @@ test('cold start and review-only sessions ignore the schedule: their template ha
 })
 
 test('the dev jump watches past the break only when the target lies beyond it, and null targets the break itself', () => {
-  const l = withNarrative(synth(3, 'mtt'))
-  const { plan, trials } = jumpToRow(l, 3, 0)
-  expect(plan.blocks.map((b) => b.kind)).toEqual([
-    'instruction',
-    'testing',
-    'instruction',
-    'testing',
-    'narrative',
-    'instruction',
-    'testing',
-  ])
+  const l = withNarrative(synth(5, 'mtt'))
+  const { plan, trials } = jumpToRow(l, 5, 0)
+  expect(plan.blocks.map((b) => b.kind)).toEqual(['atom', 'atom', 'atom', 'atom', 'narrative', 'atom'])
   const s = replaySession(l, plan, trials)
   expect(s.blocks[4].done).toBe(true)
   expect(s.blockIndex).toBe(5)
-  expect(plan.blocks[5].rows[0].row).toBe(3)
+  expect(plan.blocks[5].rows[0].row).toBe(5)
   const early = jumpToRow(l, 2, 0)
   const sEarly = replaySession(l, early.plan, early.trials)
-  expect(sEarly.blockIndex).toBe(2)
+  expect(sEarly.blockIndex).toBe(1)
   expect(sEarly.blocks[4].done).toBe(false)
   const top = jumpToRow(l, null, 0)
   const parked = replaySession(l, top.plan, top.trials)
   expect(parked.blockIndex).toBe(4)
   expect(parked.blocks[4]).toMatchObject({ plan: { kind: 'narrative' }, done: false, current: null })
-  expect(parked.rowsFirmed).toEqual([1, 2])
+  expect(parked.rowsFirmed).toEqual([1, 2, 3, 4])
   const plain = jumpToRow(synth(2, 'mtt'), null, 0)
   expect(plain.trials).toEqual([])
-  expect(plain.plan.blocks[0].kind).toBe('instruction')
+  expect(plain.plan.blocks[0].kind).toBe('atom')
 })
 
-test('the dev jump can land on the checking side: the instruction block resolves on the way in', () => {
+test('the dev jump can land on the checking side: the models resolve on the way in', () => {
   const l = withNarrative(synth(3, 'mtt'))
   const { plan, trials } = jumpToRow(l, 3, 0, 'testing')
   const s = replaySession(l, plan, trials)
-  expect(plan.blocks[s.blockIndex]).toMatchObject({ kind: 'testing', rows: [{ row: 3 }] })
+  expect(plan.blocks[s.blockIndex]).toMatchObject({ kind: 'atom', rows: [{ row: 3 }] })
+  const models = rowLesson(l, { row: 3, set: 1 }, 'atom').items.filter((it) => it.role === 'model').length
+  expect(s.blocks[s.blockIndex].current?.state.current?.item).toBe(models)
   const instr = jumpToRow(l, 3, 0)
-  const models = rowLesson(l, { row: 3, set: 1 }, 'instruction').items.length
   expect(trials.length).toBe(instr.trials.length + models)
   expect(jumpToRow(l, 3, 0)).toEqual(instr)
 })
@@ -174,30 +156,30 @@ test('the dev jump lands on one exact question, clamped inside the target block'
   const l = withNarrative(synth(3, 'mtt'))
   const { plan, trials } = jumpToRow(l, 3, 0, 'testing', 1)
   const s = replaySession(l, plan, trials)
-  expect(plan.blocks[s.blockIndex]).toMatchObject({ kind: 'testing', rows: [{ row: 3 }] })
-  expect(s.blocks[s.blockIndex].current?.state.current?.item).toBe(1)
+  expect(plan.blocks[s.blockIndex]).toMatchObject({ kind: 'atom', rows: [{ row: 3 }] })
+  expect(s.blocks[s.blockIndex].current?.state.current?.item).toBe(2)
   expect(trials.length).toBe(jumpToRow(l, 3, 0, 'testing').trials.length + 1)
   const far = jumpToRow(l, 3, 0, 'testing', 99)
   const sFar = replaySession(l, far.plan, far.trials)
-  expect(far.plan.blocks[sFar.blockIndex]).toMatchObject({ kind: 'testing', rows: [{ row: 3 }] })
-  const tests = rowLesson(l, { row: 3, set: 1 }, 'testing').items.length
-  expect(sFar.blocks[sFar.blockIndex].current?.state.current?.item).toBe(tests - 1)
+  expect(far.plan.blocks[sFar.blockIndex]).toMatchObject({ kind: 'atom', rows: [{ row: 3 }] })
+  const served = rowLesson(l, { row: 3, set: 1 }, 'atom').items.length
+  expect(sFar.blocks[sFar.blockIndex].current?.state.current?.item).toBe(served - 1)
   expect(jumpToRow(l, 3, 0, 'testing', 0)).toEqual(jumpToRow(l, 3, 0, 'testing'))
 })
 
 test('the narrative consumes exactly one trial, holds the session open until it arrives, and banks nothing', () => {
   const l = withNarrative(synth(2, 'mtt'))
   const plan = planSession(l, new Map(), 0)
-  expect(plan.blocks.map((b) => b.kind)).toEqual(['instruction', 'testing', 'instruction', 'testing', 'narrative'])
+  expect(plan.blocks.map((b) => b.kind)).toEqual(['atom', 'atom', 'narrative'])
   const trials = runSession(l, plan)
   const parked = replaySession(l, plan, trials.slice(0, -1))
   expect(parked.done).toBe(false)
-  expect(parked.blockIndex).toBe(4)
-  expect(parked.blocks[4]).toMatchObject({ done: false, current: null, outcomes: [], cutBy: null })
+  expect(parked.blockIndex).toBe(2)
+  expect(parked.blocks[2]).toMatchObject({ done: false, current: null, outcomes: [], cutBy: null })
   const s = replaySession(l, plan, trials)
   expect(s).toMatchObject({ done: true, graded: 4, rightFirstTry: 4, rowsFirmed: [1, 2], staleAt: null })
   expect(s.cleared).toBe(plan.blocks.length)
-  expect(s.blocks[4].outcomes).toEqual([])
+  expect(s.blocks[2].outcomes).toEqual([])
   const log: SessionLog = [{ kind: 'start', plan }, ...trials.map((t): SessionLog[number] => ({ kind: 'trial', ...t }))]
   const audit = replayLog(l, log)
   expect([...audit.history.keys()].sort()).toEqual([1, 2])

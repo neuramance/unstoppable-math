@@ -6,15 +6,13 @@ export const OKLCH = '@supports (color: oklch(from red l c h))'
 
 export const BLOCK_LABEL: Record<BlockKind, string> = {
   narrative: 'Narrative',
-  instruction: 'Instruction',
-  testing: 'Checking',
+  atom: 'Learn',
   review: 'Review',
 }
 
 export const BLOCK_GLYPH: Record<BlockKind, string> = {
   narrative: '▶',
-  instruction: '★',
-  testing: '✎',
+  atom: '★',
   review: '↻',
 }
 
@@ -26,8 +24,7 @@ export const tints = stylex.create({
 
 export const KIND_TINT: Record<BlockKind, (typeof tints)[keyof typeof tints]> = {
   narrative: tints.narrative,
-  instruction: tints.instruction,
-  testing: tints.testing,
+  atom: tints.instruction,
   review: tints.testing,
 }
 

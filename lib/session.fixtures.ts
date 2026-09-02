@@ -37,13 +37,11 @@ export const historyOf = (...records: RowRecord[]): RowHistory => new Map(record
 
 export const teachPlan = (startedAt: number, ...blocks: number[][]): SessionPlan => ({
   startedAt,
-  blocks: blocks.flatMap((rows): BlockPlan[] =>
-    (['instruction', 'testing'] as const).map((kind) => ({
-      kind,
-      rows: rows.map((row) => ({ row, set: 1 })),
-      budgetMs: TEACH_BUDGET_MS,
-    })),
-  ),
+  blocks: blocks.map((rows): BlockPlan => ({
+    kind: 'atom',
+    rows: rows.map((row) => ({ row, set: 1 })),
+    budgetMs: TEACH_BUDGET_MS,
+  })),
 })
 
 export type Answer = (item: LessonItem, correction: boolean) => string

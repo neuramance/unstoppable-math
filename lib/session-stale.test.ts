@@ -46,15 +46,12 @@ test('every planned row is stamped with the fingerprint of the content it serves
   expect(rows.every((r) => typeof r.fp === 'string' && r.fp.length === 16)).toBe(true)
   for (const b of plan.blocks)
     for (const r of b.rows) expect(r.fp).toBe(rowFingerprint(l, { row: r.row, set: r.set }, b.kind))
-  expect(rowFingerprint(l, { row: 1, set: 1 }, 'testing')).not.toBe(
-    rowFingerprint(l, { row: 1, set: 1 }, 'instruction'),
-  )
-  expect(rowFingerprint(l, { row: 1, set: 1 }, 'review')).toBe(rowFingerprint(l, { row: 1, set: 1 }, 'testing'))
+  expect(rowFingerprint(l, { row: 1, set: 1 }, 'atom')).not.toBe(rowFingerprint(l, { row: 1, set: 1 }, 'review'))
 })
 
 test('a fingerprint tracks what grades an answer and ignores what only presents it', () => {
   const l = synth(2, 'mtt')
-  const print = (x: Lesson) => rowFingerprint(x, { row: 1, set: 1 }, 'testing')
+  const print = (x: Lesson) => rowFingerprint(x, { row: 1, set: 1 }, 'atom')
   const tweak = (f: (it: LessonItem) => void): Lesson =>
     edit(l, (items) => {
       f(items[at(items, 1, 'test')])
@@ -178,9 +175,9 @@ test('an edit invalidates from the row it touched onward, keeping the rows befor
   expect(audit.lostRows).toEqual([3])
 
   const s = replaySession(late, plan, trials)
-  expect(s.staleAt).toEqual({ block: 5, index: 0, row: 3, set: 1 })
-  expect(s.blocks[5].cutBy).toBe('stale')
-  expect(s.blocks[5].done).toBe(false)
+  expect(s.staleAt).toEqual({ block: 2, index: 0, row: 3, set: 1 })
+  expect(s.blocks[2].cutBy).toBe('stale')
+  expect(s.blocks[2].done).toBe(false)
   expect(s.done).toBe(false)
   expect(s.unreplayed).toBeGreaterThan(0)
   const cosmetic = edit(l, (items) => ((items[at(items, 3, 'test')].prompt = 'reworded'), items))
@@ -193,11 +190,11 @@ test('a stale row early in a stack names the later blocks it abandons', () => {
   const first = stampedRun(l, 0)
   const history = rowHistory(l, first.log)
   const firmedFirst = [...history.values()].filter((r) => r.firmed).map((r) => r.row)
-  expect(firmedFirst).toEqual([1, 2, 3])
+  expect(firmedFirst).toEqual([1, 2, 3, 4, 5, 6])
 
   const plan = planSession(l, history, 500_000)
   expect(plan.blocks[0].kind).toBe('review')
-  expect(plan.blocks.some((b) => b.kind === 'testing')).toBe(true)
+  expect(plan.blocks.some((b) => b.kind === 'atom')).toBe(true)
   const log: SessionLog = [
     ...first.log,
     { kind: 'start', plan },
@@ -266,6 +263,17 @@ test('one unreadable session never condemns the sessions around it', () => {
   startB.plan.blocks[0].rows[0] = { row: 99, set: 1 }
   const audit = replayLog(l, broken)
   expect(audit.unreadableSessions).toBe(1)
+  expect([...audit.history.values()].filter((r) => r.firmed).map((r) => r.row)).toEqual([1, 2, 3, 4, 5, 6])
+})
+
+test('a stored plan from the instruction/testing era is refused, and the sessions around it keep their history', () => {
+  const l = synth(3, 'mtt')
+  const fresh = stampedRun(l, 0)
+  const retired = { startedAt: 500_000, blocks: [{ kind: 'instruction', rows: [{ row: 1, set: 1 }], budgetMs: 1000 }] }
+  expect(() => replaySession(l, retired as unknown as SessionPlan, [])).toThrow(/predates one atom/)
+  const log: SessionLog = [...fresh.log, { kind: 'start', plan: retired as unknown as SessionPlan }]
+  const audit = replayLog(l, log)
+  expect(audit.unreadableSessions).toBe(1)
   expect([...audit.history.values()].filter((r) => r.firmed).map((r) => r.row)).toEqual([1, 2, 3])
 })
 
@@ -277,10 +285,10 @@ test('a block cut at a row that missed the firm bar is not reported as cleared',
   })
   const s = replaySession(l, plan, trials)
   expect(s.done).toBe(true)
-  expect(s.blocks[1].cutBy).toBe('notFirm')
-  expect(s.blocks[1].done).toBe(true)
+  expect(s.blocks[0].cutBy).toBe('notFirm')
+  expect(s.blocks[0].done).toBe(true)
   expect(s.rowsFirmed).toEqual([])
-  expect(s.cleared).toBe(1)
+  expect(s.cleared).toBe(0)
 })
 
 test('a block closed by the clock still counts as cleared', () => {
@@ -298,7 +306,7 @@ test('a session can finish with nothing graded, so no first-try share exists', (
   const l = synth(1, 'mm')
   const plan: SessionPlan = {
     startedAt: 0,
-    blocks: [{ kind: 'instruction', rows: [{ row: 1, set: 1 }], budgetMs: TEACH_BUDGET_MS }],
+    blocks: [{ kind: 'atom', rows: [{ row: 1, set: 1 }], budgetMs: TEACH_BUDGET_MS }],
   }
   const s = replaySession(l, plan, runSession(l, plan))
   expect(s.done).toBe(true)
@@ -310,7 +318,7 @@ test('a row with nothing a review block can serve is never planned into one', ()
   const l = edit(synth(6, 'mtt'), (items) => items.filter((it) => !(it.row === 1 && it.role === 'test')))
   expect(rowLesson(l, { row: 1, set: 1 }, 'review').items).toEqual([])
   expect(rowLesson(l, { row: 1, set: 1 }, 'review').items).toEqual([])
-  expect(rowLesson(l, { row: 1, set: 1 }, 'instruction').items.length).toBeGreaterThan(0)
+  expect(rowLesson(l, { row: 1, set: 1 }, 'atom').items.length).toBeGreaterThan(0)
 
   const plan = planSession(l, historyOf(...[1, 2, 3, 4, 5, 6].map((r) => record(r))), 0)
   expect(plan.blocks.every((b) => b.kind === 'review')).toBe(true)
@@ -366,7 +374,7 @@ test('replaySession is pure across the stale path too', () => {
   const a = replaySession(moved, plan, trials)
   const b = replaySession(moved, plan, trials)
   expect(a).toEqual(b)
-  expect(a.staleAt).toEqual({ block: 3, index: 0, row: 2, set: 1 })
+  expect(a.staleAt).toEqual({ block: 1, index: 0, row: 2, set: 1 })
   expect(JSON.stringify({ moved, plan, trials })).toBe(snapshot)
 })
 

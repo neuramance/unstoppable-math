@@ -333,7 +333,7 @@ export function StackCard({
             )
           })}
         {smashing && (
-          <BlockSmash cracking={phase === 'crack'} kind={plan.blocks[shown]?.kind ?? 'testing'} topPx={3 * STRIDE} />
+          <BlockSmash cracking={phase === 'crack'} kind={plan.blocks[shown]?.kind ?? 'atom'} topPx={3 * STRIDE} />
         )}
       </div>
       <p {...stylex.props(s.sessfirm)}>{STACK_REGISTER.progress(firmCount, totalRows)}</p>

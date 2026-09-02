@@ -4,10 +4,22 @@ import { t } from '@/app/tokens.stylex'
 import type { Lesson } from '@/lib/lesson'
 import { rowLesson, type RowHistory, type SessionState } from '@/lib/session'
 import { chrome } from './chrome'
-import { BLOCK_GLYPH, BLOCK_LABEL, KIND_TINT, tints, tintVars } from './session-blocks'
+import { BLOCK_GLYPH, tints, tintVars } from './session-blocks'
 
 const KINDS = ['instruction', 'testing'] as const
 const KIND_WORD = { instruction: 'instruction', testing: 'checking' } as const
+const KIND_LABEL = { instruction: 'Instruction', testing: 'Checking' } as const
+const KIND_GLYPH = { instruction: '★', testing: '✎' } as const
+const KIND_ROLE = { instruction: 'model', testing: 'test' } as const
+const SIDE_TINT = { instruction: tints.instruction, testing: tints.testing } as const
+
+function atomItems(lesson: Lesson, row: number) {
+  return rowLesson(lesson, { row, set: 1 }, 'atom').items
+}
+
+function sideItems(lesson: Lesson, row: number, side: (typeof KINDS)[number]) {
+  return atomItems(lesson, row).filter((it) => it.role === KIND_ROLE[side])
+}
 
 type ActiveBlock = SessionState['blocks'][number] | null
 
@@ -18,9 +30,12 @@ function liveRowOf(playing: boolean, activeBlock: ActiveBlock): number | null {
 
 function liveSideOf(activeBlock: ActiveBlock): 'instruction' | 'testing' | null {
   const kind = activeBlock?.plan.kind
-  if (kind === 'instruction') return 'instruction'
-  if (kind === 'testing' || kind === 'review') return 'testing'
-  return null
+  if (kind === 'review') return 'testing'
+  if (kind !== 'atom') return null
+  const current = activeBlock?.current
+  if (current === null || current === undefined) return null
+  const served = current.lesson.items[current.state.current?.item ?? 0]
+  return served?.role === 'model' ? 'instruction' : 'testing'
 }
 
 const s = stylex.create({
@@ -219,17 +234,17 @@ function AtomChip({
         {code}
       </button>
       {KINDS.map((kind) => {
-        if (rowLesson(lesson, { row, set: 1 }, kind).items.length === 0) return null
+        if (sideItems(lesson, row, kind).length === 0) return null
         return (
           <button
             key={kind}
-            {...stylex.props(s.devjump, tintVars.tint, KIND_TINT[kind], dim && s.devjumpDim)}
+            {...stylex.props(s.devjump, tintVars.tint, SIDE_TINT[kind], dim && s.devjumpDim)}
             onClick={() => onJump(kind)}
             data-cuelume-press="tick"
             aria-label={`atom ${code} ${KIND_WORD[kind]}`}
-            title={`${code} · ${BLOCK_LABEL[kind]}`}
+            title={`${code} · ${KIND_LABEL[kind]}`}
           >
-            {BLOCK_GLYPH[kind]}
+            {KIND_GLYPH[kind]}
           </button>
         )
       })}
@@ -258,13 +273,14 @@ function ItemStrip({
     <div {...stylex.props(s.devstrip)}>
       <span {...stylex.props(s.devdockHead)}>atom {code}</span>
       {KINDS.map((kind) => {
-        const pieces = rowLesson(lesson, { row, set: 1 }, kind).items
+        const pieces = sideItems(lesson, row, kind)
+        const offset = kind === 'testing' ? atomItems(lesson, row).filter((it) => it.role === 'model').length : 0
         if (pieces.length === 0) return null
         return (
           <span key={kind} {...stylex.props(s.devrun)}>
-            <span {...stylex.props(s.devstripGlyph)}>{BLOCK_GLYPH[kind]}</span>
+            <span {...stylex.props(s.devstripGlyph)}>{KIND_GLYPH[kind]}</span>
             {pieces.map((piece, i) => {
-              const nowDot = side === kind && atItem === i
+              const nowDot = side === kind && atItem === offset + i
               return (
                 <button
                   key={i}
@@ -272,7 +288,7 @@ function ItemStrip({
                     s.devjump,
                     s.devjumpDot,
                     tintVars.tint,
-                    KIND_TINT[kind],
+                    SIDE_TINT[kind],
                     nowDot && s.devjumpNow,
                     anyNow && !nowDot && s.devjumpDim,
                   )}

@@ -1,6 +1,7 @@
 import type { Lesson, LessonItem, LessonState, TrialEntry } from './lesson'
 import { replayLesson } from './lesson'
-export type BlockKind = 'narrative' | 'instruction' | 'testing' | 'review'
+export const BLOCK_KINDS = ['narrative', 'atom', 'review'] as const
+export type BlockKind = (typeof BLOCK_KINDS)[number]
 export type PlannedRow = {
   row: number
   set: number
@@ -96,18 +97,15 @@ export const DEFAULT_SCHEDULE: readonly ScheduleSlot[] = [
   'review-1',
   'teach',
   'review-2',
-  'narrative',
   'review-3',
+  'narrative',
   'review-4',
   'review-5',
   'review-6',
 ]
 export function rowLesson(lesson: Lesson, planned: PlannedRow, kind: BlockKind): Lesson {
   const items = lesson.items.filter(
-    (it) =>
-      it.row === planned.row &&
-      (it.set ?? 1) === planned.set &&
-      it.role === (kind === 'instruction' ? 'model' : 'test'),
+    (it) => it.row === planned.row && (it.set ?? 1) === planned.set && (kind !== 'review' || it.role === 'test'),
   )
   return { ...lesson, items }
 }
@@ -216,7 +214,7 @@ function replayBlock(
       graded: state.gradedCount,
       endedAt: rowLog[rowLog.length - 1]?.at ?? startedAt,
     })
-    if (bp.kind === 'testing' && !state.firm) {
+    if (bp.kind === 'atom' && !state.firm) {
       block.cutBy = 'notFirm'
       break
     }
@@ -224,6 +222,8 @@ function replayBlock(
   return { next: i, staleAt: null, live: true }
 }
 export function replaySession(lesson: Lesson, plan: SessionPlan, trials: Trial[]): SessionState {
+  if (plan.blocks.some((b) => !(BLOCK_KINDS as readonly string[]).includes(b.kind)))
+    throw new Error('session plan predates one atom, one block')
   const blocks: BlockState[] = []
   let i = 0
   let live = true
@@ -248,7 +248,7 @@ export function replaySession(lesson: Lesson, plan: SessionPlan, trials: Trial[]
   const firstOpen = blocks.findIndex((b) => !b.done)
   if (firstOpen !== -1 && staleAt === null && i < trials.length) throw new Error('trial log overruns the session plan')
   const outcomes = blocks.flatMap((b) => b.outcomes)
-  const testingFirm = blocks.flatMap((b) => (b.plan.kind === 'testing' ? b.outcomes.filter((o) => o.firm) : []))
+  const atomFirm = blocks.flatMap((b) => (b.plan.kind === 'atom' ? b.outcomes.filter((o) => o.firm) : []))
   return {
     blocks,
     blockIndex: firstOpen === -1 ? blocks.length : firstOpen,
@@ -256,7 +256,7 @@ export function replaySession(lesson: Lesson, plan: SessionPlan, trials: Trial[]
     cleared: blocks.filter((b) => b.done && b.cutBy !== 'notFirm').length,
     rightFirstTry: outcomes.reduce((s, o) => s + o.rightFirstTry, 0),
     graded: outcomes.reduce((s, o) => s + o.graded, 0),
-    rowsFirmed: [...new Set(testingFirm.map((o) => o.row))],
+    rowsFirmed: [...new Set(atomFirm.map((o) => o.row))],
     activeMs: activeMs(trials, plan.startedAt),
     staleAt,
     unreplayed: trials.length - i,
@@ -291,7 +291,6 @@ function splitSessions(log: SessionLog): { plan: SessionPlan; trials: Trial[] }[
 }
 function recordOutcomes(history: RowHistory, state: SessionState): void {
   for (const b of state.blocks) {
-    if (b.plan.kind === 'instruction') continue
     for (const o of b.outcomes) {
       const rec = history.get(o.row) ?? {
         row: o.row,
@@ -304,7 +303,7 @@ function recordOutcomes(history: RowHistory, state: SessionState): void {
       rec.timesServed += 1
       rec.lastServedAt = o.endedAt
       rec.misses += o.graded - o.rightFirstTry
-      if (b.plan.kind === 'testing' && o.firm && !rec.firmed) {
+      if (b.plan.kind === 'atom' && o.firm && !rec.firmed) {
         rec.firmed = true
         rec.firmedAt = o.endedAt
       }
@@ -384,10 +383,8 @@ function plannedRows(lesson: Lesson, history: RowHistory, rs: number[], kind: Bl
   })
 }
 function atomBlocks(lesson: Lesson, history: RowHistory, row: number): BlockPlan[] {
-  return (['instruction', 'testing'] as const).flatMap((kind) => {
-    const rows = plannedRows(lesson, history, [row], kind)
-    return rows.length === 0 ? [] : [{ kind, rows, budgetMs: TEACH_BUDGET_MS }]
-  })
+  const rows = plannedRows(lesson, history, [row], 'atom')
+  return rows.length === 0 ? [] : [{ kind: 'atom', rows, budgetMs: TEACH_BUDGET_MS }]
 }
 function scheduledBlocks(
   lesson: Lesson,
@@ -422,7 +419,7 @@ export function planSession(
   const unfirm = rows.filter((r) => !history.get(r)?.firmed)
   const blocks: BlockPlan[] = []
   if (unfirm.length === rows.length) {
-    for (const row of unfirm.slice(0, SESSION_BLOCKS / 2)) blocks.push(...atomBlocks(lesson, history, row))
+    for (const row of unfirm.slice(0, SESSION_BLOCKS)) blocks.push(...atomBlocks(lesson, history, row))
   } else {
     const newRow = unfirm[0] ?? null
     const reviewable: RowHistory = new Map(
@@ -450,7 +447,7 @@ export function jumpToRow(
   lesson: Lesson,
   row: number | null,
   now: number,
-  kind: 'instruction' | 'testing' = 'instruction',
+  side: 'instruction' | 'testing' = 'instruction',
   item = 0,
 ): {
   plan: SessionPlan
@@ -466,14 +463,14 @@ export function jumpToRow(
   let at = now
   for (const b of plan.blocks) {
     const hit =
-      row === null
-        ? b.kind === 'narrative' || lesson.narrative === undefined
-        : b.rows.some((r) => r.row === row) && (kind === 'instruction' || b.kind === kind)
+      row === null ? b.kind === 'narrative' || lesson.narrative === undefined : b.rows.some((r) => r.row === row)
     if (hit) {
       if (row !== null) {
         const planned = b.rows.find((r) => r.row === row)!
         const items = rowLesson(lesson, planned, b.kind).items
-        for (const it of items.slice(0, Math.min(item, items.length - 1)))
+        const first = side === 'testing' ? items.findIndex((it) => it.role === 'test') : 0
+        const stop = Math.min(Math.max(first, 0) + item, items.length - 1)
+        for (const it of items.slice(0, stop))
           trials.push({ typed: it.role === 'model' ? '' : it.expected, at: (at += 1000) })
       }
       break

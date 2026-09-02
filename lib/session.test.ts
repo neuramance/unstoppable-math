@@ -21,7 +21,7 @@ test('a perfect run clears every block with exact real tallies', () => {
   const trials = runSession(l, plan)
   const s = replaySession(l, plan, trials)
   expect(s.done).toBe(true)
-  expect(s.cleared).toBe(4)
+  expect(s.cleared).toBe(2)
   expect(s.blocks.every((b) => b.cutBy === null)).toBe(true)
   expect(s.graded).toBe(8)
   expect(s.rightFirstTry).toBe(8)
@@ -116,11 +116,10 @@ test('a not-firm teach row ends the block after the DI correction runs inside th
     },
   })
   const s = replaySession(l, plan, trials)
-  expect(visited.join(' ')).toContain('b1r0i1 b1r0i1c b1r0i0c b1r0i1c')
+  expect(visited.join(' ')).toContain('b0r0i2 b0r0i2c b0r0i1c b0r0i2c')
   expect(s.done).toBe(true)
-  expect(s.blocks[0].cutBy).toBe(null)
-  expect(s.blocks[1].cutBy).toBe('notFirm')
-  expect(s.blocks[1].outcomes).toEqual([expect.objectContaining({ row: 1, firm: false, rightFirstTry: 1, graded: 2 })])
+  expect(s.blocks[0].cutBy).toBe('notFirm')
+  expect(s.blocks[0].outcomes).toEqual([expect.objectContaining({ row: 1, firm: false, rightFirstTry: 1, graded: 2 })])
   expect(s.rowsFirmed).toEqual([])
 })
 
@@ -128,8 +127,9 @@ test('review rows carry tests only, and an item-0 miss retests without back-up',
   const review = rowLesson(lesson, { row: 1, set: 1 }, 'review')
   expect(review.items.length).toBeGreaterThan(0)
   expect(review.items.every((it) => it.role === 'test')).toBe(true)
-  expect(rowLesson(lesson, { row: 1, set: 1 }, 'instruction').items.every((it) => it.role === 'model')).toBe(true)
-  expect(rowLesson(lesson, { row: 1, set: 1 }, 'instruction').items.length).toBeGreaterThan(0)
+  const atom = rowLesson(lesson, { row: 1, set: 1 }, 'atom')
+  expect(atom.items.filter((it) => it.role === 'model').length).toBeGreaterThan(0)
+  expect(atom.items.findIndex((it) => it.role === 'test')).toBe(atom.items.filter((it) => it.role === 'model').length)
 
   const l = synth(1, 'tt')
   const plan: SessionPlan = {
@@ -159,8 +159,7 @@ test('rowHistory folds sessions with sticky firm, accumulated misses, and freshe
     startedAt: 500_000,
     blocks: [
       { kind: 'review', rows: [{ row: 1, set: 1 }], budgetMs: REVIEW_BUDGET_MS },
-      { kind: 'instruction', rows: [{ row: 3, set: 1 }], budgetMs: TEACH_BUDGET_MS },
-      { kind: 'testing', rows: [{ row: 3, set: 1 }], budgetMs: TEACH_BUDGET_MS },
+      { kind: 'atom', rows: [{ row: 3, set: 1 }], budgetMs: TEACH_BUDGET_MS },
     ],
   }
   let missed = false
@@ -181,7 +180,7 @@ test('rowHistory folds sessions with sticky firm, accumulated misses, and freshe
   ]
   const history = rowHistory(l, log)
   expect(history.get(1)).toEqual(
-    expect.objectContaining({ timesServed: 2, firmed: true, misses: 1, firmedAt: trialsA[3].at }),
+    expect.objectContaining({ timesServed: 2, firmed: true, misses: 1, firmedAt: trialsA[2].at }),
   )
   expect(history.get(1)!.lastServedAt!).toBeGreaterThan(500_000)
   expect(history.get(2)).toEqual(expect.objectContaining({ timesServed: 1, firmed: true, misses: 0 }))
@@ -197,9 +196,9 @@ test('a truncated log resumes at the exact item and replays to the identical fin
   expect(partial.done).toBe(false)
   const cur = partial.blocks[partial.blockIndex].current!
   const full = replaySession(l, plan, trials)
-  expect(partial.blockIndex).toBe(2)
-  expect(cur.rowIndex).toBe(1)
-  expect(cur.log).toEqual([])
+  expect(partial.blockIndex).toBe(1)
+  expect(cur.rowIndex).toBe(0)
+  expect(cur.log).toHaveLength(1)
   expect(replaySession(l, plan, [...trials.slice(0, cutAt), ...trials.slice(cutAt)])).toEqual(full)
 })
 
@@ -207,19 +206,15 @@ test('a dev jump folds every earlier atom perfectly and lands on its instruction
   const l = synth(4, 'mtt')
   const { plan, trials } = jumpToRow(l, 3, 1000)
   expect(plan.blocks.map((b) => [b.kind, b.rows[0].row])).toEqual([
-    ['instruction', 1],
-    ['testing', 1],
-    ['instruction', 2],
-    ['testing', 2],
-    ['instruction', 3],
-    ['testing', 3],
-    ['instruction', 4],
-    ['testing', 4],
+    ['atom', 1],
+    ['atom', 2],
+    ['atom', 3],
+    ['atom', 4],
   ])
   const s = replaySession(l, plan, trials)
-  expect(s.blockIndex).toBe(4)
-  expect(s.blocks[4].current).toMatchObject({ rowIndex: 0, log: [] })
-  expect(s.blocks.slice(0, 4).every((b) => b.done)).toBe(true)
+  expect(s.blockIndex).toBe(2)
+  expect(s.blocks[2].current).toMatchObject({ rowIndex: 0, log: [] })
+  expect(s.blocks.slice(0, 2).every((b) => b.done)).toBe(true)
   expect(s.rowsFirmed).toEqual([1, 2])
   expect(jumpToRow(l, 1, 0).trials).toEqual([])
 })
