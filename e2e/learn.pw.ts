@@ -158,3 +158,55 @@ test('a failed lesson fetch shows the retry gate, and a stale lesson shows the r
   await expect(page.getByText('lesson file that doesn', { exact: false })).toBeVisible({ timeout: 15_000 })
   await expect(page.getByRole('button', { name: 'Reload' })).toBeVisible()
 })
+
+test('a spoken answer is heard and graded in the browser, and the choice persists', async ({ page }) => {
+  await page.addInitScript(() => {
+    const w = window as unknown as Record<string, unknown>
+    let live: ((event: unknown) => void) | null = null
+    class FakeRecognition {
+      lang = ''
+      continuous = false
+      interimResults = false
+      maxAlternatives = 0
+      onresult: ((event: unknown) => void) | null = null
+      onerror: (() => void) | null = null
+      onend: (() => void) | null = null
+      start() {
+        live = this.onresult
+      }
+      abort() {
+        live = null
+      }
+    }
+    w.SpeechRecognition = FakeRecognition
+    w.webkitSpeechRecognition = FakeRecognition
+    w.__say = (transcripts: string[], isFinal: boolean) =>
+      live?.({
+        results: [
+          Object.assign(
+            transcripts.map((transcript) => ({ transcript })),
+            { isFinal },
+          ),
+        ],
+      })
+  })
+  await openLearn(page)
+  await page.getByRole('button', { name: 'Begin session' }).click()
+  const next = page.getByRole('button', { name: 'Next', exact: true })
+  await expect(next).toBeVisible({ timeout: 10_000 })
+  while (await next.isVisible()) {
+    await next.click()
+    await page.waitForTimeout(250)
+  }
+  await expect(page.getByRole('textbox', { name: 'Your answer' })).toBeVisible()
+
+  const mic = page.getByRole('button', { name: 'Microphone' })
+  await mic.click()
+  await expect(page.getByText('listening', { exact: true })).toBeVisible({ timeout: 10_000 })
+  expect(await page.evaluate(() => localStorage.getItem('um.mic'))).toBe('1')
+
+  await page.evaluate(() => (window as unknown as { __say: (t: string[], f: boolean) => void }).__say(['fo'], false))
+  await expect(page.getByText('fo', { exact: true })).toBeVisible()
+  await page.evaluate(() => (window as unknown as { __say: (t: string[], f: boolean) => void }).__say(['four'], true))
+  await expect(page.getByText('correct', { exact: true })).toBeVisible({ timeout: 10_000 })
+})

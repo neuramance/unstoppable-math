@@ -113,6 +113,7 @@ export function useLessonVoice(
   muted: boolean,
 ) {
   const [voiced, setVoiced] = useState(false)
+  const [playing, setPlaying] = useState(true)
   const [ccOn, setCcOn] = useState(loadCc)
   const [shown, setShown] = useState<number | null>(() => {
     const st = replayLesson(lesson, log).current
@@ -151,6 +152,7 @@ export function useLessonVoice(
   useEffect(() => {
     if (!item || auto || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setVoiced(false)
+      setPlaying(false)
       setShown(null)
       return
     }
@@ -168,8 +170,12 @@ export function useLessonVoice(
     let at = 0
     const speak = () => {
       const text = texts[at]
-      if (text === undefined) return
+      if (text === undefined) {
+        setPlaying(false)
+        return
+      }
       const finale = at === texts.length - 1
+      setPlaying(true)
       aud.src = `/audio/lesson/${clipKey(spokenLesson(text))}.mp3`
       aud.muted = mutedRef.current
       aud.onended = () => {
@@ -194,6 +200,7 @@ export function useLessonVoice(
         () => {
           voiceOkRef.current = false
           setVoiced(false)
+          setPlaying(false)
           setShown(null)
         },
       )
@@ -207,5 +214,5 @@ export function useLessonVoice(
     }
   }, [item, feedback, model, auto])
 
-  return { voiced, ccOn, setCc, shown, setShown, bless }
+  return { voiced, audible: playing && !muted, ccOn, setCc, shown, setShown, bless }
 }

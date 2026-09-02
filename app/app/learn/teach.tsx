@@ -5,14 +5,16 @@ import { createPortal, flushSync } from 'react-dom'
 import { d, g, t } from '@/app/tokens.stylex'
 import { morphs, turnsOnly } from '@/lib/figures'
 import type { Figure } from '@/lib/figures'
-import { replayLesson } from '@/lib/lesson'
+import { heardAnswer, replayLesson } from '@/lib/lesson'
 import type { Lesson, LessonItem, TrialEntry } from '@/lib/lesson'
 import { chrome } from './chrome'
 import { FigureView } from './figures-view'
 import { FracRow, labelStack, LessonText, TypedRow } from './lesson-text'
+import { Heard, MicPill } from './speech-row'
 import { EnterKey, shellInert } from './ui'
 import { useLessonAnswer } from './use-lesson-answer'
 import { initialShown, useLessonVoice } from './use-lesson-voice'
+import { useSpeechAnswer } from './use-speech-answer'
 
 const riseKf = stylex.keyframes({
   from: { opacity: 0, transform: 'translateY(16px)' },
@@ -91,34 +93,6 @@ const styles = stylex.create({
     alignItems: 'center',
     gap: '8px',
   },
-  lcc: {
-    fontFamily: t.mono,
-    fontSize: '11px',
-    fontWeight: 700,
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase',
-    color: t.mut,
-    backgroundColor: `color-mix(in srgb, ${t.ink} 4%, ${t.void})`,
-    borderWidth: '2px',
-    borderStyle: 'solid',
-    borderColor: `color-mix(in srgb, ${t.ink} 24%, transparent)`,
-    borderRadius: '10px',
-    paddingBlock: '5px',
-    paddingInline: '10px',
-    boxShadow: {
-      default: `0 3px 0 color-mix(in srgb, ${t.ink} 12%, transparent)`,
-      ':active': `0 1px 0 color-mix(in srgb, ${t.ink} 12%, transparent)`,
-    },
-    cursor: 'pointer',
-    transitionProperty: 'transform, box-shadow, color, border-color',
-    transitionDuration: '0.12s, 0.12s, 0.18s, 0.18s',
-    transitionTimingFunction: 'ease',
-    transform: { default: null, ':active': 'translateY(2px)' },
-  },
-  lccOn: {
-    color: t.ink,
-    borderColor: `color-mix(in srgb, ${t.ink} 55%, transparent)`,
-  },
 })
 
 type Feedback = { typed: string; correct: boolean }
@@ -126,6 +100,10 @@ type Feedback = { typed: string; correct: boolean }
 function toneOf(feedback: Feedback | null): 'right' | 'wrong' | null {
   if (feedback === null) return null
   return feedback.correct ? 'right' : 'wrong'
+}
+
+function answerableAloud(item: LessonItem | null, feedback: Feedback | null, auto: boolean): boolean {
+  return item !== null && item.role === 'test' && item.mode !== 'shade' && feedback === null && !auto
 }
 
 function FigureRow({
@@ -265,16 +243,23 @@ function LessonBar({
   onMuted,
   ccOn,
   onCc,
+  micSupported,
+  micOn,
+  onMic,
 }: {
   muted: boolean
   onMuted: (next: boolean) => void
   ccOn: boolean
   onCc: (next: boolean) => void
+  micSupported: boolean
+  micOn: boolean
+  onMic: (next: boolean) => void
 }) {
   return createPortal(
     <div {...stylex.props(styles.lbar)}>
+      {micSupported && <MicPill on={micOn} onMic={onMic} />}
       <button
-        {...stylex.props(styles.lcc, muted && styles.lccOn)}
+        {...stylex.props(chrome.pill, muted && chrome.pillOn)}
         aria-pressed={muted}
         aria-label="Mute"
         onClick={() => onMuted(!muted)}
@@ -283,7 +268,7 @@ function LessonBar({
         {muted ? 'muted' : 'mute'}
       </button>
       <button
-        {...stylex.props(styles.lcc, ccOn && styles.lccOn)}
+        {...stylex.props(chrome.pill, ccOn && chrome.pillOn)}
         aria-pressed={ccOn}
         aria-label="Captions"
         onClick={() => onCc(!ccOn)}
@@ -360,6 +345,11 @@ export function LessonPlayer({
   const advance = () => leave({ typed: feedback!.typed })
   const advanceModel = () => leave({ typed: '' })
 
+  const speech = useSpeechAnswer(answerableAloud(item, feedback, auto) && !voice.audible, (said) => {
+    if (shellInert() || document.hidden) return
+    check(heardAnswer(item!, said))
+  })
+
   const continueRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
     if (feedback) continueRef.current?.focus()
@@ -415,6 +405,7 @@ export function LessonPlayer({
             answerRef={answerRef}
           />
         )}
+        <Heard listening={speech.listening} interim={speech.interim} />
         <LessonFooter
           model={model}
           feedback={feedback}
@@ -427,7 +418,15 @@ export function LessonPlayer({
           onCheck={() => check(answer.serialize())}
         />
       </div>
-      <LessonBar muted={muted} onMuted={onMuted} ccOn={voice.ccOn} onCc={voice.setCc} />
+      <LessonBar
+        muted={muted}
+        onMuted={onMuted}
+        ccOn={voice.ccOn}
+        onCc={voice.setCc}
+        micSupported={speech.supported}
+        micOn={speech.on}
+        onMic={speech.setMic}
+      />
     </>
   )
 }

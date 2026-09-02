@@ -51,6 +51,13 @@ const NUMBER_WORDS: Record<string, number> = {
   eighteen: 18,
   nineteen: 19,
   twenty: 20,
+  thirty: 30,
+  forty: 40,
+  fifty: 50,
+  sixty: 60,
+  seventy: 70,
+  eighty: 80,
+  ninety: 90,
 }
 const QUOTED_OPEN = /^["'“”‘’]+/
 const QUOTED_CLOSE = /[.,!?"'“”‘’]+$/
@@ -63,6 +70,59 @@ export function normalizeAnswer(text: string): string {
     .filter(Boolean)
     .map((tok) => (NUMBER_WORDS[tok] !== undefined ? String(NUMBER_WORDS[tok]) : tok))
     .join(' ')
+}
+const ORDINALS_FROM_HALF = [
+  'half',
+  'third',
+  'fourth',
+  'fifth',
+  'sixth',
+  'seventh',
+  'eighth',
+  'ninth',
+  'tenth',
+  'eleventh',
+  'twelfth',
+  'thirteenth',
+  'fourteenth',
+  'fifteenth',
+  'sixteenth',
+  'seventeenth',
+  'eighteenth',
+  'nineteenth',
+  'twentieth',
+]
+const DENOMINATORS: Record<string, number> = {
+  ...Object.fromEntries(
+    ORDINALS_FROM_HALF.flatMap((stem, i) => [
+      [stem, i + 2],
+      [`${stem}s`, i + 2],
+    ]),
+  ),
+  halves: 2,
+  quarter: 4,
+  quarters: 4,
+  hundredth: 100,
+  hundredths: 100,
+  thousandth: 1000,
+  thousandths: 1000,
+}
+export function symbolize(text: string): string {
+  return normalizeAnswer(text)
+    .replace(/\bgreater than\b/g, '>')
+    .replace(/\bless than\b/g, '<')
+    .replace(/\bequals?(?: to)?\b/g, '=')
+    .replace(/\b(?:out of|slash)\b/g, 'over')
+    .replace(/\b([2-9]0) ([1-9])\b/g, (_, tens: string, unit: string) => String(Number(tens) + Number(unit)))
+    .replace(/\b(\d+) hundred(?: (\d+))?\b/g, (_, group: string, rest: string | undefined) =>
+      String(Number(group) * 100 + Number(rest ?? 0)),
+    )
+    .replace(/\b(\d+) ([2-9]0) ([a-z]+)\b/g, (whole, num: string, tens: string, word: string) =>
+      DENOMINATORS[word] < 10 ? `${num} over ${Number(tens) + DENOMINATORS[word]}` : whole,
+    )
+    .replace(/\s+and\s+/g, ' ')
+    .replace(/\b[a-z]+\b/g, (word) => (DENOMINATORS[word] === undefined ? word : `over ${DENOMINATORS[word]}`))
+    .replace(/\b(\d+) over (\d+)\b/g, '$1/$2')
 }
 function numbersOf(text: string): number[] {
   return text
@@ -78,6 +138,11 @@ export function gradeItem(item: LessonItem, typed: string): boolean {
   const want = numbersOf(item.expected)
   const got = numbersOf(typed)
   return got.length === want.length && want.every((w, i) => got[i] === w)
+}
+export function heardAnswer(item: LessonItem, heard: readonly string[]): string {
+  for (const text of heard)
+    for (const candidate of [text, symbolize(text)]) if (gradeItem(item, candidate)) return candidate
+  return heard[0] ?? ''
 }
 export type TrialEntry = {
   typed: string
