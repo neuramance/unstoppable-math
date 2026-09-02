@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import Image from 'next/image'
 import { useIntro } from './use-intro'
 
 const markFormKf = stylex.keyframes({
@@ -247,7 +248,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
         )}
       >
         <div {...stylex.props(s.mark)}>
-          <img
+          <Image
             {...stylex.props(
               s.markImg,
               frame !== null && s.markWidth(`${frame.mark}px`),
@@ -255,6 +256,9 @@ export function Intro({ onDone }: { onDone: () => void }) {
             )}
             src="/intro/wordmark.webp"
             alt="Unstoppable Math"
+            width={2144}
+            height={434}
+            priority
           />
         </div>
         <p {...stylex.props(s.tag)} aria-hidden="true">

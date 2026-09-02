@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { z } from 'zod'
 import { badgeCount } from '@/lib/figures'
-import { clipKey, narrated, replayLesson, spokenLesson } from '@/lib/lesson'
+import { clipKey, narrated, replayLesson } from '@/lib/lesson'
 import type { Lesson, LessonItem, TrialEntry } from '@/lib/lesson'
 
 const COUNT_WORDS = [
