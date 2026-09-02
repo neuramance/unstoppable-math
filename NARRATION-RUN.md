@@ -63,8 +63,8 @@ limits. Expect about 155 minutes of speech.
 
 Per clip it synthesises with Eleanor (`U1xXYn8cDFT02st4a5oq`, `eleven_multilingual_v2`,
 `mp3_44100_128`), conditioning a demo on its own prompt; measures the take with ffmpeg and rejects
-one that is flush with a phoneme at either edge or degenerately quiet; retries three times
-conditioned then three times plain; normalises the survivor to the house level; forced-aligns it;
+one that is flush with a phoneme at either edge or degenerately quiet; retries eight times
+conditioned then eight times plain; normalises the survivor to the house level; forced-aligns it;
 checks that the aligner's words rebuild the clip's own key; then writes the mp3 and the index entry.
 
 Progress prints as `[i/N] wrote <key> · "<line>"`.
@@ -84,10 +84,15 @@ when both its mp3 and its index entry exist, so the next run picks up exactly wh
 - **A clip that fails every take** is named on stderr, skipped, and the run continues; the failures
   are re-raised together at the end. It does not head-of-line block.
 
-Expect a slice of the 200 short clips to fail per run — the cap is six takes and they average 4.59,
-with one historically needing 30. Just re-run. **The credits are spent either way**: a rejected take
-bills whether it happens in this run or the next, so raising `ATTEMPTS` costs nothing extra and only
-saves you re-invoking. Consider raising it to 8 before a long unattended run.
+A few of the 200 short clips may still fail per run. `ATTEMPTS` is 8, so a demo gets sixteen takes
+(eight conditioned, then eight plain) and a prompt gets eight; they average 4.59 and one historically
+needed 30. Just re-run. **The credits are spent either way**: a rejected take bills whether it
+happens in this run or the next, so the cap changes how often you re-invoke rather than the total.
+
+What the cap does buy you is a ceiling on a line the voice can never say cleanly, and that ceiling
+moved. Across all 200 short clips the runaway case is now about 20,700 credits a run rather than
+7,800. It is a tail the history argues against — 59 of 84 texts passed first try — but if the log
+fills with retries for one clip, stop rather than let it drain the cycle.
 
 ## After the run
 

@@ -7,7 +7,7 @@ import { clipKey, narrated, SPEAKABLE, type Lesson } from '../lib/lesson'
 const VOICE = 'U1xXYn8cDFT02st4a5oq'
 const MODEL = 'eleven_multilingual_v2'
 const FORMAT = 'mp3_44100_128'
-const ATTEMPTS = 3
+const ATTEMPTS = 8
 const HTTP_ATTEMPTS = 5
 const BACKOFF_MS = 2000
 const SPEECH_TARGET_DBFS = -18
@@ -112,7 +112,9 @@ async function take(key: string, clip: Clip): Promise<Mp3 | null> {
       const m = metricsOf(samples(mp3))
       if (m.edgesQuiet && m.speech >= SPEECH_FLOOR_DBFS) return normalized(mp3, m)
       const why = m.edgesQuiet ? `speech ${m.speech.toFixed(1)}dBFS below floor` : 'a loud edge'
-      console.warn(`retry ${key}: ${previous === undefined ? 'plain' : 'conditioned'} take ${attempt} has ${why}`)
+      console.warn(
+        `retry ${key}: ${previous === undefined ? 'plain' : 'conditioned'} take ${attempt}/${ATTEMPTS} has ${why}`,
+      )
     }
   }
   return null
