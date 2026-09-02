@@ -235,30 +235,6 @@
       ]
     ]
   },
-  "eleven-parts-6b5825b4": {
-    "sha": "489e8399348a",
-    "end": 719,
-    "words": [
-      [
-        "Eleven",
-        79
-      ],
-      [
-        "parts.",
-        401
-      ]
-    ]
-  },
-  "elevenths-73b7c189": {
-    "sha": "d2b5e4bb37b7",
-    "end": 779,
-    "words": [
-      [
-        "Elevenths.",
-        219
-      ]
-    ]
-  },
   "fifths-62e6badb": {
     "sha": "6b645c4c7f20",
     "end": 539,
@@ -637,92 +613,6 @@
       ]
     ]
   },
-  "here-are-two-whole-units-the-whole-units-ecafe19c": {
-    "sha": "5c9a9952a43b",
-    "end": 6679,
-    "words": [
-      [
-        "Here",
-        159
-      ],
-      [
-        "are",
-        319
-      ],
-      [
-        "two",
-        500
-      ],
-      [
-        "whole",
-        719
-      ],
-      [
-        "units.",
-        1019
-      ],
-      [
-        "The",
-        2079
-      ],
-      [
-        "whole",
-        2180
-      ],
-      [
-        "units",
-        2440
-      ],
-      [
-        "have",
-        2740
-      ],
-      [
-        "been",
-        2919
-      ],
-      [
-        "split",
-        3159
-      ],
-      [
-        "into",
-        3439
-      ],
-      [
-        "parts.",
-        3699
-      ],
-      [
-        "The",
-        4699
-      ],
-      [
-        "parts",
-        4859
-      ],
-      [
-        "all",
-        5279
-      ],
-      [
-        "have",
-        5539
-      ],
-      [
-        "the",
-        5719
-      ],
-      [
-        "same",
-        5859
-      ],
-      [
-        "size.",
-        6139
-      ]
-    ]
-  },
   "here-s-a-number-line-split-into-what-we-6139c0b1": {
     "sha": "153672ef6119",
     "end": 3000,
@@ -803,36 +693,6 @@
       ]
     ]
   },
-  "here-there-are-four-whole-units-afd39429": {
-    "sha": "f84173f93b28",
-    "end": 2019,
-    "words": [
-      [
-        "Here",
-        159
-      ],
-      [
-        "there",
-        401
-      ],
-      [
-        "are",
-        620
-      ],
-      [
-        "four",
-        859
-      ],
-      [
-        "whole",
-        1220
-      ],
-      [
-        "units.",
-        1620
-      ]
-    ]
-  },
   "here-there-are-three-whole-units-ea5843b7": {
     "sha": "6c51c1c89fd0",
     "end": 1839,
@@ -860,54 +720,6 @@
       [
         "units.",
         1500
-      ]
-    ]
-  },
-  "here-there-are-two-whole-units-e7880cfd": {
-    "sha": "baa083c53430",
-    "end": 1659,
-    "words": [
-      [
-        "Here",
-        159
-      ],
-      [
-        "there",
-        341
-      ],
-      [
-        "are",
-        479
-      ],
-      [
-        "two",
-        699
-      ],
-      [
-        "whole",
-        980
-      ],
-      [
-        "units.",
-        1339
-      ]
-    ]
-  },
-  "how-many-parts-d1a93787": {
-    "sha": "4753856a4cae",
-    "end": 879,
-    "words": [
-      [
-        "How",
-        99
-      ],
-      [
-        "many",
-        299
-      ],
-      [
-        "parts?",
-        499
       ]
     ]
   },
@@ -1071,80 +883,6 @@
       ]
     ]
   },
-  "i-count-the-parts-like-this-one-two-thre-c3d7bbc9": {
-    "sha": "d0e9ce942644",
-    "end": 5679,
-    "words": [
-      [
-        "I",
-        179
-      ],
-      [
-        "count",
-        219
-      ],
-      [
-        "the",
-        439
-      ],
-      [
-        "parts",
-        560
-      ],
-      [
-        "like",
-        839
-      ],
-      [
-        "this:",
-        1059
-      ],
-      [
-        "one,",
-        1679
-      ],
-      [
-        "two,",
-        1939
-      ],
-      [
-        "three,",
-        2220
-      ],
-      [
-        "four,",
-        2559
-      ],
-      [
-        "five.",
-        2839
-      ],
-      [
-        "Each",
-        3839
-      ],
-      [
-        "whole",
-        4039
-      ],
-      [
-        "unit",
-        4299
-      ],
-      [
-        "has",
-        4659
-      ],
-      [
-        "five",
-        4920
-      ],
-      [
-        "parts.",
-        5219
-      ]
-    ]
-  },
   "if-the-number-of-parts-is-three-we-call-5865ca72": {
     "sha": "ff2851111e4c",
     "end": 4279,
@@ -1230,286 +968,6 @@
       [
         "units.",
         1139
-      ]
-    ]
-  },
-  "my-turn-first-these-whole-units-have-eig-5de55c1b": {
-    "sha": "eb39627556e5",
-    "end": 4920,
-    "words": [
-      [
-        "My",
-        140
-      ],
-      [
-        "turn",
-        319
-      ],
-      [
-        "first:",
-        579
-      ],
-      [
-        "These",
-        1539
-      ],
-      [
-        "whole",
-        1779
-      ],
-      [
-        "units",
-        2039
-      ],
-      [
-        "have",
-        2440
-      ],
-      [
-        "eight",
-        2659
-      ],
-      [
-        "parts",
-        2879
-      ],
-      [
-        "each.",
-        3199
-      ],
-      [
-        "What's",
-        3720
-      ],
-      [
-        "the",
-        3959
-      ],
-      [
-        "name",
-        4039
-      ],
-      [
-        "of",
-        4239
-      ],
-      [
-        "each",
-        4380
-      ],
-      [
-        "part?",
-        4619
-      ]
-    ]
-  },
-  "my-turn-first-these-whole-units-have-sev-3e454325": {
-    "sha": "16474f260aa8",
-    "end": 5319,
-    "words": [
-      [
-        "My",
-        140
-      ],
-      [
-        "turn",
-        299
-      ],
-      [
-        "first:",
-        519
-      ],
-      [
-        "These",
-        1480
-      ],
-      [
-        "whole",
-        1699
-      ],
-      [
-        "units",
-        2039
-      ],
-      [
-        "have",
-        2359
-      ],
-      [
-        "seven",
-        2599
-      ],
-      [
-        "parts",
-        2899
-      ],
-      [
-        "each.",
-        3220
-      ],
-      [
-        "What's",
-        4139
-      ],
-      [
-        "the",
-        4400
-      ],
-      [
-        "name",
-        4500
-      ],
-      [
-        "of",
-        4699
-      ],
-      [
-        "each",
-        4820
-      ],
-      [
-        "part?",
-        5039
-      ]
-    ]
-  },
-  "my-turn-first-these-whole-units-have-six-fdfa2db0": {
-    "sha": "fb22509b9062",
-    "end": 5279,
-    "words": [
-      [
-        "My",
-        99
-      ],
-      [
-        "turn",
-        319
-      ],
-      [
-        "first:",
-        579
-      ],
-      [
-        "These",
-        1559
-      ],
-      [
-        "whole",
-        1819
-      ],
-      [
-        "units",
-        2059
-      ],
-      [
-        "have",
-        2440
-      ],
-      [
-        "six",
-        2659
-      ],
-      [
-        "parts",
-        2939
-      ],
-      [
-        "each.",
-        3259
-      ],
-      [
-        "What's",
-        4139
-      ],
-      [
-        "the",
-        4380
-      ],
-      [
-        "name",
-        4519
-      ],
-      [
-        "of",
-        4639
-      ],
-      [
-        "each",
-        4779
-      ],
-      [
-        "part?",
-        4980
-      ]
-    ]
-  },
-  "my-turn-first-these-whole-units-have-ten-a69e0b77": {
-    "sha": "19eb717563b4",
-    "end": 5199,
-    "words": [
-      [
-        "My",
-        119
-      ],
-      [
-        "turn",
-        299
-      ],
-      [
-        "first:",
-        539
-      ],
-      [
-        "These",
-        1480
-      ],
-      [
-        "whole",
-        1699
-      ],
-      [
-        "units",
-        1939
-      ],
-      [
-        "have",
-        2299
-      ],
-      [
-        "ten",
-        2480
-      ],
-      [
-        "parts",
-        2740
-      ],
-      [
-        "each.",
-        3039
-      ],
-      [
-        "What's",
-        3899
-      ],
-      [
-        "the",
-        4179
-      ],
-      [
-        "name",
-        4279
-      ],
-      [
-        "of",
-        4480
-      ],
-      [
-        "each",
-        4599
-      ],
-      [
-        "part?",
-        4839
       ]
     ]
   },
@@ -1653,64 +1111,6 @@
       ]
     ]
   },
-  "now-there-are-one-two-three-parts-in-eac-81988104": {
-    "sha": "2644f12274de",
-    "end": 4119,
-    "words": [
-      [
-        "Now",
-        99
-      ],
-      [
-        "there",
-        299
-      ],
-      [
-        "are",
-        439
-      ],
-      [
-        "one,",
-        680
-      ],
-      [
-        "two,",
-        979
-      ],
-      [
-        "three",
-        1220
-      ],
-      [
-        "parts",
-        1459
-      ],
-      [
-        "in",
-        1879
-      ],
-      [
-        "each",
-        2039
-      ],
-      [
-        "whole",
-        2319
-      ],
-      [
-        "unit.",
-        2599
-      ],
-      [
-        "Three",
-        3500
-      ],
-      [
-        "parts.",
-        3720
-      ]
-    ]
-  },
   "one-whole-unit-a3ed2c8c": {
     "sha": "5532730c6017",
     "end": 1059,
@@ -1740,36 +1140,6 @@
       [
         "parts.",
         439
-      ]
-    ]
-  },
-  "seven-parts-in-each-whole-unit-870be5d7": {
-    "sha": "69bf7038e584",
-    "end": 1659,
-    "words": [
-      [
-        "Seven",
-        99
-      ],
-      [
-        "parts",
-        439
-      ],
-      [
-        "in",
-        740
-      ],
-      [
-        "each",
-        939
-      ],
-      [
-        "whole",
-        1139
-      ],
-      [
-        "unit.",
-        1379
       ]
     ]
   },
@@ -1861,13 +1231,13 @@
       ]
     ]
   },
-  "there-are-three-times-when-the-number-of-b5e41bf7": {
-    "sha": "0529a06d8b23",
-    "end": 7919,
+  "there-are-three-times-when-the-number-of-63c7ab94": {
+    "sha": "8b682dead5d4",
+    "end": 7899,
     "words": [
       [
         "There",
-        119
+        159
       ],
       [
         "are",
@@ -1879,75 +1249,79 @@
       ],
       [
         "times",
-        680
+        699
       ],
       [
         "when",
-        1139
+        1159
       ],
       [
         "the",
-        1279
+        1299
       ],
       [
         "number",
-        1379
+        1419
       ],
       [
         "of",
-        1620
+        1699
       ],
       [
         "parts",
-        1740
+        1860
       ],
       [
         "has",
-        2119
+        2319
+      ],
+      [
+        "an",
+        2500
       ],
       [
         "unusual",
-        2339
+        2700
       ],
       [
         "name.",
-        2859
+        3359
       ],
       [
         "If",
-        3819
+        4219
       ],
       [
         "the",
-        3980
+        4360
       ],
       [
         "number",
-        4099
-      ],
-      [
-        "of",
-        4339
-      ],
-      [
-        "parts",
         4480
       ],
       [
+        "of",
+        4719
+      ],
+      [
+        "parts",
+        4839
+      ],
+      [
         "is",
-        4739
+        5139
       ],
       [
         "two,",
-        4960
+        5339
       ],
       [
         "we",
-        5719
+        5659
       ],
       [
         "call",
-        5839
+        5819
       ],
       [
         "them",
@@ -1955,15 +1329,15 @@
       ],
       [
         "halves.",
-        6199
+        6179
       ],
       [
         "Say",
-        7219
+        7159
       ],
       [
         "halves:",
-        7460
+        7399
       ]
     ]
   },
@@ -2229,6 +1603,122 @@
       ]
     ]
   },
+  "these-whole-units-have-seven-parts-each-2bd220ea": {
+    "sha": "86e4c01bb1ed",
+    "end": 4079,
+    "words": [
+      [
+        "These",
+        119
+      ],
+      [
+        "whole",
+        359
+      ],
+      [
+        "units",
+        639
+      ],
+      [
+        "have",
+        1100
+      ],
+      [
+        "seven",
+        1379
+      ],
+      [
+        "parts",
+        1719
+      ],
+      [
+        "each.",
+        2059
+      ],
+      [
+        "What's",
+        2960
+      ],
+      [
+        "the",
+        3199
+      ],
+      [
+        "name",
+        3279
+      ],
+      [
+        "of",
+        3460
+      ],
+      [
+        "each",
+        3579
+      ],
+      [
+        "part?",
+        3779
+      ]
+    ]
+  },
+  "these-whole-units-have-six-parts-each-wh-6837043f": {
+    "sha": "5f60c804f65a",
+    "end": 4079,
+    "words": [
+      [
+        "These",
+        99
+      ],
+      [
+        "whole",
+        399
+      ],
+      [
+        "units",
+        699
+      ],
+      [
+        "have",
+        1059
+      ],
+      [
+        "six",
+        1319
+      ],
+      [
+        "parts",
+        1659
+      ],
+      [
+        "each.",
+        2039
+      ],
+      [
+        "What's",
+        2960
+      ],
+      [
+        "the",
+        3179
+      ],
+      [
+        "name",
+        3319
+      ],
+      [
+        "of",
+        3439
+      ],
+      [
+        "each",
+        3560
+      ],
+      [
+        "part?",
+        3779
+      ]
+    ]
+  },
   "thirds-ea63947b": {
     "sha": "c6f1f768086b",
     "end": 620,
@@ -2467,220 +1957,6 @@
       ]
     ]
   },
-  "to-read-the-number-of-parts-in-a-whole-u-b80aa235": {
-    "sha": "091ae5bbe767",
-    "end": 13519,
-    "words": [
-      [
-        "To",
-        99
-      ],
-      [
-        "read",
-        259
-      ],
-      [
-        "the",
-        500
-      ],
-      [
-        "number",
-        620
-      ],
-      [
-        "of",
-        879
-      ],
-      [
-        "parts",
-        1039
-      ],
-      [
-        "in",
-        1379
-      ],
-      [
-        "a",
-        1480
-      ],
-      [
-        "whole",
-        1579
-      ],
-      [
-        "unit,",
-        1899
-      ],
-      [
-        "we",
-        2759
-      ],
-      [
-        "can",
-        2899
-      ],
-      [
-        "usually",
-        3159
-      ],
-      [
-        "just",
-        3740
-      ],
-      [
-        "say",
-        4239
-      ],
-      [
-        "the",
-        4739
-      ],
-      [
-        "number",
-        4920
-      ],
-      [
-        "of",
-        5199
-      ],
-      [
-        "parts,",
-        5359
-      ],
-      [
-        "followed",
-        5839
-      ],
-      [
-        "by",
-        6139
-      ],
-      [
-        "a",
-        6440
-      ],
-      [
-        "'th'",
-        6480
-      ],
-      [
-        "sound.",
-        6719
-      ],
-      [
-        "My",
-        8079
-      ],
-      [
-        "turn",
-        8300
-      ],
-      [
-        "first:",
-        8559
-      ],
-      [
-        "These",
-        9619
-      ],
-      [
-        "whole",
-        9840
-      ],
-      [
-        "units",
-        10179
-      ],
-      [
-        "have",
-        10559
-      ],
-      [
-        "nine",
-        10779
-      ],
-      [
-        "parts",
-        11079
-      ],
-      [
-        "each.",
-        11420
-      ],
-      [
-        "What's",
-        12319
-      ],
-      [
-        "the",
-        12599
-      ],
-      [
-        "name",
-        12699
-      ],
-      [
-        "of",
-        12899
-      ],
-      [
-        "each",
-        13000
-      ],
-      [
-        "part?",
-        13259
-      ]
-    ]
-  },
-  "twelfths-d990438c": {
-    "sha": "fe54f16dbc65",
-    "end": 719,
-    "words": [
-      [
-        "Twelfths.",
-        99
-      ]
-    ]
-  },
-  "twelve-parts-aa0e99f0": {
-    "sha": "991e4365f3b9",
-    "end": 979,
-    "words": [
-      [
-        "Twelve",
-        119
-      ],
-      [
-        "parts.",
-        500
-      ]
-    ]
-  },
-  "twentieths-99f30fea": {
-    "sha": "9e1fa8b06ea0",
-    "end": 759,
-    "words": [
-      [
-        "Twentieths.",
-        99
-      ]
-    ]
-  },
-  "twenty-parts-d55ca4dc": {
-    "sha": "59b9e8e06940",
-    "end": 859,
-    "words": [
-      [
-        "Twenty",
-        99
-      ],
-      [
-        "parts.",
-        479
-      ]
-    ]
-  },
   "two-parts-9c66c233": {
     "sha": "5a2cfab771c4",
     "end": 639,
@@ -2692,36 +1968,6 @@
       [
         "parts.",
         299
-      ]
-    ]
-  },
-  "two-parts-in-each-whole-unit-ddf747cc": {
-    "sha": "e767e241bfdc",
-    "end": 1359,
-    "words": [
-      [
-        "Two",
-        99
-      ],
-      [
-        "parts",
-        299
-      ],
-      [
-        "in",
-        539
-      ],
-      [
-        "each",
-        659
-      ],
-      [
-        "whole",
-        819
-      ],
-      [
-        "unit.",
-        1059
       ]
     ]
   },
@@ -3008,32 +2254,6 @@
       [
         "know?",
         2279
-      ]
-    ]
-  },
-  "your-turn-how-many-parts-8b380be1": {
-    "sha": "eaba03010774",
-    "end": 1379,
-    "words": [
-      [
-        "Your",
-        119
-      ],
-      [
-        "turn.",
-        319
-      ],
-      [
-        "How",
-        759
-      ],
-      [
-        "many",
-        879
-      ],
-      [
-        "parts?",
-        1039
       ]
     ]
   },

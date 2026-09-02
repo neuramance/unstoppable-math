@@ -105,19 +105,13 @@ test('every correction drops wording the committed script never had, and 11 of t
   expect(quoted).toHaveLength(11)
 })
 
-const UNRECORDED = [
-  "These whole units have six parts each. What's the name of each part?",
-  "These whole units have seven parts each. What's the name of each part?",
-  'There are three times when the number of parts has an unusual name. If the number of parts is two, we call them halves. Say halves:',
-]
-
-test('every line the honed first five atoms speak is recorded, bar the three still awaiting the voice', () => {
+test('every line the honed first five atoms speak is recorded', () => {
   const clips = new Set(Object.keys(JSON.parse(readFileSync('public/audio/lesson/alignment.json', 'utf8'))))
   const spoken = lesson.items
     .filter((item) => item.row <= 5)
     .flatMap((item) => [item.prompt, item.demo])
     .map(spokenLesson)
-  expect([...new Set(spoken.filter((text) => !clips.has(clipKey(text))))]).toEqual(UNRECORDED)
+  expect(spoken.filter((text) => !clips.has(clipKey(text)))).toEqual([])
 })
 
 test('every count item expects exactly what its figure shows', () => {
