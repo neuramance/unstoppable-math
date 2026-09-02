@@ -114,7 +114,7 @@ export function symbolize(text: string): string {
     .replace(/\bequals?(?: to)?\b/g, '=')
     .replace(/\b(?:out of|slash)\b/g, 'over')
     .replace(/\b([2-9]0) ([1-9])\b/g, (_, tens: string, unit: string) => String(Number(tens) + Number(unit)))
-    .replace(/\b(\d+) hundred(?: (\d+))?\b/g, (_, group: string, rest: string | undefined) =>
+    .replace(/\b(\d+) hundred(?: and)?(?: (\d+))?\b/g, (_, group: string, rest: string | undefined) =>
       String(Number(group) * 100 + Number(rest ?? 0)),
     )
     .replace(/\b(\d+) ([2-9]0) ([a-z]+)\b/g, (whole, num: string, tens: string, word: string) =>
