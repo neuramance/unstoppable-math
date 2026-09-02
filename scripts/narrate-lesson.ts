@@ -206,10 +206,17 @@ async function main(): Promise<void> {
       console.error(`${key}: every take failed the edge and loudness gates — inspect by ear`)
       continue
     }
-    alignment[key] = {
+    const entry: Entry = {
       sha: createHash('sha256').update(mp3).digest('hex').slice(0, 12),
       ...(await timed(key, mp3, clip.text)),
     }
+    const spoken = entry.words.map(([word]) => word).join(' ')
+    if (clipKey(spoken) !== key) {
+      failed.push(key)
+      console.error(`${key}: the aligner's words rebuild a different line, so the entry would orphan: "${spoken}"`)
+      continue
+    }
+    alignment[key] = entry
     writeFileSync(`${CLIPS}/${key}.mp3`, mp3)
     const keys = Object.keys(alignment).sort()
     writeFileSync(ALIGNMENT, `${JSON.stringify(Object.fromEntries(keys.map((k) => [k, alignment[k]])), null, 2)}\n`)
