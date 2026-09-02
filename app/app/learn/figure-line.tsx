@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { t } from '@/app/tokens.stylex'
 import {
   LINE_ACROSS,
+  LINE_END_ROOM,
   PAD,
   UNIT_MARK_BAR,
   UNIT_MARK_BAR_HALF,
@@ -89,10 +90,10 @@ export function LineFig({ fig, counted, badge, shown, onPick, pop }: FigProps) {
   const room = unitMarkRoom(fig)
   const across = LINE_ACROSS + room + (ring ? 8 : 0)
   const axis = 34 + room
-  const bleed = vert && room > 0 ? UNIT_MARK_BAR - PAD : 0
+  const bleed = (vert && room > 0 ? UNIT_MARK_BAR - PAD : 0) + LINE_END_ROOM
   return (
     <svg
-      viewBox={vert ? `0 ${-bleed} ${across} ${span + 2 * bleed}` : `0 0 ${span} ${across}`}
+      viewBox={vert ? `0 ${-bleed} ${across} ${span + 2 * bleed}` : `${-bleed} 0 ${span + 2 * bleed} ${across}`}
       width={vert ? across : '100%'}
       {...stylex.props(core.svg, vert && core.upright)}
       {...pickable('Parts counted', total, counted, onPick)}

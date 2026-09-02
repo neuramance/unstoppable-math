@@ -239,6 +239,7 @@ export const UNIT_MARK_BAR = 17
 export const UNIT_MARK_RISE = 5
 export const UNIT_MARK_DROP = 13
 export const UNIT_MARK_BAR_HALF = 10
+export const LINE_END_ROOM = 4
 export function unitMarkRoom(figure: Figure): number {
   return figure.unitMarks === undefined ? 0 : UNIT_MARK_ROOM
 }
