@@ -76,7 +76,10 @@ async function open(): Promise<void> {
   try {
     const { data, error } = await supabase().from('app_state').select('key,value')
     if (error) throw error
-    const rows = (data ?? []).flatMap((r) => (typeof r.value === 'string' ? [{ key: r.key, value: r.value }] : []))
+    const rows = (data ?? []).flatMap((r) => {
+      const value = typeof r.value === 'string' ? r.value : r.value === null ? null : JSON.stringify(r.value)
+      return value === null ? [] : [{ key: r.key, value }]
+    })
     const plan = mergePlan(localKeys(), rows)
     for (const r of plan.toLocal) localStorage.setItem(r.key, r.value)
     for (const key of plan.toServer) {
