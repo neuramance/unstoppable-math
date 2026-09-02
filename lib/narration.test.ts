@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { expect, test } from 'vitest'
-import { clipKey, SPEAKABLE, spokenLesson } from './lesson'
+import { clipKey, narrated, SPEAKABLE } from './lesson'
 
 const AUDIO = join(process.cwd(), 'public/audio/lesson')
 const alignment = JSON.parse(readFileSync(join(AUDIO, 'alignment.json'), 'utf8')) as Record<
@@ -67,7 +67,7 @@ test('the slug lowercases, folds runs of non-alphanumerics to one dash, caps at 
 test('the spoken form is idempotent on every committed clip, so normalizing it can never orphan one', () => {
   for (const key of keys) {
     const spoken = spokenOf(key)
-    expect({ key, stable: spokenLesson(spoken) }).toEqual({ key, stable: spoken })
-    expect({ key, derived: clipKey(spokenLesson(spoken)) }).toEqual({ key, derived: key })
+    expect({ key, stable: narrated(spoken) }).toEqual({ key, stable: spoken })
+    expect({ key, derived: clipKey(narrated(spoken)) }).toEqual({ key, derived: key })
   }
 })

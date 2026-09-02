@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { z } from 'zod'
 import { badgeCount } from '@/lib/figures'
-import { clipKey, replayLesson, spokenLesson } from '@/lib/lesson'
+import { clipKey, narrated, replayLesson, spokenLesson } from '@/lib/lesson'
 import type { Lesson, LessonItem, TrialEntry } from '@/lib/lesson'
 
 const COUNT_WORDS = [
@@ -176,7 +176,7 @@ export function useLessonVoice(
       }
       const finale = at === texts.length - 1
       setPlaying(true)
-      aud.src = `/audio/lesson/${clipKey(spokenLesson(text))}.mp3`
+      aud.src = `/audio/lesson/${clipKey(narrated(text))}.mp3`
       aud.muted = mutedRef.current
       aud.onended = () => {
         at += 1
@@ -189,7 +189,7 @@ export function useLessonVoice(
           if (counts && finale) {
             void alignmentIndex().then((index) => {
               if (dead) return
-              const entry = index[clipKey(spokenLesson(text))]
+              const entry = index[clipKey(narrated(text))]
               const endMs =
                 entry?.end ?? (Number.isFinite(aud.duration) && aud.duration > 0 ? aud.duration * 1000 : total * 600)
               for (const [k, delay] of scheduleCount(total, entry?.words ?? [], endMs))

@@ -1,7 +1,16 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from 'vitest'
 import { badgeCount, shadeable } from '../lib/figures'
-import { clipKey, gradeItem, normalizeAnswer, spokenLesson, type Lesson, type LessonItem } from '../lib/lesson'
+import {
+  clipKey,
+  gradeItem,
+  narrated,
+  normalizeAnswer,
+  SPEAKABLE,
+  spokenLesson,
+  type Lesson,
+  type LessonItem,
+} from '../lib/lesson'
 import { buildLesson, LessonFile, readAtomFiles } from '../scripts/build-lesson'
 import { extract, type Transcription } from '../scripts/extract-docx'
 
@@ -110,8 +119,15 @@ test('every line the honed first five atoms speak is recorded', () => {
   const spoken = lesson.items
     .filter((item) => item.row <= 5)
     .flatMap((item) => [item.prompt, item.demo])
-    .map(spokenLesson)
+    .map(narrated)
   expect(spoken.filter((text) => !clips.has(clipKey(text)))).toEqual([])
+})
+
+test('every line the whole lesson speaks renders to speech the clip library can hold', () => {
+  const spoken = lesson.items.flatMap((item) => [item.prompt, item.demo]).map(narrated)
+  expect(spoken.filter((text) => !SPEAKABLE.test(text))).toEqual([])
+  expect(spoken.filter((text) => /[▢×÷√=<>+/]/.test(text))).toEqual([])
+  expect(new Set(spoken).size).toBe(2116)
 })
 
 test('every count item expects exactly what its figure shows', () => {

@@ -214,6 +214,94 @@ export function spokenLesson(text: string): string {
     .filter(Boolean)
     .join(' ')
 }
+const CARDINALS = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen',
+  'twenty',
+]
+const PLURAL_DENOMINATOR: Record<string, string> = { half: 'halves' }
+const OPERATOR_WORDS: Record<string, string> = {
+  '+': 'plus',
+  '×': 'times',
+  '÷': 'divided by',
+  '=': 'equals',
+  '<': 'is less than',
+  '>': 'is greater than',
+}
+
+function denominatorName(den: number): string | undefined {
+  if (den === 100) return 'hundredth'
+  if (den === 1000) return 'thousandth'
+  return ORDINALS_FROM_HALF[den - 2]
+}
+
+function fractionWords(num: string, den: string): string {
+  const name = denominatorName(Number(den))
+  const cardinal = CARDINALS[Number(num)]
+  if (name === undefined || cardinal === undefined) return `${num} over ${den}`
+  return `${cardinal} ${Number(num) === 1 ? name : (PLURAL_DENOMINATOR[name] ?? `${name}s`)}`
+}
+
+const PURE_MATHS = /^[\d/▢()+×÷=<>√\s.,-]+$/
+const NESTED_FRACTION = /\(([^()]+)\)\s*\/\s*(\(([^()]+)\)|[\dA-Za-z]+)/
+
+function withoutSlots(text: string): string {
+  if (!text.includes('▢')) return text
+  return text
+    .split(' ')
+    .filter((word) => !word.includes('▢') && !PURE_MATHS.test(word))
+    .join(' ')
+}
+
+function overParens(text: string): string {
+  let out = text
+  for (let pass = 0; pass < 6; pass++) {
+    const next = out
+      .replace(NESTED_FRACTION, (_, num: string, den: string) => `${num} over ${den.replace(/[()]/g, '')}`)
+      .replace(/([\dA-Za-z]+)\s*\/\s*\(([^()]+)\)/g, '$1 over $2')
+      .replace(/(\d+)\s*\/\s*([A-Za-z]+)/g, '$1 over $2')
+      .replace(/([A-Za-z]+)\s*\/\s*(\d+)/g, '$1 over $2')
+      .replace(/([A-Za-z]+)\s*\/\s*([A-Za-z]+)/g, '$1 over $2')
+      .replace(/\(([^()]+)\)/g, '$1')
+    if (next === out) return out
+    out = next
+  }
+  return out
+}
+
+export function narrated(text: string): string {
+  return spokenLesson(
+    overParens(
+      withoutSlots(spokenLesson(text))
+        .replace(/√\s*(\d+)/g, 'square root of $1')
+        .replace(/(\d)\s*\(/g, '$1 × (')
+        .replace(/(\d)\s*-\s*(\d)/g, '$1 minus $2'),
+    )
+      .replace(/(\d+)\s*\/\s*(\d+)/g, (_, num: string, den: string) => fractionWords(num, den))
+      .replace(/[+×÷=<>]/g, (op) => ` ${OPERATOR_WORDS[op]} `)
+      .replace(/▢/g, ' ')
+      .replace(/[()]/g, ' '),
+  )
+}
+
 export function clipKey(text: string): string {
   let h = 0x811c9dc5
   for (let i = 0; i < text.length; i++) {

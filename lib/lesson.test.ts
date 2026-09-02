@@ -8,6 +8,7 @@ import {
   lessonSet,
   normalizeAnswer,
   replayLesson,
+  narrated,
   spokenLesson,
   symbolize,
 } from './lesson'
@@ -259,6 +260,21 @@ test('lessonSet: items without a set belong to set 1', () => {
   l.items[1].set = 2
   expect(lessonSet(l, 1).items.map((it) => it.expected)).toEqual(['0'])
   expect(lessonSet(l, 2).items.map((it) => it.expected)).toEqual(['1'])
+})
+
+test('narrated reads the mathematics the way the corpus reads it, and leaves no symbol behind', () => {
+  expect(narrated('5/10 < 18/10.')).toBe('five tenths is less than eighteen tenths.')
+  expect(narrated('3/4 × 5/5 = 15/20')).toBe('three fourths times five fifths equals fifteen twentieths')
+  expect(narrated('1/2 and 1/3 and 5/2')).toBe('one half and one third and five halves')
+  expect(narrated('16/100 ÷ 3/1000')).toBe('sixteen hundredths divided by three thousandths')
+  expect(narrated('700/744')).toBe('700 over 744')
+  expect(narrated('5/8-3/8 = (5-3)/8')).toBe('five eighths minus three eighths equals 5 minus 3 over 8')
+  expect(narrated('(3(5) + 4)/5')).toBe('3 times 5 plus 4 over 5')
+  expect(narrated('(√7)/19 × 20/(3x)')).toBe('square root of 7 over 19 times 20 over 3x')
+  expect(narrated('a/10 and x/y')).toBe('a over 10 and x over y')
+  expect(narrated('Write the symbol in the blank space. 5/10 ▢ 18/10')).toBe('Write the symbol in the blank space.')
+  expect(narrated('It is split into *whole units*.')).toBe('It is split into whole units.')
+  expect(narrated(narrated('3/4 × 5/5'))).toBe(narrated('3/4 × 5/5'))
 })
 
 test('spokenLesson strips emphasis, folds typography to ASCII, collapses whitespace, and clipKey keys distinct lines apart', () => {

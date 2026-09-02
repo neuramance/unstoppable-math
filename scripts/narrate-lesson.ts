@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { z } from 'zod'
-import { clipKey, SPEAKABLE, spokenLesson, type Lesson } from '../lib/lesson'
+import { clipKey, narrated, SPEAKABLE, type Lesson } from '../lib/lesson'
 
 const VOICE = 'U1xXYn8cDFT02st4a5oq'
 const MODEL = 'eleven_multilingual_v2'
@@ -143,14 +143,14 @@ function planned(lesson: Lesson): Map<string, Clip> {
       [item.prompt, undefined],
       [item.demo, item.prompt],
     ] as const) {
-      const text = spokenLesson(raw)
+      const text = narrated(raw)
       const key = clipKey(text)
       const prior = out.get(key)
       if (prior !== undefined) {
         if (prior.text !== text) throw new Error(`clip key collision on ${key}: ${prior.text} / ${text}`)
         continue
       }
-      out.set(key, { text, row: item.row, ...(previous === undefined ? {} : { previous: spokenLesson(previous) }) })
+      out.set(key, { text, row: item.row, ...(previous === undefined ? {} : { previous: narrated(previous) }) })
     }
   return out
 }
