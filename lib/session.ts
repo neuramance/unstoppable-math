@@ -20,14 +20,7 @@ export type Trial = {
   typed: string
   at: number
 }
-export type SessionEvent =
-  | {
-      kind: 'start'
-      plan: SessionPlan
-    }
-  | ({
-      kind: 'trial'
-    } & Trial)
+export type SessionEvent = { kind: 'start'; plan: SessionPlan } | ({ kind: 'trial' } & Trial)
 export type SessionLog = SessionEvent[]
 export type RowOutcome = {
   row: number
@@ -146,14 +139,7 @@ function hashLane(text: string, basis: number, prime: number): number {
 function hex32(word: number): string {
   return word.toString(16).padStart(8, '0')
 }
-export function rowFingerprint(
-  lesson: Lesson,
-  planned: {
-    row: number
-    set: number
-  },
-  kind: BlockKind,
-): string {
+export function rowFingerprint(lesson: Lesson, planned: { row: number; set: number }, kind: BlockKind): string {
   const print = rowLesson(lesson, planned, kind).items.map(itemPrint).join(ITEM_SEP)
   return hex32(hashLane(print, 0x811c9dc5, 0x01000193)) + hex32(hashLane(print, 0x9e3779b9, 0x85ebca6b))
 }
@@ -224,6 +210,7 @@ function replayBlock(
 export function replaySession(lesson: Lesson, plan: SessionPlan, trials: Trial[]): SessionState {
   if (plan.blocks.some((b) => !(BLOCK_KINDS as readonly string[]).includes(b.kind)))
     throw new Error('session plan predates one atom, one block')
+  if (plan.blocks.length > 8) throw new Error('session plan predates session grouping')
   const blocks: BlockState[] = []
   let i = 0
   let live = true
@@ -439,9 +426,12 @@ export function planSession(
       blocks.push(...atomBlocks(lesson, history, newRow), ...rest)
     }
   }
-  if (lesson.narrative !== undefined)
+  return { startedAt: now, blocks: spliceNarrative(blocks, lesson.narrative) }
+}
+function spliceNarrative(blocks: BlockPlan[], narrative?: string): BlockPlan[] {
+  if (narrative !== undefined)
     blocks.splice(Math.min(4, blocks.length), 0, { kind: 'narrative', rows: [], budgetMs: NARRATIVE_BUDGET_MS })
-  return { startedAt: now, blocks }
+  return blocks
 }
 export function jumpToRow(
   lesson: Lesson,
@@ -452,15 +442,38 @@ export function jumpToRow(
 ): {
   plan: SessionPlan
   trials: Trial[]
+  priors: SessionEvent[]
 } {
   const rows = [...new Set(lesson.items.map((it) => it.row))]
   const empty: RowHistory = new Map()
-  const blocks: BlockPlan[] = rows.flatMap((r) => atomBlocks(lesson, empty, r))
-  if (lesson.narrative !== undefined)
-    blocks.splice(Math.min(4, blocks.length), 0, { kind: 'narrative', rows: [], budgetMs: NARRATIVE_BUDGET_MS })
-  const plan: SessionPlan = { startedAt: now, blocks }
-  const trials: Trial[] = []
+  const rowIndex = row === null ? -1 : rows.indexOf(row)
+  const groupIndex = rowIndex < 0 ? 0 : Math.floor(rowIndex / SESSION_BLOCKS)
+  const groupPlan = (g: number, at: number): SessionPlan => ({
+    startedAt: at,
+    blocks: spliceNarrative(
+      rows.slice(g * SESSION_BLOCKS, (g + 1) * SESSION_BLOCKS).flatMap((r) => atomBlocks(lesson, empty, r)),
+      g === 0 ? lesson.narrative : undefined,
+    ),
+  })
+  const foldBlock = (b: BlockPlan, at: number, sink: (tr: Trial) => void) => {
+    if (b.kind === 'narrative') {
+      sink({ typed: '', at: (at += 1000) })
+      return at
+    }
+    for (const r of b.rows)
+      for (const it of rowLesson(lesson, r, b.kind).items)
+        sink({ typed: it.role === 'model' ? '' : it.expected, at: (at += 1000) })
+    return at
+  }
   let at = now
+  const priors: SessionEvent[] = []
+  for (let g = 0; g < groupIndex; g++) {
+    const p = groupPlan(g, (at += 1000))
+    priors.push({ kind: 'start', plan: p })
+    for (const b of p.blocks) at = foldBlock(b, at, (tr) => priors.push({ kind: 'trial', ...tr }))
+  }
+  const plan = groupPlan(groupIndex, (at += 1000))
+  const trials: Trial[] = []
   for (const b of plan.blocks) {
     const hit =
       row === null ? b.kind === 'narrative' || lesson.narrative === undefined : b.rows.some((r) => r.row === row)
@@ -475,13 +488,7 @@ export function jumpToRow(
       }
       break
     }
-    if (b.kind === 'narrative') {
-      trials.push({ typed: '', at: (at += 1000) })
-      continue
-    }
-    for (const r of b.rows)
-      for (const it of rowLesson(lesson, r, b.kind).items)
-        trials.push({ typed: it.role === 'model' ? '' : it.expected, at: (at += 1000) })
+    at = foldBlock(b, at, (tr) => trials.push(tr))
   }
-  return { plan, trials }
+  return { plan, trials, priors }
 }

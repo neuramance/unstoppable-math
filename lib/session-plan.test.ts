@@ -164,7 +164,18 @@ test('the dev jump lands on one exact question, clamped inside the target block'
   expect(far.plan.blocks[sFar.blockIndex]).toMatchObject({ kind: 'atom', rows: [{ row: 3 }] })
   const served = rowLesson(l, { row: 3, set: 1 }, 'atom').items.length
   expect(sFar.blocks[sFar.blockIndex].current?.state.current?.item).toBe(served - 1)
-  expect(jumpToRow(l, 3, 0, 'testing', 0)).toEqual(jumpToRow(l, 3, 0, 'testing'))
+})
+
+test('the dev jump groups atoms by SESSION_BLOCKS and seeds prior sessions into history', () => {
+  const l = withNarrative(synth(15, 'mtt'))
+  const { plan, trials, priors } = jumpToRow(l, 8, 0)
+  expect(plan.blocks.map((b) => b.rows[0]?.row)).toEqual([7, 8, 9, 10, 11, 12])
+  const s = replaySession(l, plan, trials)
+  expect(s.blockIndex).toBe(1)
+  expect(plan.blocks[s.blockIndex].rows[0].row).toBe(8)
+  const log: SessionLog = [...priors, { kind: 'start', plan }, ...trials.map((t) => ({ kind: 'trial' as const, ...t }))]
+  const audit = replayLog(l, log)
+  expect([...audit.history.values()].filter((r) => r.firmed).map((r) => r.row)).toEqual([1, 2, 3, 4, 5, 6, 7])
 })
 
 test('the narrative consumes exactly one trial, holds the session open until it arrives, and banks nothing', () => {

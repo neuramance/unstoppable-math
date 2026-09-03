@@ -129,9 +129,10 @@ export function useSessionLog(lesson: Lesson) {
   }
 
   const jump = (row: number | null, now: number, kind: 'instruction' | 'testing' = 'instruction', item = 0) => {
-    const { plan: fresh, trials } = jumpToRow(lesson, row, now, kind, item)
+    const { plan: fresh, trials, priors } = jumpToRow(lesson, row, now, kind, item)
     commit([
       ...(log ?? []),
+      ...priors,
       { kind: 'start', plan: fresh },
       ...trials.map((tr): SessionLog[number] => ({ kind: 'trial', ...tr })),
     ])

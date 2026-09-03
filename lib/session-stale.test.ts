@@ -277,6 +277,24 @@ test('a stored plan from the instruction/testing era is refused, and the session
   expect([...audit.history.values()].filter((r) => r.firmed).map((r) => r.row)).toEqual([1, 2, 3])
 })
 
+test('a stored plan exceeding maximum session size is refused, and earlier sessions survive', () => {
+  const l = synth(3, 'mtt')
+  const fresh = stampedRun(l, 0)
+  const huge: SessionPlan = {
+    startedAt: 500_000,
+    blocks: Array.from({ length: 9 }, () => ({
+      kind: 'atom' as const,
+      rows: [{ row: 1, set: 1 }],
+      budgetMs: 1000,
+    })),
+  }
+  expect(() => replaySession(l, huge, [])).toThrow(/predates session grouping/)
+  const log: SessionLog = [...fresh.log, { kind: 'start', plan: huge }]
+  const audit = replayLog(l, log)
+  expect(audit.unreadableSessions).toBe(1)
+  expect([...audit.history.values()].filter((r) => r.firmed).map((r) => r.row)).toEqual([1, 2, 3])
+})
+
 test('a block cut at a row that missed the firm bar is not reported as cleared', () => {
   const l = synth(2, 'mtt')
   const plan = teachPlan(0, [1, 2])
