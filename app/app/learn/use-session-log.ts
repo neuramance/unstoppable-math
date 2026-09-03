@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { Lesson, TrialEntry } from '@/lib/lesson'
 import {
   jumpToRow,
@@ -14,39 +14,55 @@ import {
   type SessionState,
   type Trial,
 } from '@/lib/session'
-import { activeId, removeItem, writeItem } from '@/lib/store'
+import { activeId, readItem, removeItem, writeItem } from '@/lib/store'
+import { z } from 'zod'
 
 const store = (topic: string) => `um.session.${topic}:${activeId()}`
 
-function loadLog(key: string): { log: SessionLog | null; unreadable: boolean } {
+const StoredLog = z.array(
+  z.union([
+    z.object({
+      kind: z.literal('start'),
+      plan: z.object({ startedAt: z.number(), blocks: z.array(z.object({ rows: z.array(z.object({})) })) }),
+    }),
+    z.object({ kind: z.literal('trial'), typed: z.string(), at: z.number() }),
+  ]),
+)
+
+export function readLog(text: string): SessionLog | null {
+  try {
+    const parsed: unknown = JSON.parse(text)
+    return StoredLog.safeParse(parsed).success ? (parsed as SessionLog) : null
+  } catch {
+    return null
+  }
+}
+
+function loadLog(key: string): { log: SessionLog | null; unreadable: boolean; volatile: boolean } {
   let raw: string | null
   try {
     raw = localStorage.getItem(key)
   } catch {
-    return { log: null, unreadable: false }
+    return { log: null, unreadable: false, volatile: true }
   }
-  if (!raw) return { log: null, unreadable: false }
-  try {
-    return { log: JSON.parse(raw) as SessionLog, unreadable: false }
-  } catch {
-    return { log: null, unreadable: true }
-  }
+  if (!raw) return { log: null, unreadable: false, volatile: false }
+  const log = readLog(raw)
+  return { log, unreadable: log === null, volatile: false }
 }
 
 const NO_HISTORY: RowHistory = new Map()
 
-function saveLog(key: string, log: SessionLog | null) {
-  if (log === null) void removeItem(key)
-  else writeItem(key, JSON.stringify(log))
+function saveLog(key: string, log: SessionLog | null): boolean {
+  if (log === null) {
+    removeItem(key)
+    return true
+  }
+  return writeItem(key, JSON.stringify(log))
 }
 
 function parkLog(key: string) {
-  try {
-    const raw = localStorage.getItem(key)
-    if (raw !== null) writeItem(`${key}.unreadable`, raw)
-  } catch {
-    return
-  }
+  const raw = readItem(key)
+  if (raw !== null) writeItem(`${key}.unreadable`, raw)
 }
 
 function emptyAudit(): LogAudit {
@@ -65,7 +81,18 @@ export function useSessionLog(lesson: Lesson) {
   const [key] = useState(() => store(lesson.topic))
   const [stored] = useState(() => loadLog(key))
   const [log, setLog] = useState<SessionLog | null>(stored.log)
+  const logRef = useRef(stored.log)
   const [wiped, setWiped] = useState(false)
+  const [volatile, setVolatile] = useState(stored.volatile)
+
+  const commit = useCallback(
+    (next: SessionLog | null) => {
+      logRef.current = next
+      if (!saveLog(key, next)) setVolatile(true)
+      setLog(next)
+    },
+    [key],
+  )
 
   const audit: LogAudit | null = useMemo(() => {
     if (log === null) return emptyAudit()
@@ -106,32 +133,26 @@ export function useSessionLog(lesson: Lesson) {
   useEffect(() => {
     if (!broken) return
     parkLog(key)
-    saveLog(key, null)
-    setLog(null)
+    commit(null)
     setWiped(true)
-  }, [broken, key])
+  }, [broken, commit, key])
 
   const [previewedAt] = useState(() => Date.now())
   const preview = useMemo(() => planSession(lesson, history ?? NO_HISTORY, previewedAt), [lesson, history, previewedAt])
 
-  const commit = (next: SessionLog) => {
-    saveLog(key, next)
-    setLog(next)
-  }
-
   const begin = () => {
     const fresh = planSession(lesson, history ?? NO_HISTORY, Date.now())
-    commit([...(log ?? []), { kind: 'start', plan: fresh }])
+    commit([...(logRef.current ?? []), { kind: 'start', plan: fresh }])
   }
 
   const append = (entry: TrialEntry) => {
-    commit([...(log ?? []), { kind: 'trial', typed: entry.typed, at: Date.now() }])
+    commit([...(logRef.current ?? []), { kind: 'trial', typed: entry.typed, at: Date.now() }])
   }
 
   const jump = (row: number | null, now: number, kind: 'instruction' | 'testing' = 'instruction', item = 0) => {
     const { plan: fresh, trials, priors } = jumpToRow(lesson, row, now, kind, item)
     commit([
-      ...(log ?? []),
+      ...(logRef.current ?? []),
       ...priors,
       { kind: 'start', plan: fresh },
       ...trials.map((tr): SessionLog[number] => ({ kind: 'trial', ...tr })),
@@ -139,10 +160,9 @@ export function useSessionLog(lesson: Lesson) {
   }
 
   const reset = () => {
-    saveLog(key, null)
-    setLog(null)
+    commit(null)
     setWiped(false)
   }
 
-  return { session, live, history, audit, wiped, preview, begin, append, jump, reset }
+  return { session, live, history, audit, wiped, volatile, preview, begin, append, jump, reset }
 }

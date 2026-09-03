@@ -25,32 +25,32 @@ export type Lesson = {
   narrative?: string
   items: LessonItem[]
 }
-export function lessonSet(lesson: Lesson, set: number): Lesson {
-  return { ...lesson, items: lesson.items.filter((it) => (it.set ?? 1) === set) }
-}
 export const FIRM_SHARE = 1
+export const CARDINALS = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen',
+  'twenty',
+]
 const NUMBER_WORDS: Record<string, number> = {
-  zero: 0,
-  one: 1,
-  two: 2,
-  three: 3,
-  four: 4,
-  five: 5,
-  six: 6,
-  seven: 7,
-  eight: 8,
-  nine: 9,
-  ten: 10,
-  eleven: 11,
-  twelve: 12,
-  thirteen: 13,
-  fourteen: 14,
-  fifteen: 15,
-  sixteen: 16,
-  seventeen: 17,
-  eighteen: 18,
-  nineteen: 19,
-  twenty: 20,
+  ...Object.fromEntries(CARDINALS.map((w, i) => [w, i])),
   thirty: 30,
   forty: 40,
   fifty: 50,
@@ -92,13 +92,18 @@ const ORDINALS_FROM_HALF = [
   'nineteenth',
   'twentieth',
 ]
-const DENOMINATORS: Record<string, number> = {
-  ...Object.fromEntries(
-    ORDINALS_FROM_HALF.flatMap((stem, i) => [
-      [stem, i + 2],
-      [`${stem}s`, i + 2],
+const TENS_ORDINALS = ['thirtieth', 'fortieth', 'fiftieth', 'sixtieth', 'seventieth', 'eightieth', 'ninetieth']
+const UNIT_ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth']
+const plurals = (stems: string[], value: (i: number) => number): Record<string, number> =>
+  Object.fromEntries(
+    stems.flatMap((stem, i) => [
+      [stem, value(i)],
+      [`${stem}s`, value(i)],
     ]),
-  ),
+  )
+const DENOMINATORS: Record<string, number> = {
+  ...plurals(ORDINALS_FROM_HALF, (i) => i + 2),
+  ...plurals(TENS_ORDINALS, (i) => (i + 3) * 10),
   halves: 2,
   quarter: 4,
   quarters: 4,
@@ -107,6 +112,7 @@ const DENOMINATORS: Record<string, number> = {
   thousandth: 1000,
   thousandths: 1000,
 }
+const COMPOUND_UNITS = plurals(UNIT_ORDINALS, (i) => i + 1)
 export function symbolize(text: string): string {
   return normalizeAnswer(text)
     .replace(/\bgreater than\b/g, '>')
@@ -118,7 +124,7 @@ export function symbolize(text: string): string {
       String(Number(group) * 100 + Number(rest ?? 0)),
     )
     .replace(/\b(\d+) ([2-9]0) ([a-z]+)\b/g, (whole, num: string, tens: string, word: string) =>
-      DENOMINATORS[word] < 10 ? `${num} over ${Number(tens) + DENOMINATORS[word]}` : whole,
+      COMPOUND_UNITS[word] === undefined ? whole : `${num} over ${Number(tens) + COMPOUND_UNITS[word]}`,
     )
     .replace(/\s+and\s+/g, ' ')
     .replace(/\b[a-z]+\b/g, (word) => (DENOMINATORS[word] === undefined ? word : `over ${DENOMINATORS[word]}`))
@@ -130,14 +136,22 @@ function numbersOf(text: string): number[] {
     .filter(Boolean)
     .map(Number)
 }
+function filledFraction(item: LessonItem): number[] | null {
+  if (!item.frac) return null
+  const slots = [...(item.frac.whole === undefined ? [] : [item.frac.whole]), item.frac.num, item.frac.den]
+  const want = numbersOf(item.expected)
+  let next = 0
+  return slots.flatMap((s) => (s === null ? [want[next++]] : numbersOf(s)))
+}
 export function gradeItem(item: LessonItem, typed: string): boolean {
   if (item.mode === 'typed') {
     const got = normalizeAnswer(typed)
     return [item.expected, ...(item.accept ?? [])].some((a) => normalizeAnswer(a) === got)
   }
-  const want = numbersOf(item.expected)
   const got = numbersOf(typed)
-  return got.length === want.length && want.every((w, i) => got[i] === w)
+  const matches = (want: number[]) => got.length === want.length && want.every((w, i) => got[i] === w)
+  const full = filledFraction(item)
+  return matches(numbersOf(item.expected)) || (full !== null && typed.includes('/') && matches(full))
 }
 export function heardAnswer(item: LessonItem, heard: readonly string[]): string {
   for (const text of heard)
@@ -214,29 +228,6 @@ export function spokenLesson(text: string): string {
     .filter(Boolean)
     .join(' ')
 }
-const CARDINALS = [
-  'zero',
-  'one',
-  'two',
-  'three',
-  'four',
-  'five',
-  'six',
-  'seven',
-  'eight',
-  'nine',
-  'ten',
-  'eleven',
-  'twelve',
-  'thirteen',
-  'fourteen',
-  'fifteen',
-  'sixteen',
-  'seventeen',
-  'eighteen',
-  'nineteen',
-  'twenty',
-]
 const PLURAL_DENOMINATOR: Record<string, string> = { half: 'halves' }
 const OPERATOR_WORDS: Record<string, string> = {
   '+': 'plus',
@@ -260,8 +251,9 @@ function fractionWords(num: string, den: string): string {
   return `${cardinal} ${Number(num) === 1 ? name : (PLURAL_DENOMINATOR[name] ?? `${name}s`)}`
 }
 
-const PURE_MATHS = /^[\d/▢()+×÷=<>√\s.,-]+$/
-const NESTED_FRACTION = /\(([^()]+)\)\s*\/\s*(\(([^()]+)\)|[\dA-Za-z]+)/
+const PURE_MATHS = /^[\d/▢()+×÷=<>√³⁵\s.,-]+$/
+const NESTED_FRACTION = /\(([^()]+)\)\s*\/\s*(\(([^()]+)\)|[\dA-Za-z]+)/g
+const ROOT_WORDS: Record<string, string> = { '': 'square', '³': 'cube', '⁵': 'fifth' }
 
 function withoutSlots(text: string): string {
   if (!text.includes('▢')) return text
@@ -290,9 +282,8 @@ function overParens(text: string): string {
 export function narrated(text: string): string {
   return spokenLesson(
     overParens(
-      withoutSlots(spokenLesson(text))
-        .replace(/√\s*(\d+)/g, 'square root of $1')
-        .replace(/(\d)\s*\(/g, '$1 × (')
+      withoutSlots(spokenLesson(text.replaceAll('*', '').replace(/(\d) ?\(/g, '$1 × (')))
+        .replace(/([³⁵]?)√\s*(\d+)/g, (_, index: string, n: string) => `${ROOT_WORDS[index]} root of ${n}`)
         .replace(/(\d)\s*-\s*(\d)/g, '$1 minus $2'),
     )
       .replace(/(\d+)\s*\/\s*(\d+)/g, (_, num: string, den: string) => fractionWords(num, den))
@@ -302,13 +293,18 @@ export function narrated(text: string): string {
   )
 }
 
+export function hashLane(text: string, basis: number, prime: number): number {
+  let h = basis >>> 0
+  for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), prime) >>> 0
+  return h
+}
+
+export function hex32(word: number): string {
+  return word.toString(16).padStart(8, '0')
+}
+
 export function clipKey(text: string): string {
-  let h = 0x811c9dc5
-  for (let i = 0; i < text.length; i++) {
-    h ^= text.charCodeAt(i)
-    h = Math.imul(h, 0x01000193)
-  }
-  const hex = (h >>> 0).toString(16).padStart(8, '0')
+  const hex = hex32(hashLane(text, 0x811c9dc5, 0x01000193))
   const slug = text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')

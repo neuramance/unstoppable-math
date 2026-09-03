@@ -3,7 +3,7 @@
 import { play } from 'cuelume'
 import { useEffect, useState } from 'react'
 import type { SessionState } from '@/lib/session'
-import { reduced } from './narrative-film'
+import { reduced } from './ui'
 
 export type Phase = 'idle' | 'dropping' | 'active' | 'crack' | 'shatter' | 'done'
 

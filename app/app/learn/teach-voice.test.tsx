@@ -1,70 +1,14 @@
 import { fireEvent, render } from '@testing-library/react'
-import { act, useState } from 'react'
-import { afterAll, beforeEach, expect, test } from 'vitest'
-import type { Lesson, TrialEntry } from '@/lib/lesson'
-import { clipKey, spokenLesson } from '@/lib/lesson'
-import { LessonPlayer } from './teach'
+import { act } from 'react'
+import { expect, test, vi } from 'vitest'
+import type { Lesson } from '@/lib/lesson'
+import { clipKey } from '@/lib/lesson'
+import { FakeAudio, flush, Host, line, check } from './teach.fixtures'
 import { scheduleCount } from './use-lesson-voice'
-
-class FakeAudio {
-  static instances: FakeAudio[] = []
-  static verdict: 'resolve' | 'reject' = 'resolve'
-  static plays: string[] = []
-  src = ''
-  muted = false
-  paused = true
-  duration = 0.001
-  onended: (() => void) | null = null
-  constructor() {
-    FakeAudio.instances.push(this)
-  }
-  play(): Promise<void> {
-    FakeAudio.plays.push(this.src)
-    if (FakeAudio.verdict === 'reject') return Promise.reject(new Error('blocked'))
-    this.paused = false
-    return Promise.resolve()
-  }
-  pause(): void {
-    this.paused = true
-  }
-}
-
-const originalAudio = globalThis.Audio
-globalThis.Audio = FakeAudio as unknown as typeof Audio
-afterAll(() => {
-  globalThis.Audio = originalAudio
-})
-
-beforeEach(() => {
-  FakeAudio.instances = []
-  FakeAudio.plays = []
-  FakeAudio.verdict = 'resolve'
-})
-
-const flush = () => act(async () => {})
 
 const prompt = () => document.querySelector<HTMLElement>('p[aria-live]')!
 const badgeTexts = () => document.querySelectorAll('svg text').length
 const rings = () => document.querySelectorAll('svg circle').length
-
-const line = (parts: number) => ({ kind: 'number-line' as const, units: 3, parts })
-
-const ASKED: Lesson = {
-  topic: 'voice',
-  source: 'voice',
-  items: [
-    {
-      row: 1,
-      role: 'test',
-      mode: 'typed',
-      prompt: 'How many parts?',
-      expected: 'four',
-      demo: '*Four* parts.',
-      figures: [line(4)],
-    },
-    { row: 1, role: 'test', mode: 'typed', prompt: 'And now?', expected: 'seven', demo: 'Seven.', figures: [line(7)] },
-  ],
-}
 
 const SHOWN: Lesson = {
   topic: 'shown',
@@ -82,23 +26,15 @@ const SHOWN: Lesson = {
   ],
 }
 
-function Host({ lesson, auto = false }: { lesson: Lesson; auto?: boolean }) {
-  const [log, setLog] = useState<TrialEntry[]>([])
-  return (
-    <LessonPlayer lesson={lesson} log={log} onTrial={(e) => setLog((l) => [...l, e])} auto={auto} onMuted={() => {}} />
-  )
-}
-
 test('a prompt is spoken from its content-addressed clip and its text leaves the screen', async () => {
-  const view = render(<Host lesson={ASKED} />)
+  render(<Host />)
   await flush()
   expect(FakeAudio.plays).toEqual([`/audio/lesson/${clipKey('How many parts?')}.mp3`])
   expect(prompt().hidden).toBe(true)
-  view.unmount()
 })
 
 test('a model speaks its prompt and then its demo, chained on the clip ending, with our markers lifted', async () => {
-  const view = render(<Host lesson={SHOWN} />)
+  render(<Host lesson={SHOWN} />)
   await flush()
   act(() => FakeAudio.instances[0].onended!())
   await flush()
@@ -106,57 +42,40 @@ test('a model speaks its prompt and then its demo, chained on the clip ending, w
     `/audio/lesson/${clipKey('Here are three whole units.')}.mp3`,
     `/audio/lesson/${clipKey('I count four.')}.mp3`,
   ])
-  expect(clipKey(spokenLesson('*Four* parts.'))).toBe(clipKey('Four parts.'))
-  view.unmount()
 })
 
 test('a refused play puts the words back on screen and is remembered rather than blinked through', async () => {
   FakeAudio.verdict = 'reject'
-  const view = render(<Host lesson={ASKED} />)
+  render(<Host />)
   await flush()
   expect(prompt().hidden).toBe(false)
-  view.unmount()
 })
 
 test('under reduced motion nothing self-starts and the text stays', async () => {
-  const original = window.matchMedia
-  window.matchMedia = ((query: string) => ({
-    matches: true,
-    media: query,
-    onchange: null,
-    addListener() {},
-    removeListener() {},
-    addEventListener() {},
-    removeEventListener() {},
-    dispatchEvent: () => false,
-  })) as typeof window.matchMedia
-  const view = render(<Host lesson={ASKED} />)
+  vi.spyOn(window, 'matchMedia').mockReturnValue({ matches: true } as MediaQueryList)
+  render(<Host />)
   await flush()
   expect(FakeAudio.plays.length).toBe(0)
   expect(prompt().hidden).toBe(false)
-  window.matchMedia = original
-  view.unmount()
 })
 
 test('autoplay never speaks', async () => {
-  const view = render(<Host lesson={ASKED} auto />)
+  render(<Host auto />)
   await flush()
   expect(FakeAudio.plays.length).toBe(0)
-  view.unmount()
 })
 
 test('the captions toggle puts the words back while the clip still plays, and the choice survives a remount', async () => {
-  const view = render(<Host lesson={ASKED} />)
+  const view = render(<Host />)
   await flush()
   expect(prompt().hidden).toBe(true)
   fireEvent.click(view.getByLabelText('Captions'))
   expect(prompt().hidden).toBe(false)
   expect(localStorage.getItem('um.cc')).toBe('1')
   view.unmount()
-  const again = render(<Host lesson={ASKED} />)
+  render(<Host />)
   await flush()
   expect(prompt().hidden).toBe(false)
-  again.unmount()
 })
 
 const COUNTED: Lesson = {
@@ -240,7 +159,7 @@ test('digits without a spoken word interpolate before their anchor, and no words
 })
 
 test('a counting model starts with no digits and lands them all while the voice counts, ring on the last', async () => {
-  const view = render(<Host lesson={COUNTED} />)
+  render(<Host lesson={COUNTED} />)
   await flush()
   expect(badgeTexts()).toBe(4)
   expect(rings()).toBe(0)
@@ -251,7 +170,6 @@ test('a counting model starts with no digits and lands them all while the voice 
   })
   expect(badgeTexts()).toBe(8)
   expect(rings()).toBe(1)
-  view.unmount()
 })
 
 const UNITS: Lesson = {
@@ -272,7 +190,7 @@ const UNITS: Lesson = {
 }
 
 test('a whole-unit count never draws a badge row: the ring lands on the axis numeral instead', async () => {
-  const view = render(<Host lesson={UNITS} />)
+  render(<Host lesson={UNITS} />)
   await flush()
   expect(badgeTexts()).toBe(6)
   expect(rings()).toBe(0)
@@ -283,23 +201,20 @@ test('a whole-unit count never draws a badge row: the ring lands on the axis num
   })
   expect(badgeTexts()).toBe(6)
   expect(rings()).toBe(1)
-  view.unmount()
 })
 
 test('a counting model whose clip is refused shows every digit at once, exactly the still picture', async () => {
   FakeAudio.verdict = 'reject'
-  const view = render(<Host lesson={COUNTED} />)
+  render(<Host lesson={COUNTED} />)
   await flush()
   expect(badgeTexts()).toBe(8)
   expect(rings()).toBe(1)
-  view.unmount()
 })
 
 test('advancing hands the voice the next line and the cleanup pauses the old one first', async () => {
-  const view = render(<Host lesson={ASKED} />)
+  const view = render(<Host />)
   await flush()
-  fireEvent.change(view.getByLabelText('Your answer'), { target: { value: 'four' } })
-  fireEvent.click(view.getByText('Check'))
+  check(view)
   await flush()
   expect(FakeAudio.plays).toEqual([
     `/audio/lesson/${clipKey('How many parts?')}.mp3`,
@@ -308,5 +223,4 @@ test('advancing hands the voice the next line and the cleanup pauses the old one
   fireEvent.click(view.getByText('Continue'))
   await flush()
   expect(FakeAudio.plays[2]).toBe(`/audio/lesson/${clipKey('And now?')}.mp3`)
-  view.unmount()
 })

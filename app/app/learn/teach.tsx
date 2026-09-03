@@ -11,7 +11,7 @@ import { chrome } from './chrome'
 import { FigureView } from './figures-view'
 import { FracRow, labelStack, LessonText, TypedRow } from './lesson-text'
 import { Heard, MicPill } from './speech-row'
-import { EnterKey, shellInert } from './ui'
+import { EnterKey, enterHotkey, reduced, shellInert } from './ui'
 import { useLessonAnswer } from './use-lesson-answer'
 import { initialShown, useLessonVoice } from './use-lesson-voice'
 import { useSpeechAnswer } from './use-speech-answer'
@@ -224,7 +224,7 @@ function transitionDiagram(update: () => void, autoplay: boolean, turn = false):
     autoplay ||
     document.querySelector('[data-lfigs]') === null ||
     typeof document.startViewTransition !== 'function' ||
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    reduced()
   ) {
     update()
     return
@@ -357,7 +357,7 @@ export function LessonPlayer({
 
   const answerRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    if (item?.mode === 'typed' && !model && feedback === null) answerRef.current?.focus()
+    if (!model && feedback === null) answerRef.current?.focus()
   }, [item, model, feedback])
 
   useEffect(() => {
@@ -372,13 +372,11 @@ export function LessonPlayer({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.metaKey || e.ctrlKey || e.altKey || shellInert()) return
-      if (e.key === 'Enter' && !state.done) {
-        e.preventDefault()
-        if (feedback) advance()
-        else if (model) advanceModel()
-        else if (answer.canCheck) check(answer.serialize())
-      }
+      if (!enterHotkey(e) || state.done) return
+      e.preventDefault()
+      if (feedback) advance()
+      else if (model) advanceModel()
+      else if (answer.canCheck) check(answer.serialize())
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -396,7 +394,9 @@ export function LessonPlayer({
           <LessonText text={item.prompt} />
         </p>
         <FigureRow item={item} answer={answer} reveal={reveal} shown={shown} morphed={morphed} />
-        {item.mode === 'frac' && <FracRow item={item} answer={answer} reveal={reveal} tone={tone} />}
+        {item.mode === 'frac' && (
+          <FracRow item={item} answer={answer} reveal={reveal} tone={tone} answerRef={answerRef} />
+        )}
         {item.mode === 'typed' && !model && (
           <TypedRow
             value={feedback ? feedback.typed : answer.typed}

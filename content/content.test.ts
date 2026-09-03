@@ -1,16 +1,8 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from 'vitest'
 import { badgeCount, shadeable } from '../lib/figures'
-import {
-  clipKey,
-  gradeItem,
-  narrated,
-  normalizeAnswer,
-  SPEAKABLE,
-  spokenLesson,
-  type Lesson,
-  type LessonItem,
-} from '../lib/lesson'
+import { clipKey, gradeItem, narrated, normalizeAnswer, SPEAKABLE, spokenLesson, type LessonItem } from '../lib/lesson'
+import { lesson } from '../lib/session.fixtures'
 import { buildLesson, LessonFile, readAtomFiles } from '../scripts/build-lesson'
 import { extract, type Transcription } from '../scripts/extract-docx'
 
@@ -46,7 +38,6 @@ const transcription = committed as Transcription
 const allAtoms = readAtomFiles()
 const filter = process.env.ATOMS?.split(',').map((s) => s.trim())
 const atoms = filter === undefined ? allAtoms : new Map([...allAtoms].filter(([label]) => filter.includes(label)))
-const lesson = JSON.parse(readFileSync('public/lessons/NF_Fractions.lesson.json', 'utf8')) as Lesson
 const items = () => [...atoms.values()].flatMap((f) => f.items)
 
 test.skipIf(filter !== undefined)(

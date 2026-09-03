@@ -1,10 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
-import { t } from '@/app/tokens.stylex'
+import { q, t } from '@/app/tokens.stylex'
 import type { SessionState } from '@/lib/session'
 import { chrome } from './chrome'
 import { EnterKey } from './ui'
-
-const OKLCH = '@supports (color: oklch(from red l c h))'
 
 const DONE_REGISTER = {
   doneTitle: 'Stack cleared!',
@@ -75,15 +73,15 @@ const s = stylex.create({
     '--sessc': `color-mix(in srgb, ${t.accent} 82%, ${t.void})`,
     '--sessrim': {
       default: `color-mix(in srgb, ${t.accent} 45%, ${t.ink})`,
-      [OKLCH]: 'oklch(from var(--sessc) calc(l - 0.15) c h)',
+      [q.oklch]: 'oklch(from var(--sessc) calc(l - 0.15) c h)',
     },
     '--sessline': {
       default: `color-mix(in srgb, ${t.ink} 70%, transparent)`,
-      [OKLCH]: 'oklch(from var(--sessc) 0.26 calc(c * 0.55) h)',
+      [q.oklch]: 'oklch(from var(--sessc) 0.26 calc(c * 0.55) h)',
     },
     '--sesson': {
       default: t.void,
-      [OKLCH]: 'oklch(from var(--sessc) 0.97 calc(c * 0.12) h)',
+      [q.oklch]: 'oklch(from var(--sessc) 0.97 calc(c * 0.12) h)',
     },
   },
   stats: {

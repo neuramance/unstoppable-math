@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { Component } from 'react'
 import type { ErrorInfo, ReactNode } from 'react'
-import { removeItem } from '@/lib/store'
+import { flushed, removeItem } from '@/lib/store'
 import { chrome } from './chrome'
 
 const PROGRESS_PREFIXES = ['um.placement.', 'um.session.', 'um.lesson.']
@@ -11,7 +11,8 @@ function clearProgress() {
   try {
     keys = Object.keys(localStorage).filter((k) => PROGRESS_PREFIXES.some((p) => k.startsWith(p)))
   } catch {}
-  void Promise.allSettled(keys.map((k) => removeItem(k))).then(() => location.reload())
+  for (const k of keys) removeItem(k)
+  void flushed().then(() => location.reload())
 }
 
 const s = stylex.create({

@@ -1,15 +1,15 @@
 import * as stylex from '@stylexjs/stylex'
 import { bind } from 'cuelume'
 import { useEffect, useLayoutEffect, useState } from 'react'
+import { ThinkingOrb } from 'thinking-orbs'
 import { THEME_CLASS, type ThemeName } from '@/app/theme-class'
 import { t } from '@/app/tokens.stylex'
-import { openStore } from '@/lib/store'
+import { openStore, readItem, writeItem } from '@/lib/store'
 import { Boundary } from './boundary'
 import { chrome } from './chrome'
 import { Intro } from './intro'
 import { introPending } from './use-intro'
 import { Learn } from './learn'
-import { Orb } from './ui'
 import { activeTheme, UserPill } from './user-pill'
 
 const DEV_STORE = 'um.dev'
@@ -19,18 +19,8 @@ function devParam(): boolean | null {
   return p === '1' ? true : p === '0' ? false : null
 }
 
-function readDev(): boolean {
-  try {
-    return localStorage.getItem(DEV_STORE) !== '0'
-  } catch {
-    return true
-  }
-}
-
 function writeDev(on: boolean) {
-  try {
-    localStorage.setItem(DEV_STORE, on ? '1' : '0')
-  } catch {}
+  writeItem(DEV_STORE, on ? '1' : '0')
 }
 
 function exitToApp() {
@@ -119,7 +109,7 @@ const s = stylex.create({
 })
 
 function ScreenView() {
-  const [dev, setDev] = useState(() => devParam() ?? readDev())
+  const [dev, setDev] = useState(() => devParam() ?? readItem(DEV_STORE) !== '0')
   useEffect(() => {
     const p = devParam()
     if (p === null) return
@@ -184,7 +174,15 @@ export default function Screen() {
         href="/"
         aria-label="Unstoppable Math"
       >
-        <Orb size={64} style={{ width: 42, height: 42 }} paused speed={0} />
+        <ThinkingOrb
+          state="solving"
+          theme="dark"
+          aria-hidden
+          size={64}
+          style={{ width: 42, height: 42 }}
+          paused
+          speed={0}
+        />
       </a>
       <div {...stylex.props(s.appshell)} data-appshell="" inert={intro}>
         <Boundary>{store && <ScreenView />}</Boundary>

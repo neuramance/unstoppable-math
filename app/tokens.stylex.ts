@@ -15,19 +15,19 @@ export const d = stylex.defineVars({
   gc: `color-mix(in srgb, ${t.accent} 85%, ${t.void})`,
 })
 
-const OKLCH = '@supports (color: oklch(from red l c h))'
+export const q = stylex.defineConsts({ oklch: '@supports (color: oklch(from red l c h))' })
 
 export const g = stylex.defineVars({
   grim: {
     default: `color-mix(in srgb, ${d.gc} 50%, ${t.ink})`,
-    [OKLCH]: `oklch(from ${d.gc} calc(l - 0.15) c h)`,
+    [q.oklch]: `oklch(from ${d.gc} calc(l - 0.15) c h)`,
   },
   gline: {
     default: `color-mix(in srgb, ${t.ink} 70%, transparent)`,
-    [OKLCH]: `oklch(from ${d.gc} 0.26 calc(c * 0.55) h)`,
+    [q.oklch]: `oklch(from ${d.gc} 0.26 calc(c * 0.55) h)`,
   },
   gon: {
     default: `${t.void}`,
-    [OKLCH]: `oklch(from ${d.gc} 0.97 calc(c * 0.12) h)`,
+    [q.oklch]: `oklch(from ${d.gc} 0.97 calc(c * 0.12) h)`,
   },
 })

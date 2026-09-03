@@ -3,31 +3,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { z } from 'zod'
 import { badgeCount } from '@/lib/figures'
-import { clipKey, narrated, replayLesson } from '@/lib/lesson'
+import { CARDINALS, clipKey, narrated, replayLesson } from '@/lib/lesson'
 import type { Lesson, LessonItem, TrialEntry } from '@/lib/lesson'
-
-const COUNT_WORDS = [
-  'one',
-  'two',
-  'three',
-  'four',
-  'five',
-  'six',
-  'seven',
-  'eight',
-  'nine',
-  'ten',
-  'eleven',
-  'twelve',
-  'thirteen',
-  'fourteen',
-  'fifteen',
-  'sixteen',
-  'seventeen',
-  'eighteen',
-  'nineteen',
-  'twenty',
-] as const
+import { readItem, writeItem } from '@/lib/store'
+import { reduced } from './ui'
 
 export function scheduleCount(
   n: number,
@@ -38,7 +17,7 @@ export function scheduleCount(
   const anchored = new Map<number, number>()
   let at = 0
   for (const k of pending) {
-    const want = COUNT_WORDS[k - 1]
+    const want = CARDINALS[k]
     if (want === undefined) continue
     for (let i = at; i < words.length; i++) {
       if (words[i][0].toLowerCase().replace(/[^a-z]/g, '') === want) {
@@ -91,14 +70,6 @@ function alignmentIndex(): Promise<Alignment> {
 
 const CC_KEY = 'um.cc'
 
-function loadCc(): boolean {
-  try {
-    return localStorage.getItem(CC_KEY) === '1'
-  } catch {
-    return false
-  }
-}
-
 export function initialShown(item: LessonItem | null): number | null {
   return item && item.role === 'model' && item.figures?.length === 1 && item.count !== undefined ? 0 : null
 }
@@ -114,7 +85,7 @@ export function useLessonVoice(
 ) {
   const [voiced, setVoiced] = useState(false)
   const [playing, setPlaying] = useState(true)
-  const [ccOn, setCcOn] = useState(loadCc)
+  const [ccOn, setCcOn] = useState(() => readItem(CC_KEY) === '1')
   const [shown, setShown] = useState<number | null>(() => {
     const st = replayLesson(lesson, log).current
     return initialShown(st ? lesson.items[st.item] : null)
@@ -144,13 +115,11 @@ export function useLessonVoice(
 
   const setCc = (on: boolean) => {
     setCcOn(on)
-    try {
-      localStorage.setItem(CC_KEY, on ? '1' : '0')
-    } catch {}
+    writeItem(CC_KEY, on ? '1' : '0')
   }
 
   useEffect(() => {
-    if (!item || auto || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!item || auto || reduced()) {
       setVoiced(false)
       setPlaying(false)
       setShown(null)
@@ -184,6 +153,7 @@ export function useLessonVoice(
       }
       aud.play().then(
         () => {
+          if (dead) return
           voiceOkRef.current = true
           setVoiced(true)
           if (counts && finale) {
@@ -198,6 +168,7 @@ export function useLessonVoice(
           }
         },
         () => {
+          if (dead) return
           voiceOkRef.current = false
           setVoiced(false)
           setPlaying(false)

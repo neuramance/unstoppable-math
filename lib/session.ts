@@ -1,5 +1,5 @@
 import type { Lesson, LessonItem, LessonState, TrialEntry } from './lesson'
-import { replayLesson } from './lesson'
+import { hashLane, hex32, replayLesson } from './lesson'
 export const BLOCK_KINDS = ['narrative', 'atom', 'review'] as const
 export type BlockKind = (typeof BLOCK_KINDS)[number]
 export type PlannedRow = {
@@ -130,14 +130,6 @@ function itemPrint(it: LessonItem): string {
   return [it.row, it.set ?? 1, it.role, it.mode, it.expected, it.count ?? '', figures, accept, frac, numerals].join(
     FIELD_SEP,
   )
-}
-function hashLane(text: string, basis: number, prime: number): number {
-  let h = basis >>> 0
-  for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), prime) >>> 0
-  return h
-}
-function hex32(word: number): string {
-  return word.toString(16).padStart(8, '0')
 }
 export function rowFingerprint(lesson: Lesson, planned: { row: number; set: number }, kind: BlockKind): string {
   const print = rowLesson(lesson, planned, kind).items.map(itemPrint).join(ITEM_SEP)
@@ -314,7 +306,7 @@ export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
     } catch {
       unreadableSessions += 1
       droppedTrials += s.trials.length
-      for (const b of s.plan?.blocks ?? []) for (const r of b?.rows ?? []) dropped.add(r.row)
+      for (const b of s.plan.blocks) for (const r of b.rows) dropped.add(r.row)
       continue
     }
     if (state.staleAt !== null && state.unreplayed > 0) {
@@ -335,9 +327,6 @@ export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
     unreadableSessions,
     unstamped,
   }
-}
-export function rowHistory(lesson: Lesson, log: SessionLog): RowHistory {
-  return replayLog(lesson, log).history
 }
 export function selectReview(history: RowHistory, newRow: number | null): number[] {
   const pool = [...history.values()].filter((r) => r.firmed)

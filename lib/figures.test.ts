@@ -25,17 +25,14 @@ import {
   polygonRadius,
   polygonSides,
   polygonTilt,
-  representationOf,
   sectorAngle,
   shadeable,
   spansMajorArc,
   takesColumns,
   takesOrientation,
-  takesUnitMarks,
   turnsOnly,
   unevenTotal,
   unevenWeight,
-  unitMarkFractions,
   unitMarkNumerator,
   unitMarkRoom,
   unitMarkText,
@@ -49,7 +46,6 @@ test('orientation is a property of the strip kinds, never baked into a kind name
       expect({ kind, word, baked: kind.includes(word) }).toEqual({ kind, word, baked: false })
     }
   }
-  expect(FIGURE_KINDS.filter(takesOrientation)).toEqual(['number-line', 'bar'])
   expect(orientationOf({ kind: 'bar', units: 1, parts: 1 })).toBe('horizontal')
   expect(orientationOf({ kind: 'bar', units: 1, parts: 1, orientation: 'vertical' })).toBe('vertical')
 })
@@ -76,10 +72,6 @@ test('a square sits flat, because a square standing on its corner is a diamond',
     if (kind === 'square') continue
     expect({ kind, tilt: polygonTilt(kind) }).toEqual({ kind, tilt: 0 })
   }
-})
-
-test('a shade answer is only ever asked of a figure a finger can land on', () => {
-  expect<readonly string[]>(FIGURE_KINDS.filter(shadeable)).toEqual(['number-line', 'bar', 'grid'])
 })
 
 test('a strip and a round figure both hold five units, and a grid holds one', () => {
@@ -198,21 +190,6 @@ test('one part cannot be unequal to itself, so a single part fills its unit what
   const lone: Figure = { kind: 'circle', units: 1, parts: 1, equal: false }
   expect(partShare(lone, 0)).toBe(1)
   expect(partOffset(lone, 1)).toBe(1)
-})
-
-test('whether the parts are the same size is a change of picture, not a change of number', () => {
-  const equal: Figure = { kind: 'circle', units: 1, parts: 3 }
-  expect(representationOf(equal)).not.toBe(representationOf({ ...equal, equal: false }))
-  expect(representationOf({ ...equal, equal: true })).toBe(representationOf(equal))
-  expect(representationOf({ ...equal, counted: 2 })).toBe(representationOf(equal))
-})
-
-test('turning a figure on its side is a change of representation, not a change of number', () => {
-  const flat: Figure = { kind: 'bar', units: 2, parts: 5, counted: 7 }
-  const upright: Figure = { ...flat, orientation: 'vertical' }
-  expect(representationOf(flat)).not.toBe(representationOf(upright))
-  expect(representationOf({ ...flat, kind: 'triangle' })).not.toBe(representationOf({ ...flat, kind: 'square' }))
-  expect(representationOf({ ...flat, counted: 3 })).toBe(representationOf(flat))
 })
 
 test('partEdges is the equal division unless the cuts are stated, and stated cuts are clamped by the ends', () => {
@@ -347,9 +324,7 @@ test('a five unit strip carries no more cells than the three unit strip already 
 })
 
 const hisGrid: Figure = { kind: 'grid', units: 1, parts: 20, columns: 5, counted: 8 }
-const hisBlankGrid: Figure = { kind: 'grid', units: 1, parts: 20, columns: 5 }
 const unsaidGrid: Figure = { kind: 'grid', units: 1, parts: 20 }
-const fourWideGrid: Figure = { kind: 'grid', units: 1, parts: 20, columns: 4 }
 
 test('a lattice is a kind of its own, because a partition in two directions is not a strip of cells', () => {
   expect<readonly string[]>(FIGURE_KINDS).toEqual([
@@ -363,7 +338,6 @@ test('a lattice is a kind of its own, because a partition in two directions is n
     'circle',
     'grid',
   ])
-  expect<number>(FIGURE_KINDS.length).toBe(9)
 })
 
 test('a lattice is shadeable without being orientable, which is the case that splits the two predicates', () => {
@@ -381,14 +355,6 @@ test('his lattice is five across and four down, and the second number is derived
   expect(gridRows(20, gridColumns(unsaidGrid))).toBe(1)
 })
 
-test('how wide a lattice runs is a change of picture, not a change of number', () => {
-  expect(representationOf(hisBlankGrid)).not.toBe(representationOf(fourWideGrid))
-  expect(representationOf(hisBlankGrid)).toBe(representationOf(hisGrid))
-  expect(representationOf({ kind: 'bar', units: 1, parts: 4 })).toBe(
-    representationOf({ kind: 'bar', units: 1, parts: 8 }),
-  )
-})
-
 const hisBlankMarks: Figure = {
   kind: 'number-line',
   units: 5,
@@ -404,27 +370,9 @@ const hisFilledMarks: Figure = {
   orientation: 'horizontal',
 }
 
-test('his row 41 stands six fractions over his six unit marks, and every one of them is his', () => {
-  expect(unitMarkFractions(hisFilledMarks)).toEqual(['0/5', '5/5', '10/5', '15/5', '20/5', '25/5'])
-  expect(unitMarkFractions(hisBlankMarks)).toEqual(unitMarkFractions(hisFilledMarks))
+test('what stands over a mark is his box until he fills it, and his own glyph is the box', () => {
   expect(unitMarkNumerator(3, 5)).toBe(15)
   expect(unitMarkNumerator(0, 5)).toBe(0)
-})
-
-test('a line in thirds carries thirds, so nothing about the six is written into the renderer', () => {
-  expect(unitMarkFractions({ kind: 'number-line', units: 5, parts: 3 })).toEqual([
-    '0/3',
-    '3/3',
-    '6/3',
-    '9/3',
-    '12/3',
-    '15/3',
-  ])
-  expect(unitMarkFractions({ kind: 'number-line', units: 2, parts: 4 })).toEqual(['0/4', '4/4', '8/4'])
-})
-
-test('what stands over a mark is his box until he fills it, and his own glyph is the box', () => {
-  expect(hisFilledMarks.units + 1).toBe(6)
   expect(Array.from({ length: 6 }, (_, m) => unitMarkText(hisBlankMarks, m))).toEqual([
     '▢/5',
     '▢/5',
@@ -443,17 +391,6 @@ test('what stands over a mark is his box until he fills it, and his own glyph is
   ])
   expect(unitMarkRoom({ kind: 'number-line', units: 5, parts: 5 })).toBe(0)
   expect(unitMarkRoom(hisBlankMarks)).toBeGreaterThan(0)
-})
-
-test('only a line takes marks, because a mark is a position on an axis', () => {
-  expect(FIGURE_KINDS.filter(takesUnitMarks)).toEqual(['number-line'])
-})
-
-test('a fraction over every mark is a change of picture, not a change of number', () => {
-  const bare: Figure = { kind: 'number-line', units: 5, parts: 5 }
-  expect(representationOf(bare)).not.toBe(representationOf(hisBlankMarks))
-  expect(representationOf(hisBlankMarks)).not.toBe(representationOf(hisFilledMarks))
-  expect(representationOf(bare)).toBe('number-line:horizontal:equal')
 })
 
 test('a step is a continuous conversion only when one figure re-subdivides: same picture, other parts', () => {

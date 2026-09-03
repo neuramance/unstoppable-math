@@ -2,7 +2,7 @@
 set -uo pipefail
 root=$(cd "$(dirname "$0")/.." && pwd)
 input=$(cat)
-IFS=$'\t' read -r event file active < <(printf '%s' "$input" | bun -e 'const j = JSON.parse(await Bun.stdin.text()); console.log([j.hook_event_name ?? "", j.tool_input?.file_path ?? "", j.stop_hook_active === true ? "1" : "0"].join("\t"))') || exit 0
+IFS=$'\x1f' read -r event file active < <(printf '%s' "$input" | bun -e 'const j = JSON.parse(await Bun.stdin.text()); console.log([j.hook_event_name ?? "", j.tool_input?.file_path ?? "", j.stop_hook_active === true ? "1" : "0"].join("\x1f"))') || exit 0
 if [[ $event == PostToolUse ]]; then
   [[ -n $file ]] || exit 0
   out=$("$root/scripts/agent-verify" "$file" 2>&1) && exit 0

@@ -8,6 +8,10 @@ export function defineVars<T extends AnyStyles>(vars: T): T {
   return vars
 }
 
+export function defineConsts<T extends AnyStyles>(consts: T): T {
+  return consts
+}
+
 export function createTheme(...args: AnyStyles[]): AnyStyles {
   return { $$theme: args.length }
 }

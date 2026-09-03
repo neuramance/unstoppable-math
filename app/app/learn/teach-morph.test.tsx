@@ -1,12 +1,10 @@
 import { fireEvent, render } from '@testing-library/react'
-import { act, useState } from 'react'
-import { afterAll, expect, test } from 'vitest'
+import { act } from 'react'
+import { expect, test, vi } from 'vitest'
 import nfRaw from '@/public/lessons/NF_Fractions.lesson.json'
 import { morphs, turnsOnly } from '@/lib/figures'
-import type { Lesson, TrialEntry } from '@/lib/lesson'
-import { LessonPlayer } from './teach'
-
-const line = (parts: number) => ({ kind: 'number-line' as const, units: 3, parts })
+import type { Lesson } from '@/lib/lesson'
+import { Host, line, stubTransitions, check } from './teach.fixtures'
 
 const MORPHABLE: Lesson = {
   topic: 'morph',
@@ -58,31 +56,9 @@ const REDONE: Lesson = {
   ],
 }
 
-function Host({ lesson, auto = false }: { lesson: Lesson; auto?: boolean }) {
-  const [log, setLog] = useState<TrialEntry[]>([])
-  return (
-    <LessonPlayer lesson={lesson} log={log} onTrial={(e) => setLog((l) => [...l, e])} auto={auto} onMuted={() => {}} />
-  )
-}
-
 const card = () => document.querySelector('p[aria-live]')!.parentElement
 const svgLines = () => [...document.querySelectorAll('svg line')]
 const unitTicksOf = (lines: Element[], parts: number) => lines.slice(1).filter((_, k) => k % parts === 0)
-
-const originalStartViewTransition = document.startViewTransition
-afterAll(() => {
-  document.startViewTransition = originalStartViewTransition
-})
-
-function stubTransitions() {
-  const seen = { count: 0, update: null as null | (() => void) }
-  document.startViewTransition = ((cb: () => void) => {
-    seen.count += 1
-    seen.update = cb
-    return {} as ViewTransition
-  }) as typeof document.startViewTransition
-  return seen
-}
 
 test('a morphed advance opens no view transition and keeps the card, the svg and the unit ticks as the same nodes', () => {
   const seen = stubTransitions()
@@ -106,7 +82,6 @@ test('a morphed advance opens no view transition and keeps the card, the svg and
   expect(unitsAfter.length).toBe(before.units.length)
   unitsAfter.forEach((tick, i) => expect(tick === before.units[i]).toBe(true))
   expect(linesAfter.length - 1 - unitsAfter.length).toBe(3 * 6)
-  view.unmount()
 })
 
 test('a morph into a test item hands focus to the answer box the remount used to hand it by mounting', () => {
@@ -118,22 +93,19 @@ test('a morph into a test item hands focus to the answer box the remount used to
   const input = view.getByLabelText('Your answer')
   expect(document.querySelector('svg') === svg).toBe(true)
   expect(document.activeElement === input).toBe(true)
-  view.unmount()
 })
 
 test('a missed item is served again as a fresh card, never as a conversion of itself', () => {
   const seen = stubTransitions()
   const view = render(<Host lesson={REDONE} />)
   const cardBefore = card()
-  fireEvent.change(view.getByLabelText('Your answer'), { target: { value: 'five' } })
-  fireEvent.click(view.getByText('Check'))
+  check(view, 'five')
   act(() => seen.update!())
   expect(view.getByText('not quite')).toBeTruthy()
   fireEvent.click(view.getByText('Continue'))
   act(() => seen.update!())
   expect(view.getByText('How many parts?')).toBeTruthy()
   expect(card() === cardBefore).toBe(false)
-  view.unmount()
 })
 
 const TURNING: Lesson = {
@@ -162,42 +134,25 @@ const TURNING: Lesson = {
 }
 
 test('a step that only turns its figure arms the rotation class for that one transition and disarms after', async () => {
-  const seen = { update: null as null | (() => void), finish: Promise.resolve() }
-  document.startViewTransition = ((cb: () => void) => {
-    seen.update = cb
-    return { finished: seen.finish } as ViewTransition
-  }) as typeof document.startViewTransition
+  const seen = stubTransitions()
   const view = render(<Host lesson={TURNING} />)
   fireEvent.click(view.getByText('Next'))
   expect(document.documentElement.classList.contains('learn-turn')).toBe(true)
   act(() => seen.update!())
   expect(view.getByText('The same line, upright.')).toBeTruthy()
-  await seen.finish
+  await seen.finished
   await Promise.resolve()
   expect(document.documentElement.classList.contains('learn-turn')).toBe(false)
-  view.unmount()
 })
 
 test('a turn under reduced motion never arms the class: the update lands plainly', () => {
-  const original = window.matchMedia
-  window.matchMedia = ((query: string) => ({
-    matches: true,
-    media: query,
-    onchange: null,
-    addListener() {},
-    removeListener() {},
-    addEventListener() {},
-    removeEventListener() {},
-    dispatchEvent: () => false,
-  })) as typeof window.matchMedia
+  vi.spyOn(window, 'matchMedia').mockReturnValue({ matches: true } as MediaQueryList)
   const seen = stubTransitions()
   const view = render(<Host lesson={TURNING} />)
   fireEvent.click(view.getByText('Next'))
   expect(seen.count).toBe(0)
   expect(document.documentElement.classList.contains('learn-turn')).toBe(false)
   expect(view.getByText('The same line, upright.')).toBeTruthy()
-  window.matchMedia = original
-  view.unmount()
 })
 
 const shippedSets = () => {
@@ -219,4 +174,40 @@ test('the shipped lesson turns: his rotate-to-vertical steps are at least 2 cons
   )
   expect(counts).toHaveLength(1)
   expect(counts[0]).toBeGreaterThanOrEqual(2)
+})
+
+const SLOTTED: Lesson = {
+  topic: 'slots',
+  source: 'slots',
+  items: [
+    {
+      row: 1,
+      role: 'model',
+      mode: 'frac',
+      prompt: 'Five parts per whole unit.',
+      expected: '5',
+      demo: 'Five.',
+      figures: [line(5)],
+      frac: { num: '', den: null },
+    },
+    {
+      row: 1,
+      role: 'test',
+      mode: 'frac',
+      prompt: 'Write the parts per whole unit.',
+      expected: '7',
+      demo: 'Seven.',
+      figures: [line(7)],
+      frac: { num: '', den: null },
+    },
+  ],
+}
+
+test('a morph into a fraction item hands focus to its first open slot', () => {
+  stubTransitions()
+  const view = render(<Host lesson={SLOTTED} />)
+  const svg = document.querySelector('svg')
+  fireEvent.click(view.getByText('Next'))
+  expect(document.querySelector('svg') === svg).toBe(true)
+  expect(document.activeElement === view.getByLabelText('denominator')).toBe(true)
 })

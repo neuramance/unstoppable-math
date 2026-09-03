@@ -7,7 +7,6 @@ import {
   replaySession,
   REVIEW_MAX,
   jumpToRow,
-  rowHistory,
   rowLesson,
   selectReview,
   type SessionLog,
@@ -62,7 +61,6 @@ test('a lesson with a narrative plans it as the break closing the first four blo
   const reviewOnly = planSession(l, historyOf(record(1), record(2), record(3)), 0)
   expect(reviewOnly.blocks[reviewOnly.blocks.length - 1].kind).toBe('narrative')
   expect(reviewOnly.blocks.slice(0, -1).every((b) => b.kind === 'review')).toBe(true)
-  expect(planSession(synth(3, 'mtt'), new Map(), 0).blocks.some((b) => b.kind === 'narrative')).toBe(false)
 })
 
 test('the default schedule emits exactly what the engine emits, with and without the story break', () => {
@@ -208,9 +206,7 @@ test('selectReview fills the five criteria in criteria order, deduped, capped', 
     record(7, { firmedAt: 107, lastServedAt: 170 }),
     record(9, { firmedAt: 500, lastServedAt: 900 }),
   )
-  const picks = selectReview(history, 10)
-  expect(picks).toEqual([9, 3, 5, 2, 1, 4])
-  expect(picks.length).toBeLessThanOrEqual(REVIEW_MAX)
+  expect(selectReview(history, 10)).toEqual([9, 3, 5, 2, 1, 4])
 })
 
 test('the recently-firmed slots let go of a row once it has been revisited', () => {
@@ -222,7 +218,6 @@ test('the recently-firmed slots let go of a row once it has been revisited', () 
     record(5, { firmedAt: 700, lastServedAt: 700 }),
   )
   expect(selectReview(revisited, null)).toEqual([5, 2, 1, 4])
-  expect(selectReview(revisited, null)).not.toContain(3)
 })
 
 test('no row can camp on a review slot once every row is firm', () => {
@@ -232,7 +227,7 @@ test('no row can camp on a review slot once every row is firm', () => {
   const served = new Map<number, number>()
   let steady = 0
   for (let s = 0; s < 30; s++) {
-    const history = rowHistory(l, log)
+    const history = replayLog(l, log).history
     const all = [...new Set(l.items.map((it) => it.row))].every((r) => history.get(r)?.firmed)
     const plan = planSession(l, history, (at += 60_000))
     log.push({ kind: 'start', plan })

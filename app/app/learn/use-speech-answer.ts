@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { readItem, writeItem } from '@/lib/store'
 
 type Alternative = { transcript: string }
 type Result = { length: number; isFinal: boolean; [index: number]: Alternative }
@@ -25,21 +26,13 @@ function recognizerCtor(): RecognizerCtor | null {
   return engine.SpeechRecognition ?? engine.webkitSpeechRecognition ?? null
 }
 
-function loadMic(): boolean {
-  try {
-    return localStorage.getItem(MIC_KEY) === '1'
-  } catch {
-    return false
-  }
-}
-
 function alternatives(result: Result): string[] {
   return Array.from({ length: result.length }, (_, i) => result[i].transcript.trim()).filter(Boolean)
 }
 
 export function useSpeechAnswer(active: boolean, onHeard: (heard: string[]) => void) {
   const [supported] = useState(() => recognizerCtor() !== null)
-  const [on, setOn] = useState(loadMic)
+  const [on, setOn] = useState(() => readItem(MIC_KEY) === '1')
   const [interim, setInterim] = useState('')
   const heard = useRef(onHeard)
   const listening = supported && on && active
@@ -50,9 +43,7 @@ export function useSpeechAnswer(active: boolean, onHeard: (heard: string[]) => v
 
   const setMic = (next: boolean) => {
     setOn(next)
-    try {
-      localStorage.setItem(MIC_KEY, next ? '1' : '0')
-    } catch {}
+    writeItem(MIC_KEY, next ? '1' : '0')
   }
 
   useEffect(() => {

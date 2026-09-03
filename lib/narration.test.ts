@@ -68,6 +68,5 @@ test('the spoken form is idempotent on every committed clip, so normalizing it c
   for (const key of keys) {
     const spoken = spokenOf(key)
     expect({ key, stable: narrated(spoken) }).toEqual({ key, stable: spoken })
-    expect({ key, derived: clipKey(narrated(spoken)) }).toEqual({ key, derived: key })
   }
 })

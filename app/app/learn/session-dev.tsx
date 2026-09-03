@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { useState } from 'react'
 import { t } from '@/app/tokens.stylex'
-import type { Lesson } from '@/lib/lesson'
+import type { Lesson, LessonItem } from '@/lib/lesson'
 import { rowLesson, type RowHistory, type SessionState } from '@/lib/session'
 import { chrome } from './chrome'
 import { BLOCK_GLYPH, tints, tintVars } from './session-blocks'
@@ -26,16 +26,6 @@ type ActiveBlock = SessionState['blocks'][number] | null
 function liveRowOf(playing: boolean, activeBlock: ActiveBlock): number | null {
   if (!playing) return null
   return activeBlock?.plan.rows[0]?.row ?? null
-}
-
-function liveSideOf(activeBlock: ActiveBlock): 'instruction' | 'testing' | null {
-  const kind = activeBlock?.plan.kind
-  if (kind === 'review') return 'testing'
-  if (kind !== 'atom') return null
-  const current = activeBlock?.current
-  if (current === null || current === undefined) return null
-  const served = current.lesson.items[current.state.current?.item ?? 0]
-  return served?.role === 'model' ? 'instruction' : 'testing'
 }
 
 const s = stylex.create({
@@ -256,16 +246,14 @@ function ItemStrip({
   lesson,
   row,
   code,
-  side,
-  atItem,
+  now,
   anyNow,
   onJump,
 }: {
   lesson: Lesson
   row: number
   code: string
-  side: 'instruction' | 'testing' | null
-  atItem: number | null
+  now: LessonItem | null
   anyNow: boolean
   onJump: (kind: 'instruction' | 'testing', item: number) => void
 }) {
@@ -274,13 +262,12 @@ function ItemStrip({
       <span {...stylex.props(s.devdockHead)}>atom {code}</span>
       {KINDS.map((kind) => {
         const pieces = sideItems(lesson, row, kind)
-        const offset = kind === 'testing' ? atomItems(lesson, row).filter((it) => it.role === 'model').length : 0
         if (pieces.length === 0) return null
         return (
           <span key={kind} {...stylex.props(s.devrun)}>
             <span {...stylex.props(s.devstripGlyph)}>{KIND_GLYPH[kind]}</span>
             {pieces.map((piece, i) => {
-              const nowDot = side === kind && atItem === offset + i
+              const nowDot = piece === now
               return (
                 <button
                   key={i}
@@ -292,6 +279,7 @@ function ItemStrip({
                     nowDot && s.devjumpNow,
                     anyNow && !nowDot && s.devjumpDim,
                   )}
+                  aria-current={nowDot ? 'step' : undefined}
                   onClick={() => onJump(kind, i)}
                   data-cuelume-press="tick"
                   aria-label={`atom ${code} ${KIND_WORD[kind]} ${i + 1} of ${pieces.length}`}
@@ -314,7 +302,7 @@ export function DevDock({
   onJump,
   playing,
   activeBlock,
-  atItem,
+  now,
   history,
   atomRows,
   atomOf,
@@ -326,17 +314,16 @@ export function DevDock({
   onJump: (row: number | null, now: number, kind?: 'instruction' | 'testing', item?: number) => void
   playing: boolean
   activeBlock: SessionState['blocks'][number] | null
-  atItem: number | null
+  now: LessonItem | null
   history: RowHistory | null
   atomRows: number[]
   atomOf: (row: number) => string
 }) {
   const [picked, setPicked] = useState<number | null>(null)
   const storyNow = playing && activeBlock?.plan.kind === 'narrative'
-  const anyNow = storyNow || (playing && atItem !== null)
+  const anyNow = storyNow || now !== null
   const live = liveRowOf(playing, activeBlock)
   const shown = picked ?? live ?? atomRows[0] ?? null
-  const side = shown === live ? liveSideOf(activeBlock) : null
 
   return (
     <aside {...stylex.props(s.devdock, chrome.rise)}>
@@ -394,8 +381,7 @@ export function DevDock({
           lesson={lesson}
           row={shown}
           code={atomOf(shown)}
-          side={side}
-          atItem={atItem}
+          now={now}
           anyNow={anyNow}
           onJump={(kind, item) => onJump(shown, Date.now(), kind, item)}
         />

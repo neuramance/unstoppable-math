@@ -65,24 +65,29 @@
       "src": "EX:2",
       "role": "test",
       "mode": "typed",
-      "prompt": "Express as a single fraction. (√7)/19 × 20/(3x)",
-      "expected": "(√7 × 20)/(19 × 3x)",
-      "accept": ["(√7 x 20)/(19 x 3x)", "(sqrt7 × 20)/(19 × 3x)", "(sqrt7 x 20)/(19 x 3x)", "(sqrt(7) x 20)/(19 x 3x)"],
-      "demo": "*(√7 × 20)/(19 × 3x)*"
+      "prompt": "Express as a single fraction. (⁵√7)/19 × 20/(3x)",
+      "expected": "(⁵√7 × 20)/(19 × 3x)",
+      "accept": [
+        "(⁵√7 x 20)/(19 x 3x)",
+        "(7^(1/5) × 20)/(19 × 3x)",
+        "(7^(1/5) x 20)/(19 x 3x)",
+        "(root5(7) x 20)/(19 x 3x)"
+      ],
+      "demo": "*(⁵√7 × 20)/(19 × 3x)*"
     },
     {
       "src": "EX:3",
       "role": "test",
       "mode": "typed",
-      "prompt": "Express as a single fraction. (√7)/19 × 2013/(3x)",
-      "expected": "(√7 × 2013)/(19 × 3x)",
+      "prompt": "Express as a single fraction. (⁵√7)/19 × 2013/(3x)",
+      "expected": "(⁵√7 × 2013)/(19 × 3x)",
       "accept": [
-        "(√7 x 2013)/(19 x 3x)",
-        "(sqrt7 × 2013)/(19 × 3x)",
-        "(sqrt7 x 2013)/(19 x 3x)",
-        "(sqrt(7) x 2013)/(19 x 3x)"
+        "(⁵√7 x 2013)/(19 x 3x)",
+        "(7^(1/5) × 2013)/(19 × 3x)",
+        "(7^(1/5) x 2013)/(19 x 3x)",
+        "(root5(7) x 2013)/(19 x 3x)"
       ],
-      "demo": "*(√7 × 2013)/(19 × 3x)*"
+      "demo": "*(⁵√7 × 2013)/(19 × 3x)*"
     },
     {
       "src": "EX:4",

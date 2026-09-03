@@ -3,10 +3,10 @@ import {
   activeMs,
   IDLE_CAP_MS,
   planSession,
+  replayLog,
   replaySession,
   REVIEW_BUDGET_MS,
   jumpToRow,
-  rowHistory,
   rowLesson,
   TEACH_BUDGET_MS,
   type SessionLog,
@@ -44,6 +44,7 @@ test('a slow learner is cut at a row boundary, never mid-row', () => {
     { row: 1, graded: 2 },
     { row: 2, graded: 2 },
   ])
+  expect(s.cleared).toBe(1)
   const fast = runSession(l, plan, { gapMs: 1000 })
   expect(replaySession(l, plan, fast).blocks[0].outcomes.length).toBe(3)
 })
@@ -119,8 +120,10 @@ test('a not-firm teach row ends the block after the DI correction runs inside th
   expect(visited.join(' ')).toContain('b0r0i2 b0r0i2c b0r0i1c b0r0i2c')
   expect(s.done).toBe(true)
   expect(s.blocks[0].cutBy).toBe('notFirm')
+  expect(s.blocks[0].done).toBe(true)
   expect(s.blocks[0].outcomes).toEqual([expect.objectContaining({ row: 1, firm: false, rightFirstTry: 1, graded: 2 })])
   expect(s.rowsFirmed).toEqual([])
+  expect(s.cleared).toBe(0)
 })
 
 test('review rows carry tests only, and an item-0 miss retests without back-up', () => {
@@ -151,7 +154,7 @@ test('review rows carry tests only, and an item-0 miss retests without back-up',
   expect(visited.join(' ')).toBe('b0r0i0 b0r0i0c b0r0i1')
 })
 
-test('rowHistory folds sessions with sticky firm, accumulated misses, and freshest serve times', () => {
+test('the row history folds sessions with sticky firm, accumulated misses, and freshest serve times', () => {
   const l = synth(3, 'mtt')
   const planA = teachPlan(0, [1, 2])
   const trialsA = runSession(l, planA, {})
@@ -178,7 +181,7 @@ test('rowHistory folds sessions with sticky firm, accumulated misses, and freshe
     { kind: 'start', plan: planB },
     ...trialsB.map((t): SessionLog[number] => ({ kind: 'trial', ...t })),
   ]
-  const history = rowHistory(l, log)
+  const history = replayLog(l, log).history
   expect(history.get(1)).toEqual(
     expect.objectContaining({ timesServed: 2, firmed: true, misses: 1, firmedAt: trialsA[2].at }),
   )
@@ -222,7 +225,7 @@ test('a dev jump folds every earlier atom perfectly and lands on its instruction
 test('a genuinely malformed plan still refuses to be replayed', () => {
   const l = synth(2, 'mtt')
   expect(() => replaySession(l, teachPlan(0, [99]), [{ typed: 'x', at: 1 }])).toThrow()
-  expect(() => rowHistory(l, [{ kind: 'trial', typed: 'x', at: 1 }])).toThrow()
+  expect(() => replayLog(l, [{ kind: 'trial', typed: 'x', at: 1 }])).toThrow()
 })
 
 test('a stray trial after a session has already fully finished is inert, not corruption', () => {
@@ -233,13 +236,12 @@ test('a stray trial after a session has already fully finished is inert, not cor
   expect(full).toMatchObject({ done: true, rowsFirmed: [1, 2, 3] })
 
   const withStray = [...trials, { typed: 'stray', at: trials[trials.length - 1].at + 1 }]
-  expect(() => replaySession(l, plan, withStray)).not.toThrow()
   expect(replaySession(l, plan, withStray)).toMatchObject({ done: true, rowsFirmed: [1, 2, 3], staleAt: null })
 
   const log: SessionLog = [
     { kind: 'start', plan },
     ...withStray.map((t): SessionLog[number] => ({ kind: 'trial', ...t })),
   ]
-  const firmed = [...rowHistory(l, log).values()].filter((r) => r.firmed).map((r) => r.row)
+  const firmed = [...replayLog(l, log).history.values()].filter((r) => r.firmed).map((r) => r.row)
   expect(firmed).toEqual([1, 2, 3])
 })

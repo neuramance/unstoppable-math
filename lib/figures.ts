@@ -36,12 +36,6 @@ export function takesOrientation(kind: FigureKind): boolean {
 export function takesColumns(kind: FigureKind): boolean {
   return kind === 'grid'
 }
-export function takesUnitMarks(kind: FigureKind): boolean {
-  return kind === 'number-line'
-}
-export function takesBand(kind: FigureKind): boolean {
-  return kind === 'number-line'
-}
 export function orientationOf(figure: Figure): Orientation {
   return figure.orientation ?? 'horizontal'
 }
@@ -85,11 +79,6 @@ export function turnsOnly(prev: readonly Figure[] | undefined, next: readonly Fi
     a.columns === b.columns &&
     a.label === b.label
   )
-}
-export function representationOf(figure: Figure): string {
-  const shape = `${figure.kind}:${orientationOf(figure)}:${partsAreEqual(figure) ? 'equal' : 'unequal'}`
-  const marked = figure.unitMarks === undefined ? shape : `${shape}:${figure.unitMarks}`
-  return takesColumns(figure.kind) ? `${marked}:${gridColumns(figure)}` : marked
 }
 export function shadeable(kind: FigureKind): boolean {
   return SHADE_KINDS.has(kind)
@@ -142,9 +131,6 @@ export function unitMarkFraction(mark: number, parts: number): string {
   console.assert(parts >= 1)
   console.assert(parts <= MAX_PARTS)
   return `${unitMarkNumerator(mark, parts)}/${parts}`
-}
-export function unitMarkFractions(figure: Figure): readonly string[] {
-  return Array.from({ length: figure.units + 1 }, (_, mark) => unitMarkFraction(mark, figure.parts))
 }
 export function unitMarkText(figure: Figure, mark: number): string {
   if (figure.unitMarks === 'blank-fractions') return `${UNIT_MARK_BLANK}/${figure.parts}`

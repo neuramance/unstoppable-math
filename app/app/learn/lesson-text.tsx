@@ -168,8 +168,8 @@ export const labelStack = styles.labelStack
 export function Words({ text, stack }: { text: string; stack?: StyleXStyles }) {
   return (
     <>
-      {text.split(/(\s+)/).map((w, i) => {
-        const m = /^(\d+)\/(\d+)([?.,:;]*)$/.exec(w)
+      {text.split(/(\s+|-)/).map((w, i) => {
+        const m = /^(\d+|▢)\/(\d+|▢)([?.,:;…]*)$/.exec(w)
         if (!m) return <Fragment key={i}>{w}</Fragment>
         return (
           <Fragment key={i}>
@@ -211,12 +211,14 @@ export function FracBox({
   onChange,
   disabled,
   tone,
+  answerRef,
 }: {
   frac: FracSlots
   values: string[]
   onChange: (i: number, v: string) => void
   disabled: boolean
   tone: 'right' | 'wrong' | null
+  answerRef: RefObject<HTMLInputElement | null>
 }) {
   const slot = (fixed: string | null, name: string, i: number) => {
     if (fixed !== null)
@@ -240,7 +242,7 @@ export function FracBox({
         disabled={disabled}
         aria-label={name}
         autoComplete="off"
-        autoFocus={i === 0}
+        ref={i === 0 ? answerRef : undefined}
       />
     )
   }
@@ -263,11 +265,13 @@ export function FracRow({
   answer,
   reveal,
   tone,
+  answerRef,
 }: {
   item: LessonItem
   answer: ReturnType<typeof useLessonAnswer>
   reveal: boolean
   tone: 'right' | 'wrong' | null
+  answerRef: RefObject<HTMLInputElement | null>
 }) {
   return (
     <div {...stylex.props(styles.lfracrow)}>
@@ -276,7 +280,14 @@ export function FracRow({
           <LessonText text={item.expr} />
         </span>
       )}
-      <FracBox frac={item.frac!} values={answer.shownSlots} onChange={answer.editSlot} disabled={reveal} tone={tone} />
+      <FracBox
+        frac={item.frac!}
+        values={answer.shownSlots}
+        onChange={answer.editSlot}
+        disabled={reveal}
+        tone={tone}
+        answerRef={answerRef}
+      />
       {!reveal && (
         <span {...stylex.props(styles.lfree)}>
           <span {...stylex.props(styles.num)}>or type it</span>
@@ -327,7 +338,6 @@ export function TypedRow({
       autoCapitalize="off"
       enterKeyHint="done"
       spellCheck={false}
-      autoFocus
       ref={answerRef}
     />
   )

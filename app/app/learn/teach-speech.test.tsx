@@ -1,23 +1,8 @@
 import { fireEvent, render } from '@testing-library/react'
-import { act, useState } from 'react'
-import { afterAll, afterEach, beforeEach, expect, test } from 'vitest'
-import type { Lesson, TrialEntry } from '@/lib/lesson'
-import { LessonPlayer } from './teach'
-
-class FakeAudio {
-  static instances: FakeAudio[] = []
-  src = ''
-  muted = false
-  duration = 0.001
-  onended: (() => void) | null = null
-  constructor() {
-    FakeAudio.instances.push(this)
-  }
-  play(): Promise<void> {
-    return Promise.resolve()
-  }
-  pause(): void {}
-}
+import { act } from 'react'
+import { afterEach, beforeEach, expect, test } from 'vitest'
+import type { Lesson } from '@/lib/lesson'
+import { FakeAudio, flush, Host, line } from './teach.fixtures'
 
 class FakeRecognition {
   static instances: FakeRecognition[] = []
@@ -39,16 +24,9 @@ class FakeRecognition {
 }
 
 const globals = globalThis as unknown as Record<string, unknown>
-const originalAudio = globals.Audio
-globals.Audio = FakeAudio
 globals.webkitSpeechRecognition = FakeRecognition
-afterAll(() => {
-  globals.Audio = originalAudio
-  delete globals.webkitSpeechRecognition
-})
 
 beforeEach(() => {
-  FakeAudio.instances = []
   FakeRecognition.instances = []
   FakeRecognition.starts = 0
 })
@@ -56,46 +34,11 @@ afterEach(() => {
   globals.webkitSpeechRecognition = FakeRecognition
 })
 
-const flush = () => act(async () => {})
-
-const line = (parts: number) => ({ kind: 'number-line' as const, units: 3, parts })
-
-const ASKED: Lesson = {
-  topic: 'speech',
-  source: 'speech',
-  items: [
-    {
-      row: 1,
-      role: 'test',
-      mode: 'typed',
-      prompt: 'How many parts?',
-      expected: 'four',
-      demo: '*Four* parts.',
-      figures: [line(4)],
-    },
-    { row: 1, role: 'test', mode: 'typed', prompt: 'And now?', expected: 'seven', demo: 'Seven.', figures: [line(7)] },
-  ],
-}
-
 const lessonOf = (mode: 'shade' | 'typed', role: 'model' | 'test'): Lesson => ({
   topic: 'x',
   source: 'x',
   items: [{ row: 1, role, mode, prompt: 'Shade it.', expected: '3', demo: 'Three.', figures: [line(4)] }],
 })
-
-function Host({ lesson = ASKED, auto = false, muted = false }: { lesson?: Lesson; auto?: boolean; muted?: boolean }) {
-  const [log, setLog] = useState<TrialEntry[]>([])
-  return (
-    <LessonPlayer
-      lesson={lesson}
-      log={log}
-      onTrial={(e) => setLog((l) => [...l, e])}
-      auto={auto}
-      muted={muted}
-      onMuted={() => {}}
-    />
-  )
-}
 
 function said(isFinal: boolean, transcripts: string[]) {
   return {
@@ -128,7 +71,6 @@ test('a browser with no recognizer offers no microphone at all, and typing is un
   await flush()
   expect(view.queryByLabelText('Microphone')).toBeNull()
   expect(view.getByLabelText('Your answer')).toBeTruthy()
-  view.unmount()
 })
 
 test('the microphone is off until it is asked for, and the choice survives a remount', async () => {
@@ -141,7 +83,6 @@ test('the microphone is off until it is asked for, and the choice survives a rem
   const again = render(<Host />)
   await flush()
   expect(again.getByLabelText('Microphone').getAttribute('aria-pressed')).toBe('true')
-  again.unmount()
 })
 
 test('nothing listens while the lesson is still speaking, so it never hears itself', async () => {
@@ -156,7 +97,6 @@ test('nothing listens while the lesson is still speaking, so it never hears itse
   expect(recognizer().interimResults).toBe(true)
   expect(recognizer().maxAlternatives).toBe(5)
   expect(recognizer().continuous).toBe(false)
-  view.unmount()
 })
 
 test('a spoken answer is graded the moment it is final', async () => {
@@ -164,7 +104,6 @@ test('a spoken answer is graded the moment it is final', async () => {
   await listening(view)
   await speak(['four'])
   expect(verdict()).toBe('correct')
-  view.unmount()
 })
 
 test('a later alternative wins when the top one is noise', async () => {
@@ -172,7 +111,6 @@ test('a later alternative wins when the top one is noise', async () => {
   await listening(view)
   await speak(['for', 'fore', 'four'])
   expect(verdict()).toBe('correct')
-  view.unmount()
 })
 
 test('a mishear is submitted exactly as heard and scored honestly', async () => {
@@ -181,7 +119,6 @@ test('a mishear is submitted exactly as heard and scored honestly', async () => 
   await speak(['banana bread'])
   expect(verdict()).toBe('not quite')
   expect((view.getByLabelText('Your answer') as HTMLInputElement).value).toBe('banana bread')
-  view.unmount()
 })
 
 test('interim speech is shown while it is still being said, then cleared', async () => {
@@ -192,7 +129,6 @@ test('interim speech is shown while it is still being said, then cleared', async
   expect(view.getByText('fo')).toBeTruthy()
   await speak(['four'])
   expect(view.queryByText('fo')).toBeNull()
-  view.unmount()
 })
 
 test('a silence that ends the recognizer starts it listening again', async () => {
@@ -201,7 +137,6 @@ test('a silence that ends the recognizer starts it listening again', async () =>
   expect(FakeRecognition.starts).toBe(1)
   act(() => recognizer().onend!())
   expect(FakeRecognition.starts).toBe(2)
-  view.unmount()
 })
 
 test.each(['not-allowed', 'audio-capture', 'network'])(
@@ -218,7 +153,6 @@ test.each(['not-allowed', 'audio-capture', 'network'])(
     expect(view.getByLabelText('Microphone').getAttribute('aria-pressed')).toBe('false')
     expect(localStorage.getItem('um.mic')).toBe('0')
     expect(view.queryByText('listening')).toBeNull()
-    view.unmount()
   },
 )
 
@@ -229,7 +163,6 @@ test('an ordinary silence is not a refusal: it keeps listening', async () => {
   act(() => recognizer().onend!())
   expect(FakeRecognition.starts).toBe(2)
   expect(view.getByLabelText('Microphone').getAttribute('aria-pressed')).toBe('true')
-  view.unmount()
 })
 
 test('shading, modelling and autoplay are never open to a spoken answer', async () => {
@@ -281,7 +214,6 @@ test('a fraction said out loud reaches the symbol form the slots wanted', async 
   await listening(view)
   await speak(['three fifths'])
   expect(verdict()).toBe('correct')
-  view.unmount()
 })
 
 test('an item that asks for the words wants the words, not the symbol', async () => {
@@ -289,26 +221,23 @@ test('an item that asks for the words wants the words, not the symbol', async ()
   await listening(view)
   await speak(['four eighths'])
   expect(verdict()).toBe('correct')
-  view.unmount()
 })
 
 test('a microphone already on at mount stays shut until the question has been spoken', async () => {
   localStorage.setItem('um.mic', '1')
-  const view = render(<Host />)
+  render(<Host />)
   await flush()
   expect(FakeRecognition.starts).toBe(0)
   act(() => FakeAudio.instances[0].onended!())
   await flush()
   expect(FakeRecognition.starts).toBe(1)
-  view.unmount()
 })
 
 test('a muted lesson has nothing to overhear, so the mic opens without waiting for the clip', async () => {
   localStorage.setItem('um.mic', '1')
-  const view = render(<Host muted />)
+  render(<Host muted />)
   await flush()
   expect(FakeRecognition.starts).toBe(1)
-  view.unmount()
 })
 
 test('the interim transcript is shown but never announced, so it cannot babble at a screen reader', async () => {
@@ -318,7 +247,6 @@ test('the interim transcript is shown but never announced, so it cannot babble a
   const node = view.getByText('fo').closest('p')!
   expect(node.getAttribute('aria-live')).toBeNull()
   expect(node.getAttribute('role')).toBeNull()
-  view.unmount()
 })
 
 test('speech heard while the page is hidden or the shell is covered is not an answer', async () => {
@@ -338,5 +266,4 @@ test('speech heard while the page is hidden or the shell is covered is not an an
   shell.remove()
   await speak(['four'])
   expect(verdict()).toBe('correct')
-  view.unmount()
 })

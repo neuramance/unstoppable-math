@@ -1,6 +1,6 @@
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(14);
+select plan(16);
 
 insert into auth.users (id) values
   ('11111111-1111-1111-1111-111111111111'),
@@ -16,6 +16,14 @@ select policies_are(
   array['own rows: select', 'own rows: insert', 'own rows: update', 'own rows: delete'],
   'exactly the four owner-only policies exist'
 );
+select table_privs_are(
+  'public',
+  'app_state',
+  'authenticated',
+  array['SELECT', 'INSERT', 'UPDATE', 'DELETE'],
+  'authenticated holds exactly the four row privileges: no truncate, references, or trigger'
+);
+select table_privs_are('public', 'app_state', 'anon', array[]::text[], 'anon holds no table privilege at all');
 
 set local role authenticated;
 set local request.jwt.claims to '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}';

@@ -44,12 +44,20 @@ export const teachPlan = (startedAt: number, ...blocks: number[][]): SessionPlan
   })),
 })
 
-export type Answer = (item: LessonItem, correction: boolean) => string
+export const item = (mode: LessonItem['mode'], expected: string, accept?: string[]): LessonItem => ({
+  row: 1,
+  role: 'test',
+  mode,
+  prompt: 'p',
+  expected,
+  demo: '*d*',
+  ...(accept === undefined ? {} : { accept }),
+})
 
 export function runSession(
   l: Lesson,
   plan: SessionPlan,
-  opts: { answer?: Answer; gapMs?: number; visited?: string[] } = {},
+  opts: { answer?: (item: LessonItem, correction: boolean) => string; gapMs?: number; visited?: string[] } = {},
 ): Trial[] {
   const trials: Trial[] = []
   let at = plan.startedAt

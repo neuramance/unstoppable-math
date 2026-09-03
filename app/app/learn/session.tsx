@@ -3,13 +3,15 @@ import { setEnabled } from 'cuelume'
 import { useEffect, useMemo, useState } from 'react'
 import type { Lesson } from '@/lib/lesson'
 import type { LogAudit, SessionState } from '@/lib/session'
+import { readItem, writeItem } from '@/lib/store'
+import { t } from '@/app/tokens.stylex'
 import { chrome } from './chrome'
 import { NarrativeFilm } from './narrative-film'
 import { DevDock } from './session-dev'
 import { SessionDone } from './session-done'
 import { StackCard } from './session-stack'
 import { LessonPlayer } from './teach'
-import { EnterKey, shellInert } from './ui'
+import { EnterKey, enterHotkey } from './ui'
 import { useSessionLog } from './use-session-log'
 import { useSessionPhase, type Phase } from './use-session-phase'
 
@@ -24,26 +26,13 @@ const REGISTER = {
     'Some of these questions changed since your last visit, so those atoms come back for another pass. Everything you kept firm stays firm.',
   resetTag: ' · progress reset',
   resetNote: 'Your saved progress would not load, so this stack starts from the top.',
+  volatileNote: 'This browser is not saving progress, so a reload starts the stack from the top.',
 }
 
 const WIDE = '@media (min-width: 1048px)'
 const NARROW = '@media (max-width: 760px)'
 
 const MUTE_STORE = 'um.muted'
-
-function readMuted(): boolean {
-  try {
-    return localStorage.getItem(MUTE_STORE) === '1'
-  } catch {
-    return false
-  }
-}
-
-function writeMuted(on: boolean) {
-  try {
-    localStorage.setItem(MUTE_STORE, on ? '1' : '0')
-  } catch {}
-}
 
 const s = stylex.create({
   sess: {
@@ -75,6 +64,12 @@ const s = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     zoom: { default: null, [WIDE]: 1.15 },
+  },
+  volatile: {
+    marginTop: '14px',
+    fontSize: '13px',
+    lineHeight: 1.5,
+    color: t.mut,
   },
 })
 
@@ -123,7 +118,7 @@ function stageOf(session: SessionState | null, playing: boolean, phase: Phase, l
   const film = phase === 'active' && activeBlock?.plan.kind === 'narrative' && lesson.narrative !== undefined
   return {
     activeBlock,
-    atItem: cur?.state.current?.item ?? null,
+    now: cur?.state.current ? cur.lesson.items[cur.state.current.item] : null,
     film: film ? { file: lesson.narrative!, key: starts } : null,
     row: phase === 'active' && cur ? { cur, key: `${starts}:${session!.blockIndex}:${cur.rowIndex}` } : null,
   }
@@ -135,12 +130,12 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
   const phases = useSessionPhase(session)
   const { phase, shown, playing } = phases
   const [auto, setAuto] = useState(false)
-  const [muted, setMuted] = useState(readMuted)
+  const [muted, setMuted] = useState(() => readItem(MUTE_STORE) === '1')
   useEffect(() => {
     setEnabled(!muted)
   }, [muted])
   const mute = (next: boolean) => {
-    writeMuted(next)
+    writeItem(MUTE_STORE, next ? '1' : '0')
     setMuted(next)
   }
 
@@ -167,7 +162,7 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.metaKey || e.ctrlKey || e.altKey || e.key !== 'Enter' || shellInert()) return
+      if (!enterHotkey(e)) return
       if (phase === 'idle') {
         e.preventDefault()
         begin()
@@ -198,7 +193,7 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
           onJump={jump}
           playing={playing}
           activeBlock={stage.activeBlock}
-          atItem={stage.atItem}
+          now={stage.now}
           history={history}
           atomRows={atomRows}
           atomOf={atomOf}
@@ -214,6 +209,7 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
           totalRows={atomRows.length}
           atomOf={atomOf}
         />
+        {log.volatile && <p {...stylex.props(s.volatile)}>{REGISTER.volatileNote}</p>}
       </aside>
       <div {...stylex.props(s.sessmain, chrome.rise)}>
         {phase === 'idle' && <IdleHero blocks={plan.blocks.length} notice={notice} onBegin={begin} />}

@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ThemeName } from '@/app/theme-class'
 import { d, t } from '@/app/tokens.stylex'
-import { readItem } from '@/lib/store'
+import { readItem, writeItem } from '@/lib/store'
 
 export const DEFAULT_NAME = 'Learner'
 export const DEFAULT_EMOJI = '\u{1F98A}'
@@ -53,12 +53,8 @@ export function displayed(p: Profile): { name: string; glyph: string } {
 }
 
 export function activeTheme(): ThemeName {
-  try {
-    const stored = localStorage.getItem(THEME_STORE)
-    return THEMES.some((x) => x.id === stored) ? (stored as ThemeName) : 'paper'
-  } catch {
-    return 'paper'
-  }
+  const stored = readItem(THEME_STORE)
+  return THEMES.some((x) => x.id === stored) ? (stored as ThemeName) : 'paper'
 }
 
 const s = stylex.create({
@@ -282,9 +278,7 @@ export function AccountMenu({
   onPatch: (patch: Profile) => void
 }) {
   const pickTheme = (next: ThemeName) => {
-    try {
-      localStorage.setItem(THEME_STORE, next)
-    } catch {}
+    writeItem(THEME_STORE, next)
     onTheme(next)
   }
 

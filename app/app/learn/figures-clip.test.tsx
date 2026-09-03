@@ -48,7 +48,7 @@ test('every figure keeps its strokes inside the viewBox, so nothing is clipped a
   const clipped = new Set<string>()
   for (const { fig, badge } of combos.values()) {
     const label = `${fig.kind} u=${fig.units} p=${fig.parts} ${fig.orientation ?? 'horizontal'} badge=${badge}`
-    for (const shown of SHOWN) {
+    for (const shown of badge === undefined ? [undefined] : SHOWN) {
       const view = render(<FigureView fig={fig} counted={fig.counted ?? 0} badge={badge} shown={shown} />)
       for (const svg of Array.from(document.querySelectorAll('svg')))
         for (const hit of overflowsIn(svg as unknown as SVGSVGElement, label)) clipped.add(hit)

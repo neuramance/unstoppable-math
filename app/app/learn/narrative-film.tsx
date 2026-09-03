@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { t } from '@/app/tokens.stylex'
 import { cueAt, parseNarrativeCues, type NarrativeCue } from '@/lib/narrative'
+import { reduced } from './ui'
 
 const FILM_REGISTER = {
   play: 'Tap to start the story',
@@ -101,10 +102,6 @@ const s = stylex.create({
     cursor: 'pointer',
   },
 })
-
-export function reduced(): boolean {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
-}
 
 const EXIT_GRACE_MS = 900
 const SETTLE_MS = 450
@@ -220,9 +217,20 @@ export function NarrativeFilm({
     return () => void leaveFullscreen(stage)
   }, [])
 
+  const mounted = useRef(true)
+  const settled = useRef(false)
+  useEffect(() => {
+    mounted.current = true
+    return () => {
+      mounted.current = false
+    }
+  }, [])
+
   const finish = async () => {
+    if (settled.current) return
+    settled.current = true
     await leaveFullscreen(stageRef.current)
-    doneRef.current()
+    if (mounted.current) doneRef.current()
   }
 
   useEffect(() => {

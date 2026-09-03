@@ -25,29 +25,23 @@ for (const name of ['localStorage', 'sessionStorage'] as const) {
   Object.defineProperty(globalThis, name, { value: window[name], configurable: true })
 }
 
-if (window.matchMedia === undefined) {
-  window.matchMedia = (query: string) =>
-    ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: () => undefined,
-      removeListener: () => undefined,
-      addEventListener: () => undefined,
-      removeEventListener: () => undefined,
-      dispatchEvent: () => false,
-    }) as MediaQueryList
-}
+window.matchMedia = (query: string) =>
+  ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: () => undefined,
+    removeListener: () => undefined,
+    addEventListener: () => undefined,
+    removeEventListener: () => undefined,
+    dispatchEvent: () => false,
+  }) as MediaQueryList
 
 window.HTMLMediaElement.prototype.play = function play() {
   return Promise.resolve()
 }
 window.HTMLMediaElement.prototype.pause = function pause() {
   return undefined
-}
-
-if (!('requestFullscreen' in Element.prototype)) {
-  Object.defineProperty(Element.prototype, 'requestFullscreen', { value: () => Promise.resolve(), writable: true })
 }
 
 afterEach(() => {

@@ -97,7 +97,9 @@ function mathPieces(node: Node): Piece[] {
     } else if (tag === 'm:acc') {
       out.push({ kind: 'unit', text: `[bar ${mathText(findChild(c, 'm:e'))}]` })
     } else if (tag === 'm:rad') {
-      out.push({ kind: 'unit', text: `[rad ${mathText(findChild(c, 'm:e'))}]` })
+      const deg = mathText(findChild(c, 'm:deg'))
+      const index = deg === '' ? '' : `^${deg}`
+      out.push({ kind: 'unit', text: `[rad${index} ${mathText(findChild(c, 'm:e'))}]` })
     } else if (tag === 'm:e' || tag === 'm:num' || tag === 'm:den' || tag === 'm:oMath') {
       out.push(...mathPieces(c))
     }

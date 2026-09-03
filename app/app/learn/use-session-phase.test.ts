@@ -74,22 +74,17 @@ test('a vanished session clears back to idle', () => {
 })
 
 test('reduced motion skips the drop and the smash choreography', () => {
-  const original = window.matchMedia
-  window.matchMedia = ((q: string) => ({ matches: true, media: q })) as unknown as typeof window.matchMedia
-  try {
-    const { result, rerender } = renderHook(({ s }: { s: SessionState | null }) => useSessionPhase(s), {
-      initialProps: { s: null as SessionState | null },
-    })
-    act(() => {
-      rerender({ s: state(0) })
-      result.current.start()
-    })
-    expect(result.current.phase).toBe('active')
+  vi.spyOn(window, 'matchMedia').mockReturnValue({ matches: true } as MediaQueryList)
+  const { result, rerender } = renderHook(({ s }: { s: SessionState | null }) => useSessionPhase(s), {
+    initialProps: { s: null as SessionState | null },
+  })
+  act(() => {
+    rerender({ s: state(0) })
+    result.current.start()
+  })
+  expect(result.current.phase).toBe('active')
 
-    rerender({ s: state(1) })
-    expect(result.current.phase).toBe('active')
-    expect(result.current.shown).toBe(1)
-  } finally {
-    window.matchMedia = original
-  }
+  rerender({ s: state(1) })
+  expect(result.current.phase).toBe('active')
+  expect(result.current.shown).toBe(1)
 })
