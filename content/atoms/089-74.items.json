@@ -15,9 +15,13 @@
       "mode": "frac",
       "prompt": "Evaluate.",
       "expr": "7/10 + 15/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "85/100",
-      "demo": "70/100 + 15/100 = *85/100*"
+      "demo": "70/100 + 15/100 = *85/100*",
+      "match": "value"
     }
   ]
 }

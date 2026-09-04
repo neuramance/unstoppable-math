@@ -84,11 +84,15 @@
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Ben writes 7/100 as 0.7. Is Ben right? How do you know?",
-      "expected": "No",
-      "accept": ["no he isn’t", "no he is not", "no ben is not right", "no ben is wrong", "no it is 0.07"],
-      "demo": "*No*. 0.7 is seven tenths. Seven hundredths needs a zero in the tenths column, so it is 0.07."
+      "expected": "No. 0.7 is seven tenths. Seven hundredths needs a zero in the tenths column, so it is 0.07.",
+      "demo": "*No*. 0.7 is seven tenths. Seven hundredths needs a zero in the tenths column, so it is 0.07.",
+      "choices": [
+        "Yes. Seven hundredths and seven tenths have the same value.",
+        "No. Seven hundredths is 7.00 because the two zeros show hundredths.",
+        "No. 0.7 is seven tenths. Seven hundredths needs a zero in the tenths column, so it is 0.07."
+      ]
     }
   ]
 }

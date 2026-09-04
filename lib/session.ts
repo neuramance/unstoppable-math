@@ -119,6 +119,7 @@ function itemPrint(it: LessonItem): string {
         f.band === undefined ? '' : 'band',
         f.columns ?? '',
         f.unitMarks ?? '',
+        ...(f.scale === undefined ? [] : [f.scale]),
       ].join(PART_SEP),
     )
     .join(PART_SEP)
@@ -127,9 +128,21 @@ function itemPrint(it: LessonItem): string {
     ? [it.frac.whole, it.frac.num, it.frac.den].map((s) => (s === null ? '_' : (s ?? ''))).join(PART_SEP)
     : ''
   const numerals = [it.prompt, it.expr ?? ''].join(' ').match(/\d+/g)?.join(PART_SEP) ?? ''
-  return [it.row, it.set ?? 1, it.role, it.mode, it.expected, it.count ?? '', figures, accept, frac, numerals].join(
-    FIELD_SEP,
-  )
+  return [
+    it.row,
+    it.set ?? 1,
+    it.role,
+    it.mode,
+    it.expected,
+    it.count ?? '',
+    figures,
+    accept,
+    frac,
+    numerals,
+    ...(it.numberLine ? [it.numberLine.join(' ')] : []),
+    ...(it.mode === 'line-fractions' ? [it.blank] : []),
+    ...(it.match ? [`${it.match}:2`] : []),
+  ].join(FIELD_SEP)
 }
 export function rowFingerprint(lesson: Lesson, planned: { row: number; set: number }, kind: BlockKind): string {
   const print = rowLesson(lesson, planned, kind).items.map(itemPrint).join(ITEM_SEP)

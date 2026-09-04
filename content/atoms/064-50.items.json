@@ -91,11 +91,15 @@
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Tom says 2/5 + 1/3 can be written as (2 + 1)/(5 + 3). Is Tom right? How do you know?",
-      "expected": "no",
-      "accept": ["no the bottom numbers are not the same"],
-      "demo": "*No*. The bottom numbers are not the same, so these are different kinds of parts. We only write it as a single fraction when the bottom numbers match."
+      "expected": "No. The bottom numbers are not the same, so these are different kinds of parts. We only write it as a single fraction when the bottom numbers match.",
+      "demo": "*No*. The bottom numbers are not the same, so these are different kinds of parts. We only write it as a single fraction when the bottom numbers match.",
+      "choices": [
+        "No. The bottom numbers are not the same, so these are different kinds of parts. We only write it as a single fraction when the bottom numbers match.",
+        "Yes. Add the top numbers and add the bottom numbers to add fractions.",
+        "No. Fractions with different bottom numbers cannot be added in any way."
+      ]
     }
   ]
 }

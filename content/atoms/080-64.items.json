@@ -145,15 +145,15 @@
     {
       "src": "EX:8",
       "role": "test",
-      "mode": "typed",
-      "prompt": "Here is a model. Write a situation it could describe. 7/10 + 2/10",
-      "expected": "A jug holds seven tenths litre. Maya pours in two tenths litre.",
-      "accept": [
-        "A jug holds 7/10 litre. Maya pours in 2/10 litre.",
-        "a jug holding seven tenths litre with two tenths litre poured in",
-        "a jug holding 7/10 litre with 2/10 litre poured in"
-      ],
-      "demo": "Any situation adding two tenths of a unit to seven tenths of a unit. For example: *A jug holds seven tenths litre. Maya pours in two tenths litre.*"
+      "mode": "choice",
+      "prompt": "Which situation matches this model? 7/10 + 2/10",
+      "expected": "A jug holds 7/10 litre. Maya pours in another 2/10 litre.",
+      "demo": "Any situation adding two tenths of a unit to seven tenths of a unit. For example: *A jug holds seven tenths litre. Maya pours in two tenths litre.*",
+      "choices": [
+        "A jug holds 7/10 litre. Maya pours out 2/10 litre.",
+        "Two jugs each hold 7/10 litre.",
+        "A jug holds 7/10 litre. Maya pours in another 2/10 litre."
+      ]
     }
   ]
 }

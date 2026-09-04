@@ -47,6 +47,45 @@ test('every planned row is stamped with the fingerprint of the content it serves
   expect(rowFingerprint(l, { row: 1, set: 1 }, 'atom')).not.toBe(rowFingerprint(l, { row: 1, set: 1 }, 'review'))
 })
 
+test('pre-decimal-fix corrections cannot be reassigned to the next row during replay', () => {
+  const l: Lesson = {
+    topic: 'decimal-history',
+    source: 'test',
+    items: [
+      {
+        row: 1,
+        role: 'test',
+        mode: 'frac',
+        prompt: 'Evaluate 1/5',
+        expected: '1/5',
+        demo: 'One fifth',
+        frac: { num: null, den: null },
+        match: 'value',
+      },
+      { row: 2, role: 'test', mode: 'typed', prompt: 'Two?', expected: '2', demo: 'Two' },
+    ],
+  }
+  const plan: SessionPlan = {
+    startedAt: 0,
+    blocks: [
+      {
+        kind: 'review',
+        rows: [
+          { row: 1, set: 1, fp: '2522e98a519c853e' },
+          { row: 2, set: 1, fp: '6434a6f5124bfea9' },
+        ],
+        budgetMs: 90000,
+      },
+    ],
+  }
+  const trials = ['.2', '1/5', '2'].map((typed, index) => ({ typed, at: index + 1 }))
+  const state = replaySession(l, plan, trials)
+  expect(state.staleAt).toEqual({ block: 0, index: 0, row: 1, set: 1 })
+  expect(state.unreplayed).toBe(3)
+  expect(state.blocks[0].outcomes).toEqual([])
+  expect(rowFingerprint(l, { row: 2, set: 1 }, 'review')).toBe('6434a6f5124bfea9')
+})
+
 test('a fingerprint tracks what grades an answer and ignores what only presents it', () => {
   const l = synth(2, 'mtt')
   const print = (x: Lesson) => rowFingerprint(x, { row: 1, set: 1 }, 'atom')

@@ -87,9 +87,9 @@
     {
       "src": "IT:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn, are these halves? How do you know?",
-      "expected": "yes",
+      "expected": "Yes, because the parts are the same size.",
       "demo": "*Yes*, because the parts are the same size.",
       "figures": [
         {
@@ -98,14 +98,18 @@
           "parts": 2
         }
       ],
-      "accept": ["Yes, because the parts are the same size."]
+      "choices": [
+        "Yes, because the parts are the same size.",
+        "Yes, because the number of parts is enough; their sizes do not matter.",
+        "No, because only circles can represent fractions."
+      ]
     },
     {
       "src": "IT:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn, are these thirds? How do you know?",
-      "expected": "yes",
+      "expected": "Yes, because the parts are the same size.",
       "demo": "*Yes*, because the parts are the same size.",
       "figures": [
         {
@@ -114,14 +118,18 @@
           "parts": 3
         }
       ],
-      "accept": ["Yes, because the parts are the same size."]
+      "choices": [
+        "Yes, because the number of parts is enough; their sizes do not matter.",
+        "No, because only circles can represent fractions.",
+        "Yes, because the parts are the same size."
+      ]
     },
     {
       "src": "IT:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn, are these fifths? How do you know?",
-      "expected": "no",
+      "expected": "No, because the parts are not the same size.",
       "demo": "*No*, because the parts are not the same size.",
       "figures": [
         {
@@ -131,7 +139,11 @@
           "bounds": [0.1, 0.25, 0.45, 0.6]
         }
       ],
-      "accept": ["No, because the parts are not the same size."]
+      "choices": [
+        "No, because only circles can represent fractions.",
+        "No, because the parts are not the same size.",
+        "Yes, because the number of parts is enough; their sizes do not matter."
+      ]
     }
   ]
 }

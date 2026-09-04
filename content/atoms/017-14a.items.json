@@ -58,11 +58,15 @@
     {
       "src": "TBL:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Which fraction is greater? How do you know?  5/3  8/3",
-      "expected": "8/3",
+      "expected": "8/3 is greater, because it has more parts.",
       "demo": "*8/3* is greater, because it has more parts.",
-      "accept": ["8/3 is greater, because it has more parts."]
+      "choices": [
+        "8/3 is greater, because it has more parts.",
+        "Equal bottom numbers mean the fractions must have equal values.",
+        "A larger top number makes each individual part larger."
+      ]
     }
   ]
 }

@@ -26,10 +26,10 @@ export type Figure = {
   unitMarks?: UnitMarks
   band?: true
   bounds?: number[]
+  scale?: number
 }
 export type CountKind = 'units' | 'parts' | 'counted'
 const STRIP_KINDS: ReadonlySet<FigureKind> = new Set<FigureKind>(['number-line', 'bar'])
-const SHADE_KINDS: ReadonlySet<FigureKind> = new Set<FigureKind>(['number-line', 'bar', 'grid'])
 export function takesOrientation(kind: FigureKind): boolean {
   return STRIP_KINDS.has(kind)
 }
@@ -80,10 +80,7 @@ export function turnsOnly(prev: readonly Figure[] | undefined, next: readonly Fi
     a.label === b.label
   )
 }
-export function shadeable(kind: FigureKind): boolean {
-  return SHADE_KINDS.has(kind)
-}
-const MAX_STRIP_UNITS = 5
+const MAX_STRIP_UNITS = 10
 const MAX_ROUND_UNITS = 5
 const MAX_GRID_UNITS = 1
 const MAX_STRIP_CELLS = 60
@@ -363,6 +360,17 @@ export function sectorAngle(offset: number): number {
   console.assert(offset >= 0)
   console.assert(offset <= 1)
   return TURN * offset - QUARTER_TURN
+}
+export function partAngle(sides: number, tilt: number, offset: number): number {
+  if (sides < 3) return sectorAngle(offset)
+  const edge = Math.floor(offset * sides)
+  const share = offset * sides - edge
+  const a = (TURN * edge) / sides - QUARTER_TURN + tilt
+  const b = a + TURN / sides
+  const x = (1 - share) * Math.cos(a) + share * Math.cos(b)
+  const y = (1 - share) * Math.sin(a) + share * Math.sin(b)
+  const angle = Math.atan2(y, x)
+  return angle + TURN * Math.round((a - angle) / TURN)
 }
 export function spansMajorArc(from: number, to: number): boolean {
   console.assert(from >= 0)

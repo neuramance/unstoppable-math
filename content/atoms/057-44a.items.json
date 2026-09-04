@@ -5,11 +5,14 @@
       "src": "II:6",
       "role": "model",
       "mode": "frac",
-      "prompt": "I’m going to who you how to decide whether two fractions are equivalent.  20/12  5/4  The fractions are equivalent if this is equal to one. My turn first. Five times what is twenty?",
+      "prompt": "I’m going to show you how to decide whether two fractions are equivalent.  20/12  5/4  The fractions are equivalent if this is equal to one. My turn first. Five times what is twenty?",
       "expected": "4",
       "demo": "Five times *four* is twenty.",
       "expr": "20/12 = 5/4 ×",
-      "frac": { "num": null, "den": "" }
+      "frac": {
+        "num": null,
+        "den": ""
+      }
     },
     {
       "src": "II:8",
@@ -19,7 +22,10 @@
       "expected": "3",
       "demo": "Four times *three* is twelve.",
       "expr": "20/12 = 5/4 ×",
-      "frac": { "num": "4", "den": null }
+      "frac": {
+        "num": "4",
+        "den": null
+      }
     },
     {
       "src": "II:10",
@@ -37,7 +43,10 @@
       "expected": "4",
       "demo": "Five times *four* is twenty.",
       "expr": "20/12 = 5/3 ×",
-      "frac": { "num": null, "den": "" }
+      "frac": {
+        "num": null,
+        "den": ""
+      }
     },
     {
       "src": "II:16",
@@ -45,17 +54,28 @@
       "mode": "frac",
       "prompt": "Three times what is twelve?",
       "expected": "4",
-      "demo": "Four times four is twelve.  20/12 = 5/3 × 4/4  Top and bottom are the same, so this is equal to one. The fractions are *equivalent*.",
+      "demo": "Three times four is twelve.  20/12 = 5/3 × 4/4  Top and bottom are the same, so this is equal to one. The fractions are *equivalent*.",
       "expr": "20/12 = 5/3 ×",
-      "frac": { "num": "4", "den": null }
+      "frac": {
+        "num": "4",
+        "den": null
+      }
     },
     {
       "src": "II:22",
       "role": "model",
       "mode": "typed",
-      "prompt": "First, the top numbers. If the bigger number is in the times table of the smaller number, they might be equivalent. If it is not, they are not equivalent. For example, here are two fractions.  20/12  6/3",
+      "prompt": "First, look for a whole-number multiplier between the top numbers. If there is one, check whether the same multiplier connects the bottom numbers. If there is no whole-number multiplier, we need another way to check. For 20/12 and 6/3, compare the cross-products: twenty times three and six times twelve.",
       "expected": "not equivalent",
-      "demo": "Twenty is not in the six times table, so these fractions are *not equivalent*."
+      "demo": "20 × 3 = 60, while 6 × 12 = 72. The cross-products differ, so these fractions are *not equivalent*."
+    },
+    {
+      "src": "II:22a",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Fractions can be equivalent even when their top numbers are not in each other’s whole-number times tables. For example, 6/9 and 4/6.",
+      "expected": "equivalent",
+      "demo": "Both fractions simplify to *2/3*, so they are equivalent. Their cross-products also match: 6 × 6 = 36 and 4 × 9 = 36."
     },
     {
       "src": "II:24",
@@ -85,9 +105,9 @@
       "src": "II:30",
       "role": "model",
       "mode": "typed",
-      "prompt": "29/12  10/3  The top numbers are twenty-nine and ten.",
+      "prompt": "29/12 and 10/3. There is no whole-number multiplier from ten to twenty-nine. Compare the cross-products: twenty-nine times three and ten times twelve.",
       "expected": "not equivalent",
-      "demo": "Twenty-nine is not in the ten times table, so these fractions are *not equivalent*."
+      "demo": "29 × 3 = 87, while 10 × 12 = 120. The cross-products differ, so these fractions are *not equivalent*."
     },
     {
       "src": "IT:2",
@@ -97,7 +117,10 @@
       "expected": "6",
       "demo": "Five times *six* is thirty.",
       "expr": "30/18 = 5/3 ×",
-      "frac": { "num": null, "den": "" }
+      "frac": {
+        "num": null,
+        "den": ""
+      }
     },
     {
       "src": "IT:3",
@@ -107,7 +130,10 @@
       "expected": "6",
       "demo": "Three times *six* is eighteen.",
       "expr": "30/18 = 5/3 ×",
-      "frac": { "num": "6", "den": null }
+      "frac": {
+        "num": "6",
+        "den": null
+      }
     },
     {
       "src": "IT:4",
@@ -133,7 +159,10 @@
       "expected": "3",
       "demo": "Ten times *three* is thirty.",
       "expr": "30/12 = 10/3 ×",
-      "frac": { "num": null, "den": "" }
+      "frac": {
+        "num": null,
+        "den": ""
+      }
     },
     {
       "src": "IT:7",
@@ -143,7 +172,10 @@
       "expected": "4",
       "demo": "Three times *four* is twelve.",
       "expr": "30/12 = 10/3 ×",
-      "frac": { "num": "3", "den": null }
+      "frac": {
+        "num": "3",
+        "den": null
+      }
     },
     {
       "src": "IT:8",
@@ -169,7 +201,10 @@
       "expected": "3",
       "demo": "Ten times *three* is thirty.",
       "expr": "30/12 = 10/4 ×",
-      "frac": { "num": null, "den": "" }
+      "frac": {
+        "num": null,
+        "den": ""
+      }
     },
     {
       "src": "IT:11",
@@ -179,7 +214,10 @@
       "expected": "3",
       "demo": "Four times *three* is twelve.",
       "expr": "30/12 = 10/4 ×",
-      "frac": { "num": "3", "den": null }
+      "frac": {
+        "num": "3",
+        "den": null
+      }
     },
     {
       "src": "IT:12",
@@ -205,7 +243,10 @@
       "expected": "6",
       "demo": "Five times *six* is thirty.",
       "expr": "30/12 = 5/2 ×",
-      "frac": { "num": null, "den": "" }
+      "frac": {
+        "num": null,
+        "den": ""
+      }
     },
     {
       "src": "IT:15",
@@ -215,7 +256,10 @@
       "expected": "6",
       "demo": "Two times *six* is twelve.",
       "expr": "30/12 = 5/2 ×",
-      "frac": { "num": "6", "den": null }
+      "frac": {
+        "num": "6",
+        "den": null
+      }
     },
     {
       "src": "IT:16",
@@ -236,26 +280,41 @@
     {
       "src": "IT:18",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Are these fractions equivalent, yes or no? How do you know?  15/20  3/4",
-      "expected": "yes",
-      "demo": "*Yes*. Three times five is fifteen, and four times five is twenty, so the fraction is five over five, which is equal to one."
+      "expected": "Yes. Three times five is fifteen, and four times five is twenty, so the fraction is five over five, which is equal to one.",
+      "demo": "*Yes*. Three times five is fifteen, and four times five is twenty, so the fraction is five over five, which is equal to one.",
+      "choices": [
+        "No. Different bottom numbers always mean the fractions have different values.",
+        "Yes. Three times five is fifteen, and four times five is twenty, so the fraction is five over five, which is equal to one.",
+        "Yes. Changing both the top and bottom always keeps the same value."
+      ]
     },
     {
       "src": "IT:19",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Are these fractions equivalent, yes or no? How do you know?  15/20  3/5",
-      "expected": "no",
-      "demo": "*No*. Three times five is fifteen, but five times four is twenty, so the fraction is five over four, which is not equal to one."
+      "expected": "No. Three times five is fifteen, but five times four is twenty, so the fraction is five over four, which is not equal to one.",
+      "demo": "*No*. Three times five is fifteen, but five times four is twenty, so the fraction is five over four, which is not equal to one.",
+      "choices": [
+        "No. Three times five is fifteen, but five times four is twenty, so the fraction is five over four, which is not equal to one.",
+        "Yes. Changing both the top and bottom always keeps the same value.",
+        "No. Different bottom numbers always mean the fractions have different values."
+      ]
     },
     {
       "src": "EX:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Are these fractions equivalent, yes or no? How do you know?  30/21  10/4",
-      "expected": "no",
-      "demo": "*No*. Four times three is twelve, not twenty-one — twenty-one isn’t in the four times table, so we can’t be multiplying by a fraction equal to one."
+      "expected": "No. Ten times three is thirty, but four times three is twelve, not twenty-one. The multipliers differ, so the fractions are not equivalent.",
+      "demo": "*No*. Ten times three is thirty, but four times three is twelve, not twenty-one. The multipliers differ, so the fractions are not equivalent.",
+      "choices": [
+        "No. Ten times three is thirty, but four times three is twelve, not twenty-one. The multipliers differ, so the fractions are not equivalent.",
+        "Yes. Changing both the top and bottom always keeps the same value.",
+        "No. Different bottom numbers always mean the fractions have different values."
+      ]
     }
   ]
 }

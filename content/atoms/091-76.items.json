@@ -7,7 +7,10 @@
       "mode": "frac",
       "prompt": "We’ve seen that we can convert a number from fraction form into decimal form.  52/100  0.52  We can also convert number in decimal form into fraction form. My turn first: here is 0.52. There are two digits to the right of the decimal point, so these are hundredths. Fifty-two hundredths.",
       "expr": "0.52 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "52/100",
       "demo": "Fifty-two hundredths: *52/100*."
     },
@@ -17,7 +20,10 @@
       "mode": "frac",
       "prompt": "Watch what I change. Three digits to the right of the decimal point, so five-hundred twenty-nine thousandths.",
       "expr": "0.529 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "529/1000",
       "demo": "Five-hundred twenty-nine thousandths: *529/1000*."
     },
@@ -27,7 +33,10 @@
       "mode": "frac",
       "prompt": "Watch what I change again. Two digits to the right of the decimal point, so two hundredths.",
       "expr": "0.02 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "2/100",
       "demo": "Two hundredths: *2/100*. Each time, the digits go on top. Then, the number of digits to the right of the decimal point tells us how many zeroes to write on the bottom."
     },
@@ -37,7 +46,10 @@
       "mode": "frac",
       "prompt": "Your turn. Rewrite in fraction form.",
       "expr": "0.31 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "31/100",
       "demo": "Two digits to the right of the decimal point, so hundredths: *31/100*."
     },
@@ -47,7 +59,10 @@
       "mode": "frac",
       "prompt": "Rewrite in fraction form.",
       "expr": "0.031 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "31/1000",
       "demo": "Three digits to the right of the decimal point, so thousandths: *31/1000*."
     },
@@ -57,7 +72,10 @@
       "mode": "frac",
       "prompt": "Rewrite in fraction form.",
       "expr": "0.03 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "3/100",
       "demo": "Two digits to the right of the decimal point, so hundredths: *3/100*."
     },
@@ -67,7 +85,10 @@
       "mode": "frac",
       "prompt": "Rewrite in fraction form.",
       "expr": "0.99 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "99/100",
       "demo": "Two digits to the right of the decimal point, so hundredths: *99/100*."
     },
@@ -77,7 +98,10 @@
       "mode": "frac",
       "prompt": "Rewrite in fraction form.",
       "expr": "0.4 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "4/10",
       "demo": "One digit to the right of the decimal point, so tenths: *4/10*."
     },
@@ -87,7 +111,10 @@
       "mode": "frac",
       "prompt": "Rewrite in fraction form.",
       "expr": "0.40 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "40/100",
       "demo": "Two digits to the right of the decimal point, so hundredths: *40/100*."
     },
@@ -97,18 +124,25 @@
       "mode": "frac",
       "prompt": "Rewrite in fraction form.",
       "expr": "1.00 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "100/100",
       "demo": "Two digits to the right of the decimal point, so hundredths: *100/100*."
     },
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Jen says 0.5 and 0.05 are the same because both have a five. Is Jen right? How do you know?",
-      "expected": "No",
-      "accept": ["no she isn’t", "no she is not", "no jen is not right", "no jen is wrong", "no they are not the same"],
-      "demo": "*No*. 0.5 is five tenths and 0.05 is five hundredths. The column the five sits in decides its value."
+      "expected": "No. 0.5 is five tenths and 0.05 is five hundredths. The column the five sits in decides its value.",
+      "demo": "*No*. 0.5 is five tenths and 0.05 is five hundredths. The column the five sits in decides its value.",
+      "choices": [
+        "No. 0.05 is larger, because more decimal places always mean a larger number.",
+        "No. 0.5 is five tenths and 0.05 is five hundredths. The column the five sits in decides its value.",
+        "Yes. A digit has the same value wherever it appears after the point."
+      ]
     }
   ]
 }

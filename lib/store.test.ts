@@ -16,7 +16,7 @@ function fakeClient(session: string | null, fresh: string, rows: Row[], opts: Fa
       await (opts.hold ?? Promise.resolve())
       return opts.select ?? { data: rows, error: null }
     },
-    upsert: async ({ user_id, key, value }: Write) => {
+    upsert: async ({ user_id, key, value }: Write): Promise<{ error: { message: string } | null }> => {
       writes.push({ user_id, key, value })
       return { error: null }
     },
@@ -36,7 +36,7 @@ function fakeClient(session: string | null, fresh: string, rows: Row[], opts: Fa
     },
     signInAnonymously: async () => ({ data: { user: { id: fresh } }, error: null }),
   }
-  return { client: { auth, from: () => table } as unknown as Client, writes }
+  return { client: { auth, from: () => table } as unknown as Client, writes, table }
 }
 
 async function boot(factory: () => Client) {
@@ -156,6 +156,136 @@ test('progress made before the first sign-in is adopted by the signed-in user', 
   await store.flushed()
   expect(localStorage.getItem('um.session.nf-fractions:u')).toBe('[1]')
   expect(fake.writes.map((w) => w.key)).toEqual(['um.session.nf-fractions:u'])
+})
+
+test.each(['setItem', 'removeItem'] as const)(
+  'a failed migration %s preserves its source and identity',
+  async (method) => {
+    const key = 'um.session.x:local'
+    localStorage.setItem('um.uid', 'local')
+    localStorage.setItem(key, '[1]')
+    localStorage.setItem('um.unsynced', JSON.stringify([key]))
+    vi.spyOn(Storage.prototype, method).mockImplementation(() => {
+      throw new Error('storage unavailable')
+    })
+    const fake = fakeClient('u', 'u', [])
+    await expect(boot(() => fake.client)).rejects.toThrow('storage unavailable')
+    expect(localStorage.getItem(key)).toBe('[1]')
+    expect(localStorage.getItem('um.uid')).toBe('local')
+    expect(unsyncedKeys()).toEqual([key])
+    expect(fake.writes).toEqual([])
+  },
+)
+
+test('a failed restoration blocks readiness and uploads from stale local history', async () => {
+  const key = 'um.session.x:u'
+  localStorage.setItem('um.uid', 'u')
+  localStorage.setItem(key, '[1]')
+  const setItem = Storage.prototype.setItem
+  vi.spyOn(Storage.prototype, 'setItem').mockImplementation(function (this: Storage, key, value) {
+    if (key === 'um.session.x:u') throw new Error('quota')
+    setItem.call(this, key, value)
+  })
+  const fake = fakeClient('u', 'u', [{ key, value: '[1,2]' }])
+  await expect(boot(() => fake.client)).rejects.toThrow('quota')
+  const store = await import('./store')
+  expect(store.readItem(key)).toBe('[1]')
+  expect(store.writeItem(key, '[1,3]')).toBe(false)
+  await store.flushed()
+  expect(fake.writes).toEqual([])
+})
+
+test('failed downloads retry before keeping new progress local until the next safe reconciliation', async () => {
+  vi.useFakeTimers()
+  try {
+    const key = 'um.session.x:u'
+    localStorage.setItem('um.uid', 'u')
+    localStorage.setItem(key, '[1]')
+    const fake = fakeClient('u', 'u', [], { select: { data: null, error: { message: 'offline' } } })
+    const select = vi.spyOn(fake.table, 'select').mockRejectedValueOnce(new Error('connection reset'))
+    const opening = boot(() => fake.client)
+    await vi.dynamicImportSettled()
+    await vi.runAllTimersAsync()
+    const store = await opening
+    expect(select).toHaveBeenCalledTimes(3)
+    store.writeItem(key, '[1,3]')
+    expect(await store.flushed()).toBe(false)
+    expect(fake.writes).toEqual([])
+    expect(unsyncedKeys()).toEqual([key])
+    const online = fakeClient('u', 'u', [{ key, value: '[1,2]' }])
+    const reopened = await boot(() => online.client)
+    expect(await reopened.flushed()).toBe(true)
+    expect(JSON.parse(reopened.readItem(key)!)).toEqual([1, 2, 1, 3])
+    expect(online.writes[0].value).toBe(reopened.readItem(key))
+  } finally {
+    vi.useRealTimers()
+  }
+})
+
+test('failed uploads retry with capped backoff, coalescing edits without dropping unrelated work', async () => {
+  vi.useFakeTimers()
+  try {
+    const fake = fakeClient('u', 'u', [])
+    const store = await boot(() => fake.client)
+    const upsert = vi.spyOn(fake.table, 'upsert').mockResolvedValue({ error: { message: 'offline' } })
+    upsert.mockRejectedValueOnce(new Error('connection reset'))
+    store.writeItem('um.session.x:u', '[1]')
+    expect(await store.flushed()).toBe(false)
+    store.writeItem('um.session.x:u', '[1,2]')
+    store.writeItem('um.profile:u', '{}')
+    let attempts = 1
+    for (const delay of [1000, 2000, 4000, 8000, 16000, 30000, 30000]) {
+      await vi.advanceTimersByTimeAsync(delay - 1)
+      expect(upsert).toHaveBeenCalledTimes(attempts)
+      const attempt = store.flushed()
+      await vi.advanceTimersByTimeAsync(1)
+      expect(await attempt).toBe(false)
+      expect(upsert).toHaveBeenCalledTimes(++attempts)
+      expect(unsyncedKeys()).toEqual(['um.session.x:u', 'um.profile:u'])
+    }
+    upsert.mockRestore()
+    const recovered = store.flushed()
+    await vi.advanceTimersByTimeAsync(30000)
+    expect(await recovered).toBe(true)
+    expect(fake.writes.map(({ key, value }) => ({ key, value }))).toEqual([
+      { key: 'um.session.x:u', value: '[1,2]' },
+      { key: 'um.profile:u', value: '{}' },
+    ])
+    expect(unsyncedKeys()).toEqual([])
+    await vi.advanceTimersByTimeAsync(60000)
+    expect(fake.writes).toHaveLength(2)
+  } finally {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+  }
+})
+
+test('a failed delete retries after an acknowledged write without resurrecting it', async () => {
+  vi.useFakeTimers()
+  try {
+    const fake = fakeClient('u', 'u', [])
+    const store = await boot(() => fake.client)
+    store.writeItem('um.session.x:u', '[1]')
+    await store.flushed()
+    vi.spyOn(fake.table, 'delete').mockImplementationOnce(() => ({
+      eq: () => ({
+        eq: async () => {
+          throw new Error('offline')
+        },
+      }),
+    }))
+    store.removeItem('um.session.x:u')
+    expect(await store.flushed()).toBe(false)
+    expect(unsyncedKeys()).toEqual(['um.session.x:u'])
+    const recovered = store.flushed()
+    await vi.advanceTimersByTimeAsync(1000)
+    expect(await recovered).toBe(true)
+    expect(fake.writes.map(({ value }) => value)).toEqual(['[1]', null])
+    expect(unsyncedKeys()).toEqual([])
+  } finally {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+  }
 })
 
 test('the server heals only what local never changed since it was last confirmed', async () => {

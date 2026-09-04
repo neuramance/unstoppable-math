@@ -16,7 +16,8 @@ let uid = 'local'
 let client: Client | null = null
 const unsynced = new Set<string>()
 const pending = new Map<string, string | null>()
-let draining: Promise<void> | null = null
+let draining: Promise<boolean> | null = null
+let retryDelay = 1000
 
 export function activeId(): string {
   return uid
@@ -115,26 +116,38 @@ export function mergePlan(
   return { toLocal, toServer }
 }
 
-async function drain(sb: Client): Promise<void> {
+async function drain(sb: Client): Promise<boolean> {
   try {
-    for (const [key, value] of pending) {
-      pending.delete(key)
-      const table = sb.from('app_state')
-      const { error } =
-        value === null
-          ? await table.delete().eq('user_id', uid).eq('key', key)
-          : await table.upsert(
+    while (pending.size > 0) {
+      const [key, value] = pending.entries().next().value!
+      const { error } = await Promise.resolve().then(() => {
+        const table = sb.from('app_state')
+        return value === null
+          ? table.delete().eq('user_id', uid).eq('key', key)
+          : table.upsert(
               { user_id: uid, key, value, updated_at: new Date().toISOString() },
               { onConflict: 'user_id,key' },
             )
+      })
       if (error) {
         console.warn(`[store] sync ${value === null ? 'delete' : 'write'} failed for ${key}: ${error.message}`)
-        continue
+        return false
       }
-      if (!pending.has(key)) markUnsynced(key, false)
+      if (pending.get(key) === value) {
+        pending.delete(key)
+        markUnsynced(key, false)
+      }
     }
+    return true
+  } catch (error) {
+    console.warn('[store] sync request failed', error)
+    return false
   } finally {
     draining = null
+    if (pending.size > 0) {
+      draining = new Promise<void>((resolve) => setTimeout(resolve, retryDelay)).then(() => drain(sb))
+      retryDelay = Math.min(retryDelay * 2, 30_000)
+    } else retryDelay = 1000
   }
 }
 
@@ -146,8 +159,8 @@ function push(key: string, value: string | null): void {
   draining ??= drain(client)
 }
 
-export function flushed(): Promise<void> {
-  return draining ?? Promise.resolve()
+export function flushed(): Promise<boolean> {
+  return draining ?? Promise.resolve(unsynced.size === 0)
 }
 
 async function signedIn(sb: Client): Promise<string> {
@@ -163,12 +176,26 @@ function rekey(from: string, to: string): void {
   for (const [key, value] of localEntries()) {
     if (!key.includes(`:${from}`)) continue
     const moved = key.replace(`:${from}`, `:${to}`)
-    try {
-      localStorage.removeItem(key)
-      localStorage.setItem(moved, value)
-    } catch {}
+    localStorage.setItem(moved, value)
+    localStorage.removeItem(key)
     markUnsynced(key, false)
     markUnsynced(moved, true)
+  }
+}
+
+async function serverRows(sb: Client): Promise<Row[]> {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const { data, error } = await sb.from('app_state').select('key,value')
+      if (error) throw error
+      return (data ?? []).flatMap((r) => {
+        const value = typeof r.value === 'string' ? r.value : r.value === null ? null : JSON.stringify(r.value)
+        return value === null ? [] : [{ key: r.key, value }]
+      })
+    } catch (error) {
+      if (attempt === 2) throw error
+      await new Promise<void>((resolve) => setTimeout(resolve, 1000 * 2 ** attempt))
+    }
   }
 }
 
@@ -203,20 +230,15 @@ async function open(): Promise<void> {
   try {
     localStorage.setItem(UID_CACHE, id)
   } catch {}
-  const { data, error } = await sb.from('app_state').select('key,value')
-  if (error) {
-    console.warn(`[store] sync read failed: ${error.message}`)
-    client = sb
+  let rows: Row[]
+  try {
+    rows = await serverRows(sb)
+  } catch (error) {
+    console.warn('[store] sync read failed; continuing locally until reload', error)
     return
   }
-  const rows = (data ?? []).flatMap((r) => {
-    const value = typeof r.value === 'string' ? r.value : r.value === null ? null : JSON.stringify(r.value)
-    return value === null ? [] : [{ key: r.key, value }]
-  })
   const plan = mergePlan(localEntries(), unsynced, rows)
-  try {
-    for (const r of plan.toLocal) localStorage.setItem(r.key, r.value)
-  } catch {}
+  for (const r of plan.toLocal) localStorage.setItem(r.key, r.value)
   client = sb
   for (const change of plan.toServer) push(change.key, change.value)
 }

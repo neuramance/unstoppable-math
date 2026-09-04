@@ -2,6 +2,40 @@
   "label": "44b",
   "items": [
     {
+      "src": "NOTE:1-4",
+      "role": "model",
+      "mode": "typed",
+      "prompt": "Looking at the top numbers of two fractions… if the bigger number is in the times table of the smaller number, then they might be equivalent. 20/12 and 5/3",
+      "expected": "four",
+      "demo": "Five times four is twenty."
+    },
+    {
+      "src": "NOTE:5",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "Five times four is twenty. And I write that here.",
+      "expr": "20/12 = 5/3 ×",
+      "frac": {
+        "num": "4",
+        "den": ""
+      },
+      "expected": "4",
+      "demo": "The top numbers have a multiplier of *four*."
+    },
+    {
+      "src": "NOTE:6-7",
+      "role": "model",
+      "mode": "frac",
+      "prompt": "To be equivalent, this fraction must be one. So top and bottom must be the same.",
+      "expr": "20/12 = 5/3 ×",
+      "frac": {
+        "num": "4",
+        "den": "4"
+      },
+      "expected": "4/4",
+      "demo": "*4/4* is equal to one."
+    },
+    {
       "src": "IT:2",
       "role": "test",
       "mode": "typed",
@@ -21,19 +55,22 @@
       "src": "IT:8",
       "role": "test",
       "mode": "frac",
-      "prompt": "Second, to be equivalent, this fraction must be one. So top and bottom must be the same.",
+      "prompt": "To test equivalence, try a fraction equal to one. Its top and bottom must be the same. The question mark means we still need to check whether the equation is true.",
       "expected": "4",
       "demo": "*4*. Top and bottom must be the same.",
-      "expr": "20/12 = 5/6 ×",
-      "frac": { "num": "4", "den": null }
+      "expr": "20/12 ?= 5/6 ×",
+      "frac": {
+        "num": "4",
+        "den": null
+      }
     },
     {
       "src": "IT:10",
       "role": "test",
       "mode": "typed",
-      "prompt": "Third, is it true that six times four is twelve?  20/12 = 5/6 × 4/4",
+      "prompt": "Third, is it true that six times four is twelve?  20/12 ?= 5/6 × 4/4",
       "expected": "no",
-      "demo": "*No*. So the fractions aren’t equivalent."
+      "demo": "*No*. Six times four is twenty-four, not twelve. So the fractions are not equivalent."
     }
   ]
 }

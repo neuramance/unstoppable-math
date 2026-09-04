@@ -39,7 +39,7 @@ export const flush = () => act(async () => {})
 
 export const line = (parts: number) => ({ kind: 'number-line' as const, units: 3, parts })
 
-export const ASKED: Lesson = {
+export const ASKED = {
   topic: 'asked',
   source: 'asked',
   items: [
@@ -54,7 +54,7 @@ export const ASKED: Lesson = {
     },
     { row: 1, role: 'test', mode: 'typed', prompt: 'And now?', expected: 'seven', demo: 'Seven.', figures: [line(7)] },
   ],
-}
+} satisfies Lesson
 
 export function Host({
   lesson = ASKED,

@@ -15,7 +15,10 @@
       "mode": "frac",
       "prompt": "Or, I could write it as a sum of just two fractions, like this:",
       "expr": "5/6 = 1/6 +",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "4/6",
       "demo": "*5/6 = 1/6 + 4/6*."
     },
@@ -25,7 +28,10 @@
       "mode": "frac",
       "prompt": "Or… I could write it as a sum of just two fractions like this:",
       "expr": "5/6 = 2/6 +",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "3/6",
       "demo": "*5/6 = 2/6 + 3/6*."
     },
@@ -43,7 +49,10 @@
       "mode": "frac",
       "prompt": "Or, I could write it as a sum of just two fractions, like this:",
       "expr": "10/7 = 1/7 +",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "9/7",
       "demo": "*10/7 = 1/7 + 9/7*."
     },
@@ -53,7 +62,10 @@
       "mode": "frac",
       "prompt": "Or… I could write it as a sum of just two fractions like this:",
       "expr": "10/7 = 2/7 +",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "8/7",
       "demo": "*10/7 = 2/7 + 8/7*."
     },
@@ -63,7 +75,10 @@
       "mode": "frac",
       "prompt": "Or like this:",
       "expr": "10/7 = 3/7 +",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "7/7",
       "demo": "*10/7 = 3/7 + 7/7*."
     },
@@ -73,7 +88,10 @@
       "mode": "frac",
       "prompt": "Like this:",
       "expr": "10/7 = 4/7 +",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "6/7",
       "demo": "*10/7 = 4/7 + 6/7*."
     },
@@ -83,129 +101,57 @@
       "mode": "frac",
       "prompt": "Or like this:",
       "expr": "10/7 = 5/7 +",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "5/7",
       "demo": "*10/7 = 5/7 + 5/7*."
     },
     {
-      "src": "IT:2a",
+      "src": "IT:2",
       "role": "test",
-      "mode": "frac",
-      "prompt": "Your turn to rewrite fractions as the sum of two fractions. Rewrite this as the sum of two fractions in two different ways: 4/10",
-      "expr": "4/10 = 1/10 +",
-      "frac": { "num": null, "den": null },
-      "expected": "3/10",
-      "demo": "*4/10 = 1/10 + 3/10*."
+      "mode": "decompose",
+      "prompt": "Your turn to rewrite fractions as the sum of two fractions. Rewrite this as the sum of two fractions in two different ways: 4/10 Keep 10 on the bottom and use positive whole numbers on top. Swapping the addends does not count as a new way.",
+      "expr": "4/10",
+      "expected": "1 3;2 2",
+      "demo": "One set of correct sums is: 1/10 + 3/10; 2/10 + 2/10. Each sum equals 4/10."
     },
     {
-      "src": "IT:2b",
+      "src": "IT:3",
       "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in two different ways: 4/10",
-      "expr": "4/10 = 2/10 +",
-      "frac": { "num": null, "den": null },
-      "expected": "2/10",
-      "demo": "*4/10 = 2/10 + 2/10*."
+      "mode": "decompose",
+      "prompt": "Rewrite this as the sum of two fractions in two different ways: 4/3 Keep 3 on the bottom and use positive whole numbers on top. Swapping the addends does not count as a new way.",
+      "expr": "4/3",
+      "expected": "1 3;2 2",
+      "demo": "One set of correct sums is: 1/3 + 3/3; 2/3 + 2/3. Each sum equals 4/3."
     },
     {
-      "src": "IT:3a",
+      "src": "IT:4",
       "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in two different ways: 4/3",
-      "expr": "4/3 = 1/3 +",
-      "frac": { "num": null, "den": null },
-      "expected": "3/3",
-      "demo": "*4/3 = 1/3 + 3/3*."
+      "mode": "decompose",
+      "prompt": "Rewrite this as the sum of two fractions in two different ways: 4/32 Keep 32 on the bottom and use positive whole numbers on top. Swapping the addends does not count as a new way.",
+      "expr": "4/32",
+      "expected": "1 3;2 2",
+      "demo": "One set of correct sums is: 1/32 + 3/32; 2/32 + 2/32. Each sum equals 4/32."
     },
     {
-      "src": "IT:3b",
+      "src": "IT:5",
       "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in two different ways: 4/3",
-      "expr": "4/3 = 2/3 +",
-      "frac": { "num": null, "den": null },
-      "expected": "2/3",
-      "demo": "*4/3 = 2/3 + 2/3*."
+      "mode": "decompose",
+      "prompt": "Rewrite this as the sum of two fractions in three different ways: 6/32 Keep 32 on the bottom and use positive whole numbers on top. Swapping the addends does not count as a new way.",
+      "expr": "6/32",
+      "expected": "1 5;2 4;3 3",
+      "demo": "One set of correct sums is: 1/32 + 5/32; 2/32 + 4/32; 3/32 + 3/32. Each sum equals 6/32."
     },
     {
-      "src": "IT:4a",
+      "src": "IT:6",
       "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in two different ways: 4/32",
-      "expr": "4/32 = 1/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "3/32",
-      "demo": "*4/32 = 1/32 + 3/32*."
-    },
-    {
-      "src": "IT:4b",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in two different ways: 4/32",
-      "expr": "4/32 = 2/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "2/32",
-      "demo": "*4/32 = 2/32 + 2/32*."
-    },
-    {
-      "src": "IT:5a",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in three different ways: 6/32",
-      "expr": "6/32 = 1/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "5/32",
-      "demo": "*6/32 = 1/32 + 5/32*."
-    },
-    {
-      "src": "IT:5b",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in three different ways: 6/32",
-      "expr": "6/32 = 2/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "4/32",
-      "demo": "*6/32 = 2/32 + 4/32*."
-    },
-    {
-      "src": "IT:5c",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in three different ways: 6/32",
-      "expr": "6/32 = 3/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "3/32",
-      "demo": "*6/32 = 3/32 + 3/32*."
-    },
-    {
-      "src": "IT:6a",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in three different ways: 7/32",
-      "expr": "7/32 = 1/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "6/32",
-      "demo": "*7/32 = 1/32 + 6/32*."
-    },
-    {
-      "src": "IT:6b",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in three different ways: 7/32",
-      "expr": "7/32 = 2/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "5/32",
-      "demo": "*7/32 = 2/32 + 5/32*."
-    },
-    {
-      "src": "IT:6c",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "Rewrite this as the sum of two fractions in three different ways: 7/32",
-      "expr": "7/32 = 3/32 +",
-      "frac": { "num": null, "den": null },
-      "expected": "4/32",
-      "demo": "*7/32 = 3/32 + 4/32*."
+      "mode": "decompose",
+      "prompt": "Rewrite this as the sum of two fractions in three different ways: 7/32 Keep 32 on the bottom and use positive whole numbers on top. Swapping the addends does not count as a new way.",
+      "expr": "7/32",
+      "expected": "1 6;2 5;3 4",
+      "demo": "One set of correct sums is: 1/32 + 6/32; 2/32 + 5/32; 3/32 + 4/32. Each sum equals 7/32."
     }
   ]
 }

@@ -89,8 +89,13 @@
       "expected": "6",
       "demo": "*6*",
       "figures": [
-        { "kind": "bar", "units": 3, "parts": 1, "counted": 3, "orientation": "vertical" },
-        { "kind": "bar", "units": 3, "parts": 1, "counted": 3, "orientation": "vertical" }
+        {
+          "kind": "bar",
+          "units": 6,
+          "parts": 1,
+          "counted": 6,
+          "orientation": "vertical"
+        }
       ]
     },
     {
@@ -120,10 +125,15 @@
     {
       "src": "EX:8",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Sam says that 1/5 can be written as the whole number five, because it has a one in it. Is Sam right? How do you know?",
-      "expected": "no",
-      "demo": "*No*. The one has to be the bottom number. Here the bottom number is five, so there are five parts per whole unit, and only one part is counted."
+      "expected": "No. The one has to be the bottom number. Here the bottom number is five, so there are five parts per whole unit, and only one part is counted.",
+      "demo": "*No*. The one has to be the bottom number. Here the bottom number is five, so there are five parts per whole unit, and only one part is counted.",
+      "choices": [
+        "No. A fraction can never equal a whole number.",
+        "No. The one has to be the bottom number. Here the bottom number is five, so there are five parts per whole unit, and only one part is counted.",
+        "Yes. Any fraction containing a one equals its other number."
+      ]
     }
   ]
 }

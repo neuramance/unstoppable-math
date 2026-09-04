@@ -15,22 +15,22 @@ export function useLessonAnswer(item: LessonItem | null, wrongTyped: string | nu
   const editable = fracSlots.filter((s) => s === null).length
   const filled = Array.from({ length: editable }, (_, i) => (slots[i] ?? '').trim())
 
-  const canCheck = !item
-    ? false
-    : item.mode === 'typed'
-      ? typed.trim() !== ''
-      : item.mode === 'frac'
-        ? filled.every((s) => s !== '') || free.trim() !== ''
-        : figures.every((_, i) => (sel[i] ?? 0) > 0)
+  const canCheck =
+    item !== null &&
+    (item.mode === 'frac'
+      ? filled.every((s) => s !== '') || free.trim() !== ''
+      : item.mode === 'shade'
+        ? figures.every((_, i) => (sel[i] ?? 0) > 0)
+        : typed.trim() !== '')
 
   const serialize = () =>
-    item!.mode === 'typed'
-      ? typed.trim()
-      : item!.mode === 'frac'
-        ? free.trim() !== ''
-          ? free.trim()
-          : filled.join('/')
-        : sel.join(',')
+    item!.mode === 'frac'
+      ? free.trim() !== ''
+        ? free.trim()
+        : filled.join('/')
+      : item!.mode === 'shade'
+        ? sel.join(',')
+        : typed.trim()
 
   const clear = () => {
     setTyped('')

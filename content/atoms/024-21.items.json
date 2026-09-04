@@ -8,8 +8,20 @@
       "prompt": "This picture fraction shows thirteen fifths. But we can also see that it counts two whole units… Plus, three fifths more. So we can also write that in symbols like this.",
       "expected": "2 3/5",
       "demo": "Two whole units… plus three fifths more: *2 3/5*.",
-      "frac": { "whole": null, "num": null, "den": null },
-      "figures": [{ "kind": "number-line", "units": 3, "parts": 5, "counted": 13, "band": true }]
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      },
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 5,
+          "counted": 13,
+          "band": true
+        }
+      ]
     },
     {
       "src": "II:5",
@@ -70,56 +82,80 @@
     {
       "src": "IT:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn. Is this a mixed number? How do you know?  82/15",
-      "expected": "no",
+      "expected": "No, because there is no whole number.",
       "demo": "*No*, because there is no whole number.",
-      "accept": ["No, because there is no whole number."]
+      "choices": [
+        "No, because there is no whole number.",
+        "Yes, because any fraction with a larger top number is written as a mixed number.",
+        "No, because a mixed number cannot include a fraction."
+      ]
     },
     {
       "src": "IT:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this a mixed number? How do you know?  5 7/15",
-      "expected": "yes",
+      "expected": "Yes, because it has a whole number plus a fraction.",
       "demo": "*Yes*, because it has a whole number plus a fraction.",
-      "accept": ["Yes, because it has a whole number plus a fraction."]
+      "choices": [
+        "Yes, because any fraction with a larger top number is written as a mixed number.",
+        "No, because a mixed number cannot include a fraction.",
+        "Yes, because it has a whole number plus a fraction."
+      ]
     },
     {
       "src": "IT:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this a mixed number? How do you know?  9 9/10",
-      "expected": "yes",
+      "expected": "Yes, because it has a whole number plus a fraction.",
       "demo": "*Yes*, because it has a whole number plus a fraction.",
-      "accept": ["Yes, because it has a whole number plus a fraction."]
+      "choices": [
+        "No, because a mixed number cannot include a fraction.",
+        "Yes, because it has a whole number plus a fraction.",
+        "Yes, because any fraction with a larger top number is written as a mixed number."
+      ]
     },
     {
       "src": "IT:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this a mixed number? How do you know?  9/10",
-      "expected": "no",
+      "expected": "No, because there is no whole number.",
       "demo": "*No*, because there is no whole number.",
-      "accept": ["No, because there is no whole number."]
+      "choices": [
+        "No, because there is no whole number.",
+        "Yes, because any fraction with a larger top number is written as a mixed number.",
+        "No, because a mixed number cannot include a fraction."
+      ]
     },
     {
       "src": "IT:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this a mixed number? How do you know?  10/9",
-      "expected": "no",
+      "expected": "No, because there is no whole number.",
       "demo": "*No*, because there is no whole number.",
-      "accept": ["No, because there is no whole number."]
+      "choices": [
+        "Yes, because any fraction with a larger top number is written as a mixed number.",
+        "No, because a mixed number cannot include a fraction.",
+        "No, because there is no whole number."
+      ]
     },
     {
       "src": "IT:6",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this a mixed number? How do you know?  10",
-      "expected": "no",
+      "expected": "No, because there is no fraction.",
       "demo": "*No*, because there is no fraction.",
-      "accept": ["No, because there is no fraction."]
+      "choices": [
+        "No, because a mixed number cannot include a fraction.",
+        "No, because there is no fraction.",
+        "Yes, because any fraction with a larger top number is written as a mixed number."
+      ]
     }
   ]
 }

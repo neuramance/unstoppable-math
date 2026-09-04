@@ -20,11 +20,15 @@
     {
       "src": "IT:2a",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Are we multiplying by one? How do you know? 7/12 × 5/5",
-      "expected": "yes",
+      "expected": "Yes, because the top and bottom are the same.",
       "demo": "*Yes*, because the top and bottom are the same.",
-      "accept": ["Yes, because the top and bottom are the same."]
+      "choices": [
+        "Yes, because every fraction used as a multiplier is equal to one.",
+        "No, because multiplying a fraction always changes its value.",
+        "Yes, because the top and bottom are the same."
+      ]
     },
     {
       "src": "IT:2b",
@@ -37,11 +41,15 @@
     {
       "src": "IT:2c",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Are we multiplying by one? How do you know? 2/5 × 9/9",
-      "expected": "yes",
+      "expected": "Yes, because the top and bottom are the same.",
       "demo": "*Yes*, because the top and bottom are the same.",
-      "accept": ["Yes, because the top and bottom are the same."]
+      "choices": [
+        "Yes, because the top and bottom are the same.",
+        "Yes, because every fraction used as a multiplier is equal to one.",
+        "No, because multiplying a fraction always changes its value."
+      ]
     },
     {
       "src": "IT:2d",
@@ -70,11 +78,15 @@
     {
       "src": "IT:2g",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Are we multiplying by one? How do you know? 9/10 × 3/3",
-      "expected": "yes",
+      "expected": "Yes, because the top and bottom are the same.",
       "demo": "*Yes*, because the top and bottom are the same.",
-      "accept": ["Yes, because the top and bottom are the same."]
+      "choices": [
+        "Yes, because every fraction used as a multiplier is equal to one.",
+        "No, because multiplying a fraction always changes its value.",
+        "Yes, because the top and bottom are the same."
+      ]
     },
     {
       "src": "IT:2h",
@@ -87,11 +99,15 @@
     {
       "src": "IT:2i",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Are we multiplying by one? How do you know? 6/11 × 12/12",
-      "expected": "yes",
+      "expected": "Yes, because the top and bottom are the same.",
       "demo": "*Yes*, because the top and bottom are the same.",
-      "accept": ["Yes, because the top and bottom are the same."]
+      "choices": [
+        "Yes, because the top and bottom are the same.",
+        "Yes, because every fraction used as a multiplier is equal to one.",
+        "No, because multiplying a fraction always changes its value."
+      ]
     }
   ]
 }

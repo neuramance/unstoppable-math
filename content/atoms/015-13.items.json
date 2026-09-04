@@ -105,56 +105,80 @@
     {
       "src": "EX:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which counts more parts? How do you know? 10/5  40/5",
-      "expected": "40/5",
+      "expected": "40/5, because the top number is bigger.",
       "demo": "*40/5*, because the top number is bigger.",
-      "accept": ["40/5, because the top number is bigger."]
+      "choices": [
+        "The bottom number tells us how many parts are counted.",
+        "We add the top and bottom numbers to find how many parts are counted.",
+        "40/5, because the top number is bigger."
+      ]
     },
     {
       "src": "EX:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which counts more parts? How do you know? 23/7  82/17",
-      "expected": "82/17",
+      "expected": "82/17, because the top number is bigger.",
       "demo": "*82/17*, because the top number is bigger.",
-      "accept": ["82/17, because the top number is bigger."]
+      "choices": [
+        "We add the top and bottom numbers to find how many parts are counted.",
+        "82/17, because the top number is bigger.",
+        "The bottom number tells us how many parts are counted."
+      ]
     },
     {
       "src": "EX:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which counts more parts? How do you know? 10/a  9/a",
-      "expected": "10/a",
+      "expected": "10/a counts more parts, because the top number is bigger.",
       "demo": "*10/a* counts more parts, because the top number is bigger.",
-      "accept": ["10/a counts more parts, because the top number is bigger."]
+      "choices": [
+        "10/a counts more parts, because the top number is bigger.",
+        "The bottom number tells us how many parts are counted.",
+        "We add the top and bottom numbers to find how many parts are counted."
+      ]
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are five fractions in symbol form. Which fraction counts more parts? How do you know? 1/10  2/10  3/10  4/10  5/10",
-      "expected": "5/10",
+      "expected": "5/10 counts more parts, because the top number is bigger.",
       "demo": "*5/10* counts more parts, because the top number is bigger.",
-      "accept": ["5/10 counts more parts, because the top number is bigger."]
+      "choices": [
+        "The bottom number tells us how many parts are counted.",
+        "We add the top and bottom numbers to find how many parts are counted.",
+        "5/10 counts more parts, because the top number is bigger."
+      ]
     },
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction counts the most parts? How do you know? x/10  d/10  z/10",
-      "expected": "z/10",
+      "expected": "z/10 counts the most parts, because z represents the largest number on top of the symbol.",
       "demo": "*z/10* counts the most parts, because z represents the largest number on top of the symbol.",
-      "accept": ["z/10 counts the most parts, because z represents the largest number on top of the symbol."]
+      "choices": [
+        "We add the top and bottom numbers to find how many parts are counted.",
+        "z/10 counts the most parts, because z represents the largest number on top of the symbol.",
+        "The bottom number tells us how many parts are counted."
+      ]
     },
     {
       "src": "EX:6",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which fraction counts the fewest number of parts? How do you know? 10/10  9/10",
-      "expected": "9/10",
+      "expected": "9/10 counts the fewest number of parts, because it has the smallest top number.",
       "demo": "*9/10* counts the fewest number of parts, because it has the smallest top number.",
-      "accept": ["9/10 counts the fewest number of parts, because it has the smallest top number."]
+      "choices": [
+        "9/10 counts the fewest number of parts, because it has the smallest top number.",
+        "The bottom number tells us how many parts are counted.",
+        "We add the top and bottom numbers to find how many parts are counted."
+      ]
     }
   ]
 }

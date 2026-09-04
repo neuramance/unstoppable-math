@@ -31,7 +31,7 @@ test.beforeEach(async ({ page, context }) => {
   await context.route('**/lessons/NF_Fractions.lesson.json', (route) => route.fulfill({ json: lesson }))
   await context.addInitScript(() => localStorage.setItem('um.cc', '1'))
   await page.goto('/app/learn?dev=0')
-  await page.getByRole('button', { name: 'Begin session' }).click()
+  await page.getByRole('button', { name: 'Begin session' }).press('Enter')
   await expect(page.getByLabel('Your answer')).toBeVisible()
 })
 
@@ -99,4 +99,42 @@ test('rapid Continue clicks through native view transitions never answer the nex
   await page.getByRole('button', { name: 'Check', exact: true }).click()
   await expect(page.getByText('correct', { exact: true })).toBeVisible()
   expect(await savedAnswers(page)).toEqual(['4', '2'])
+})
+
+test('a malformed profile does not interrupt the lesson or erase saved answers', async ({ page }) => {
+  await page.getByLabel('Your answer').fill('4')
+  await page.getByRole('button', { name: 'Check', exact: true }).click()
+  await expect(page.getByText('correct', { exact: true })).toBeVisible()
+  await page.evaluate(() => localStorage.setItem(`um.profile:${localStorage.getItem('um.uid')}`, '{"name":42}'))
+  await page.reload()
+  await expect(page.getByRole('button', { name: /Learner/ })).toBeVisible()
+  await expect(page.locator('p[aria-live]')).toHaveText('How many whole units?')
+  expect(await savedAnswers(page)).toEqual(['4'])
+})
+
+test('a failed answer upload retries without another answer or reload', async ({ page }) => {
+  let attempts = 0
+  await page.route('**/rest/v1/app_state*', async (route) => {
+    const request = route.request()
+    if (request.method() === 'POST' && request.postDataJSON().value.includes('"typed":"4"')) {
+      attempts++
+      if (attempts === 1) return route.fulfill({ status: 503, json: { message: 'temporarily unavailable' } })
+    }
+    return route.continue()
+  })
+  const uploaded = page.waitForResponse((response) => {
+    const request = response.request()
+    return (
+      response.url().includes('/rest/v1/app_state') &&
+      request.method() === 'POST' &&
+      response.ok() &&
+      request.postDataJSON().value.includes('"typed":"4"')
+    )
+  })
+  await page.getByLabel('Your answer').fill('4')
+  await page.getByRole('button', { name: 'Check', exact: true }).click()
+  await expect(page.getByText('correct', { exact: true })).toBeVisible()
+  await uploaded
+  expect(attempts).toBe(2)
+  expect(await savedAnswers(page)).toEqual(['4'])
 })

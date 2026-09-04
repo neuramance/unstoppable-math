@@ -197,7 +197,7 @@ export default function Screen() {
                 <p {...stylex.props(chrome.lede)} role="status">
                   {store === 'opening'
                     ? 'Opening your saved progress. If your lesson is open in another tab, close that tab to continue here.'
-                    : 'Your progress could not be opened. Use a current browser and a secure connection, then reload.'}
+                    : 'Your saved progress could not be opened safely. Check your browser, connection, and available device storage, then reload.'}
                 </p>
               </section>
             </div>

@@ -1,11 +1,10 @@
 import * as stylex from '@stylexjs/stylex'
 import { useEffect, useRef, useState } from 'react'
-import { z } from 'zod'
 import type { Lesson } from '@/lib/lesson'
+import { LessonData } from '@/lib/lesson-schema'
 import { chrome } from './chrome'
 import { Session } from './session'
 
-const PlayableLesson = z.object({ items: z.array(z.object({ mode: z.enum(['typed', 'frac', 'shade']) })) })
 const STALE = 'stale lesson data'
 
 type LessonLoad =
@@ -59,9 +58,10 @@ export function Learn({ dev, onExit }: { dev: boolean; onExit: () => void }) {
     setLoad({ phase: 'loading' })
     fetch('/lessons/NF_Fractions.lesson.json', { cache: 'no-cache' })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((l: Lesson) => {
-        if (!PlayableLesson.safeParse(l).success) throw new Error(STALE)
-        setLoad({ phase: 'ready', lesson: l })
+      .then((l: unknown) => {
+        const parsed = LessonData.safeParse(l)
+        if (!parsed.success) throw new Error(STALE)
+        setLoad({ phase: 'ready', lesson: parsed.data })
       })
       .catch((e: unknown) => {
         setLoad({ phase: 'failed', why: e instanceof Error && e.message === STALE ? 'stale' : 'network' })

@@ -44,7 +44,7 @@ export const teachPlan = (startedAt: number, ...blocks: number[][]): SessionPlan
   })),
 })
 
-export const item = (mode: LessonItem['mode'], expected: string, accept?: string[]): LessonItem => ({
+export const item = (mode: 'typed' | 'frac' | 'shade', expected: string, accept?: string[]): LessonItem => ({
   row: 1,
   role: 'test',
   mode,

@@ -57,6 +57,15 @@ test('grading: number words equal digits, accept lists work, symbol modes compar
   expect(gradeItem(r24, '3,8')).toBe(false)
 })
 
+test('value matching accepts leading-dot decimals exactly without relaxing fraction-form questions', () => {
+  const question = lesson.items.find((it) => it.match === 'value' && it.expected === '1/5')!
+  for (const answer of ['.2', ' .20 ', '0.2', '.200000000000000000000', '2/10'])
+    expect(gradeItem(question, answer), answer).toBe(true)
+  for (const answer of ['.', '.2.0', '.02', '.200000000000000000001', '2/0', ''])
+    expect(gradeItem(question, answer), answer).toBe(false)
+  expect(gradeItem(item('frac', '1/5'), '.2')).toBe(false)
+})
+
 const synth = (roles: string): Lesson => ({
   topic: 'synth',
   source: 'synth',

@@ -100,9 +100,9 @@
     {
       "src": "IT:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn. Which fraction is greater? How do you know? 15/10  8/10",
-      "expected": "15/10",
+      "expected": "15/10 is greater, because it counts more parts.",
       "demo": "*15/10* is greater, because it counts more parts.",
       "figures": [
         {
@@ -120,14 +120,18 @@
           "label": "8/10"
         }
       ],
-      "accept": ["15/10 is greater, because it counts more parts."]
+      "choices": [
+        "A larger top number makes each individual part larger.",
+        "15/10 is greater, because it counts more parts.",
+        "Equal bottom numbers mean the fractions must have equal values."
+      ]
     },
     {
       "src": "IT:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Now. which fraction is greater? How do you know? 15/10  18/10",
-      "expected": "18/10",
+      "expected": "18/10 is greater, because it counts more parts.",
       "demo": "*18/10* is greater, because it counts more parts.",
       "figures": [
         {
@@ -145,55 +149,89 @@
           "label": "18/10"
         }
       ],
-      "accept": ["18/10 is greater, because it counts more parts."]
+      "choices": [
+        "18/10 is greater, because it counts more parts.",
+        "Equal bottom numbers mean the fractions must have equal values.",
+        "A larger top number makes each individual part larger."
+      ]
     },
     {
       "src": "EX:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 7/4  11/4",
-      "expected": "11/4",
-      "demo": "*11/4* is greater. The bottom numbers are the same, so the parts are the same size. 11/4 has the bigger top number, so it counts more parts."
+      "expected": "11/4 is greater. The bottom numbers are the same, so the parts are the same size. 11/4 has the bigger top number, so it counts more parts.",
+      "demo": "*11/4* is greater. The bottom numbers are the same, so the parts are the same size. 11/4 has the bigger top number, so it counts more parts.",
+      "choices": [
+        "A larger top number makes each individual part larger.",
+        "11/4 is greater. The bottom numbers are the same, so the parts are the same size. 11/4 has the bigger top number, so it counts more parts.",
+        "Equal bottom numbers mean the fractions must have equal values."
+      ]
     },
     {
       "src": "EX:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 23/10  82/10",
-      "expected": "82/10",
-      "demo": "*82/10* is greater. The bottom numbers are the same, so the parts are the same size. 82/10 has the bigger top number, so it counts more parts."
+      "expected": "82/10 is greater. The bottom numbers are the same, so the parts are the same size. 82/10 has the bigger top number, so it counts more parts.",
+      "demo": "*82/10* is greater. The bottom numbers are the same, so the parts are the same size. 82/10 has the bigger top number, so it counts more parts.",
+      "choices": [
+        "82/10 is greater. The bottom numbers are the same, so the parts are the same size. 82/10 has the bigger top number, so it counts more parts.",
+        "Equal bottom numbers mean the fractions must have equal values.",
+        "A larger top number makes each individual part larger."
+      ]
     },
     {
       "src": "EX:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. The letter a represents a bigger number than b. Which fraction is greater? How do you know? a/10  b/10",
-      "expected": "a/10",
-      "demo": "*a/10* is greater. The bottom numbers are the same, so the parts are the same size. a is the bigger top number, so a/10 counts more parts."
+      "expected": "a/10 is greater. The bottom numbers are the same, so the parts are the same size. a is the bigger top number, so a/10 counts more parts.",
+      "demo": "*a/10* is greater. The bottom numbers are the same, so the parts are the same size. a is the bigger top number, so a/10 counts more parts.",
+      "choices": [
+        "Equal bottom numbers mean the fractions must have equal values.",
+        "A larger top number makes each individual part larger.",
+        "a/10 is greater. The bottom numbers are the same, so the parts are the same size. a is the bigger top number, so a/10 counts more parts."
+      ]
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are five fractions in symbol form. Which fraction is the greatest? How do you know? 1/10  2/10  3/10  4/10  5/10",
-      "expected": "5/10",
-      "demo": "*5/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. 5/10 has the biggest top number, so it counts the most parts."
+      "expected": "5/10 is the greatest. All the bottom numbers are the same, so all the parts are the same size. 5/10 has the biggest top number, so it counts the most parts.",
+      "demo": "*5/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. 5/10 has the biggest top number, so it counts the most parts.",
+      "choices": [
+        "A larger top number makes each individual part larger.",
+        "5/10 is the greatest. All the bottom numbers are the same, so all the parts are the same size. 5/10 has the biggest top number, so it counts the most parts.",
+        "Equal bottom numbers mean the fractions must have equal values."
+      ]
     },
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction is the greatest? How do you know? x/10  d/10  z/10",
-      "expected": "z/10",
-      "demo": "*z/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. z is the biggest top number, so z/10 counts the most parts."
+      "expected": "z/10 is the greatest. All the bottom numbers are the same, so all the parts are the same size. z is the biggest top number, so z/10 counts the most parts.",
+      "demo": "*z/10* is the greatest. All the bottom numbers are the same, so all the parts are the same size. z is the biggest top number, so z/10 counts the most parts.",
+      "choices": [
+        "z/10 is the greatest. All the bottom numbers are the same, so all the parts are the same size. z is the biggest top number, so z/10 counts the most parts.",
+        "Equal bottom numbers mean the fractions must have equal values.",
+        "A larger top number makes each individual part larger."
+      ]
     },
     {
       "src": "EX:6",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which fraction is the lesser? How do you know? 10/3  9/3",
-      "expected": "9/3",
-      "demo": "*9/3* is the lesser. The bottom numbers are the same, so the parts are the same size. 9/3 has the smaller top number, so it counts fewer parts."
+      "expected": "9/3 is the lesser. The bottom numbers are the same, so the parts are the same size. 9/3 has the smaller top number, so it counts fewer parts.",
+      "demo": "*9/3* is the lesser. The bottom numbers are the same, so the parts are the same size. 9/3 has the smaller top number, so it counts fewer parts.",
+      "choices": [
+        "Equal bottom numbers mean the fractions must have equal values.",
+        "A larger top number makes each individual part larger.",
+        "9/3 is the lesser. The bottom numbers are the same, so the parts are the same size. 9/3 has the smaller top number, so it counts fewer parts."
+      ]
     }
   ]
 }

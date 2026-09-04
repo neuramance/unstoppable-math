@@ -4,20 +4,28 @@ export type FracSlots = {
   num: string | null
   den: string | null
 }
+type ConstructFigure = Figure & { kind: 'bar'; units: 1; counted: number; label: string }
 export type LessonItem = {
   row: number
   role: 'model' | 'test'
-  mode: 'typed' | 'frac' | 'shade'
   set?: number
   prompt: string
   expected: string
   demo: string
   count?: CountKind
-  figures?: Figure[]
   expr?: string
   frac?: FracSlots
   accept?: string[]
-}
+  numberLine?: string[]
+  match?: 'value'
+} & (
+  | { mode: 'typed' | 'frac' | 'shade'; figures?: Figure[] }
+  | { mode: 'construct'; figures: [ConstructFigure, ConstructFigure] }
+  | { mode: 'shade-fraction'; figures: [Figure & { counted: number }]; expr: string }
+  | { mode: 'choice'; choices: string[]; figures?: Figure[] }
+  | { mode: 'decompose'; expr: string; figures?: Figure[] }
+  | { mode: 'line-fractions'; figures: [Figure & { kind: 'number-line' }]; blank: 'numerator' | 'denominator' }
+)
 export type Lesson = {
   topic: string
   source: string
@@ -26,6 +34,10 @@ export type Lesson = {
   items: LessonItem[]
 }
 export const FIRM_SHARE = 1
+export function fractionValue(text: string): number {
+  const parts = text.split(/[ /]+/).map(Number)
+  return parts.length === 2 ? parts[0] / parts[1] : parts[0] + parts[1] / parts[2]
+}
 export const CARDINALS = [
   'zero',
   'one',
@@ -64,6 +76,9 @@ const QUOTED_CLOSE = /[.,!?"'“”‘’]+$/
 export function normalizeAnswer(text: string): string {
   return text
     .toLowerCase()
+    .replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/[–—]/g, '-')
     .replace(/(?<=[a-z])-(?=[a-z])/g, ' ')
     .split(/\s+/)
     .map((tok) => tok.replace(QUOTED_OPEN, '').replace(QUOTED_CLOSE, ''))
@@ -137,16 +152,52 @@ function numbersOf(text: string): number[] {
     .map(Number)
 }
 function filledFraction(item: LessonItem): number[] | null {
-  if (!item.frac) return null
+  if (item.mode !== 'frac' || !item.frac) return null
   const slots = [...(item.frac.whole === undefined ? [] : [item.frac.whole]), item.frac.num, item.frac.den]
   const want = numbersOf(item.expected)
   let next = 0
   return slots.flatMap((s) => (s === null ? [want[next++]] : numbersOf(s)))
 }
+function gradeDecomposition(item: Extract<LessonItem, { mode: 'decompose' }>, typed: string): boolean {
+  const total = Number(item.expr.split('/')[0])
+  const sums = typed.split(';').map(numbersOf)
+  if (sums.length !== item.expected.split(';').length) return false
+  if (
+    !sums.every(
+      (pair) => pair.length === 2 && pair.every((n) => Number.isSafeInteger(n) && n > 0) && pair[0] + pair[1] === total,
+    )
+  )
+    return false
+  return new Set(sums.map((pair) => Math.min(...pair))).size === sums.length
+}
+function mathText(text: string): string | null {
+  if (!/[+×*÷/=<>()-]/.test(text) || /[^\da-z\s+×*÷/=<>().,-]/i.test(text)) return null
+  if ((text.match(/[a-z]+/gi) ?? []).some((word) => word.length > 1)) return null
+  return text
+    .replace(/(\d)\s*x\s*(?=\d)/g, '$1×')
+    .replaceAll('*', '×')
+    .replace(/\s*([+×÷/=<>()-])\s*/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+function ratio(text: string): [bigint, bigint] | null {
+  const decimal = /^(\d*)\.(\d+)$/.exec(text.trim())
+  if (decimal) return [BigInt(decimal[1] + decimal[2]), BigInt(10) ** BigInt(decimal[2].length)]
+  const fraction = /^(?:(\d+)\s+)?(\d+)(?:\s*\/\s*([1-9]\d*))?$/.exec(text.trim())
+  if (fraction === null || (fraction[1] !== undefined && fraction[3] === undefined)) return null
+  const denominator = BigInt(fraction[3] ?? '1')
+  return [BigInt(fraction[1] ?? '0') * denominator + BigInt(fraction[2]), denominator]
+}
 export function gradeItem(item: LessonItem, typed: string): boolean {
-  if (item.mode === 'typed') {
-    const got = normalizeAnswer(typed)
-    return [item.expected, ...(item.accept ?? [])].some((a) => normalizeAnswer(a) === got)
+  if (item.mode === 'decompose') return gradeDecomposition(item, typed)
+  if (item.match === 'value') {
+    const got = ratio(typed)
+    const want = ratio(item.expected)!
+    return got !== null && got[0] * want[1] === want[0] * got[1]
+  }
+  if (['typed', 'choice', 'construct'].includes(item.mode)) {
+    const got = mathText(typed) ?? normalizeAnswer(typed)
+    return [item.expected, ...(item.accept ?? [])].some((a) => (mathText(a) ?? normalizeAnswer(a)) === got)
   }
   const got = numbersOf(typed)
   const matches = (want: number[]) => got.length === want.length && want.every((w, i) => got[i] === w)

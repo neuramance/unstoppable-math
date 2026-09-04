@@ -7,9 +7,13 @@
       "mode": "frac",
       "prompt": "Evaluate:",
       "expr": "4 × 5/3 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "20/3",
-      "demo": "4/1 × 5/3. (4 × 5)/(1 × 3). *20/3*"
+      "demo": "4/1 × 5/3. (4 × 5)/(1 × 3). *20/3*",
+      "match": "value"
     },
     {
       "src": "TBL:1b",
@@ -17,9 +21,13 @@
       "mode": "frac",
       "prompt": "Evaluate:",
       "expr": "4 × 5/3 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "20/3",
-      "demo": "4/1 × 5/3. (4 × 5)/(1 × 3). *20/3*"
+      "demo": "4/1 × 5/3. (4 × 5)/(1 × 3). *20/3*",
+      "match": "value"
     }
   ]
 }

@@ -14,9 +14,13 @@
       "role": "model",
       "mode": "frac",
       "prompt": "And now I can use the model to answer the question: 5/1 × 2/3 (5 × 2)/(1 × 3)",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "10/3",
-      "demo": "*10/3*. Ten thirds cups of nuts are needed."
+      "demo": "*10/3*. Ten thirds cups of nuts are needed.",
+      "match": "value"
     },
     {
       "src": "IT:2",
@@ -33,9 +37,13 @@
       "mode": "frac",
       "prompt": "Now use the model to answer the question.",
       "expr": "6 × 3/4 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "18/4",
-      "demo": "6/1 × 3/4. (6 × 3)/(1 × 4). *18/4*"
+      "demo": "6/1 × 3/4. (6 × 3)/(1 × 4). *18/4*",
+      "match": "value"
     },
     {
       "src": "IT:4",
@@ -52,9 +60,13 @@
       "mode": "frac",
       "prompt": "Now use the model to answer the question.",
       "expr": "9 × 3/4 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "27/4",
-      "demo": "9/1 × 3/4. (9 × 3)/(1 × 4). *27/4*"
+      "demo": "9/1 × 3/4. (9 × 3)/(1 × 4). *27/4*",
+      "match": "value"
     },
     {
       "src": "IT:6",
@@ -71,9 +83,13 @@
       "mode": "frac",
       "prompt": "Now use the model to answer the question.",
       "expr": "9 × 5/6 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "45/6",
-      "demo": "9/1 × 5/6. (9 × 5)/(1 × 6). *45/6*"
+      "demo": "9/1 × 5/6. (9 × 5)/(1 × 6). *45/6*",
+      "match": "value"
     },
     {
       "src": "IT:8",
@@ -90,99 +106,143 @@
       "mode": "frac",
       "prompt": "Now use the model to answer the question.",
       "expr": "3 × 5/6 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "15/6",
-      "demo": "3/1 × 5/6. (3 × 5)/(1 × 6). *15/6*"
+      "demo": "3/1 × 5/6. (3 × 5)/(1 × 6). *15/6*",
+      "match": "value"
     },
     {
       "src": "IT:10",
       "role": "test",
       "mode": "frac",
       "prompt": "One jar holds two fifths 2/5 litre of juice. How much juice is in ten jars?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "20/5",
-      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*"
+      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*",
+      "match": "value"
     },
     {
       "src": "IT:11",
       "role": "test",
       "mode": "frac",
       "prompt": "One jar holds seven tenths 7/10 litre of juice. How much juice is in three jars?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "21/10",
-      "demo": "First, I can model that like this: 3 × 7/10. And now I can use the model to answer the question: *21/10*"
+      "demo": "First, I can model that like this: 3 × 7/10. And now I can use the model to answer the question: *21/10*",
+      "match": "value"
     },
     {
       "src": "IT:12",
       "role": "test",
       "mode": "frac",
       "prompt": "One step is three eighths 3/8 metre long. How far is five steps?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "15/8",
-      "demo": "First, I can model that like this: 5 × 3/8. And now I can use the model to answer the question: *15/8*"
+      "demo": "First, I can model that like this: 5 × 3/8. And now I can use the model to answer the question: *15/8*",
+      "match": "value"
     },
     {
       "src": "IT:13",
       "role": "test",
       "mode": "frac",
       "prompt": "One portion of cake uses two thirds 2/3 of a block of butter. How much butter is needed for four portions?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "8/3",
-      "demo": "First, I can model that like this: 4 × 2/3. And now I can use the model to answer the question: *8/3*"
+      "demo": "First, I can model that like this: 4 × 2/3. And now I can use the model to answer the question: *8/3*",
+      "match": "value"
     },
     {
       "src": "EX:1",
       "role": "test",
       "mode": "frac",
       "prompt": "A step is two fifths 2/5 metres long. How far is ten steps?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "20/5",
-      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*"
+      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*",
+      "match": "value"
     },
     {
       "src": "EX:2",
       "role": "test",
       "mode": "frac",
       "prompt": "Each jar holds seven tenths 7/10 litre of juice. How much juice fills three jars?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "21/10",
-      "demo": "First, I can model that like this: 3 × 7/10. And now I can use the model to answer the question: *21/10*"
+      "demo": "First, I can model that like this: 3 × 7/10. And now I can use the model to answer the question: *21/10*",
+      "match": "value"
     },
     {
       "src": "EX:3",
       "role": "test",
       "mode": "frac",
       "prompt": "One lap of the track is nine fourths 9/4 kilometres. How far is two laps?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "18/4",
-      "demo": "First, I can model that like this: 2 × 9/4. And now I can use the model to answer the question: *18/4*"
+      "demo": "First, I can model that like this: 2 × 9/4. And now I can use the model to answer the question: *18/4*",
+      "match": "value"
     },
     {
       "src": "EX:4",
       "role": "test",
       "mode": "frac",
       "prompt": "Each portion of cake uses one eighth 1/8 of a block of butter. How much butter for seven portions?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "7/8",
-      "demo": "First, I can model that like this: 7 × 1/8. And now I can use the model to answer the question: *7/8*"
+      "demo": "First, I can model that like this: 7 × 1/8. And now I can use the model to answer the question: *7/8*",
+      "match": "value"
     },
     {
       "src": "EX:5",
       "role": "test",
       "mode": "frac",
       "prompt": "Sam drinks three tenths 3/10 litre of water, six times in a day. How much water does Sam drink altogether?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "18/10",
-      "demo": "First, I can model that like this: 6 × 3/10. And now I can use the model to answer the question: *18/10*"
+      "demo": "First, I can model that like this: 6 × 3/10. And now I can use the model to answer the question: *18/10*",
+      "match": "value"
     },
     {
       "src": "EX:6",
       "role": "test",
       "mode": "frac",
       "prompt": "Ten steps are taken, each two fifths 2/5 metres long. How far is that altogether?",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "20/5",
-      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*"
+      "demo": "First, I can model that like this: 10 × 2/5. And now I can use the model to answer the question: *20/5*",
+      "match": "value"
     },
     {
       "src": "EX:7",
@@ -196,14 +256,15 @@
     {
       "src": "EX:8",
       "role": "test",
-      "mode": "typed",
-      "prompt": "Here is a model, and its result. Write a question it could answer. 4 × 1/2 = 4/2",
-      "expected": "Four cups each hold half a litre. How much altogether?",
-      "accept": [
-        "four cups each holding half a litre, asking how much altogether",
-        "four cups each hold half a litre. how much is that altogether"
-      ],
-      "demo": "Any question repeating one half four times and asking for the total. For example: *Four cups each hold half a litre. How much altogether?*"
+      "mode": "choice",
+      "prompt": "Which question matches this model? 4 × 1/2 = 4/2",
+      "expected": "Four cups each hold 1/2 litre. How much do they hold altogether?",
+      "demo": "Any question repeating one half four times and asking for the total. For example: *Four cups each hold half a litre. How much altogether?*",
+      "choices": [
+        "Four cups each hold 1/2 litre. How much do they hold altogether?",
+        "A jug holds 4 litres and another 1/2 litre is poured in. How much is in the jug now?",
+        "A jug holds 4 litres and 1/2 litre is poured out. How much is left?"
+      ]
     }
   ]
 }

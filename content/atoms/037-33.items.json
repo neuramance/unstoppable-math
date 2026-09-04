@@ -41,7 +41,10 @@
       "role": "model",
       "mode": "frac",
       "prompt": "My turn again. What fraction over twenty is equivalent to three fourths?",
-      "frac": { "num": null, "den": "20" },
+      "frac": {
+        "num": null,
+        "den": "20"
+      },
       "expected": "15",
       "demo": "The diagram has four rows, so I shade three of the four rows. I can now count the shaded parts: fifteen shaded parts out of twenty. So *fifteen twentieths* are equivalent to three fourths. 15/20 = 3/4",
       "figures": [
@@ -50,34 +53,18 @@
           "units": 1,
           "parts": 20,
           "columns": 5,
-          "counted": 15
+          "counted": 15,
+          "orientation": "horizontal"
         }
       ]
     },
     {
-      "src": "IT:3a",
+      "src": "IT:3",
       "role": "test",
-      "mode": "shade",
-      "prompt": "Your turn to use the picture to find equivalent fractions. This rectangle is split into six columns, three rows, and eighteen parts. What fraction over eighteen is equivalent to three sixths?",
-      "expected": "9",
+      "mode": "shade-fraction",
+      "prompt": "Your turn to use the picture to find equivalent fractions. This rectangle is split into six columns, three rows, and eighteen parts. What fraction over eighteen is equivalent to three sixths? Shade the diagram and complete the equivalent fraction.",
+      "expected": "9 9",
       "demo": "I can shade three sixths by shading three out of six columns: *nine* parts out of eighteen. 9/18 = 3/6",
-      "figures": [
-        {
-          "kind": "grid",
-          "units": 1,
-          "parts": 18,
-          "columns": 6
-        }
-      ]
-    },
-    {
-      "src": "IT:3b",
-      "role": "test",
-      "mode": "frac",
-      "prompt": "What fraction over eighteen is equivalent to three sixths?",
-      "frac": { "num": null, "den": "18" },
-      "expected": "9",
-      "demo": "*Nine eighteenths* are equivalent to three sixths. 9/18 = 3/6",
       "figures": [
         {
           "kind": "grid",
@@ -86,87 +73,101 @@
           "columns": 6,
           "counted": 9
         }
-      ]
+      ],
+      "expr": "3/6 ="
     },
     {
       "src": "IT:4",
       "role": "test",
-      "mode": "shade",
-      "prompt": "What fraction over eighteen is equivalent to two sixths?",
-      "expected": "6",
+      "mode": "shade-fraction",
+      "prompt": "What fraction over eighteen is equivalent to two sixths? Shade the diagram and complete the equivalent fraction.",
+      "expected": "6 6",
       "demo": "I shade two of the six columns: *six* parts out of eighteen. 6/18 = 2/6",
       "figures": [
         {
           "kind": "grid",
           "units": 1,
           "parts": 18,
-          "columns": 6
+          "columns": 6,
+          "counted": 6
         }
-      ]
+      ],
+      "expr": "2/6 ="
     },
     {
       "src": "IT:5",
       "role": "test",
-      "mode": "shade",
-      "prompt": "What fraction over eighteen is equivalent to one sixth?",
-      "expected": "3",
+      "mode": "shade-fraction",
+      "prompt": "What fraction over eighteen is equivalent to one sixth? Shade the diagram and complete the equivalent fraction.",
+      "expected": "3 3",
       "demo": "I shade one of the six columns: *three* parts out of eighteen. 3/18 = 1/6",
       "figures": [
         {
           "kind": "grid",
           "units": 1,
           "parts": 18,
-          "columns": 6
+          "columns": 6,
+          "counted": 3
         }
-      ]
+      ],
+      "expr": "1/6 ="
     },
     {
       "src": "IT:6",
       "role": "test",
-      "mode": "shade",
-      "prompt": "What fraction over eighteen is equivalent to one third?",
-      "expected": "6",
+      "mode": "shade-fraction",
+      "prompt": "What fraction over eighteen is equivalent to one third? Shade the diagram and complete the equivalent fraction.",
+      "expected": "6 6",
       "demo": "The rectangle has three rows. I shade one of the three rows: *six* parts out of eighteen. 6/18 = 1/3",
       "figures": [
         {
           "kind": "grid",
           "units": 1,
           "parts": 18,
-          "columns": 6
+          "columns": 6,
+          "counted": 6,
+          "orientation": "horizontal"
         }
-      ]
+      ],
+      "expr": "1/3 ="
     },
     {
       "src": "IT:7",
       "role": "test",
-      "mode": "shade",
-      "prompt": "What fraction over eighteen is equivalent to two thirds?",
-      "expected": "12",
+      "mode": "shade-fraction",
+      "prompt": "What fraction over eighteen is equivalent to two thirds? Shade the diagram and complete the equivalent fraction.",
+      "expected": "12 12",
       "demo": "I shade two of the three rows: *twelve* parts out of eighteen. 12/18 = 2/3",
       "figures": [
         {
           "kind": "grid",
           "units": 1,
           "parts": 18,
-          "columns": 6
+          "columns": 6,
+          "counted": 12,
+          "orientation": "horizontal"
         }
-      ]
+      ],
+      "expr": "2/3 ="
     },
     {
       "src": "IT:8",
       "role": "test",
-      "mode": "shade",
-      "prompt": "What fraction over eighteen is equivalent to three thirds?",
-      "expected": "18",
+      "mode": "shade-fraction",
+      "prompt": "What fraction over eighteen is equivalent to three thirds? Shade the diagram and complete the equivalent fraction.",
+      "expected": "18 18",
       "demo": "I shade three of the three rows: *eighteen* parts out of eighteen. 18/18 = 3/3",
       "figures": [
         {
           "kind": "grid",
           "units": 1,
           "parts": 18,
-          "columns": 6
+          "columns": 6,
+          "counted": 18,
+          "orientation": "horizontal"
         }
-      ]
+      ],
+      "expr": "3/3 ="
     },
     {
       "src": "EX:1",
@@ -236,7 +237,8 @@
           "units": 1,
           "parts": 20,
           "columns": 10,
-          "counted": 10
+          "counted": 10,
+          "orientation": "horizontal"
         }
       ]
     }

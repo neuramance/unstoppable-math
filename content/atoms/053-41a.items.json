@@ -9,8 +9,18 @@
       "expected": "0/4 4/4 8/4 12/4 16/4 20/4",
       "demo": "*0/4  4/4  8/4  12/4  16/4  20/4*",
       "figures": [
-        { "kind": "number-line", "units": 5, "parts": 4, "unitMarks": "blank-fractions" },
-        { "kind": "number-line", "units": 5, "parts": 4, "unitMarks": "fractions" }
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 4,
+          "unitMarks": "blank-fractions"
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 4,
+          "unitMarks": "fractions"
+        }
       ]
     },
     {
@@ -21,8 +31,18 @@
       "expected": "0/3 3/3 6/3 9/3 12/3 15/3",
       "demo": "*0/3  3/3  6/3  9/3  12/3  15/3*",
       "figures": [
-        { "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "blank-fractions" },
-        { "kind": "number-line", "units": 5, "parts": 3, "unitMarks": "fractions" }
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 3,
+          "unitMarks": "blank-fractions"
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 3,
+          "unitMarks": "fractions"
+        }
       ]
     },
     {
@@ -33,78 +53,131 @@
       "expected": "0/10 10/10 20/10 30/10 40/10 50/10",
       "demo": "*0/10  10/10  20/10  30/10  40/10  50/10*",
       "figures": [
-        { "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "blank-fractions" },
-        { "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "fractions" }
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 10,
+          "unitMarks": "blank-fractions"
+        },
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 10,
+          "unitMarks": "fractions"
+        }
       ]
     },
     {
       "src": "IT:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "line-fractions",
       "prompt": "Your turn to write the top part of each fraction. Write in the top part of each fraction. These whole units are split into fifths.",
-      "expected": "0/5 5/5 10/5 15/5 20/5 25/5",
-      "accept": ["0 5 10 15 20 25"],
+      "expected": "0 5 10 15 20 25",
       "demo": "*0/5  5/5  10/5  15/5  20/5  25/5*",
-      "figures": [{ "kind": "number-line", "units": 5, "parts": 5, "unitMarks": "blank-fractions" }]
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 5
+        }
+      ],
+      "blank": "numerator"
     },
     {
       "src": "IT:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "line-fractions",
       "prompt": "Watch what I change. Write in the top part of each fraction. These whole units are split into halves.",
-      "expected": "0/2 2/2 4/2 6/2 8/2 10/2",
-      "accept": ["0 2 4 6 8 10"],
+      "expected": "0 2 4 6 8 10",
       "demo": "*0/2  2/2  4/2  6/2  8/2  10/2*",
-      "figures": [{ "kind": "number-line", "units": 5, "parts": 2, "unitMarks": "blank-fractions" }]
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 2
+        }
+      ],
+      "blank": "numerator"
     },
     {
       "src": "IT:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "line-fractions",
       "prompt": "Watch what I change again. Write in the top part of each fraction. These whole units are split into tenths.",
-      "expected": "0/10 10/10 20/10 30/10 40/10 50/10",
-      "accept": ["0 10 20 30 40 50"],
+      "expected": "0 10 20 30 40 50",
       "demo": "*0/10  10/10  20/10  30/10  40/10  50/10*",
-      "figures": [{ "kind": "number-line", "units": 5, "parts": 10, "unitMarks": "blank-fractions" }]
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 5,
+          "parts": 10
+        }
+      ],
+      "blank": "numerator"
     },
     {
       "src": "EX:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "line-fractions",
       "prompt": "Write in the top part of each fraction. These two whole units are split into thirds.",
-      "expected": "0/3 3/3 6/3",
-      "accept": ["0 3 6"],
+      "expected": "0 3 6",
       "demo": "*0/3  3/3  6/3*",
-      "figures": [{ "kind": "number-line", "units": 2, "parts": 3, "unitMarks": "blank-fractions" }]
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 2,
+          "parts": 3
+        }
+      ],
+      "blank": "numerator"
     },
     {
       "src": "EX:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "line-fractions",
       "prompt": "Write in the top part of each fraction. These three whole units are split into fourths.",
-      "expected": "0/4 4/4 8/4 12/4",
-      "accept": ["0 4 8 12"],
+      "expected": "0 4 8 12",
       "demo": "*0/4  4/4  8/4  12/4*",
-      "figures": [{ "kind": "number-line", "units": 3, "parts": 4, "unitMarks": "blank-fractions" }]
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 3,
+          "parts": 4
+        }
+      ],
+      "blank": "numerator"
     },
     {
       "src": "EX:3",
       "role": "test",
-      "mode": "typed",
-      "prompt": "Write in the top part of each fraction. These six whole units are split into halves.  ▢/2  ▢/2  ▢/2  ▢/2  ▢/2  ▢/2  ▢/2",
-      "expected": "0/2 2/2 4/2 6/2 8/2 10/2 12/2",
-      "accept": ["0 2 4 6 8 10 12"],
-      "demo": "*0/2  2/2  4/2  6/2  8/2  10/2  12/2*"
+      "mode": "line-fractions",
+      "prompt": "Write in the top part of each fraction. These six whole units are split into halves.",
+      "expected": "0 2 4 6 8 10 12",
+      "demo": "*0/2  2/2  4/2  6/2  8/2  10/2  12/2*",
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 6,
+          "parts": 2
+        }
+      ],
+      "blank": "numerator"
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "line-fractions",
       "prompt": "Write in the top part of each fraction. This one whole unit is split into sevenths.",
-      "expected": "0/7 7/7",
-      "accept": ["0 7"],
+      "expected": "0 7",
       "demo": "*0/7  7/7*",
-      "figures": [{ "kind": "number-line", "units": 1, "parts": 7, "unitMarks": "blank-fractions" }]
+      "figures": [
+        {
+          "kind": "number-line",
+          "units": 1,
+          "parts": 7
+        }
+      ],
+      "blank": "numerator"
     }
   ]
 }

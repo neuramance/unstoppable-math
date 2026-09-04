@@ -100,11 +100,15 @@
     {
       "src": "EX:6",
       "role": "test",
-      "mode": "typed",
-      "prompt": "Here is a model. Write a situation it could describe. 4 × 1/2",
-      "expected": "four cups each holding half a litre",
-      "accept": ["four cups each hold half a litre", "4 cups, each holding half a litre"],
-      "demo": "Any situation repeating one half four times. For example: *four cups each holding half a litre*."
+      "mode": "choice",
+      "prompt": "Which situation matches this model? 4 × 1/2",
+      "expected": "Four cups each hold 1/2 litre.",
+      "demo": "Any situation repeating one half four times. For example: *four cups each holding half a litre*.",
+      "choices": [
+        "Four cups each hold 1/2 litre.",
+        "A jug holds 4 litres and another 1/2 litre is poured in.",
+        "A jug holds 4 litres and 1/2 litre is poured out."
+      ]
     }
   ]
 }

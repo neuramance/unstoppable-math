@@ -7,7 +7,10 @@
       "mode": "frac",
       "prompt": "The column a digit sits in tells us what kind of part it counts: tenths… hundredths… or thousandths. For example, here is 0.09. Zero tenths, and nine hundredths.",
       "expr": "0.09 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "9/100",
       "demo": "Zero tenths, and nine hundredths: *9/100*."
     },
@@ -17,7 +20,10 @@
       "mode": "frac",
       "prompt": "Watch what I change. Nine tenths.",
       "expr": "0.9 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "9/10",
       "demo": "Nine tenths: *9/10*."
     },
@@ -27,7 +33,10 @@
       "mode": "frac",
       "prompt": "Watch what I change again. Three tenths.",
       "expr": "0.3 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "3/10",
       "demo": "Three tenths: *3/10*. Each time, we count the digits to the right of the point. First column is tenths, second column is hundredths, third column is thousandths."
     },
@@ -46,7 +55,10 @@
       "mode": "frac",
       "prompt": "Rewrite the value in fraction form.",
       "expr": "0.04 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "4/100",
       "demo": "*4/100*."
     },
@@ -65,7 +77,10 @@
       "mode": "frac",
       "prompt": "Rewrite the value in fraction form.",
       "expr": "0.4 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "4/10",
       "demo": "*4/10*."
     },
@@ -84,7 +99,10 @@
       "mode": "frac",
       "prompt": "Rewrite the value in fraction form.",
       "expr": "0.7 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "7/10",
       "demo": "*7/10*."
     },
@@ -103,7 +121,10 @@
       "mode": "frac",
       "prompt": "Rewrite the value in fraction form.",
       "expr": "0.07 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "7/100",
       "demo": "*7/100*."
     },
@@ -122,7 +143,10 @@
       "mode": "frac",
       "prompt": "Rewrite the value in fraction form.",
       "expr": "0.01 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "1/100",
       "demo": "*1/100*."
     },
@@ -140,8 +164,11 @@
       "role": "test",
       "mode": "frac",
       "prompt": "In 0.36, which column is the 6 in? Rewrite just that digit’s value in fraction form.",
-      "expr": "0.36 =",
-      "frac": { "num": null, "den": null },
+      "expr": "Value of the 6 =",
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "6/100",
       "demo": "The 6 is in the hundredths column: *6/100*."
     },
@@ -159,8 +186,11 @@
       "role": "test",
       "mode": "frac",
       "prompt": "In 0.36, which column is the 3 in? Rewrite just that digit’s value in fraction form.",
-      "expr": "0.36 =",
-      "frac": { "num": null, "den": null },
+      "expr": "Value of the 3 =",
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "3/10",
       "demo": "The 3 is in the tenths column: *3/10*."
     },
@@ -178,18 +208,26 @@
       "role": "test",
       "mode": "frac",
       "prompt": "In 5.08, which column is the 8 in? Rewrite just that digit’s value in fraction form.",
-      "expr": "5.08 =",
-      "frac": { "num": null, "den": null },
+      "expr": "Value of the 8 =",
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "8/100",
       "demo": "The 8 is in the hundredths column: *8/100*."
     },
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Which is bigger, 0.5 or 0.05? How do you know?",
-      "expected": "0.5",
-      "demo": "*0.5*, because the five is in the tenths column, and tenths are bigger parts than hundredths."
+      "expected": "0.5, because the five is in the tenths column, and tenths are bigger parts than hundredths.",
+      "demo": "*0.5*, because the five is in the tenths column, and tenths are bigger parts than hundredths.",
+      "choices": [
+        "They are equal, because each number has a five and some zeros.",
+        "0.5, because the five is in the tenths column, and tenths are bigger parts than hundredths.",
+        "0.05, because having more decimal places makes the number larger."
+      ]
     }
   ]
 }

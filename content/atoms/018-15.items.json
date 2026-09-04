@@ -100,68 +100,106 @@
     {
       "src": "IT:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn. Which fraction is greater? How do you know? 17/13  17/8",
-      "expected": "17/8",
+      "expected": "17/8, because the bottom number is smaller, so each part is bigger.",
       "demo": "*17/8*, because the bottom number is smaller, so each part is bigger.",
-      "accept": ["17/8, because the bottom number is smaller, so each part is bigger."]
+      "choices": [
+        "17/8, because the bottom number is smaller, so each part is bigger.",
+        "The greater fraction is always the one with the larger bottom number.",
+        "Matching top numbers mean the fractions have the same value."
+      ]
     },
     {
       "src": "IT:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Now. which fraction is greater? How do you know? 17/13  17/14",
-      "expected": "17/13",
+      "expected": "17/13, because the bottom number is smaller, so each part is bigger.",
       "demo": "*17/13*, because the bottom number is smaller, so each part is bigger.",
-      "accept": ["17/13, because the bottom number is smaller, so each part is bigger."]
+      "choices": [
+        "The greater fraction is always the one with the larger bottom number.",
+        "Matching top numbers mean the fractions have the same value.",
+        "17/13, because the bottom number is smaller, so each part is bigger."
+      ]
     },
     {
       "src": "EX:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 7/3  7/8",
-      "expected": "7/3",
-      "demo": "*7/3* is greater. The top numbers are the same, so both fractions count the same number of parts. 7/3 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger."
+      "expected": "7/3 is greater. The top numbers are the same, so both fractions count the same number of parts. 7/3 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger.",
+      "demo": "*7/3* is greater. The top numbers are the same, so both fractions count the same number of parts. 7/3 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger.",
+      "choices": [
+        "7/3 is greater. The top numbers are the same, so both fractions count the same number of parts. 7/3 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger.",
+        "The greater fraction is always the one with the larger bottom number.",
+        "Matching top numbers mean the fractions have the same value."
+      ]
     },
     {
       "src": "EX:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which fraction is greater? How do you know? 23/14  23/9",
-      "expected": "23/9",
-      "demo": "*23/9* is greater. The top numbers are the same, so both fractions count the same number of parts. 23/9 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger."
+      "expected": "23/9 is greater. The top numbers are the same, so both fractions count the same number of parts. 23/9 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger.",
+      "demo": "*23/9* is greater. The top numbers are the same, so both fractions count the same number of parts. 23/9 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger.",
+      "choices": [
+        "The greater fraction is always the one with the larger bottom number.",
+        "Matching top numbers mean the fractions have the same value.",
+        "23/9 is greater. The top numbers are the same, so both fractions count the same number of parts. 23/9 has the smaller bottom number, so it has fewer parts per whole unit and each part is larger."
+      ]
     },
     {
       "src": "EX:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. The letter a represents a bigger number than b. Which fraction is greater? How do you know? 17/a  17/b",
-      "expected": "17/b",
-      "demo": "*17/b* is greater. The top numbers are the same, so both fractions count the same number of parts. b is the smaller bottom number, so 17/b has fewer parts per whole unit and each part is larger."
+      "expected": "17/b is greater. The top numbers are the same, so both fractions count the same number of parts. b is the smaller bottom number, so 17/b has fewer parts per whole unit and each part is larger.",
+      "demo": "*17/b* is greater. The top numbers are the same, so both fractions count the same number of parts. b is the smaller bottom number, so 17/b has fewer parts per whole unit and each part is larger.",
+      "choices": [
+        "Matching top numbers mean the fractions have the same value.",
+        "17/b is greater. The top numbers are the same, so both fractions count the same number of parts. b is the smaller bottom number, so 17/b has fewer parts per whole unit and each part is larger.",
+        "The greater fraction is always the one with the larger bottom number."
+      ]
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are five fractions in symbol form. Which fraction is the greatest? How do you know? 7/3  7/5  7/8  7/13  7/14",
-      "expected": "7/3",
-      "demo": "*7/3* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. 7/3 has the smallest bottom number, so it has the fewest parts per whole unit and the largest parts."
+      "expected": "7/3 is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. 7/3 has the smallest bottom number, so it has the fewest parts per whole unit and the largest parts.",
+      "demo": "*7/3* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. 7/3 has the smallest bottom number, so it has the fewest parts per whole unit and the largest parts.",
+      "choices": [
+        "7/3 is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. 7/3 has the smallest bottom number, so it has the fewest parts per whole unit and the largest parts.",
+        "The greater fraction is always the one with the larger bottom number.",
+        "Matching top numbers mean the fractions have the same value."
+      ]
     },
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are three fractions in symbol form. The letter d represents the smallest number. The letter z represents the largest number. Which fraction is the greatest? How do you know? 17/x  17/d  17/z",
-      "expected": "17/d",
-      "demo": "*17/d* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. d is the smallest bottom number, so 17/d has the fewest parts per whole unit and the largest parts."
+      "expected": "17/d is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. d is the smallest bottom number, so 17/d has the fewest parts per whole unit and the largest parts.",
+      "demo": "*17/d* is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. d is the smallest bottom number, so 17/d has the fewest parts per whole unit and the largest parts.",
+      "choices": [
+        "The greater fraction is always the one with the larger bottom number.",
+        "Matching top numbers mean the fractions have the same value.",
+        "17/d is the greatest. All the top numbers are the same, so every fraction counts the same number of parts. d is the smallest bottom number, so 17/d has the fewest parts per whole unit and the largest parts."
+      ]
     },
     {
       "src": "EX:6",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form. Which fraction is the lesser? How do you know? 17/13  17/8",
-      "expected": "17/13",
-      "demo": "*17/13* is the lesser. The top numbers are the same, so both fractions count the same number of parts. 17/13 has the bigger bottom number, so it has more parts per whole unit and each part is smaller."
+      "expected": "17/13 is the lesser. The top numbers are the same, so both fractions count the same number of parts. 17/13 has the bigger bottom number, so it has more parts per whole unit and each part is smaller.",
+      "demo": "*17/13* is the lesser. The top numbers are the same, so both fractions count the same number of parts. 17/13 has the bigger bottom number, so it has more parts per whole unit and each part is smaller.",
+      "choices": [
+        "Matching top numbers mean the fractions have the same value.",
+        "17/13 is the lesser. The top numbers are the same, so both fractions count the same number of parts. 17/13 has the bigger bottom number, so it has more parts per whole unit and each part is smaller.",
+        "The greater fraction is always the one with the larger bottom number."
+      ]
     }
   ]
 }

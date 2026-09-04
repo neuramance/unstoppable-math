@@ -106,7 +106,7 @@
       "demo": "The symbol tells me there are *five* parts counted in total, so I shade five parts.",
       "figures": [
         {
-          "kind": "bar",
+          "kind": "circle",
           "units": 3,
           "parts": 2
         }
@@ -121,10 +121,9 @@
       "demo": "The symbol tells me there are *five* parts counted in total, so I shade five parts.",
       "figures": [
         {
-          "kind": "number-line",
+          "kind": "square",
           "units": 2,
-          "parts": 4,
-          "band": true
+          "parts": 4
         }
       ]
     }

@@ -84,6 +84,7 @@ const styles = stylex.create({
   },
   lfracrow: {
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
     gap: '16px',
     marginTop: '24px',
@@ -97,6 +98,7 @@ const styles = stylex.create({
   },
   lfree: {
     display: 'inline-flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
     gap: '12px',
   },
@@ -173,8 +175,8 @@ export function Words({ text, stack }: { text: string; stack?: StyleXStyles }) {
         if (!m) return <Fragment key={i}>{w}</Fragment>
         return (
           <Fragment key={i}>
-            <span {...stylex.props(styles.mfrac)}>
-              <span {...stylex.props(styles.mstack, stack)}>
+            <span {...stylex.props(styles.mfrac)} role="math" aria-label={`${m[1]}/${m[2]}`}>
+              <span {...stylex.props(styles.mstack, stack)} aria-hidden="true">
                 <span {...stylex.props(styles.mnum)}>{m[1]}</span>
                 <span {...stylex.props(styles.mden)}>{m[2]}</span>
               </span>
@@ -218,7 +220,7 @@ export function FracBox({
   onChange: (i: number, v: string) => void
   disabled: boolean
   tone: 'right' | 'wrong' | null
-  answerRef: RefObject<HTMLInputElement | null>
+  answerRef?: RefObject<HTMLInputElement | null>
 }) {
   const slot = (fixed: string | null, name: string, i: number) => {
     if (fixed !== null)

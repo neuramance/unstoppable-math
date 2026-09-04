@@ -7,7 +7,10 @@
       "mode": "frac",
       "prompt": "To rewrite a fraction like this 7/10. With a hundred on the bottom… 7/10 = ▢/100 We just multiply the top and bottom by ten.",
       "expr": "7/10 × 10/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "70",
       "demo": "*70/100*"
     },
@@ -17,7 +20,10 @@
       "mode": "frac",
       "prompt": "Watch what I change. 3/10 Again I multiply top and bottom by ten.",
       "expr": "3/10 × 10/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "30",
       "demo": "*30/100*"
     },
@@ -27,7 +33,10 @@
       "mode": "frac",
       "prompt": "Watch what I change again. 9/10 Again, top and bottom by ten.",
       "expr": "9/10 × 10/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "90",
       "demo": "*90/100*. Each time, we multiply by ten over ten 10/10, which is a fraction equal to one."
     },
@@ -37,7 +46,10 @@
       "mode": "frac",
       "prompt": "Your turn. Rewrite four tenths 4/10 as an equivalent fraction with a bottom value of 100.",
       "expr": "4/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "40",
       "demo": "*40/100*"
     },
@@ -47,7 +59,10 @@
       "mode": "frac",
       "prompt": "Rewrite six tenths 6/10 as an equivalent fraction with a bottom value of 100.",
       "expr": "6/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "60",
       "demo": "*60/100*"
     },
@@ -57,7 +72,10 @@
       "mode": "frac",
       "prompt": "Rewrite one tenth 1/10 as an equivalent fraction with a bottom value of 100.",
       "expr": "1/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "10",
       "demo": "*10/100*"
     },
@@ -67,7 +85,10 @@
       "mode": "frac",
       "prompt": "Rewrite twelve tenths 12/10 as an equivalent fraction with a bottom value of 100.",
       "expr": "12/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "120",
       "demo": "*120/100*"
     },
@@ -77,7 +98,10 @@
       "mode": "frac",
       "prompt": "Rewrite ten tenths 10/10 as an equivalent fraction with a bottom value of 100.",
       "expr": "10/10 =",
-      "frac": { "num": null, "den": "100" },
+      "frac": {
+        "num": null,
+        "den": "100"
+      },
       "expected": "100",
       "demo": "*100/100*"
     },
@@ -87,18 +111,25 @@
       "mode": "frac",
       "prompt": "Rewrite seven tenths 7/10 as an equivalent fraction with a bottom value of 1000.",
       "expr": "7/10 =",
-      "frac": { "num": null, "den": "1000" },
+      "frac": {
+        "num": null,
+        "den": "1000"
+      },
       "expected": "700",
       "demo": "*700/1000*"
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Sam says 7/10 becomes 7/100 because we just add a zero to the bottom. Is Sam right? How do you know?",
-      "expected": "No",
-      "accept": ["No, Sam is wrong", "No, Sam is not right", "Sam is wrong", "Sam is not right"],
-      "demo": "*No*. We must multiply top and bottom by the same number, or the value changes. 7/100 is smaller than 7/10."
+      "expected": "No. We must multiply top and bottom by the same number, or the value changes. 7/100 is smaller than 7/10.",
+      "demo": "*No*. We must multiply top and bottom by the same number, or the value changes. 7/100 is smaller than 7/10.",
+      "choices": [
+        "No. We must multiply top and bottom by the same number, or the value changes. 7/100 is smaller than 7/10.",
+        "Yes. Adding a zero to the bottom leaves the fraction unchanged.",
+        "No. Multiply the top by one hundred and leave the bottom unchanged."
+      ]
     }
   ]
 }

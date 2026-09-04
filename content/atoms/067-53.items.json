@@ -30,7 +30,11 @@
       "role": "model",
       "mode": "frac",
       "prompt": "We can also go the other way. Here is a sum.  7 + 1/3",
-      "frac": { "whole": null, "num": null, "den": null },
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      },
       "expected": "7 1/3",
       "demo": "I can rewrite it as a mixed number, like this. *7 1/3*."
     },
@@ -57,7 +61,11 @@
       "role": "test",
       "mode": "frac",
       "prompt": "Express the sum as a mixed number.  4 + 2/7",
-      "frac": { "whole": null, "num": null, "den": null },
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      },
       "expected": "4 2/7",
       "demo": "*4 2/7*."
     },
@@ -75,7 +83,11 @@
       "role": "test",
       "mode": "frac",
       "prompt": "Express the sum as a mixed number.  1 + 99/100",
-      "frac": { "whole": null, "num": null, "den": null },
+      "frac": {
+        "whole": null,
+        "num": null,
+        "den": null
+      },
       "expected": "1 99/100",
       "demo": "*1 99/100*."
     },
@@ -100,10 +112,15 @@
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Ben says 2 3/5 means two multiplied by three fifths. Is Ben right? How do you know?",
-      "expected": "no",
-      "demo": "*No*. A mixed number means the whole number added to the fraction, not multiplied."
+      "expected": "No. A mixed number means the whole number added to the fraction, not multiplied.",
+      "demo": "*No*. A mixed number means the whole number added to the fraction, not multiplied.",
+      "choices": [
+        "No. A mixed number means the whole number added to the fraction, not multiplied.",
+        "Yes. A mixed number means the whole number multiplied by the fraction.",
+        "No. A mixed number means the whole number minus the fraction."
+      ]
     }
   ]
 }

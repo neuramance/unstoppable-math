@@ -23,9 +23,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(5 + 3)/6 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "8/6",
-      "demo": "*8/6*."
+      "demo": "*8/6*.",
+      "match": "value"
     },
     {
       "src": "II:14",
@@ -41,9 +45,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(5-3)/6 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "2/6",
-      "demo": "*2/6*."
+      "demo": "*2/6*.",
+      "match": "value"
     },
     {
       "src": "IT:2a",
@@ -60,9 +68,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(1 + 3)/5 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "4/5",
-      "demo": "Then *4/5*."
+      "demo": "Then *4/5*.",
+      "match": "value"
     },
     {
       "src": "IT:3a",
@@ -79,9 +91,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(4-3)/5 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "1/5",
-      "demo": "Then *1/5*."
+      "demo": "Then *1/5*.",
+      "match": "value"
     },
     {
       "src": "IT:4a",
@@ -98,9 +114,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(4-3)/7 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "1/7",
-      "demo": "Then *1/7*."
+      "demo": "Then *1/7*.",
+      "match": "value"
     },
     {
       "src": "IT:5a",
@@ -117,9 +137,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(5 + 4)/7 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "9/7",
-      "demo": "Then *9/7*."
+      "demo": "Then *9/7*.",
+      "match": "value"
     },
     {
       "src": "EX:1a",
@@ -136,9 +160,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(7 + 9)/10 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "16/10",
-      "demo": "Then *16/10*."
+      "demo": "Then *16/10*.",
+      "match": "value"
     },
     {
       "src": "EX:2a",
@@ -155,9 +183,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(1 + 1 + 1)/3 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "3/3",
-      "demo": "Then *3/3*."
+      "demo": "Then *3/3*.",
+      "match": "value"
     },
     {
       "src": "EX:3a",
@@ -174,9 +206,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(9-2 + 5)/4 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "12/4",
-      "demo": "Then *12/4*."
+      "demo": "Then *12/4*.",
+      "match": "value"
     },
     {
       "src": "EX:4a",
@@ -193,9 +229,13 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(5-5)/8 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "0/8",
-      "demo": "Then *0/8*."
+      "demo": "Then *0/8*.",
+      "match": "value"
     },
     {
       "src": "EX:5a",
@@ -212,32 +252,39 @@
       "mode": "frac",
       "prompt": "And then evaluate:",
       "expr": "(3 + 4)/1 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "7/1",
-      "demo": "Then *7/1*."
+      "demo": "Then *7/1*.",
+      "match": "value"
     },
     {
       "src": "EX:6",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions.  a/9 + b/9  We’re using the letters a and b to represent two numbers we don’t know. Can this expression be evaluated?",
-      "expected": "no",
-      "accept": [
-        "it cannot be evaluated",
-        "cannot be evaluated",
-        "it can't be evaluated",
-        "can't be evaluated",
-        "cannot"
-      ],
-      "demo": "*No*. (a + b)/9 – it cannot be evaluated, because we do not know the values of a and b."
+      "expected": "We can combine it as (a + b)/9, but cannot find a numerical value without a and b.",
+      "demo": "*No*. (a + b)/9 – it cannot be evaluated, because we do not know the values of a and b.",
+      "choices": [
+        "Yes. The expression is always 2/9.",
+        "We can combine it as (a + b)/9, but cannot find a numerical value without a and b.",
+        "Yes. Add both denominators to get (a + b)/18."
+      ]
     },
     {
       "src": "EX:7",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Ben writes 2/5 + 1/5 = 3/10. Is Ben right? How do you know?",
-      "expected": "no",
-      "demo": "*No*. The bottom number stays the same, because these are all fifths. Only the top numbers are added, so it is 3/5."
+      "expected": "No. The bottom number stays the same, because these are all fifths. Only the top numbers are added, so it is 3/5.",
+      "demo": "*No*. The bottom number stays the same, because these are all fifths. Only the top numbers are added, so it is 3/5.",
+      "choices": [
+        "No. The bottom number stays the same, because these are all fifths. Only the top numbers are added, so it is 3/5.",
+        "Yes. Add the top numbers and also add the bottom numbers.",
+        "No. Adding fractions means multiplying their top numbers."
+      ]
     }
   ]
 }

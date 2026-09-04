@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { ThemeName } from '@/app/theme-class'
 import { d, t } from '@/app/tokens.stylex'
 import { readItem, writeItem } from '@/lib/store'
+import { z } from 'zod'
 
 export const DEFAULT_NAME = 'Learner'
 export const DEFAULT_EMOJI = '\u{1F98A}'
@@ -24,7 +25,8 @@ export const THEMES: { id: ThemeName; label: string; swatch: stylex.StyleXStyles
 
 const THEME_STORE = 'um.theme'
 
-export type Profile = { name?: string; emoji?: string }
+const Profile = z.object({ name: z.string().optional(), emoji: z.string().optional() })
+export type Profile = z.infer<typeof Profile>
 
 const EMOJI: { glyph: string; label: string }[] = [
   { glyph: '\u{1F98A}', label: 'Fox' },
@@ -41,7 +43,7 @@ export const profileStore = (id: string) => `um.profile:${id}`
 
 export function loadProfile(id: string): Profile {
   try {
-    return JSON.parse(readItem(profileStore(id)) ?? '{}') as Profile
+    return Profile.parse(JSON.parse(readItem(profileStore(id)) ?? '{}'))
   } catch {
     return {}
   }

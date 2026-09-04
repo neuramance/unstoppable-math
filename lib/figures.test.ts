@@ -26,7 +26,6 @@ import {
   polygonSides,
   polygonTilt,
   sectorAngle,
-  shadeable,
   spansMajorArc,
   takesColumns,
   takesOrientation,
@@ -74,11 +73,14 @@ test('a square sits flat, because a square standing on its corner is a diamond',
   }
 })
 
-test('a strip and a round figure both hold five units, and a grid holds one', () => {
+test('strips fit the source number lines up to ten, round figures fit five units, and grids fit one', () => {
   for (const kind of FIGURE_KINDS) {
-    expect({ kind, max: maxUnitsFor(kind) }).toEqual({ kind, max: takesColumns(kind) ? 1 : 5 })
+    expect({ kind, max: maxUnitsFor(kind) }).toEqual({
+      kind,
+      max: takesColumns(kind) ? 1 : takesOrientation(kind) ? 10 : 5,
+    })
   }
-  expect([...new Set(FIGURE_KINDS.map(maxUnitsFor))].sort()).toEqual([1, 5])
+  expect([...new Set(FIGURE_KINDS.map(maxUnitsFor))].sort()).toEqual([1, 10, 5])
 })
 
 const TURN = 2 * Math.PI
@@ -340,8 +342,7 @@ test('a lattice is a kind of its own, because a partition in two directions is n
   ])
 })
 
-test('a lattice is shadeable without being orientable, which is the case that splits the two predicates', () => {
-  expect<readonly string[]>(FIGURE_KINDS.filter(shadeable)).toEqual(['number-line', 'bar', 'grid'])
+test('strips take orientation and grids take columns', () => {
   expect(FIGURE_KINDS.filter(takesOrientation)).toEqual(['number-line', 'bar'])
   expect<readonly string[]>(FIGURE_KINDS.filter(takesColumns)).toEqual(['grid'])
 })

@@ -122,83 +122,106 @@
     {
       "src": "EX:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "How do you know?",
-      "expected": "it has fewer parts per whole unit",
+      "expected": "10/5 has bigger sized parts, because it has fewer parts per whole unit.",
       "demo": "*10/5* has bigger sized parts, because it has *fewer parts per whole unit*.",
-      "accept": [
-        "fewer parts per whole unit",
-        "because it has fewer parts per whole unit",
-        "10/5 has fewer parts per whole unit",
-        "fewer parts per unit",
-        "fewer parts",
+      "choices": [
+        "The top number tells us how big each part is.",
+        "The parts are the same size whenever the top numbers match.",
         "10/5 has bigger sized parts, because it has fewer parts per whole unit."
       ]
     },
     {
       "src": "EX:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form: 10/10  10/9. Which fraction has the bigger sized parts? How do you know?",
-      "expected": "10/9",
+      "expected": "10/9 has bigger sized parts, because it has fewer parts per whole unit.",
       "demo": "*10/9* has bigger sized parts, because it has fewer parts per whole unit.",
-      "accept": ["10/9 has bigger sized parts, because it has fewer parts per whole unit."]
+      "choices": [
+        "The parts are the same size whenever the top numbers match.",
+        "10/9 has bigger sized parts, because it has fewer parts per whole unit.",
+        "The top number tells us how big each part is."
+      ]
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form: 10/10  30/9. Which fraction has the bigger sized parts? How do you know?",
-      "expected": "30/9",
+      "expected": "30/9 has bigger sized parts, because it has fewer parts per whole unit.",
       "demo": "*30/9* has bigger sized parts, because it has fewer parts per whole unit.",
-      "accept": ["30/9 has bigger sized parts, because it has fewer parts per whole unit."]
+      "choices": [
+        "30/9 has bigger sized parts, because it has fewer parts per whole unit.",
+        "The top number tells us how big each part is.",
+        "The parts are the same size whenever the top numbers match."
+      ]
     },
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form: a/10  a/9. Which fraction has the bigger sized parts? How do you know?",
-      "expected": "a/9",
+      "expected": "a/9 has bigger sized parts, because it has fewer parts per whole unit.",
       "demo": "*a/9* has bigger sized parts, because it has fewer parts per whole unit.",
-      "accept": ["a/9 has bigger sized parts, because it has fewer parts per whole unit."]
+      "choices": [
+        "The top number tells us how big each part is.",
+        "The parts are the same size whenever the top numbers match.",
+        "a/9 has bigger sized parts, because it has fewer parts per whole unit."
+      ]
     },
     {
       "src": "EX:6",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form: a/10  a/900. Which fraction has the bigger sized parts? How do you know?",
-      "expected": "a/10",
+      "expected": "a/10 has bigger sized parts, because it has fewer parts per whole unit.",
       "demo": "*a/10* has bigger sized parts, because it has fewer parts per whole unit.",
-      "accept": ["a/10 has bigger sized parts, because it has fewer parts per whole unit."]
+      "choices": [
+        "The parts are the same size whenever the top numbers match.",
+        "a/10 has bigger sized parts, because it has fewer parts per whole unit.",
+        "The top number tells us how big each part is."
+      ]
     },
     {
       "src": "EX:7",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are five fractions in symbol form: 10/1  10/2  10/3  10/4  10/5. Which fraction has the biggest sized parts? How do you know?",
-      "expected": "10/1",
+      "expected": "10/1 has bigger sized parts, because it has fewer parts per whole unit.",
       "demo": "*10/1* has bigger sized parts, because it has fewer parts per whole unit.",
-      "accept": ["10/1 has bigger sized parts, because it has fewer parts per whole unit."]
+      "choices": [
+        "10/1 has bigger sized parts, because it has fewer parts per whole unit.",
+        "The top number tells us how big each part is.",
+        "The parts are the same size whenever the top numbers match."
+      ]
     },
     {
       "src": "EX:8",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are three fractions in symbol form: 10/x  10/d  10/z. The letter d represents the smallest number. The letter z represents the largest number. Which fraction has the biggest sized parts? How do you know?",
-      "expected": "10/d",
-      "demo": "*10/d* has biggest sized parts, because d represents the smallest number, and so 10/d it has fewer parts per whole unit.",
-      "accept": [
-        "10/d has biggest sized parts, because d represents the smallest number, and so 10/d it has fewer parts per whole unit."
+      "expected": "10/d has biggest sized parts, because d represents the smallest number, and so 10/d has fewer parts per whole unit.",
+      "demo": "*10/d* has biggest sized parts, because d represents the smallest number, and so 10/d has fewer parts per whole unit.",
+      "choices": [
+        "The top number tells us how big each part is.",
+        "The parts are the same size whenever the top numbers match.",
+        "10/d has biggest sized parts, because d represents the smallest number, and so 10/d has fewer parts per whole unit."
       ]
     },
     {
       "src": "EX:9",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Here are two fractions in symbol form: 10/10  10/9. Which fraction has the smaller sized parts? How do you know?",
-      "expected": "10/10",
+      "expected": "10/10 has smaller sized parts, because it has more parts per whole unit.",
       "demo": "*10/10* has smaller sized parts, because it has more parts per whole unit.",
-      "accept": ["10/10 has smaller sized parts, because it has more parts per whole unit."]
+      "choices": [
+        "The parts are the same size whenever the top numbers match.",
+        "10/10 has smaller sized parts, because it has more parts per whole unit.",
+        "The top number tells us how big each part is."
+      ]
     }
   ]
 }

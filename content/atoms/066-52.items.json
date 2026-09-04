@@ -8,7 +8,13 @@
       "prompt": "When people first thought about fractions they thought about taking something and breaking it up into smaller parts, like this. That's where the word fraction comes from. The ancient Latin word, frangere, meaning to fracture or to break into parts.",
       "expected": "less than a whole unit",
       "demo": "So in the beginning a fraction always meant *less than a whole unit*, and so the top number was always smaller than the bottom number.",
-      "figures": [{ "kind": "bar", "units": 1, "parts": 5 }]
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 1,
+          "parts": 5
+        }
+      ]
     },
     {
       "src": "II:4",
@@ -17,7 +23,14 @@
       "prompt": "But we've seen that a fraction can represent more than one whole unit. Here the top number is bigger than the bottom number.",
       "expected": "whether the fraction includes a whole unit or not",
       "demo": "So we have given fractions a name that tells us *whether the fraction includes a whole unit or not*.",
-      "figures": [{ "kind": "bar", "units": 2, "parts": 5, "counted": 7 }]
+      "figures": [
+        {
+          "kind": "bar",
+          "units": 2,
+          "parts": 5,
+          "counted": 7
+        }
+      ]
     },
     {
       "src": "II:7",
@@ -49,7 +62,7 @@
       "mode": "typed",
       "prompt": "But now…  10/9",
       "expected": "an improper fraction",
-      "demo": "The top is bigger than the bottom – we call this an *improper fraction*. Each time, we compare the top with the bottom. If the top is smaller, it is proper. If the top is bigger, it is improper."
+      "demo": "The top is bigger than the bottom – we call this an *improper fraction*. Each time, we compare the top with the bottom. If the top is smaller, it is proper. If the top is equal to or bigger than the bottom, it is improper. For example, 6/6 is one whole unit, so it is improper."
     },
     {
       "src": "II:12",
@@ -62,38 +75,54 @@
     {
       "src": "IT:1",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn. Is this fraction proper or improper? How do you know?  3/8",
-      "expected": "proper",
+      "expected": "Proper, because the top is smaller than the bottom.",
       "demo": "*Proper*, because the top is smaller than the bottom.",
-      "accept": ["Proper, because the top is smaller than the bottom."]
+      "choices": [
+        "Proper, because every fraction with a positive top number is proper.",
+        "Improper, because every fraction with a bottom number bigger than one is improper.",
+        "Proper, because the top is smaller than the bottom."
+      ]
     },
     {
       "src": "IT:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this fraction proper or improper? How do you know?  8/3",
-      "expected": "improper",
+      "expected": "Improper, because the top is bigger than the bottom.",
       "demo": "*Improper*, because the top is bigger than the bottom.",
-      "accept": ["Improper, because the top is bigger than the bottom."]
+      "choices": [
+        "Improper, because every fraction with a bottom number bigger than one is improper.",
+        "Improper, because the top is bigger than the bottom.",
+        "Proper, because every fraction with a positive top number is proper."
+      ]
     },
     {
       "src": "IT:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this fraction proper or improper? How do you know?  9/10",
-      "expected": "proper",
+      "expected": "Proper, because the top is smaller than the bottom.",
       "demo": "*Proper*, because the top is smaller than the bottom.",
-      "accept": ["Proper, because the top is smaller than the bottom."]
+      "choices": [
+        "Proper, because the top is smaller than the bottom.",
+        "Proper, because every fraction with a positive top number is proper.",
+        "Improper, because every fraction with a bottom number bigger than one is improper."
+      ]
     },
     {
       "src": "IT:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this fraction proper or improper? How do you know?  10/9",
-      "expected": "improper",
+      "expected": "Improper, because the top is bigger than the bottom.",
       "demo": "*Improper*, because the top is bigger than the bottom.",
-      "accept": ["Improper, because the top is bigger than the bottom."]
+      "choices": [
+        "Proper, because every fraction with a positive top number is proper.",
+        "Improper, because every fraction with a bottom number bigger than one is improper.",
+        "Improper, because the top is bigger than the bottom."
+      ]
     },
     {
       "src": "EX:1",
@@ -116,28 +145,41 @@
     {
       "src": "EX:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Is this fraction proper or improper? How do you know?  5/1",
-      "expected": "improper",
+      "expected": "Improper, because the top is bigger than the bottom.",
       "demo": "*Improper*, because the top is bigger than the bottom.",
-      "accept": ["Improper, because the top is bigger than the bottom."]
+      "choices": [
+        "Improper, because the top is bigger than the bottom.",
+        "Proper, because every fraction with a positive top number is proper.",
+        "Improper, because every fraction with a bottom number bigger than one is improper."
+      ]
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "a represents an unknown number. Is this fraction proper or improper? How do you know?  a/9",
-      "expected": "it depends on a",
-      "accept": ["it depends", "depends on a", "depends"],
-      "demo": "*It depends on a*. If a is smaller than nine it is proper, and if a is bigger than nine it is improper."
+      "expected": "It depends on a. If a is smaller than nine it is proper. If a is equal to or bigger than nine it is improper.",
+      "demo": "*It depends on a*. If a is smaller than nine it is proper. If a is equal to or bigger than nine it is improper.",
+      "choices": [
+        "Proper, because every fraction with a positive top number is proper.",
+        "Improper, because every fraction with a bottom number bigger than one is improper.",
+        "It depends on a. If a is smaller than nine it is proper. If a is equal to or bigger than nine it is improper."
+      ]
     },
     {
       "src": "EX:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Give this your best guess: is this fraction proper or improper?  6/6  What made you choose your answer?",
-      "expected": "improper",
-      "demo": "*Improper*, because proper fractions break whole units into something less than a whole unit."
+      "expected": "Improper, because proper fractions break whole units into something less than a whole unit.",
+      "demo": "*Improper*, because proper fractions break whole units into something less than a whole unit.",
+      "choices": [
+        "Improper, because every fraction with a bottom number bigger than one is improper.",
+        "Improper, because proper fractions break whole units into something less than a whole unit.",
+        "Proper, because every fraction with a positive top number is proper."
+      ]
     }
   ]
 }

@@ -1,9 +1,10 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from 'vitest'
-import { badgeCount, shadeable } from '../lib/figures'
+import { badgeCount } from '../lib/figures'
 import { clipKey, gradeItem, narrated, normalizeAnswer, SPEAKABLE, spokenLesson, type LessonItem } from '../lib/lesson'
 import { lesson } from '../lib/session.fixtures'
-import { buildLesson, LessonFile, readAtomFiles } from '../scripts/build-lesson'
+import { buildLesson, readAtomFiles } from '../scripts/build-lesson'
+import { LessonFile } from '../lib/lesson-schema'
 import { extract, type Transcription } from '../scripts/extract-docx'
 
 const committed = JSON.parse(readFileSync('content/transcription/fractions.transcription.json', 'utf8'))
@@ -72,15 +73,33 @@ const SCRIPT_CORRECTED: Record<number, Partial<LessonItem>> = {
   47: { prompt: 'How many parts in each whole unit?' },
 }
 
-const REASON_ACCEPTED: Record<number, Partial<LessonItem>> = {
-  60: { accept: ['Yes, because the parts are the same size.'] },
-  61: { accept: ['Yes, because the parts are the same size.'] },
-  62: { accept: ['No, because the parts are not the same size.'] },
+const REASON_CHOICES: Record<number, string[]> = {
+  60: [
+    'Yes, because the parts are the same size.',
+    'Yes, because the number of parts is enough; their sizes do not matter.',
+    'No, because only circles can represent fractions.',
+  ],
+  61: [
+    'Yes, because the number of parts is enough; their sizes do not matter.',
+    'No, because only circles can represent fractions.',
+    'Yes, because the parts are the same size.',
+  ],
+  62: [
+    'No, because only circles can represent fractions.',
+    'No, because the parts are not the same size.',
+    'Yes, because the number of parts is enough; their sizes do not matter.',
+  ],
 }
 
-test('the first five atoms serve the lesson umath_1 honed, bar reviewed corrections', () => {
+test('the first five atoms preserve the honed teaching and require reasons on the three reasoning questions', () => {
   expect(honed).toHaveLength(62)
-  const want = honed.map((item, at) => ({ ...item, ...SCRIPT_CORRECTED[at + 1], ...REASON_ACCEPTED[at + 1] }))
+  const want = honed.map((item, at) => ({
+    ...item,
+    ...SCRIPT_CORRECTED[at + 1],
+    ...(REASON_CHOICES[at + 1]
+      ? { mode: 'choice', expected: spokenLesson(item.demo), choices: REASON_CHOICES[at + 1] }
+      : {}),
+  }))
   expect(lesson.items.filter((item) => item.row <= 5)).toEqual(want)
 })
 
@@ -118,7 +137,7 @@ test('every line the whole lesson speaks renders to speech the clip library can 
   const spoken = lesson.items.flatMap((item) => [item.prompt, item.demo]).map(narrated)
   expect(spoken.filter((text) => !SPEAKABLE.test(text))).toEqual([])
   expect(spoken.filter((text) => /[▢×÷√=<>+/]/.test(text))).toEqual([])
-  expect(new Set(spoken).size).toBe(2116)
+  expect(new Set(spoken).size).toBe(2099)
 })
 
 test('every count item expects exactly what its figure shows', () => {
@@ -143,7 +162,6 @@ test('frac and shade items stay inside their figures', () => {
       const fig = item.figures?.[0]
       expect(fig, `shade item without a figure: ${item.prompt}`).toBeDefined()
       if (fig === undefined) continue
-      expect(shadeable(fig.kind)).toBe(true)
       const cells = fig.units * fig.parts
       for (const n of item.expected.split(/[\s,]+/).map(Number)) {
         expect(n).toBeGreaterThan(0)
@@ -173,27 +191,23 @@ test('every test item grades its own expected answer as correct', () => {
   }
 })
 
-const ASKS_WHY = /how do you know|why\?|how can you tell/i
-const ONE_SENTENCE = /^[^.!?]*[.!?]?$/
+const ASKS_WHY = /how do you know|why\?|how can you tell|what made/i
 
-test('a graded item that asks for a reason accepts the reason it models', () => {
-  const reasoned = items().filter((item) => {
-    if (item.role !== 'test' || item.mode !== 'typed' || !ASKS_WHY.test(item.prompt)) return false
-    const modelled = spokenLesson(item.demo).trim()
-    return ONE_SENTENCE.test(modelled) && normalizeAnswer(modelled) !== normalizeAnswer(item.expected)
-  })
-  expect(reasoned).toHaveLength(66)
+test('every reasoning question requires an explanation and rejects bare yes or no answers', () => {
+  const reasoned = items().filter((item) => item.role === 'test' && ASKS_WHY.test(item.prompt))
+  expect(reasoned).toHaveLength(102)
   for (const item of reasoned) {
-    const modelled = spokenLesson(item.demo).trim()
+    expect(item.mode).toBe('choice')
     const graded: LessonItem = { row: 1, ...item }
-    expect(gradeItem(graded, modelled), `rejects its own model: ${item.prompt} -> ${modelled}`).toBe(true)
-    expect(gradeItem(graded, item.expected), `rejects the short answer: ${item.prompt}`).toBe(true)
+    expect(gradeItem(graded, spokenLesson(item.demo)), `rejects its explanation: ${item.prompt}`).toBe(true)
+    expect(gradeItem(graded, 'yes')).toBe(false)
+    expect(gradeItem(graded, 'no')).toBe(false)
   }
 })
 
 test('every item traces to a real line of its section, in document order, covering every question line', () => {
   const sections = new Map(transcription.sections.map((s) => [s.label, s]))
-  const BLOCK_ORDER = { II: 1, IT: 2, EX: 3 }
+  const BLOCK_ORDER = { NOTE: 1, II: 2, IT: 3, EX: 4 }
   for (const [label, file] of atoms) {
     const section = sections.get(label)
     expect(section, `atom file without a section: ${label}`).toBeDefined()
@@ -201,29 +215,32 @@ test('every item traces to a real line of its section, in document order, coveri
     let last = -1
     const covered = new Set<string>()
     for (const item of file.items) {
-      const m = /^(TBL|II|IT|EX):(\d+)[a-z]?$/.exec(item.src)
+      const m = /^(TBL|NOTE|II|IT|EX):(\d+)(?:-(\d+))?[a-z]?$/.exec(item.src)
       expect(m, `bad src ${item.src} in ${label}`).not.toBeNull()
       if (m === null) continue
-      const block = m[1] as 'TBL' | 'II' | 'IT' | 'EX'
+      const block = m[1] as 'TBL' | keyof typeof BLOCK_ORDER
       const line = Number(m[2])
+      const end = Number(m[3] ?? m[2])
+      expect(end, `${label} ${item.src} reverses its source range`).toBeGreaterThanOrEqual(line)
       if (block !== 'TBL') {
+        const source = block === 'NOTE' ? section.notes : section.blocks[block]
         expect(
-          section.blocks[block].length,
-          `${label} ${item.src} points past ${block} (${section.blocks[block].length} lines)`,
-        ).toBeGreaterThanOrEqual(line)
+          source.length,
+          `${label} ${item.src} points past ${block} (${source.length} lines)`,
+        ).toBeGreaterThanOrEqual(end)
       }
       if (block !== 'TBL') {
-        const pos = BLOCK_ORDER[block as keyof typeof BLOCK_ORDER] * 1000 + line
+        const pos = BLOCK_ORDER[block] * 1000 + line
         expect(pos, `${label}: items out of document order at ${item.src}`).toBeGreaterThanOrEqual(last)
         last = pos
       }
-      covered.add(`${block}:${line}`)
-      if (block === 'II') expect(item.role).toBe('model')
+      for (let n = line; n <= end; n++) covered.add(`${block}:${n}`)
+      if (block === 'II' || block === 'NOTE') expect(item.role).toBe('model')
       else if (block !== 'TBL') expect(item.role).toBe('test')
     }
     for (const block of ['IT', 'EX'] as const) {
       section.blocks[block].forEach((line, i) => {
-        if (!line.includes('[')) return
+        if (!line.includes('[') && !line.includes('?')) return
         expect(covered.has(`${block}:${i + 1}`), `${label} ${block}:${i + 1} has no item: ${line.slice(0, 60)}`).toBe(
           true,
         )

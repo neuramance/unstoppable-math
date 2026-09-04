@@ -60,12 +60,14 @@ test('a session runs: Enter begins, models advance, a miss re-serves, a hit is a
 })
 
 test('dev autoplay clears a whole session to the done screen, and Done returns to a fresh intro', async ({ page }) => {
-  test.setTimeout(240_000)
+  await page.clock.install()
   await openLearn(page)
   await page.getByRole('button', { name: 'Begin session' }).click()
   await page.getByRole('button', { name: 'Autoplay session' }).click()
-  const done = page.getByRole('heading', { name: /Stack cleared!|Stack done!/ })
-  await expect(done).toBeVisible({ timeout: 220_000 })
+  const done = page.getByRole('heading', { name: 'Stack cleared!' })
+  while (!(await done.isVisible())) await page.clock.fastForward(200)
+  await expect(done).toBeVisible()
+  await expect(page.getByText('100%', { exact: true })).toBeVisible()
   await expect(page.getByText('blocks cleared')).toBeVisible()
   await expect(page.getByText('atoms firmed')).toBeVisible()
   await page.getByRole('button', { name: 'Done' }).click()

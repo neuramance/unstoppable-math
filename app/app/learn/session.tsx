@@ -57,6 +57,7 @@ const s = stylex.create({
     zoom: { default: null, [WIDE]: 1.15 },
   },
   sessmain: {
+    width: { default: null, [NARROW]: '100%' },
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: '0%',

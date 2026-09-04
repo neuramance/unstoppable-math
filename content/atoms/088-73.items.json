@@ -7,7 +7,10 @@
       "mode": "frac",
       "prompt": "We’ve seen how to rewrite a fraction with ten on the bottom…  7/10  As an equivalent fraction with a hundred on the bottom.  70/100  We can also go the other way, from one hundred on the bottom to ten on the bottom. My turn first: here is a fraction with a hundred on the bottom. Its equivalent fraction over ten, is this.",
       "expr": "70/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "7/10",
       "demo": "Its equivalent fraction over ten, is *7/10*."
     },
@@ -17,7 +20,10 @@
       "mode": "frac",
       "prompt": "Watch what I change. Over ten, the equivalent fraction is this.",
       "expr": "30/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "3/10",
       "demo": "Over ten, the equivalent fraction is *3/10*."
     },
@@ -27,7 +33,10 @@
       "mode": "frac",
       "prompt": "Watch what I change. Again, over ten, the equivalent fraction is this.",
       "expr": "90/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "9/10",
       "demo": "Again, over ten, the equivalent fraction is *9/10*. Each time, we divide top and bottom by ten."
     },
@@ -37,7 +46,10 @@
       "mode": "frac",
       "prompt": "Your turn. Rewrite forty hundredths as an equivalent fraction with a bottom value of ten.",
       "expr": "40/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "4/10",
       "demo": "Forty hundredths is *4/10*."
     },
@@ -47,7 +59,10 @@
       "mode": "frac",
       "prompt": "Rewrite sixty hundredths as an equivalent fraction with a bottom value of ten.",
       "expr": "60/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "6/10",
       "demo": "Sixty hundredths is *6/10*."
     },
@@ -57,7 +72,10 @@
       "mode": "frac",
       "prompt": "Rewrite ten hundredths as an equivalent fraction with a bottom value of ten.",
       "expr": "10/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "1/10",
       "demo": "Ten hundredths is *1/10*."
     },
@@ -67,7 +85,10 @@
       "mode": "frac",
       "prompt": "Rewrite one hundred and twenty hundredths as an equivalent fraction with a bottom value of ten.",
       "expr": "120/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "12/10",
       "demo": "One hundred and twenty hundredths is *12/10*."
     },
@@ -77,7 +98,10 @@
       "mode": "frac",
       "prompt": "Rewrite one hundred hundredths as an equivalent fraction with a bottom value of ten.",
       "expr": "100/100 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "10/10",
       "demo": "One hundred hundredths is *10/10*."
     },
@@ -87,24 +111,25 @@
       "mode": "frac",
       "prompt": "Rewrite seven hundred thousandths as an equivalent fraction with a bottom value of ten.",
       "expr": "700/1000 =",
-      "frac": { "num": null, "den": null },
+      "frac": {
+        "num": null,
+        "den": null
+      },
       "expected": "7/10",
       "demo": "Seven hundred thousandths is *7/10*."
     },
     {
       "src": "EX:4",
       "role": "test",
-      "mode": "typed",
-      "prompt": "Can fifty-two hundredths be rewritten with a bottom value of ten? How do you know?  52/100",
-      "expected": "No",
-      "accept": [
-        "no it can’t",
-        "no it cannot",
-        "it cannot",
-        "no fifty-two does not divide by ten",
-        "no because fifty-two does not divide by ten"
-      ],
-      "demo": "*No*. Ten times something must give one hundred, so the top must divide by ten too, and fifty-two does not."
+      "mode": "choice",
+      "prompt": "Can 52/100 be rewritten with ten on the bottom and a whole number on top? How do you know?",
+      "expected": "No. We would need to divide both top and bottom by ten. Fifty-two divided by ten is 5.2, which is not a whole number.",
+      "demo": "*No*. We would need to divide both top and bottom by ten. Fifty-two divided by ten is 5.2, which is not a whole number.",
+      "choices": [
+        "Yes. Keep fifty-two on top and replace one hundred with ten.",
+        "No. Fractions with different bottom numbers can never be equivalent.",
+        "No. We would need to divide both top and bottom by ten. Fifty-two divided by ten is 5.2, which is not a whole number."
+      ]
     }
   ]
 }

@@ -9,6 +9,12 @@ import { heardAnswer, replayLesson } from '@/lib/lesson'
 import type { Lesson, LessonItem, TrialEntry } from '@/lib/lesson'
 import { chrome } from './chrome'
 import { FigureView } from './figures-view'
+import { ConstructAnswer } from './construct-answer'
+import { ShadeFractionAnswer } from './shade-fraction-answer'
+import { FractionNumberLine } from './fraction-number-line'
+import { ChoiceAnswer } from './choice-answer'
+import { DecomposeAnswer } from './decompose-answer'
+import { LineFractionsAnswer } from './line-fractions-answer'
 import { FracRow, labelStack, LessonText, TypedRow } from './lesson-text'
 import { Heard, MicPill } from './speech-row'
 import { EnterKey, enterHotkey, reduced, shellInert } from './ui'
@@ -102,8 +108,47 @@ function toneOf(feedback: Feedback | null): 'right' | 'wrong' | null {
   return feedback.correct ? 'right' : 'wrong'
 }
 
+function AnswerFields({
+  item,
+  answer,
+  feedback,
+  answerRef,
+  trial,
+}: {
+  item: LessonItem
+  answer: ReturnType<typeof useLessonAnswer>
+  feedback: Feedback | null
+  answerRef: RefObject<HTMLInputElement | null>
+  trial: number
+}) {
+  const reveal = item.role === 'model' || feedback !== null
+  const tone = toneOf(feedback)
+  if (item.mode === 'choice')
+    return <ChoiceAnswer item={item} value={answer.typed} reveal={reveal} onChange={answer.setTyped} />
+  if (item.mode === 'decompose')
+    return <DecomposeAnswer key={trial} item={item} reveal={reveal} onChange={answer.setTyped} />
+  if (item.mode === 'line-fractions')
+    return <LineFractionsAnswer key={trial} item={item} reveal={reveal} onChange={answer.setTyped} />
+  if (item.mode === 'construct')
+    return <ConstructAnswer key={trial} item={item} reveal={reveal} onChange={answer.setTyped} />
+  if (item.mode === 'shade-fraction')
+    return <ShadeFractionAnswer key={trial} item={item} reveal={reveal} onChange={answer.setTyped} />
+  if (item.mode === 'frac')
+    return <FracRow item={item} answer={answer} reveal={reveal} tone={tone} answerRef={answerRef} />
+  if (item.mode === 'typed' && item.role === 'test')
+    return (
+      <TypedRow
+        value={feedback ? feedback.typed : answer.typed}
+        onType={answer.setTyped}
+        tone={tone}
+        answerRef={answerRef}
+      />
+    )
+  return null
+}
+
 function answerableAloud(item: LessonItem | null, feedback: Feedback | null, auto: boolean): boolean {
-  return item !== null && item.role === 'test' && item.mode !== 'shade' && feedback === null && !auto
+  return item !== null && item.role === 'test' && ['typed', 'frac'].includes(item.mode) && feedback === null && !auto
 }
 
 function FigureRow({
@@ -123,7 +168,7 @@ function FigureRow({
   const interactive = item.mode === 'shade' && !reveal
   const countedFor = (fig: Figure, i: number) =>
     item.mode === 'shade' ? (answer.shownSel[i] ?? 0) : (fig.counted ?? 0)
-  if (figures.length === 0) return null
+  if (figures.length === 0 || !['typed', 'frac', 'shade', 'choice'].includes(item.mode)) return null
   return (
     <div {...stylex.props(styles.lfigs)} data-lfigs="">
       {figures.map((fig, i) => (
@@ -385,8 +430,6 @@ export function LessonPlayer({
 
   if (!item) return null
 
-  const tone = toneOf(feedback)
-
   return (
     <>
       <div key={cardKey} {...stylex.props(chrome.pcard)}>
@@ -394,17 +437,8 @@ export function LessonPlayer({
           <LessonText text={item.prompt} />
         </p>
         <FigureRow item={item} answer={answer} reveal={reveal} shown={shown} morphed={morphed} />
-        {item.mode === 'frac' && (
-          <FracRow item={item} answer={answer} reveal={reveal} tone={tone} answerRef={answerRef} />
-        )}
-        {item.mode === 'typed' && !model && (
-          <TypedRow
-            value={feedback ? feedback.typed : answer.typed}
-            onType={answer.setTyped}
-            tone={tone}
-            answerRef={answerRef}
-          />
-        )}
+        {item.numberLine && <FractionNumberLine key={log.length} fractions={item.numberLine} />}
+        <AnswerFields item={item} answer={answer} feedback={feedback} answerRef={answerRef} trial={log.length} />
         <Heard listening={speech.listening} interim={speech.interim} />
         <LessonFooter
           model={model}

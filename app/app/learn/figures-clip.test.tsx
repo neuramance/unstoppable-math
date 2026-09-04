@@ -1,14 +1,11 @@
-import { readFileSync } from 'node:fs'
 import { render } from '@testing-library/react'
 import { expect, test } from 'vitest'
 import type { CountKind, Figure } from '@/lib/figures'
-import type { Lesson } from '@/lib/lesson'
+import { lesson } from '@/lib/session.fixtures'
 import { FigureView } from './figures-view'
 
 const STROKE_ROOM = 2
 const SHOWN = [undefined, 1, 2, 3, 4, 5, 6, 8, 10, 12, 20]
-
-const lesson = JSON.parse(readFileSync('public/lessons/NF_Fractions.lesson.json', 'utf8')) as Lesson
 
 const combos = new Map<string, { fig: Figure; badge: CountKind | undefined }>()
 for (const item of lesson.items)
@@ -46,13 +43,13 @@ function overflowsIn(svg: SVGSVGElement, label: string): string[] {
 
 test('every figure keeps its strokes inside the viewBox, so nothing is clipped at the edges', () => {
   const clipped = new Set<string>()
+  const view = render(null)
   for (const { fig, badge } of combos.values()) {
     const label = `${fig.kind} u=${fig.units} p=${fig.parts} ${fig.orientation ?? 'horizontal'} badge=${badge}`
     for (const shown of badge === undefined ? [undefined] : SHOWN) {
-      const view = render(<FigureView fig={fig} counted={fig.counted ?? 0} badge={badge} shown={shown} />)
-      for (const svg of Array.from(document.querySelectorAll('svg')))
-        for (const hit of overflowsIn(svg as unknown as SVGSVGElement, label)) clipped.add(hit)
-      view.unmount()
+      view.rerender(<FigureView fig={fig} counted={fig.counted ?? 0} badge={badge} shown={shown} />)
+      for (const svg of view.container.querySelectorAll<SVGSVGElement>('svg'))
+        for (const hit of overflowsIn(svg, label)) clipped.add(hit)
     }
   }
   expect(combos.size).toBeGreaterThan(200)

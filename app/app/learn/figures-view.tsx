@@ -23,6 +23,7 @@ import {
   gridRows,
   longSpan,
   orientationOf,
+  partAngle,
   partOffset,
   polygonRadius,
   polygonSides,
@@ -37,6 +38,7 @@ import {
   sectorX,
   sectorY,
   spansMajorArc,
+  takesOrientation,
 } from '@/lib/figures'
 import { core, pickable, type FigProps } from './figure-core'
 import { LineFig } from './figure-line'
@@ -53,11 +55,13 @@ const styles = stylex.create({
     letterSpacing: '0.09em',
     color: t.mut,
   },
+  width: (scale: number) => ({ width: `${scale * 100}%` }),
+  roundSize: (width: number, scale: number) => ({ width: `${scale * 100}%`, maxWidth: width * scale }),
 })
 
 function wedgePath(cx: number, cy: number, r: number, sides: number, tilt: number, from: number, to: number) {
-  const a0 = sectorAngle(from)
-  const a1 = sectorAngle(to)
+  const a0 = partAngle(sides, tilt, from)
+  const a1 = partAngle(sides, tilt, to)
   if (sides < 3) {
     const long = spansMajorArc(from, to) ? 1 : 0
     return `M ${cx} ${cy} L ${ringX(cx, r, a0)} ${ringY(cy, r, a0)} A ${r} ${r} 0 ${long} 1 ${ringX(cx, r, a1)} ${ringY(cy, r, a1)} Z`
@@ -156,6 +160,9 @@ function BarFig({ fig, counted, badge, shown, onPick, pop }: FigProps) {
 function GridFig({ fig, counted, badge, shown, onPick, pop }: FigProps) {
   const columns = gridColumns(fig)
   const rows = gridRows(fig.parts, columns)
+  const rowFirst = fig.orientation === 'horizontal'
+  const columnOf = (i: number) => (rowFirst ? i % columns : gridColumnOf(i, rows))
+  const rowOf = (i: number) => (rowFirst ? Math.floor(i / columns) : gridRowOf(i, rows))
   const across = FIGW - 2 * PAD
   const down = rowHeight(rows)
   const xOf = (column: number) => PAD + columnOffset(fig, column, columns) * across
@@ -165,8 +172,8 @@ function GridFig({ fig, counted, badge, shown, onPick, pop }: FigProps) {
   const badges = Math.min(badgeCount(badge, fig, counted), shown ?? Infinity)
   const badgeSpot = (i: number): [number, number] => {
     if (badge === 'units') return [PAD + across / 2, PAD + (GRID_DOWN - 2 * PAD) / 2]
-    const column = gridColumnOf(i, rows)
-    return [xOf(column) + wOf(column) / 2, yOf(gridRowOf(i, rows)) + down / 2]
+    const column = columnOf(i)
+    return [xOf(column) + wOf(column) / 2, yOf(rowOf(i)) + down / 2]
   }
   return (
     <svg
@@ -176,12 +183,12 @@ function GridFig({ fig, counted, badge, shown, onPick, pop }: FigProps) {
       {...pickable('Parts shaded', fig.units * fig.parts, counted, onPick)}
     >
       {Array.from({ length: fig.parts }, (_, k) => {
-        const column = gridColumnOf(k, rows)
+        const column = columnOf(k)
         return (
           <rect
             key={k}
             x={xOf(column)}
-            y={yOf(gridRowOf(k, rows))}
+            y={yOf(rowOf(k))}
             width={wOf(column)}
             height={down}
             {...stylex.props(
@@ -223,51 +230,44 @@ function GridFig({ fig, counted, badge, shown, onPick, pop }: FigProps) {
   )
 }
 
-type RoundLayout = 'grid' | 'grouped'
-
-function RoundFig({
-  fig,
-  counted,
-  badge,
-  shown,
-  pop,
-  radius = R,
-  layout = 'grid',
-}: FigProps & { radius?: number; layout?: RoundLayout }) {
-  const r = radius
+function RoundFig({ fig, counted, badge, shown, pop, onPick }: FigProps) {
+  const r = R
   const sides = polygonSides(fig.kind, fig.parts)
   const tilt = polygonTilt(fig.kind)
   const step = 2 * r + 16
-  const grouped = layout === 'grouped' && fig.units >= 2 && fig.units <= 4
-  const posOf = (u: number): [number, number] => {
-    if (!grouped) return [u % 3, Math.floor(u / 3)]
-    if (fig.units === 2) return [0, u]
-    if (fig.units === 3) return u === 0 ? [0.5, 0] : [u - 1, 1]
-    return [u % 2, Math.floor(u / 2)]
-  }
-  const cols = grouped ? (fig.units === 2 ? 1 : 2) : Math.min(fig.units, 3)
-  const rowsOf = grouped ? 2 : Math.ceil(fig.units / 3)
+  const cols = Math.min(fig.units, 3)
+  const rowsOf = Math.ceil(fig.units / 3)
   const w = cols * step + 8
   const h = (rowsOf - 1) * step + 2 * r + 12
-  const cxOf = (u: number) => 4 + posOf(u)[0] * step + step / 2
-  const cyOf = (u: number) => r + 6 + posOf(u)[1] * step
+  const cxOf = (u: number) => 4 + (u % 3) * step + step / 2
+  const cyOf = (u: number) => r + 6 + Math.floor(u / 3) * step
   const f = badgeSize(badge === 'units' ? r : (2 * Math.PI * 0.62 * r) / fig.parts)
   const centroid = (u: number, s: number) => {
-    const a = sectorAngle((partOffset(fig, s) + partOffset(fig, s + 1)) / 2)
+    const a = partAngle(sides, tilt, (partOffset(fig, s) + partOffset(fig, s + 1)) / 2)
     const reach = 0.62 * polygonRadius(sides, a - tilt, r)
     return { x: ringX(cxOf(u), reach, a), y: ringY(cyOf(u), reach, a) + 0.35 * f }
   }
   const badges = Math.min(badgeCount(badge, fig, counted), shown ?? Infinity)
+  const cellProps = (k: number) => ({
+    ...stylex.props(core.cell, k < counted && core.cellOn, onPick && (k < counted ? core.cellPickOn : core.cellPick)),
+    onClick: onPick ? () => onPick(k + 1 === counted ? k : k + 1) : undefined,
+    'data-cuelume-press': onPick ? 'tick' : undefined,
+  })
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} width={w} aria-hidden="true" {...stylex.props(core.svg)}>
+    <svg
+      viewBox={`0 0 ${w} ${h}`}
+      width={w}
+      {...stylex.props(core.svg, styles.roundSize(w, fig.scale ?? 1))}
+      {...pickable('Parts shaded', fig.units * fig.parts, counted, onPick)}
+    >
       {Array.from({ length: fig.units }, (_, u) => {
         const cx = cxOf(u)
         const cy = cyOf(u)
         const ngon = (n: number) =>
           Array.from({ length: n }, (_, i) => `${sectorX(cx, i, n, r, tilt)},${sectorY(cy, i, n, r, tilt)}`).join(' ')
         if (fig.parts === 1) {
-          if (sides < 3) return <circle key={u} cx={cx} cy={cy} r={r} {...stylex.props(core.cell)} />
-          return <polygon key={u} points={ngon(sides)} {...stylex.props(core.cell)} />
+          if (sides < 3) return <circle key={u} cx={cx} cy={cy} r={r} {...cellProps(u)} />
+          return <polygon key={u} points={ngon(sides)} {...cellProps(u)} />
         }
         return (
           <g key={u}>
@@ -275,7 +275,7 @@ function RoundFig({
               <path
                 key={s}
                 d={wedgePath(cx, cy, r, sides, tilt, partOffset(fig, s), partOffset(fig, s + 1))}
-                {...stylex.props(core.cell, u * fig.parts + s < counted && core.cellOn)}
+                {...cellProps(u * fig.parts + s)}
               />
             ))}
             {sides < 3 ? (
@@ -339,10 +339,12 @@ export function FigureView({ fig, counted, badge, shown, onPick, pop, label }: F
     ) : fig.kind === 'grid' ? (
       <GridFig fig={fig} counted={counted} badge={badge} shown={shown} onPick={onPick} pop={pop} />
     ) : (
-      <RoundFig fig={fig} counted={counted} badge={badge} shown={shown} pop={pop} />
+      <RoundFig fig={fig} counted={counted} badge={badge} shown={shown} onPick={onPick} pop={pop} />
     )
   return (
-    <div {...stylex.props(styles.fig)}>
+    <div
+      {...stylex.props(styles.fig, takesOrientation(fig.kind) && fig.scale !== undefined && styles.width(fig.scale))}
+    >
       {label && <span {...stylex.props(styles.caption)}>{label}</span>}
       {svg}
     </div>

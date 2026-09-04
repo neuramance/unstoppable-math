@@ -1,5 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react'
 import { beforeEach, expect, test, vi } from 'vitest'
+import { activeId } from '@/lib/store'
 import Screen from './screen'
 
 vi.mock('./learn', () => ({ Learn: () => null }))
@@ -89,4 +90,23 @@ test('?dev=1 overrides a stored off, which is the documented way back in', async
   expect(readPill(on)).toEqual({ present: true, pressed: 'true', label: 'dev mode · on' })
   expect(localStorage.getItem(DEV_STORE)).toBe('1')
   expect(location.search).toBe('')
+})
+
+test.each(['null', '42', '[]', '{"name":42}', '{"emoji":{}}', '{invalid'])(
+  'a malformed profile %s falls back without entering recovery or clearing progress',
+  async (raw) => {
+    const key = `um.session.nf-fractions:${activeId()}`
+    localStorage.setItem(key, '[1]')
+    localStorage.setItem(`um.profile:${activeId()}`, raw)
+    const view = await mount()
+    expect(view.getByRole('button', { name: /Learner/ })).toBeTruthy()
+    expect(view.queryByText('App recovery')).toBeNull()
+    expect(localStorage.getItem(key)).toBe('[1]')
+  },
+)
+
+test('a valid saved profile keeps its name and avatar', async () => {
+  localStorage.setItem(`um.profile:${activeId()}`, JSON.stringify({ name: 'Alex', emoji: '🐼' }))
+  const view = await mount()
+  expect(view.getByRole('button', { name: /Alex/ }).textContent).toContain('🐼')
 })

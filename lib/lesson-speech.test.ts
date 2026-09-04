@@ -144,7 +144,7 @@ test('every speakable answer in the real lesson is recovered from its spoken for
       const said = saidAloud(it.expected)
       return said === null ? [] : [{ it, said }]
     })
-  expect(spoken.length).toBe(655)
+  expect(spoken.length).toBe(524)
   const missed = spoken.filter(({ it, said }) => !gradeItem(it, heardAnswer(it, [said])))
   expect(missed.map(({ it, said }) => `${it.expected} <- ${said}`)).toEqual([])
 })
@@ -156,7 +156,7 @@ test('hearing never invents a correct answer: a flipped fraction stays wrong', (
       const frac = /^(\d+)\/(\d+)$/.exec(it.expected)
       return frac === null || frac[1] === frac[2] ? [] : [{ it, said: `${frac[2]} over ${frac[1]}` }]
     })
-  expect(flipped.length).toBe(190)
+  expect(flipped.length).toBe(158)
   const accepted = flipped.filter(({ it, said }) => gradeItem(it, heardAnswer(it, [said])))
   expect(accepted.map(({ it, said }) => `${it.expected} <- ${said}`)).toEqual([])
   for (const [expected, said] of [

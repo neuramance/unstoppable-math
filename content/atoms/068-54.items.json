@@ -5,9 +5,9 @@
       "src": "II:1",
       "role": "model",
       "mode": "typed",
-      "prompt": "We've seen that a fraction is improper when the top number is bigger than the bottom number.  19/5  And we've seen that a mixed number has a whole number part and a fraction written to its right.  3 4/5  Only improper fractions can be rewritten as mixed numbers, because only improper fractions represent one whole unit or more. So this fraction cannot be rewritten as a mixed number, because it is not improper.  4/5",
+      "prompt": "We've seen that a fraction is improper when the top number is equal to or bigger than the bottom number.  19/5  And we've seen that a mixed number has a whole number part and a fraction written to its right.  3 4/5  Only improper fractions can be rewritten as mixed numbers, because only improper fractions represent one whole unit or more. So this fraction cannot be rewritten as a mixed number, because it is not improper.  4/5",
       "expected": "cannot be rewritten",
-      "demo": "This fraction *cannot* be rewritten as a mixed number, because it is not improper. There are no whole units in it."
+      "demo": "This fraction *cannot* be rewritten as a mixed number, because it is not improper. There are no whole units in it. When an improper fraction is exactly a whole number, we write that whole number without a fractional part."
     },
     {
       "src": "II:5",
@@ -44,47 +44,67 @@
     {
       "src": "IT:2",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Your turn to decide if the fractions can be rewritten as mixed numbers. Can this fraction be rewritten as a mixed number? How do you know?  8/3",
-      "expected": "yes",
+      "expected": "Yes, because it's improper.",
       "demo": "*Yes*, because it's improper.",
-      "accept": ["Yes, because it's improper."]
+      "choices": [
+        "Yes, because every proper fraction includes at least one whole unit.",
+        "No, because no fraction can be expressed using a whole number and a fraction.",
+        "Yes, because it's improper."
+      ]
     },
     {
       "src": "IT:3",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  3/8",
-      "expected": "no",
+      "expected": "No, because it's not improper.",
       "demo": "*No*, because it's not improper.",
-      "accept": ["No, because it's not improper."]
+      "choices": [
+        "No, because no fraction can be expressed using a whole number and a fraction.",
+        "No, because it's not improper.",
+        "Yes, because every proper fraction includes at least one whole unit."
+      ]
     },
     {
       "src": "IT:4",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  12/5",
-      "expected": "yes",
+      "expected": "Yes, because it's improper.",
       "demo": "*Yes*, because it's improper.",
-      "accept": ["Yes, because it's improper."]
+      "choices": [
+        "Yes, because it's improper.",
+        "Yes, because every proper fraction includes at least one whole unit.",
+        "No, because no fraction can be expressed using a whole number and a fraction."
+      ]
     },
     {
       "src": "IT:5",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  9/10",
-      "expected": "no",
+      "expected": "No, because it's not improper.",
       "demo": "*No*, because it's not improper.",
-      "accept": ["No, because it's not improper."]
+      "choices": [
+        "Yes, because every proper fraction includes at least one whole unit.",
+        "No, because no fraction can be expressed using a whole number and a fraction.",
+        "No, because it's not improper."
+      ]
     },
     {
       "src": "IT:6",
       "role": "test",
-      "mode": "typed",
+      "mode": "choice",
       "prompt": "Can this fraction be rewritten as a mixed number? How do you know?  10/9",
-      "expected": "yes",
+      "expected": "Yes, because it's improper.",
       "demo": "*Yes*, because it's improper.",
-      "accept": ["Yes, because it's improper."]
+      "choices": [
+        "No, because no fraction can be expressed using a whole number and a fraction.",
+        "Yes, because it's improper.",
+        "Yes, because every proper fraction includes at least one whole unit."
+      ]
     },
     {
       "src": "EX:1",
