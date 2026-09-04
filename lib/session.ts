@@ -268,9 +268,12 @@ function splitSessions(log: SessionLog): { plan: SessionPlan; trials: Trial[] }[
   }
   return sessions
 }
-function recordOutcomes(history: RowHistory, state: SessionState): void {
+function recordOutcomes(history: RowHistory, state: SessionState, recorded: Set<string>, startedAt: number): void {
   for (const b of state.blocks) {
     for (const o of b.outcomes) {
+      const identity = JSON.stringify([startedAt, b.plan.kind, o])
+      if (recorded.has(identity)) continue
+      recorded.add(identity)
       const rec = history.get(o.row) ?? {
         row: o.row,
         timesServed: 0,
@@ -280,11 +283,11 @@ function recordOutcomes(history: RowHistory, state: SessionState): void {
         misses: 0,
       }
       rec.timesServed += 1
-      rec.lastServedAt = o.endedAt
+      rec.lastServedAt = Math.max(rec.lastServedAt ?? o.endedAt, o.endedAt)
       rec.misses += o.graded - o.rightFirstTry
-      if (b.plan.kind === 'atom' && o.firm && !rec.firmed) {
+      if (b.plan.kind === 'atom' && o.firm) {
         rec.firmed = true
-        rec.firmedAt = o.endedAt
+        rec.firmedAt = Math.min(rec.firmedAt ?? o.endedAt, o.endedAt)
       }
       history.set(o.row, rec)
     }
@@ -293,6 +296,7 @@ function recordOutcomes(history: RowHistory, state: SessionState): void {
 export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
   const sessions = splitSessions(log)
   const history: RowHistory = new Map()
+  const recorded = new Set<string>()
   const stale = new Set<number>()
   const dropped = new Set<number>()
   let droppedTrials = 0
@@ -314,7 +318,7 @@ export function replayLog(lesson: Lesson, log: SessionLog): LogAudit {
       droppedTrials += state.unreplayed
       for (const row of plannedFrom(s.plan, state.staleAt.block, state.staleAt.index)) dropped.add(row)
     }
-    recordOutcomes(history, state)
+    recordOutcomes(history, state, recorded, s.plan.startedAt)
   }
   const asc = (a: number, b: number) => a - b
   const droppedRows = [...dropped].sort(asc)

@@ -64,7 +64,7 @@ const QUOTED_CLOSE = /[.,!?"'“”‘’]+$/
 export function normalizeAnswer(text: string): string {
   return text
     .toLowerCase()
-    .replace(/-/g, ' ')
+    .replace(/(?<=[a-z])-(?=[a-z])/g, ' ')
     .split(/\s+/)
     .map((tok) => tok.replace(QUOTED_OPEN, '').replace(QUOTED_CLOSE, ''))
     .filter(Boolean)

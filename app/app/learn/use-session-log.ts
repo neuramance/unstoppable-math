@@ -141,12 +141,23 @@ export function useSessionLog(lesson: Lesson) {
   const preview = useMemo(() => planSession(lesson, history ?? NO_HISTORY, previewedAt), [lesson, history, previewedAt])
 
   const begin = () => {
+    if (logRef.current !== log) return
     const fresh = planSession(lesson, history ?? NO_HISTORY, Date.now())
     commit([...(logRef.current ?? []), { kind: 'start', plan: fresh }])
   }
 
+  const record = (entry: TrialEntry) => {
+    if (logRef.current !== log) return
+    const next: SessionLog = [...(log ?? []), { kind: 'trial', typed: entry.typed, at: Date.now() }]
+    logRef.current = next
+    if (!saveLog(key, next)) setVolatile(true)
+  }
+
+  const advance = () => setLog(logRef.current)
+
   const append = (entry: TrialEntry) => {
-    commit([...(logRef.current ?? []), { kind: 'trial', typed: entry.typed, at: Date.now() }])
+    record(entry)
+    advance()
   }
 
   const jump = (row: number | null, now: number, kind: 'instruction' | 'testing' = 'instruction', item = 0) => {
@@ -164,5 +175,5 @@ export function useSessionLog(lesson: Lesson) {
     setWiped(false)
   }
 
-  return { session, live, history, audit, wiped, volatile, preview, begin, append, jump, reset }
+  return { session, live, history, audit, wiped, volatile, preview, begin, record, advance, append, jump, reset }
 }

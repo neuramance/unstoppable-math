@@ -185,5 +185,5 @@ export function useLessonVoice(
     }
   }, [item, feedback, model, auto])
 
-  return { voiced, audible: playing && !muted, ccOn, setCc, shown, setShown, bless }
+  return { spoken: voiced && !ccOn && !muted, audible: playing && !muted, ccOn, setCc, shown, setShown, bless }
 }

@@ -143,7 +143,7 @@ function ScreenView() {
 
 export default function Screen() {
   const [intro, setIntro] = useState(introPending)
-  const [store, setStore] = useState(false)
+  const [store, setStore] = useState<'opening' | 'ready' | 'failed'>('opening')
   const [theme, setTheme] = useState<ThemeName>(activeTheme)
 
   useEffect(() => {
@@ -153,7 +153,10 @@ export default function Screen() {
   }, [])
 
   useEffect(() => {
-    void openStore().then(() => setStore(true))
+    void openStore().then(
+      () => setStore('ready'),
+      () => setStore('failed'),
+    )
   }, [])
 
   useLayoutEffect(() => {
@@ -185,9 +188,23 @@ export default function Screen() {
         />
       </a>
       <div {...stylex.props(s.appshell)} data-appshell="" inert={intro}>
-        <Boundary>{store && <ScreenView />}</Boundary>
+        <Boundary>
+          {store === 'ready' ? (
+            <ScreenView />
+          ) : (
+            <div {...stylex.props(chrome.place)}>
+              <section {...stylex.props(chrome.pintro)}>
+                <p {...stylex.props(chrome.lede)} role="status">
+                  {store === 'opening'
+                    ? 'Opening your saved progress. If your lesson is open in another tab, close that tab to continue here.'
+                    : 'Your progress could not be opened. Use a current browser and a secure connection, then reload.'}
+                </p>
+              </section>
+            </div>
+          )}
+          {store === 'ready' && <UserPill theme={theme} onTheme={setTheme} />}
+        </Boundary>
       </div>
-      <UserPill theme={theme} onTheme={setTheme} />
       {intro && <Intro onDone={() => setIntro(false)} />}
     </>
   )

@@ -74,7 +74,22 @@ function mergedLogs(remote: string, mine: string): string {
     p.length <= q.length && p.every((e, i) => JSON.stringify(e) === JSON.stringify(q[i]))
   if (prefix(a, b)) return mine
   if (prefix(b, a)) return remote
-  return JSON.stringify([...a, ...b])
+  const sessions: unknown[][] = []
+  for (const event of [...a, ...b]) {
+    if (
+      sessions.length === 0 ||
+      (typeof event === 'object' && event !== null && 'kind' in event && event.kind === 'start')
+    )
+      sessions.push([])
+    sessions[sessions.length - 1].push(event)
+  }
+  const merged: unknown[][] = []
+  for (const session of sessions) {
+    const extended = merged.findIndex((existing) => prefix(existing, session))
+    if (extended >= 0) merged[extended] = session
+    else if (!merged.some((existing) => prefix(session, existing))) merged.push(session)
+  }
+  return JSON.stringify(merged.flat())
 }
 
 export function mergePlan(
@@ -83,15 +98,19 @@ export function mergePlan(
   rows: Row[],
 ): { toLocal: Row[]; toServer: Change[] } {
   const server = new Map(rows.map((r) => [r.key, r.value]))
-  const toLocal = rows.filter((r) => !unconfirmed.has(r.key))
+  const toLocal: Row[] = []
   const toServer: Change[] = []
-  for (const key of new Set([...local.keys(), ...unconfirmed].filter(synced))) {
+  for (const key of new Set([...local.keys(), ...unconfirmed, ...server.keys()].filter(synced))) {
     const remote = server.get(key)
-    if (remote !== undefined && !unconfirmed.has(key)) continue
     const mine = local.get(key) ?? null
-    const value = remote !== undefined && mine !== null && isLog(key) ? mergedLogs(remote, mine) : mine
+    const value =
+      remote !== undefined && mine !== null && isLog(key)
+        ? mergedLogs(remote, mine)
+        : unconfirmed.has(key)
+          ? mine
+          : (remote ?? mine)
     if (value !== null && value !== mine) toLocal.push({ key, value })
-    toServer.push({ key, value })
+    if (value !== remote || unconfirmed.has(key)) toServer.push({ key, value })
   }
   return { toLocal, toServer }
 }
@@ -156,7 +175,15 @@ function rekey(from: string, to: string): void {
 let opening: Promise<void> | undefined
 
 export function openStore(): Promise<void> {
-  return (opening ??= open())
+  return (opening ??= new Promise<void>((resolve, reject) => {
+    void navigator.locks
+      .request('um.store', async () => {
+        await open()
+        resolve()
+        await new Promise<void>(() => {})
+      })
+      .catch(reject)
+  }))
 }
 
 async function open(): Promise<void> {

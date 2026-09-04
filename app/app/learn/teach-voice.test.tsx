@@ -51,6 +51,19 @@ test('a refused play puts the words back on screen and is remembered rather than
   expect(prompt().hidden).toBe(false)
 })
 
+test('muting keeps the question visible even when playback succeeds and captions are off', async () => {
+  const view = render(<Host muted />)
+  await flush()
+  expect(FakeAudio.instances[0].muted).toBe(true)
+  expect(prompt().hidden).toBe(false)
+  view.rerender(<Host />)
+  await flush()
+  expect(prompt().hidden).toBe(true)
+  view.rerender(<Host muted />)
+  await flush()
+  expect(prompt().hidden).toBe(false)
+})
+
 test('under reduced motion nothing self-starts and the text stays', async () => {
   vi.spyOn(window, 'matchMedia').mockReturnValue({ matches: true } as MediaQueryList)
   render(<Host />)
@@ -158,16 +171,20 @@ test('digits without a spoken word interpolate before their anchor, and no words
   expect(clamped.every(([, at], i) => i === 0 || at >= clamped[i - 1][1])).toBe(true)
 })
 
-test('a counting model starts with no digits and lands them all while the voice counts, ring on the last', async () => {
+test('a counting model starts with no digits and lands them all while the voice counts, ring on the last', async ({
+  onTestFinished,
+}) => {
+  vi.useFakeTimers()
+  onTestFinished(() => {
+    vi.useRealTimers()
+  })
   render(<Host lesson={COUNTED} />)
   await flush()
   expect(badgeTexts()).toBe(4)
   expect(rings()).toBe(0)
   act(() => FakeAudio.instances[0].onended!())
   await flush()
-  await act(async () => {
-    await new Promise((r) => setTimeout(r, 20))
-  })
+  await act(() => vi.runAllTimersAsync())
   expect(badgeTexts()).toBe(8)
   expect(rings()).toBe(1)
 })
@@ -189,16 +206,20 @@ const UNITS: Lesson = {
   ],
 }
 
-test('a whole-unit count never draws a badge row: the ring lands on the axis numeral instead', async () => {
+test('a whole-unit count never draws a badge row: the ring lands on the axis numeral instead', async ({
+  onTestFinished,
+}) => {
+  vi.useFakeTimers()
+  onTestFinished(() => {
+    vi.useRealTimers()
+  })
   render(<Host lesson={UNITS} />)
   await flush()
   expect(badgeTexts()).toBe(6)
   expect(rings()).toBe(0)
   act(() => FakeAudio.instances[0].onended!())
   await flush()
-  await act(async () => {
-    await new Promise((r) => setTimeout(r, 20))
-  })
+  await act(() => vi.runAllTimersAsync())
   expect(badgeTexts()).toBe(6)
   expect(rings()).toBe(1)
 })

@@ -46,12 +46,12 @@ export function useLessonAnswer(item: LessonItem | null, wrongTyped: string | nu
   }
   const editSlot = (i: number, v: string) => {
     const next = [...slots]
-    next[i] = v.replace(/\D/g, '')
+    next[i] = v
     setSlots(next)
     setFree('')
   }
   const editFree = (v: string) => {
-    setFree(v.replace(/[^\d/ ]/g, ''))
+    setFree(v)
     setSlots([])
   }
 

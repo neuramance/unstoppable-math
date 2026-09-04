@@ -285,6 +285,7 @@ export function LessonPlayer({
   lesson,
   log,
   onTrial,
+  onAdvance,
   auto = false,
   muted = false,
   onMuted,
@@ -292,6 +293,7 @@ export function LessonPlayer({
   lesson: Lesson
   log: TrialEntry[]
   onTrial: (entry: TrialEntry) => void
+  onAdvance: () => void
   auto?: boolean
   muted?: boolean
   onMuted: (next: boolean) => void
@@ -299,48 +301,47 @@ export function LessonPlayer({
   const [feedback, setFeedback] = useState<Feedback | null>(null)
   const [cardKey, setCardKey] = useState(0)
   const [morphed, setMorphed] = useState(false)
+  const interaction = useRef<'ready' | 'checked' | 'advancing'>('ready')
   const state = replayLesson(lesson, log)
   const step = state.current
   const item = step ? lesson.items[step.item] : null
   const model = item?.role === 'model'
   const reveal = model || feedback !== null
   const voice = useLessonVoice(lesson, log, item, feedback !== null, model, auto, muted)
-  const { shown } = voice
+  const { shown, spoken } = voice
   const answer = useLessonAnswer(item, feedback && !feedback.correct ? feedback.typed : null, reveal)
   const figures = item?.figures ?? []
 
   const check = (typed: string) => {
+    if (interaction.current !== 'ready') return
+    interaction.current = 'checked'
     voice.bless()
     const after = replayLesson(lesson, [...log, { typed }])
+    onTrial({ typed })
     play(after.lastCorrect ? 'success' : 'error')
     transitionDiagram(() => setFeedback({ typed, correct: after.lastCorrect === true }), auto)
   }
   const leave = (entry: TrialEntry) => {
+    if (interaction.current === 'advancing') return
+    interaction.current = 'advancing'
     voice.bless()
+    if (model) onTrial(entry)
     const next = replayLesson(lesson, [...log, entry]).current
     const nextItem = next ? lesson.items[next.item] : null
     const nf = nextItem?.figures
     const nextShown = initialShown(nextItem)
-    if (morphs(figures, nf)) {
+    const convert = morphs(figures, nf)
+    const update = () => {
       answer.clear()
       setFeedback(null)
-      setMorphed(true)
+      setMorphed(convert)
       voice.setShown(nextShown)
-      onTrial(entry)
-      return
+      if (!convert) setCardKey((k) => k + 1)
+      onAdvance()
+      interaction.current = 'ready'
     }
-    transitionDiagram(
-      () => {
-        answer.clear()
-        setFeedback(null)
-        setMorphed(false)
-        voice.setShown(nextShown)
-        setCardKey((k) => k + 1)
-        onTrial(entry)
-      },
-      auto,
-      turnsOnly(figures, nf),
-    )
+    if (convert) update()
+    else transitionDiagram(update, auto, turnsOnly(figures, nf))
   }
   const advance = () => leave({ typed: feedback!.typed })
   const advanceModel = () => leave({ typed: '' })
@@ -384,7 +385,6 @@ export function LessonPlayer({
 
   if (!item) return null
 
-  const spoken = voice.voiced && !voice.ccOn
   const tone = toneOf(feedback)
 
   return (

@@ -42,8 +42,9 @@ test('a session runs: Enter begins, models advance, a miss re-serves, a hit is a
   const next = page.getByRole('button', { name: 'Next', exact: true })
   await expect(next).toBeVisible({ timeout: 10_000 })
   while (await next.isVisible()) {
+    const prompt = await page.locator('p[aria-live]').innerText()
     await next.click()
-    await page.waitForTimeout(250)
+    await expect(page.locator('p[aria-live]')).not.toHaveText(prompt)
   }
   const answer = page.getByRole('textbox', { name: 'Your answer' })
   await expect(answer).toBeVisible()
@@ -118,7 +119,6 @@ test('progress survives a reload and mirrors to app_state', async ({ page }) => 
   const next = page.getByRole('button', { name: 'Next', exact: true })
   await expect(next).toBeVisible({ timeout: 10_000 })
   await next.click()
-  await page.waitForTimeout(700)
   const key = await page.evaluate(() => Object.keys(localStorage).find((k) => k.startsWith('um.session.nf-fractions:')))
   expect(key).toBeTruthy()
   await page.reload()
@@ -195,8 +195,9 @@ test('a spoken answer is heard and graded in the browser, and the choice persist
   const next = page.getByRole('button', { name: 'Next', exact: true })
   await expect(next).toBeVisible({ timeout: 10_000 })
   while (await next.isVisible()) {
+    const prompt = await page.locator('p[aria-live]').innerText()
     await next.click()
-    await page.waitForTimeout(250)
+    await expect(page.locator('p[aria-live]')).not.toHaveText(prompt)
   }
   await expect(page.getByRole('textbox', { name: 'Your answer' })).toBeVisible()
 

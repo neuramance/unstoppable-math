@@ -170,6 +170,15 @@ test('grading survives junk input: wrong, never a throw', () => {
   expect(gradeItem(frac, '7/5/1')).toBe(false)
 })
 
+test.each([
+  ['5', '-5'],
+  ['four', '-4'],
+  ['3/4', '-3/4'],
+  ['5 4', '5-4'],
+])('grading %s preserves the mathematical signs in %s', (expected, typed) => {
+  expect(gradeItem(item('typed', expected), typed)).toBe(false)
+})
+
 test('a fraction with one blank slot accepts the slot alone or the whole fraction it completes, typed or spoken', () => {
   const den = { ...item('frac', '2'), frac: { num: '2', den: null } }
   expect(gradeItem(den, '2')).toBe(true)

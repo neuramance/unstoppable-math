@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react'
-import { act, useState } from 'react'
+import { act, useRef, useState } from 'react'
 import { beforeEach } from 'vitest'
 import type { Lesson, TrialEntry } from '@/lib/lesson'
 import { LessonPlayer } from './teach'
@@ -66,11 +66,15 @@ export function Host({
   muted?: boolean
 }) {
   const [log, setLog] = useState<TrialEntry[]>([])
+  const saved = useRef(log)
   return (
     <LessonPlayer
       lesson={lesson}
       log={log}
-      onTrial={(e) => setLog((l) => [...l, e])}
+      onTrial={(e) => {
+        saved.current = [...saved.current, e]
+      }}
+      onAdvance={() => setLog(saved.current)}
       auto={auto}
       muted={muted}
       onMuted={() => {}}

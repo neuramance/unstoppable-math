@@ -228,7 +228,8 @@ export function Session({ lesson, dev, onExit }: { lesson: Lesson; dev: boolean;
             key={stage.row.key}
             lesson={stage.row.cur.lesson}
             log={stage.row.cur.log}
-            onTrial={log.append}
+            onTrial={log.record}
+            onAdvance={log.advance}
             auto={auto}
             muted={muted}
             onMuted={mute}

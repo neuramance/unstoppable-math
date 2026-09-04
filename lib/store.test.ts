@@ -1,6 +1,8 @@
 import { expect, test, vi } from 'vitest'
 import { mergePlan, openStore, synced } from './store'
 import type { supabase } from './supabase-client'
+import { replayLog, type SessionLog } from './session'
+import { runSession, synth, teachPlan } from './session.fixtures'
 
 type Client = ReturnType<typeof supabase>
 type Row = { key: string; value: string }
@@ -45,7 +47,6 @@ async function boot(factory: () => Client) {
   return store
 }
 
-const settle = () => new Promise((resolve) => setTimeout(resolve))
 const unsyncedKeys = () => JSON.parse(localStorage.getItem('um.unsynced') ?? '[]') as string[]
 
 test('progress and the profile sync; device settings never do', () => {
@@ -90,8 +91,46 @@ test('an empty side is legal on both ends', () => {
   expect(mergePlan(new Map(), new Set(), rows)).toEqual({ toLocal: rows, toServer: [] })
 })
 
+test('an older server snapshot cannot erase confirmed local trials', () => {
+  const key = 'um.session.x:u'
+  expect(mergePlan(new Map([[key, '[1,2]']]), new Set(), [{ key, value: '[1]' }])).toEqual({
+    toLocal: [],
+    toServer: [{ key, value: '[1,2]' }],
+  })
+  expect(mergePlan(new Map([[key, '[1]']]), new Set(), [{ key, value: '[1,2]' }])).toEqual({
+    toLocal: [{ key, value: '[1,2]' }],
+    toServer: [],
+  })
+})
+
 test('opening the store twice is one open: StrictMode double-mounts must not race two sign-ins', () => {
   expect(openStore()).toBe(openStore())
+})
+
+test('opening waits for exclusive ownership before reading or syncing any progress', async () => {
+  let release = () => {}
+  let requested = () => {}
+  const held = new Promise<void>((resolve) => (release = resolve))
+  const waiting = new Promise<void>((resolve) => (requested = resolve))
+  const request = vi.spyOn(navigator.locks, 'request').mockImplementation(async (_name, options, callback) => {
+    requested()
+    await held
+    const grant = typeof options === 'function' ? options : callback
+    return grant({ name: 'um.store', mode: 'exclusive' })
+  })
+  const fake = fakeClient('u', 'u', [])
+  const session = vi.spyOn(fake.client.auth, 'getSession')
+  const opening = boot(() => fake.client)
+  await waiting
+  try {
+    expect(request).toHaveBeenCalledWith('um.store', expect.any(Function))
+    expect(session).not.toHaveBeenCalled()
+  } finally {
+    release()
+  }
+  const store = await opening
+  expect(store.activeId()).toBe('u')
+  expect(session).toHaveBeenCalledTimes(1)
 })
 
 test('a lost cookie session re-keys local progress to the new anonymous user and pushes it', async () => {
@@ -100,7 +139,7 @@ test('a lost cookie session re-keys local progress to the new anonymous user and
   localStorage.setItem('um.theme', 'dark')
   const fake = fakeClient(null, 'new', [])
   const store = await boot(() => fake.client)
-  await settle()
+  await store.flushed()
   expect(store.activeId()).toBe('new')
   expect(localStorage.getItem('um.uid')).toBe('new')
   expect(localStorage.getItem('um.session.nf-fractions:old')).toBeNull()
@@ -113,8 +152,8 @@ test('a lost cookie session re-keys local progress to the new anonymous user and
 test('progress made before the first sign-in is adopted by the signed-in user', async () => {
   localStorage.setItem('um.session.nf-fractions:local', '[1]')
   const fake = fakeClient('u', 'u', [])
-  await boot(() => fake.client)
-  await settle()
+  const store = await boot(() => fake.client)
+  await store.flushed()
   expect(localStorage.getItem('um.session.nf-fractions:u')).toBe('[1]')
   expect(fake.writes.map((w) => w.key)).toEqual(['um.session.nf-fractions:u'])
 })
@@ -127,8 +166,8 @@ test('the server heals only what local never changed since it was last confirmed
     { key: 'um.session.x:u', value: '[1]' },
     { key: 'um.profile:u', value: 'P' },
   ])
-  await boot(() => fake.client)
-  await settle()
+  const store = await boot(() => fake.client)
+  await store.flushed()
   expect(localStorage.getItem('um.session.x:u')).toBe('[1,2]')
   expect(localStorage.getItem('um.profile:u')).toBe('P')
   expect(fake.writes).toEqual([{ user_id: 'u', key: 'um.session.x:u', value: '[1,2]' }])
@@ -168,7 +207,7 @@ test('without Supabase the store is local-only: writes never throw and stay mark
 test('a failed local write is reported but still mirrored to the server, so a full disk never loses progress', async () => {
   const fake = fakeClient('u', 'u', [])
   const store = await boot(() => fake.client)
-  vi.spyOn(localStorage, 'setItem').mockImplementation(() => {
+  vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
     throw new Error('quota')
   })
   expect(store.writeItem('um.session.x:u', '[1]')).toBe(false)
@@ -180,7 +219,7 @@ test('a select that resolves with null data heals nothing and never rejects the 
   localStorage.setItem('um.session.x:u', '[1]')
   const fake = fakeClient('u', 'u', [], { select: { data: null, error: null } })
   const store = await boot(() => fake.client)
-  await settle()
+  await store.flushed()
   expect(store.activeId()).toBe('u')
   expect(localStorage.getItem('um.session.x:u')).toBe('[1]')
   expect(fake.writes).toEqual([{ user_id: 'u', key: 'um.session.x:u', value: '[1]' }])
@@ -239,4 +278,45 @@ test('an unconfirmed session log never discards history: the longer side wins wh
     toLocal: [],
     toServer: [{ key: profile, value: 'B' }],
   })
+})
+
+test('divergent logs keep shared sessions once, including repeated merges and previously duplicated saves', () => {
+  const lesson = synth(1, 't')
+  const completed = (at: number): SessionLog => {
+    const plan = teachPlan(at, [1])
+    return [{ kind: 'start', plan }, ...runSession(lesson, plan).map((trial) => ({ kind: 'trial' as const, ...trial }))]
+  }
+  const common = completed(1)
+  const remote = [...common, ...completed(100)]
+  const mine = [...common, ...completed(200)]
+  const key = 'um.session.synth:u'
+  const local = new Map([[key, JSON.stringify(mine)]])
+  const unconfirmed = new Set([key])
+  const first = mergePlan(local, unconfirmed, [{ key, value: JSON.stringify(remote) }]).toServer[0].value!
+  expect((JSON.parse(first) as SessionLog).filter((event) => event.kind === 'start')).toHaveLength(3)
+  expect(mergePlan(local, unconfirmed, [{ key, value: first }]).toServer[0].value).toBe(first)
+  const wanted = replayLog(lesson, JSON.parse(first) as SessionLog).history
+  expect(wanted.get(1)!.timesServed).toBe(3)
+  expect(replayLog(lesson, [...remote, ...mine]).history).toEqual(wanted)
+  expect(replayLog(lesson, [...mine, ...remote]).history).toEqual(wanted)
+})
+
+test('forks of an active session retain both answers without counting their shared completed rows twice', () => {
+  const lesson = synth(2, 't')
+  const plan = teachPlan(1, [1], [2])
+  const trials = runSession(lesson, plan)
+  const mine: SessionLog = [
+    { kind: 'start', plan },
+    ...trials.map((trial): SessionLog[number] => ({ kind: 'trial', ...trial })),
+  ]
+  const remote: SessionLog = [...mine.slice(0, -1), { kind: 'trial', typed: 'wrong', at: trials[1].at + 1 }]
+  const key = 'um.session.synth:u'
+  const merged = mergePlan(new Map([[key, JSON.stringify(mine)]]), new Set([key]), [
+    { key, value: JSON.stringify(remote) },
+  ])
+  const log = JSON.parse(merged.toServer[0].value!) as SessionLog
+  expect(log).toContainEqual(remote[remote.length - 1])
+  expect(log).toContainEqual(mine[mine.length - 1])
+  expect(replayLog(lesson, log).history.get(1)!.timesServed).toBe(1)
+  expect(replayLog(lesson, log).history.get(2)!.timesServed).toBe(1)
 })
